@@ -9,7 +9,6 @@ return array(
     'UpdateHelper\\' => array($vendorDir . '/kylekatarnls/update-helper/src'),
     'SimpleSoftwareIO\\QrCode\\' => array($vendorDir . '/simplesoftwareio/simple-qrcode/src'),
     'Sabberworm\\CSS' => array($vendorDir . '/sabberworm/php-css-parser/lib'),
-    'Rize\\UriTemplate' => array($vendorDir . '/rize/uri-template/src'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
     'JShrink' => array($vendorDir . '/tedivm/jshrink/src'),
