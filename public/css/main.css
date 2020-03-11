@@ -961,10 +961,10 @@ li.wt-rss a { background:#ff6600; }
 	line-height: 18px;
 }
 /* Header Style */
-.wt-logo{float: left;margin: 10px 0;}
+.wt-logo{float: left;margin: 16px 0;}
 
 .wt-logo img {
-    height: 55px;
+    height: 44px;
 }
 .wt-header {
 	padding: 0;
