@@ -33,11 +33,6 @@
                 @endforeach
             @endif
             <li>
-                <a href="{{url('articles')}}">
-                    {{{ trans('lang.articles') }}}
-                </a>
-            </li>
-            <li>
                 <a href="{{url('search-results?type=freelancer')}}">
                     {{{ trans('lang.view_freelancers') }}}
                 </a>
@@ -61,6 +56,11 @@
                     </a>
                 </li>
             @endif
+            <li>
+                <a href="{{url('articles')}}">
+                    {{{ trans('lang.articles') }}}
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

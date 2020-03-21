@@ -963,9 +963,12 @@ li.wt-rss a { background:#ff6600; }
 /* Header Style */
 .wt-logo{float: left;margin: 16px 0;}
 
-.wt-logo img {
-    height: 44px;
+@media only screen and (min-width: 600px) {
+	.wt-logo img {
+		height: 44px;
+	}
 }
+	
 .wt-header {
 	padding: 0;
 	z-index: 10;

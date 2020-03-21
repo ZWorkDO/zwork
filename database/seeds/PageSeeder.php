@@ -29,8 +29,8 @@ class PageSeeder extends Seeder
         DB::table('pages')->insert(
             [
                 [
-                    'title' => 'Main',
-                    'slug' => 'main',
+                    'title' => 'Inicio',
+                    'slug' => 'inicio',
                     'body' => '<div class="col-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="wt-greeting-holder">
                     <div class="row">
