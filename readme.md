@@ -6,9 +6,14 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 ## How to deploy
 
-`$ git clone`
-`$ mv public public_bak`
-`$ ln -s ../public_html public`
-`$ cp -a public_bak/* public/`
-`$ cp public_bak/.htaccess_prod public/.htaccess`
+`$ npm install marked`
 
+`$ git clone`
+
+`$ mv public public_bak`
+
+`$ ln -s ../public_html public`
+
+`$ cp -a public_bak/* public/`
+
+`$ cp public_bak/.htaccess_prod public/.htaccess`
