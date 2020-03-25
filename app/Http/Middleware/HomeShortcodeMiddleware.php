@@ -54,8 +54,8 @@ class HomeShortcodeMiddleware
         ?>
             <figure class="wt-bannermanimg" data-tilt>
                 <img src="images/bannerimg/img-01.png" alt="img description">
-                <img src="images/bannerimg/img-02.png" class="wt-bannermanimgone" alt="img description">
-                <img src="images/bannerimg/img-03.png" class="wt-bannermanimgtwo" alt="img description">
+                <!-- <img src="images/bannerimg/img-02.png" class="wt-bannermanimgone" alt="img description">
+                <img src="images/bannerimg/img-03.png" class="wt-bannermanimgtwo" alt="img description"> -->
             </figure>
         <?php
         return ob_get_clean();
