@@ -6,9 +6,11 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 ## How to deploy
 
-`$ npm install marked`
+`$ git clone https://github.com/foster-tech/zwork.git`
 
-`$ git clone`
+`$ cp .env_prod .env`
+
+`$ cp public/index_prod.php public/index.php`
 
 `$ mv public public_bak`
 
