@@ -6,8 +6,8 @@
                 <div class="wt-bannerimages">
                     <figure class="wt-bannermanimg">
                         <img :src="imageUrl+slider.inner_banner_image" alt="img description">
-                        <img :src="imageUrl+slider.floating_image01" class="wt-bannermanimgone" alt="img description">
-                        <img :src="imageUrl+slider.floating_image02" class="wt-bannermanimgtwo" alt="img description">
+                        <!-- <img :src="imageUrl+slider.floating_image01" class="wt-bannermanimgone" alt="img description">
+                        <img :src="imageUrl+slider.floating_image02" class="wt-bannermanimgtwo" alt="img description"> -->
                     </figure>
                 </div>
             </div>
