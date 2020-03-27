@@ -16,10 +16,8 @@ elif [[ "$1" == "update_prod" ]]; then    # used only on server
     git checkout .
     git pull --ff-only origin master
     cp public/index_prod.php public/index.php
-    mv public public_bak
-    ln -s ../public_html public
-    cp -a public_bak/* public/
-    cp public_bak/.htaccess_prod public/.htaccess
+    cp public/.htaccess_prod public/.htaccess
+    cp -a public/* ../public_html/
 
 else
     if [[ "$1" == "beta" ]]; then
