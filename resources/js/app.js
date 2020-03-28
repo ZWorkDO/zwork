@@ -487,6 +487,8 @@ if (document.getElementById("registration")) {
                         console.log(response.data.type);
                         self.loading = false;
                         if (response.data.type == 'success') {
+                            console.log(response.data.email);
+                            console.log(response.data.password);
                             if (response.data.email == 'not_configured') {
                                 window.location.replace(response.data.url);
                             } else {
