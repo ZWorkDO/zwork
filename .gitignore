@@ -7,3 +7,5 @@ storage/framework/testing/*
 storage/framework/views/*
 storage/installed
 public/index.php
+vendor/*
+node_modules/*

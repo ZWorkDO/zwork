@@ -79,13 +79,6 @@
       'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
-  'mariuzzo/laravel-js-localization' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider',
-    ),
-  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
@@ -132,13 +125,6 @@
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
-  'tanmuhittin/laravel-google-translate' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Tanmuhittin\\LaravelGoogleTranslate\\LaravelGoogleTranslateServiceProvider',
-    ),
-  ),
   'barryvdh/laravel-dompdf' => 
   array (
     'providers' => 
@@ -170,6 +156,38 @@
     'aliases' => 
     array (
       'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
+    ),
+  ),
+  'mariuzzo/laravel-js-localization' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider',
+    ),
+  ),
+  'tanmuhittin/laravel-google-translate' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Tanmuhittin\\LaravelGoogleTranslate\\LaravelGoogleTranslateServiceProvider',
+    ),
+  ),
+  'themsaid/laravel-langman' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Themsaid\\Langman\\LangmanServiceProvider',
+    ),
+  ),
+  'ben182/laravel-auto-translate' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Ben182\\AutoTranslate\\AutoTranslateServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'AutoTranslate' => 'Ben182\\AutoTranslate\\AutoTranslateFacade',
     ),
   ),
 );

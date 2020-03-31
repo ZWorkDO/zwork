@@ -455,6 +455,7 @@ if (document.getElementById("registration")) {
                 this.form_step2.termsconditions_error = '';
                 this.form_step2.is_termsconditions_error = false;
                 var self = this;
+                console.log('Renato-checkStep2');
                 axios.post(APP_URL + '/register/form-step2-custom-errors', form_data).
                     then(function (response) {
                         self.submitUser();
@@ -481,6 +482,7 @@ if (document.getElementById("registration")) {
                 form_data.append('email', this.user_email);
                 form_data.append('first_name', this.first_name);
                 form_data.append('last_name', this.last_name);
+                console.log(this.first_name + " RFK " + APP_URL);
                 var self = this;
                 axios.post(APP_URL + '/register', form_data)
                     .then(function (response) {
@@ -495,12 +497,15 @@ if (document.getElementById("registration")) {
                                 self.next();
                             }
                         } else if (response.data.type == 'error') {
+                            console.log(response.data.email);
+                            console.log(response.data.password);
                             self.loading = false;
                             self.custom_error = true;
                             if (response.data.email_error) self.form_errors.push(response.data.email_error);
                             if (response.data.password_error) self.form_errors.push(response.data.password_error);
                         }
                         else if (response.data.type == 'server_error') {
+                            console.log(response.data.type);
                             self.loading = false;
                             self.custom_error = true;
                             self.showError(response.data.message);
@@ -508,6 +513,8 @@ if (document.getElementById("registration")) {
                     })
                     .catch(function (error) {
                         if (error.response.status == 500) {
+                            console.log(self.error_message);
+                            console.log(error.response.data.email);
                             self.showError(self.error_message);
                         }
                     });

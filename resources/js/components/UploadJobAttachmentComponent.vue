@@ -20,7 +20,7 @@ const getTemplate = () => `
       <em>File size: <span data-dz-size></span></em>
   </li>`;
 import vueDropzone from "vue2-dropzone";
-import 'vue2-dropzone/dist/vue2Dropzone.css'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 export default {
     props: ['temp_url', 'img_ref', 'max_file', 'file_type'],
  data () {
