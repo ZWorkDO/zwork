@@ -492,7 +492,6 @@ if (document.getElementById("registration")) {
                 this.form_step2.termsconditions_error = '';
                 this.form_step2.is_termsconditions_error = false;
                 var self = this;
-                console.log('Renato-checkStep2');
                 axios.post(APP_URL + '/register/form-step2-custom-errors', form_data).
                     then(function (response) {
                         self.submitUser();

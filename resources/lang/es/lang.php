@@ -338,7 +338,7 @@ return [
     'start_as' => 'Comenzar como',
     'no_of_employees' => 'No. de empleados que tienes',
     'company_category' => 'Categoría',
-    'your_department' => 'Departamento',
+    'your_department' => 'Sector',
     'enter_department' => 'Ingrese su departamento',
     'signup_as_freelancer' => 'Registrarse como freelancer para ser contratado',
     'agree_terms' => 'De acuerdo con nuestros términos y condiciones.',

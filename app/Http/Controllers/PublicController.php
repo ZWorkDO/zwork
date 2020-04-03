@@ -868,6 +868,7 @@ class PublicController extends Controller
                     if ($verification_code === $user->verification_code) {
                         $user->password = Hash::make($request->confirm_password);
                         $user->verification_code = null;
+                        $user->user_verified = 1;
                         $user->save();
                         Auth::logout();
                         session()->forget('verification_code');
