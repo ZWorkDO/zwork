@@ -89,6 +89,27 @@ class PublicController extends Controller
     }
 
     /**
+     * Step0 Registeration Validation
+     *
+     * @param \Illuminate\Http\Request $request request attributes
+     *
+     * @access public
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function registerStep0Validation(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required|email|unique:users',
+            ]
+        );
+    }
+
+    /**
      * Step1 Registeration Validation
      *
      * @param \Illuminate\Http\Request $request request attributes

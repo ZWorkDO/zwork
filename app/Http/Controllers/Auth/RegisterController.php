@@ -131,6 +131,7 @@ class RegisterController extends Controller
         session()->put(['user_id' => $user_id]);
         session()->put(['email' => $request['email']]);
         session()->put(['password' => $request['password']]);
+
         if (!empty(config('mail.username')) && !empty(config('mail.password'))) {
             $email_params = array();
             $template = DB::table('email_types')->select('id')

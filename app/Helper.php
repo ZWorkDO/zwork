@@ -113,6 +113,56 @@ class Helper extends Model
     }
 
     /**
+     * Get categories list
+     *
+     * @access public
+     *
+     * @return array
+     */
+    public static function getCategoriesList()
+    {
+        $list = array(
+            '1' => array(
+                'title' => trans('lang.category_list.sa'),
+                'value' => "sa",
+            ),
+            '2' => array(
+                'title' => trans('lang.category_list.sas'),
+                'value' => "sas",
+            ),
+            '3' => array(
+                'title' => trans('lang.category_list.srl'),
+                'value' => "srl",
+            ),
+            '4' => array(
+                'title' => trans('lang.category_list.eirl'),
+                'value' => "eirl",
+            ),
+            '5' => array(
+                'title' => trans('lang.category_list.fideicomiso'),
+                'value' => "fideicomiso",
+            ),
+            '6' => array(
+                'title' => trans('lang.category_list.se'),
+                'value' => "se",
+            ),
+            '7' => array(
+                'title' => trans('lang.category_list.ong'),
+                'value' => "ong",
+            ),
+            '8' => array(
+                'title' => trans('lang.category_list.fund'),
+                'value' => "fund",
+            ),
+            '9' => array(
+                'title' => trans('lang.category_list.otra'),
+                'value' => "otra",
+            ),
+        );
+        return $list;
+    }
+
+    /**
      * Get location flag
      *
      * @param image $image location flag

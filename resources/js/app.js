@@ -370,10 +370,18 @@ if (document.getElementById("registration")) {
                     }
                 }
             },
-            step: 1,
+            step: 0,
             user_email: '',
             first_name: '',
             last_name: '',
+            form_step0: {
+                email_error: '',
+                is_email_error: false,
+                first_name_error: '',
+                is_first_name_error: false,
+                last_name_error: '',
+                is_last_name_error: false,
+            },
             form_step1: {
                 email_error: '',
                 is_email_error: false,
@@ -414,6 +422,35 @@ if (document.getElementById("registration")) {
                     this.is_show = false;
                 }
                 console.log(role);
+            },
+            checkStep0: function (e) {
+                this.form_step0.first_name_error = '';
+                this.form_step0.is_first_name_error = false;
+                this.form_step0.last_name_error = '';
+                this.form_step0.is_last_name_error = false;
+                this.form_step0.email_error = '';
+                this.form_step0.is_email_error = false;
+                var self = this;
+                let register_Form = document.getElementById('register_form');
+                let form_data = new FormData(register_Form);
+                axios.post(APP_URL + '/register/form-step0-custom-errors', form_data)
+                    .then(function (response) {
+                        self.next();
+                    })
+                    .catch(function (error) {
+                        if (error.response.data.errors.first_name) {
+                            self.form_step0.first_name_error = error.response.data.errors.first_name[0];
+                            self.form_step0.is_first_name_error = true;
+                        }
+                        if (error.response.data.errors.last_name) {
+                            self.form_step0.last_name_error = error.response.data.errors.last_name[0];
+                            self.form_step0.is_last_name_error = true;
+                        }
+                        if (error.response.data.errors.email) {
+                            self.form_step0.email_error = error.response.data.errors.email[0];
+                            self.form_step0.is_email_error = true;
+                        }
+                    });
             },
             checkStep1: function (e) {
                 this.form_step1.first_name_error = '';
@@ -482,30 +519,23 @@ if (document.getElementById("registration")) {
                 form_data.append('email', this.user_email);
                 form_data.append('first_name', this.first_name);
                 form_data.append('last_name', this.last_name);
-                console.log(this.first_name + " RFK " + APP_URL);
                 var self = this;
                 axios.post(APP_URL + '/register', form_data)
                     .then(function (response) {
-                        console.log(response.data.type);
                         self.loading = false;
                         if (response.data.type == 'success') {
-                            console.log(response.data.email);
-                            console.log(response.data.password);
                             if (response.data.email == 'not_configured') {
                                 window.location.replace(response.data.url);
                             } else {
                                 self.next();
                             }
                         } else if (response.data.type == 'error') {
-                            console.log(response.data.email);
-                            console.log(response.data.password);
                             self.loading = false;
                             self.custom_error = true;
                             if (response.data.email_error) self.form_errors.push(response.data.email_error);
                             if (response.data.password_error) self.form_errors.push(response.data.password_error);
                         }
                         else if (response.data.type == 'server_error') {
-                            console.log(response.data.type);
                             self.loading = false;
                             self.custom_error = true;
                             self.showError(response.data.message);
@@ -514,7 +544,6 @@ if (document.getElementById("registration")) {
                     .catch(function (error) {
                         if (error.response.status == 500) {
                             console.log(self.error_message);
-                            console.log(error.response.data.email);
                             self.showError(self.error_message);
                         }
                     });

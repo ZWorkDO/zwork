@@ -78,6 +78,7 @@ class EmployerController extends Controller
         $profile = $this->employer::where('user_id', Auth::user()->id)
             ->get()->first();
         $employees = Helper::getEmployeesList();
+        $categories = Helper::getCategoriesList();
         $departments = Department::all();
         $locations = Location::pluck('title', 'id');
         $gender = !empty($profile->gender) ? $profile->gender : '';
@@ -102,6 +103,7 @@ class EmployerController extends Controller
                 compact(
                     'payout_id',
                     'employees',
+                    'categories',
                     'departments',
                     'locations',
                     'gender',
@@ -125,6 +127,7 @@ class EmployerController extends Controller
                 compact(
                     'payout_id',
                     'employees',
+                    'categories',
                     'departments',
                     'locations',
                     'gender',

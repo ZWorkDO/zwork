@@ -2,6 +2,7 @@
 @section('content')
 @php
     $employees      = Helper::getEmployeesList();
+    $categories      = Helper::getCategoriesList();
     $departments    = App\Department::all();
     $locations      = App\Location::select('title', 'id')->get()->pluck('title', 'id')->toArray();
     $roles          = Spatie\Permission\Models\Role::all()->toArray();
@@ -56,10 +57,10 @@
                 <div class="wt-registerformhold">
                     <div class="wt-registerformmain">
                         <div class="wt-joinforms">
-                            <form method="POST" action="{{{ url('register/form-step1-custom-errors') }}}" class="wt-formtheme wt-formregister" @submit.prevent="checkStep1" id="register_form">
+                            <form method="POST" action="{{{ url('register/form-step1-custom-errors') }}}" class="wt-formtheme wt-formregister" @submit.prevent="checkStep0" id="register_form">
                                 @csrf
                                 <fieldset class="wt-registerformgroup">
-                                    <div class="wt-haslayout" v-if="step === 1" v-cloak>
+                                    <div class="wt-haslayout" v-if="step === 0" v-cloak>
                                         <div class="wt-registerhead">
                                             <div class="wt-title">
                                                 <h3>{{{ $reg_one_title }}}</h3>
@@ -73,6 +74,47 @@
                                             <li><a href="javascrip:void(0);">{{{ trans('lang.02') }}}</a></li>
                                             <li><a href="javascrip:void(0);">{{{ trans('lang.03') }}}</a></li>
                                             <li><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
+                                            <li><a href="javascrip:void(0);">{{{ trans('lang.05') }}}</a></li>
+                                        </ul>
+                                        <div class="form-group form-group-half">
+                                            <input type="text" name="first_name" class="form-control" placeholder="{{{ trans('lang.ph_first_name') }}}" v-bind:class="{ 'is-invalid': form_step0.is_first_name_error }" v-model="first_name">
+                                            <span class="help-block" v-if="form_step0.first_name_error">
+                                                <strong v-cloak>@{{form_step0.first_name_error}}</strong>
+                                            </span>
+                                        </div>
+                                        <div class="form-group form-group-half">
+                                            <input type="text" name="last_name" class="form-control" placeholder="{{{ trans('lang.ph_last_name') }}}" v-bind:class="{ 'is-invalid': form_step0.is_last_name_error }" v-model="last_name">
+                                            <span class="help-block" v-if="form_step0.last_name_error">
+                                                <strong v-cloak>@{{form_step0.last_name_error}}</strong>
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="user_email" type="email" class="form-control" name="email" placeholder="{{{ trans('lang.ph_email') }}}" value="{{ old('email') }}" v-bind:class="{ 'is-invalid': form_step0.is_email_error }" v-model="user_email">
+                                            <span class="help-block" v-if="form_step0.email_error">
+                                                <strong v-cloak>@{{form_step0.email_error}}</strong>
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="wt-btn">{{{  trans('lang.btn_startnow') }}}</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="wt-registerformgroup">
+                                    <div class="wt-haslayout" v-if="step === 1" v-cloak>
+                                        <div class="wt-registerhead">
+                                            <div class="wt-title">
+                                                <h3>{{{ $reg_one_title }}}</h3>
+                                            </div>
+                                            <div class="wt-description">
+                                                <p>{{{ $reg_one_subtitle }}}</p>
+                                            </div>
+                                        </div>
+                                        <ul class="wt-joinsteps">
+                                            <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
+                                            <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.02') }}}</a></li>
+                                            <li><a href="javascrip:void(0);">{{{ trans('lang.03') }}}</a></li>
+                                            <li><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
+                                            <li><a href="javascrip:void(0);">{{{ trans('lang.05') }}}</a></li>
                                         </ul>
                                         <div class="form-group form-group-half">
                                             <input type="text" name="first_name" class="form-control" placeholder="{{{ trans('lang.ph_first_name') }}}" v-bind:class="{ 'is-invalid': form_step1.is_first_name_error }" v-model="first_name">
@@ -93,7 +135,8 @@
                                             </span>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="wt-btn">{{{  trans('lang.btn_startnow') }}}</button>
+                                            <a href="#" @click.prevent="prev()" class="wt-btn">{{{ trans('lang.previous') }}}</a>
+                                            <a href="#" @click.prevent="checkStep1" class="wt-btn">{{{ trans('lang.continue') }}}</a>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -111,9 +154,10 @@
                                         </div>
                                         <ul class="wt-joinsteps">
                                             <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
-                                            <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.02') }}}</a></li>
-                                            <li><a href="javascrip:void(0);">{{{ trans('lang.03') }}}</a></li>
+                                            <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
+                                            <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.03') }}}</a></li>
                                             <li><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
+                                            <li><a href="javascrip:void(0);">{{{ trans('lang.05') }}}</a></li>
                                         </ul>
                                         @if (!empty($locations))
                                             <div class="form-group">
@@ -163,12 +207,12 @@
                                                                     <div class="wt-accordiondetails collapse show" id="collapseOne" aria-labelledby="headingOne" v-if="is_show">
                                                                         <div class="wt-radioboxholder">
                                                                             <div class="wt-title">
-                                                                                <h4>{{{ trans('lang.no_of_employees') }}}</h4>
+                                                                                <h4>{{{ trans('lang.company_category') }}}</h4>
                                                                             </div>
-                                                                            @foreach ($employees as $key => $employee)
+                                                                            @foreach ($categories as $key => $category)
                                                                                 <span class="wt-radio">
-                                                                                    <input id="wt-just-{{{$key}}}" type="radio" name="employees" value="{{{$employee['value']}}}" checked="">
-                                                                                    <label for="wt-just-{{{$key}}}">{{{$employee['title']}}}</label>
+                                                                                    <input id="wt-just-{{{$key}}}" type="radio" name="categories" value="{{{$category['value']}}}" >
+                                                                                    <label for="wt-just-{{{$key}}}">{{{$category['title']}}}</label>
                                                                                 </span>
                                                                             @endforeach
                                                                         </div>
@@ -179,7 +223,7 @@
                                                                                 </div>
                                                                                 @foreach ($departments as $key => $department)
                                                                                     <span class="wt-radio">
-                                                                                        <input id="wt-department-{{{$department->id}}}" type="radio" name="department" value="{{{$department->id}}}" checked="">
+                                                                                        <input id="wt-department-{{{$department->id}}}" type="radio" name="department" value="{{{$department->id}}}">
                                                                                         <label for="wt-department-{{{$department->id}}}">{{{$department->title}}}</label>
                                                                                     </span>
                                                                                 @endforeach
@@ -225,8 +269,9 @@
                                     <ul class="wt-joinsteps">
                                         <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
                                         <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
-                                        <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.03') }}}</a></li>
-                                        <li><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
+                                        <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
+                                        <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
+                                        <li><a href="javascrip:void(0);">{{{ trans('lang.05') }}}</a></li>
                                     </ul>
                                     <figure class="wt-joinformsimg">
                                         <img src="{{ asset($register_image)}}" alt="{{{ trans('lang.verification_code_img') }}}">
@@ -255,6 +300,7 @@
                             </div>
                             <div class="wt-gotodashboard" v-if="step === 4" v-cloak>
                                 <ul class="wt-joinsteps">
+                                    <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
                                     <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
                                     <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
                                     <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>

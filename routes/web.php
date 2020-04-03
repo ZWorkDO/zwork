@@ -75,6 +75,7 @@ Route::post('user/update/password', 'PublicController@resetUserPassword')->name(
 // Authentication|Guest Routes
 Route::post('register/login-register-user', 'PublicController@loginUser')->name('loginUser');
 Route::post('register/verify-user-code', 'PublicController@verifyUserCode');
+Route::post('register/form-step0-custom-errors', 'PublicController@RegisterStep0Validation');
 Route::post('register/form-step1-custom-errors', 'PublicController@RegisterStep1Validation');
 Route::post('register/form-step2-custom-errors', 'PublicController@RegisterStep2Validation');
 Route::get('search-results', 'PublicController@getSearchResult')->name('searchResults');
@@ -129,6 +130,14 @@ Route::group(
         Route::post('admin/departments/delete-dpts', 'DepartmentController@destroy');
         Route::post('admin/departments/update-dpts/{id}', 'DepartmentController@update');
         Route::post('admin/delete-checked-dpts', 'DepartmentController@deleteSelected');
+        // Grade Routes
+        Route::get('admin/grades', 'GradeController@index')->name('grades');
+        Route::get('admin/grades/edit-grades/{id}', 'GradeController@edit')->name('editGrade');
+        Route::post('admin/store-grade', 'GradeController@store');
+        Route::get('admin/grades/search', 'GradeController@index');
+        Route::post('admin/grades/delete-grades', 'GradeController@destroy');
+        Route::post('admin/grades/update-grades/{id}', 'GradeController@update');
+        Route::post('admin/delete-checked-grades', 'GradeController@deleteSelected');
         // Language Routes
         Route::get('admin/languages', 'LanguageController@index')->name('languages');
         Route::get('admin/languages/edit-langs/{id}', 'LanguageController@edit')->name('editLanguages');
