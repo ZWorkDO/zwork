@@ -110,6 +110,7 @@
                         <li><a href="{{{ route('categories') }}}">{{ trans('lang.job_cats') }}</a></li>
                         <li><a href="{{{ route('departments') }}}">{{ trans('lang.dpts') }}</a></li>
                         <li><a href="{{{ route('grades') }}}">{{ trans('lang.grades') }}</a></li>
+                        <li><a href="{{{ route('professions') }}}">{{ trans('lang.professions') }}</a></li>
                         <li><a href="{{{ route('languages') }}}">{{ trans('lang.langs') }}</a></li>
                         <li><a href="{{{ route('locations') }}}">{{ trans('lang.locations') }}</a></li>
                         <li><a href="{{{ route('badges') }}}">{{ trans('lang.badges') }}</a></li>

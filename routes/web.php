@@ -138,6 +138,14 @@ Route::group(
         Route::post('admin/grades/delete-grades', 'GradeController@destroy');
         Route::post('admin/grades/update-grades/{id}', 'GradeController@update');
         Route::post('admin/delete-checked-grades', 'GradeController@deleteSelected');
+        // Profession Routes
+        Route::get('admin/professions', 'ProfessionController@index')->name('professions');
+        Route::get('admin/professions/edit-professions/{id}', 'ProfessionController@edit')->name('editProfession');
+        Route::post('admin/store-profession', 'ProfessionController@store');
+        Route::get('admin/professions/search', 'ProfessionController@index');
+        Route::post('admin/professions/delete-professions', 'ProfessionController@destroy');
+        Route::post('admin/professions/update-professions/{id}', 'ProfessionController@update');
+        Route::post('admin/delete-checked-professions', 'ProfessionController@deleteSelected');
         // Language Routes
         Route::get('admin/languages', 'LanguageController@index')->name('languages');
         Route::get('admin/languages/edit-langs/{id}', 'LanguageController@edit')->name('editLanguages');
