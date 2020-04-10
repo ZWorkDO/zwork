@@ -5,7 +5,7 @@
     <fieldset>
         <div class="form-group form-group-half">
             <span class="wt-select">
-                {!! Form::select( 'gender', ['male' => 'Male', 'female' => 'Female'], e($gender), ['placeholder' => trans('lang.ph_select_gender')] ) !!}
+                {!! Form::select( 'gender', ['male' => trans('lang.male'), 'female' => trans('lang.female')], e($gender), ['placeholder' => trans('lang.ph_select_gender')] ) !!}
             </span>
         </div>
         <div class="form-group form-group-half">

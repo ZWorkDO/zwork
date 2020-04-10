@@ -335,7 +335,7 @@ class User extends Authenticatable
                 $profile->rte_id = intval($request['rte']);
                 $profile->camara_id = intval($request['camara']);
                 $profile->nr = filter_var($request['nr'], FILTER_SANITIZE_STRING);
-                // $profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
+                $profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
             } elseif ($request['role'] === "freelancer") {
                 $profile->nationality = filter_var($request['nationality'], FILTER_SANITIZE_STRING);
                 $profile->birthdate = filter_var($request['birthdate'], FILTER_SANITIZE_STRING);
@@ -347,7 +347,7 @@ class User extends Authenticatable
                 $profile->id_number = filter_var($request['id_number'], FILTER_SANITIZE_STRING);
                 $profile->profession_id = intval($request['profession_id']);
                 $profile->grade_id = intval($request['grade']);
-                // $profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
+                $profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
             }
             $profile->save();
             $role_id = Helper::getRoleByUserID($user_id);

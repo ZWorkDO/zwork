@@ -233,6 +233,12 @@
                                                                                 <strong v-cloak>@{{form_step2.nr_error}}</strong>
                                                                             </span>
                                                                         </div>
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="main_activity" placeholder="{{{ trans('lang.ph_main_activity') }}}" value="{{ old('main_activity') }}" v-bind:class="{ 'is-invalid': form_step2.is_main_activity_error }" v-model="main_activity">
+                                                                            <span class="help-block" v-if="form_step2.main_activity_error">
+                                                                                <strong v-cloak>@{{form_step2.main_activity_error}}</strong>
+                                                                            </span>
+                                                                        </div>
                                                                         <div class="wt-radioboxholder">
                                                                             <div class="wt-title">
                                                                                 <h4>{{{ trans('lang.company_category') }}}</h4>
@@ -340,6 +346,12 @@
                                                                                 </span>
                                                                             </div>
                                                                         @endif
+                                                                        <div class="form-group form-group-half">
+                                                                            <input type="text" class="form-control" name="main_activity" placeholder="{{{ trans('lang.ph_main_activity') }}}" value="{{ old('main_activity') }}" v-bind:class="{ 'is-invalid': form_step2.is_main_activity_error }" v-model="main_activity">
+                                                                            <span class="help-block" v-if="form_step2.main_activity_error">
+                                                                                <strong v-cloak>@{{form_step2.main_activity_error}}</strong>
+                                                                            </span>
+                                                                        </div>
                                                                       
                                                                         @if ($grades->count() > 0)
                                                                             <div class="wt-radioboxholder">

@@ -129,6 +129,38 @@ Route::group(
         Route::post('admin/departments/delete-dpts', 'DepartmentController@destroy');
         Route::post('admin/departments/update-dpts/{id}', 'DepartmentController@update');
         Route::post('admin/delete-checked-dpts', 'DepartmentController@deleteSelected');
+        // Grade Routes
+        Route::get('admin/grades', 'GradeController@index')->name('grades');
+        Route::get('admin/grades/edit-grades/{id}', 'GradeController@edit')->name('editGrade');
+        Route::post('admin/store-grade', 'GradeController@store');
+        Route::get('admin/grades/search', 'GradeController@index');
+        Route::post('admin/grades/delete-grades', 'GradeController@destroy');
+        Route::post('admin/grades/update-grades/{id}', 'GradeController@update');
+        Route::post('admin/delete-checked-grades', 'GradeController@deleteSelected');
+        // Profession Routes
+        Route::get('admin/professions', 'ProfessionController@index')->name('professions');
+        Route::get('admin/professions/edit-professions/{id}', 'ProfessionController@edit')->name('editProfession');
+        Route::post('admin/store-profession', 'ProfessionController@store');
+        Route::get('admin/professions/search', 'ProfessionController@index');
+        Route::post('admin/professions/delete-professions', 'ProfessionController@destroy');
+        Route::post('admin/professions/update-professions/{id}', 'ProfessionController@update');
+        Route::post('admin/delete-checked-professions', 'ProfessionController@deleteSelected');
+        // Rte Routes
+        Route::get('admin/rtes', 'RteController@index')->name('rtes');
+        Route::get('admin/rtes/edit-rtes/{id}', 'RteController@edit')->name('editRte');
+        Route::post('admin/store-rte', 'RteController@store');
+        Route::get('admin/rtes/search', 'RteController@index');
+        Route::post('admin/rtes/delete-rtes', 'RteController@destroy');
+        Route::post('admin/rtes/update-rtes/{id}', 'RteController@update');
+        Route::post('admin/delete-checked-rtes', 'RteController@deleteSelected');
+        // Camara Routes
+        Route::get('admin/camaras', 'CamaraController@index')->name('camaras');
+        Route::get('admin/camaras/edit-camaras/{id}', 'CamaraController@edit')->name('editCamara');
+        Route::post('admin/store-camara', 'CamaraController@store');
+        Route::get('admin/camaras/search', 'CamaraController@index');
+        Route::post('admin/camaras/delete-camaras', 'CamaraController@destroy');
+        Route::post('admin/camaras/update-camaras/{id}', 'CamaraController@update');
+        Route::post('admin/delete-checked-camaras', 'CamaraController@deleteSelected');
         // Language Routes
         Route::get('admin/languages', 'LanguageController@index')->name('languages');
         Route::get('admin/languages/edit-langs/{id}', 'LanguageController@edit')->name('editLanguages');
