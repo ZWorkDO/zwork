@@ -370,18 +370,27 @@ if (document.getElementById("registration")) {
                     }
                 }
             },
-            step: 0,
+            step: 1,
             user_email: '',
             first_name: '',
             last_name: '',
-            form_step0: {
-                email_error: '',
-                is_email_error: false,
-                first_name_error: '',
-                is_first_name_error: false,
-                last_name_error: '',
-                is_last_name_error: false,
-            },
+            company_name: '',
+            phone: '',
+            contact_name: '',
+            position: '',
+            address: '',
+            rnc: '',
+            rte: '',
+            main_activity: '',
+            nr: '',
+            nationality: '',
+            birth_place: '',
+            birthdate: '',
+            gender: '',
+            marital_status: '',
+            id_type: '',
+            id_place: '',
+            id_number: '',
             form_step1: {
                 email_error: '',
                 is_email_error: false,
@@ -399,10 +408,37 @@ if (document.getElementById("registration")) {
                 is_password_confirm_error: false,
                 termsconditions_error: '',
                 is_termsconditions_error: false,
-            },
+                company_name_error: '',
+                is_company_name_error: false,
+                phone_error: '',
+                contact_name_error: '',
+                position_error: '',
+                address_error: '',
+                rnc_error: '',
+                main_activity_error: '',
+                nr_error: '',
+                nationality_error: '',
+                birthdate_error: '',
+                genders_error: '',
+                marital_status_error: '',
+                professions_error: '',
+                is_phone_error: false,
+                is_contact_name_error: false,
+                is_position_error: false,
+                is_address_error: false,
+                is_rnc_error: false,
+                is_main_activity_error: false,
+                is_nr_error: false,
+                is_nationality_error: false,
+                is_birthdate_error: false,
+                is_genders_error: false,
+                is_marital_status_error: false,
+                is_professions_error: false,
+            },   
             loading: false,
-            user_role: 'employer',
-            is_show: true,
+            user_role: '',
+            is_show_employer: false,
+            is_show_freelancer: false,
             error_message: ''
         },
         methods: {
@@ -414,43 +450,17 @@ if (document.getElementById("registration")) {
             },
             next: function () {
                 this.step++;
+                console.log(this.step);
             },
             selectedRole: function (role) {
                 if (role == 'employer') {
-                    this.is_show = true;
-                } else {
-                    this.is_show = false;
+                    this.is_show_employer = true;
+                    this.is_show_freelancer = false;
+                } else if (role == 'freelancer'){
+                    this.is_show_employer = false;
+                    this.is_show_freelancer = true;
                 }
                 console.log(role);
-            },
-            checkStep0: function (e) {
-                this.form_step0.first_name_error = '';
-                this.form_step0.is_first_name_error = false;
-                this.form_step0.last_name_error = '';
-                this.form_step0.is_last_name_error = false;
-                this.form_step0.email_error = '';
-                this.form_step0.is_email_error = false;
-                var self = this;
-                let register_Form = document.getElementById('register_form');
-                let form_data = new FormData(register_Form);
-                axios.post(APP_URL + '/register/form-step0-custom-errors', form_data)
-                    .then(function (response) {
-                        self.next();
-                    })
-                    .catch(function (error) {
-                        if (error.response.data.errors.first_name) {
-                            self.form_step0.first_name_error = error.response.data.errors.first_name[0];
-                            self.form_step0.is_first_name_error = true;
-                        }
-                        if (error.response.data.errors.last_name) {
-                            self.form_step0.last_name_error = error.response.data.errors.last_name[0];
-                            self.form_step0.is_last_name_error = true;
-                        }
-                        if (error.response.data.errors.email) {
-                            self.form_step0.email_error = error.response.data.errors.email[0];
-                            self.form_step0.is_email_error = true;
-                        }
-                    });
             },
             checkStep1: function (e) {
                 this.form_step1.first_name_error = '';
@@ -491,6 +501,32 @@ if (document.getElementById("registration")) {
                 this.form_step2.is_password_confirm_error = false;
                 this.form_step2.termsconditions_error = '';
                 this.form_step2.is_termsconditions_error = false;
+                this.form_step2.company_name_error = '';
+                this.form_step2.is_company_name_error = false;
+                this.form_step2.phone_error = '';
+                this.form_step2.contact_name_error = '';
+                this.form_step2.position_error = '';
+                this.form_step2.address_error = '';
+                this.form_step2.rnc_error = '';
+                this.form_step2.main_activity_error = '';
+                this.form_step2.nr_error = '';
+                this.form_step2.nationality_error = '';
+                this.form_step2.birthdate_error = '';
+                this.form_step2.gender_error = '';
+                this.form_step2.marital_status_error = '';
+                this.form_step2.professions_error = '';
+                this.form_step2.is_phone_error = false;
+                this.form_step2.is_contact_name_error = false;
+                this.form_step2.is_position_error = false;
+                this.form_step2.is_address_error = false;
+                this.form_step2.is_rnc_error = false;
+                this.form_step2.is_main_activity_error = false;
+                this.form_step2.is_nr_error = false;
+                this.form_step2.is_nationality_error = false;
+                this.form_step2.is_birthdate_error = false;
+                this.form_step2.is_gender_error = false;
+                this.form_step2.is_marital_status_error = false;
+                this.form_step2.is_professions_error = false;
                 var self = this;
                 axios.post(APP_URL + '/register/form-step2-custom-errors', form_data).
                     then(function (response) {
@@ -509,6 +545,50 @@ if (document.getElementById("registration")) {
                             self.form_step2.termsconditions_error = error.response.data.errors.termsconditions[0];
                             self.form_step2.is_termsconditions_error = true;
                         }
+                        if (error.response.data.errors.company_name) {
+                            self.form_step2.company_name_error = error.response.data.errors.company_name[0];
+                            self.form_step2.is_company_name_error = true;
+                        }
+                        if (error.response.data.errors.phone) {
+                            self.form_step2.phone_error = error.response.data.errors.phone[0];
+                            self.form_step2.is_phone_error = true;
+                        }
+                        if (error.response.data.errors.contact_name) {
+                            self.form_step2.contact_name_error = error.response.data.errors.contact_name[0];
+                            self.form_step2.is_contact_name_error = true;
+                        }
+                        if (error.response.data.errors.position) {
+                            self.form_step2.position_error = error.response.data.errors.position[0];
+                            self.form_step2.is_position_error = true;
+                        }
+                        if (error.response.data.errors.address) {
+                            self.form_step2.address_error = error.response.data.errors.address[0];
+                            self.form_step2.is_address_error = true;
+                        }
+                        if (error.response.data.errors.rnc) {
+                            self.form_step2.rnc_error = error.response.data.errors.rnc[0];
+                            self.form_step2.is_rnc_error = true;
+                        }
+                        if (error.response.data.errors.nr) {
+                            self.form_step2.nr_error = error.response.data.errors.nr[0];
+                            self.form_step2.is_nr_error = true;
+                        }
+                        if (error.response.data.errors.nationality) {
+                            self.form_step2.nationality_error = error.response.data.errors.nationality[0];
+                            self.form_step2.is_nationality_error = true;
+                        }
+                        if (error.response.data.errors.birthdate) {
+                            self.form_step2.birthdate_error = error.response.data.errors.birthdate[0];
+                            self.form_step2.is_birthdate_error = true;
+                        }
+                        if (error.response.data.errors.gender) {
+                            self.form_step2.gender_error = error.response.data.errors.gender[0];
+                            self.form_step2.is_gender_error = true;
+                        }
+                        if (error.response.data.errors.marital_status) {
+                            self.form_step2.marital_status_error = error.response.data.errors.marital_status[0];
+                            self.form_step2.is_marital_status_error = true;
+                        }
                     });
             },
             submitUser: function () {
@@ -523,7 +603,9 @@ if (document.getElementById("registration")) {
                     .then(function (response) {
                         self.loading = false;
                         if (response.data.type == 'success') {
+                            console.log("RFK-success");
                             if (response.data.email == 'not_configured') {
+                                console.log("RFK-not_configured");
                                 window.location.replace(response.data.url);
                             } else {
                                 self.next();
@@ -531,12 +613,14 @@ if (document.getElementById("registration")) {
                         } else if (response.data.type == 'error') {
                             self.loading = false;
                             self.custom_error = true;
+                            console.log("ERROR-RFK");
                             if (response.data.email_error) self.form_errors.push(response.data.email_error);
                             if (response.data.password_error) self.form_errors.push(response.data.password_error);
                         }
                         else if (response.data.type == 'server_error') {
                             self.loading = false;
                             self.custom_error = true;
+                            console.log("SERVER_ERROR-RFK");
                             self.showError(response.data.message);
                         }
                     })

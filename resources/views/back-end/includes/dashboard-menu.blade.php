@@ -158,6 +158,8 @@
                                 <li><hr><a href="{{{ route('categories') }}}">{{ trans('lang.job_cats') }}</a></li>
                                 <li><hr><a href="{{{ route('departments') }}}">{{ trans('lang.dpts') }}</a></li>
                                 <li><hr><a href="{{{ route('grades') }}}">{{ trans('lang.grades') }}</a></li>
+                                <li><hr><a href="{{{ route('camaras') }}}">{{ trans('lang.camaras') }}</a></li>
+                                <li><hr><a href="{{{ route('rtes') }}}">{{ trans('lang.rtes') }}</a></li>
                                 <li><hr><a href="{{{ route('professions') }}}">{{ trans('lang.professions') }}</a></li>
                                 <li><hr><a href="{{{ route('languages') }}}">{{ trans('lang.langs') }}</a></li>
                                 <li><hr><a href="{{{ route('locations') }}}">{{ trans('lang.locations') }}</a></li>

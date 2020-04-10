@@ -317,12 +317,37 @@ class User extends Authenticatable
             $user_id = $this->id;
             $profile = new Profile();
             $profile->user()->associate($user_id);
-            if (!empty($request['employees'])) {
-                $profile->no_of_employees = intval($request['employees']);
+            if (!empty($request['category'])) {
+                $profile->no_of_employees = filter_var($request['category'], FILTER_SANITIZE_STRING);
             }
-            if (!empty($request['department_name'])) {
-                $department = Department::find($request['department_name']);
-                $profile->department()->associate($department);
+            if (!empty($request['department'])) {
+                $profile->department_id = intval($request['department']);
+                // $department = Department::find($request['department_name']);
+                // $profile->department()->associate($department);
+            }
+            if ($request['role'] === "employer") {
+                $profile->company_name = filter_var($request['company_name'], FILTER_SANITIZE_STRING);
+                $profile->phone = filter_var($request['phone'], FILTER_SANITIZE_STRING);
+                $profile->contact_name = filter_var($request['contact_name'], FILTER_SANITIZE_STRING);
+                $profile->position = filter_var($request['position'], FILTER_SANITIZE_STRING);
+                $profile->address = filter_var($request['address'], FILTER_SANITIZE_STRING);
+                $profile->rnc = filter_var($request['rnc'], FILTER_SANITIZE_STRING);
+                $profile->rte_id = intval($request['rte']);
+                $profile->camara_id = intval($request['camara']);
+                $profile->nr = filter_var($request['nr'], FILTER_SANITIZE_STRING);
+                // $profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
+            } elseif ($request['role'] === "freelancer") {
+                $profile->nationality = filter_var($request['nationality'], FILTER_SANITIZE_STRING);
+                $profile->birthdate = filter_var($request['birthdate'], FILTER_SANITIZE_STRING);
+                $profile->phone = filter_var($request['phone'], FILTER_SANITIZE_STRING);
+                $profile->address = filter_var($request['address'], FILTER_SANITIZE_STRING);
+                $profile->gender = filter_var($request['gender'], FILTER_SANITIZE_STRING);
+                $profile->marital_status = filter_var($request['marital_status'], FILTER_SANITIZE_STRING);
+                $profile->id_type = filter_var($request['id_type'], FILTER_SANITIZE_STRING);
+                $profile->id_number = filter_var($request['id_number'], FILTER_SANITIZE_STRING);
+                $profile->profession_id = intval($request['profession_id']);
+                $profile->grade_id = intval($request['grade']);
+                // $profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
             }
             $profile->save();
             $role_id = Helper::getRoleByUserID($user_id);

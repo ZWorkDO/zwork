@@ -43,8 +43,11 @@ class Profile extends Model
         'projects', 'saved_freelancer', 'saved_jobs', 'saved_employers',
         'rating', 'address', 'longitude', 'latitude', 'avater', 'banner',
         'gender', 'tagline', 'description', 'delete_reason', 'delete_description',
-        'profile_searchable', 'profile_blocked', 'weekly_alerts', 'message_alerts'
-    ];
+        'profile_searchable', 'profile_blocked', 'weekly_alerts', 'message_alerts',
+        'company_name', 'phone', 'contact_name', 'position', 'rnc', 'camara_id', 'rte_id',
+        'nr', 'main_activity', 'nationality', 'birthdate', 'marital_status', 'id_type', 
+        'id_number', 'profession_id', 'grade_id',
+    ];  
 
     /**
      * Get the department that owns the employer.
@@ -55,7 +58,7 @@ class Profile extends Model
     {
         return $this->belongsTo('App\Department');
     }
-
+    
     /**
      * Get the user that has the profile.
      *

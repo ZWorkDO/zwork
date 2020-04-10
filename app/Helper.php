@@ -48,7 +48,11 @@ class Helper extends Model
      */
     public static function getGender()
     {
-        $gender = ['male' => 'Male', 'female' => 'Female'];
+        $gender = [
+            'male' => trans('lang.genders.male'), 
+            'female' => trans('lang.genders.female'),
+            'na' => trans('lang.genders.na'),
+        ];
         return $gender;
     }
 
@@ -159,6 +163,38 @@ class Helper extends Model
                 'value' => "otra",
             ),
         );
+        return $list;
+    }
+
+    /**
+     * Get ID Type list
+     *
+     * @access public
+     *
+     * @return array
+     */
+    public static function getIDTypeList()
+    {
+        $list = [
+            'C' => trans('lang.id_type.cedula'), 
+            'P' => trans('lang.id_type.passport'),
+        ];
+        return $list;
+    }
+
+    /**
+     * Get Marital Status list
+     *
+     * @access public
+     *
+     * @return array
+     */
+    public static function getMaritalStatusList()
+    {
+        $list = [
+            'Single' => trans('lang.marital_status.single'), 
+            'Married' => trans('lang.marital_status.married'),
+        ];
         return $list;
     }
 

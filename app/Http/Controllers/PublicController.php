@@ -89,27 +89,6 @@ class PublicController extends Controller
     }
 
     /**
-     * Step0 Registeration Validation
-     *
-     * @param \Illuminate\Http\Request $request request attributes
-     *
-     * @access public
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function registerStep0Validation(Request $request)
-    {
-        $this->validate(
-            $request,
-            [
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'email' => 'required|email|unique:users',
-            ]
-        );
-    }
-
-    /**
      * Step1 Registeration Validation
      *
      * @param \Illuminate\Http\Request $request request attributes
@@ -147,6 +126,18 @@ class PublicController extends Controller
                 'password' => 'required|string|min:6|confirmed',
                 'password_confirmation' => 'required',
                 'termsconditions' => 'required',
+                // 'company_name' => 'required',
+                // 'phone' => 'required',
+                // 'contact_name' => 'required',
+                // 'position' => 'required',
+                // 'address' => 'required',
+                // 'rnc' => 'required',
+                // 'camara' => 'required',
+                // 'nr' => 'required',
+                // 'nationality' => 'required',
+                // 'birthdate' => 'required',
+                // 'gender' => 'required',
+                // 'marital_status' => 'required',
             ]
         );
     }

@@ -616,7 +616,7 @@ return [
     'save_delivery_time' => 'Delivery time save successfully',
     'view_proposals' => 'View Proposals',
     'ongoing_jobs' => 'Ongoing Jobs',
-    'services_listing' => 'Servcies Listing',
+    'services_listing' => 'Services Listing',
     'job_proposals' => 'Job Proposals',
     'proposals' => 'Proposals',
     'hired_freelancers' => 'Hired Freelancers',
