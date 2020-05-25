@@ -53,12 +53,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{{ route('manageTasks') }}}">
-                        <i class="ti-user"></i>
-                        <span>{{ trans('lang.manage_tasks') }}</span>
-                    </a>
-                </li>
-                <li>
                     <a href="{{{ route('emailTemplates') }}}">
                         <i class="ti-email"></i>
                         <span>{{ trans('lang.email_templates') }}</span>
@@ -150,6 +144,12 @@
                         <li><a href="{{{ url($role.'/profile') }}}">{{ trans('lang.profile_settings') }}</a></li>
                         <li><a href="{{{ route('manageAccount') }}}">{{ trans('lang.acc_settings') }}</a></li>
                     </ul>
+                </li>
+                <li>
+                    <a href="{{{ route('manageTasks') }}}">
+                        <i class="ti-user"></i>
+                        <span>{{ trans('lang.manage_tasks') }}</span>
+                    </a>
                 </li>
                 @if ($role === 'employer')
                     @if (Helper::getAccessType() == 'both' || Helper::getAccessType() == 'jobs')
