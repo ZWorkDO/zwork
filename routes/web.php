@@ -408,6 +408,7 @@ Route::group(
         Route::get('user/get-payout-detail', 'UserController@getPayoutDetail');
         Route::post('user/upload-temp-image/{type?}', 'UserController@uploadTempImage');
         Route::post('user/submit/transection', 'UserController@submitTransection');
+        Route::get('project-management', 'ProjectManagementController@index')->name('manageTasks');
     }
 );
 Route::get('page/get-page-data/{id}', 'PageController@getPage');

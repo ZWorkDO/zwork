@@ -100,6 +100,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{{ route('manageTasks') }}}">
+                                <i class="ti-user"></i>
+                                <span>{{ trans('lang.manage_tasks') }}</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{{ route('emailTemplates') }}}">
                                 <i class="ti-email"></i>
                                 <span>{{ trans('lang.email_templates') }}</span>

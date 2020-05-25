@@ -1005,6 +1005,7 @@ return [
     'processing_date' => 'Processing Date',
     'google_map_api_key' => 'Google Map API Key',
     'manage_users' => 'Manage Users',
+    'manage_tasks' => 'Manage Tasks',
     'ph_search_users' => 'Search Users',
     'ph_search_badges' => 'Search Badges',
     'purchased' => 'Purchased',

@@ -959,6 +959,7 @@ return [
     'processing_date' => 'Fecha de procesamiento',
     'google_map_api_key' => 'Clave API de Google Map',
     'manage_users' => 'Administrar usuarios',
+    'manage_tasks' => 'Administrar tareas',
     'in' => 'En:',
     'ph_search_users' => 'Buscar usuarios',
     'ph_search_badges' => 'Buscar insignias',
