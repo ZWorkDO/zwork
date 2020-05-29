@@ -1,5 +1,5 @@
 .env
-storage/app/*
+#storage/app/*
 storage/logs/*
 storage/framework/cache/*
 storage/framework/sessions/*
@@ -7,5 +7,5 @@ storage/framework/testing/*
 storage/framework/views/*
 storage/installed
 public/index.php
-public/uploads/*
+#public/uploads/*
 node_modules/*
