@@ -37,11 +37,11 @@
                     {{{ trans('lang.view_freelancers') }}}
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="{{url('search-results?type=employer')}}">
                     {{{ trans('lang.view_employers') }}}
                 </a>
-            </li>
+            </li> -->
             @if ($type =='jobs' || $type == 'both')
                 <li>
                     <a href="{{url('search-results?type=job')}}">
@@ -49,13 +49,13 @@
                     </a>
                 </li>
             @endif
-            @if ($type =='services' || $type == 'both')
+            <!-- @if ($type =='services' || $type == 'both')
                 <li>
                     <a href="{{url('search-results?type=service')}}">
                         {{{ trans('lang.browse_services') }}}
                     </a>
                 </li>
-            @endif
+            @endif -->
             <li>
                 <a href="{{url('articles')}}">
                     {{{ trans('lang.articles') }}}

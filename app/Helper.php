@@ -1237,14 +1237,14 @@ class Helper extends Model
                 'title' => trans('lang.search_filter_list.jobs'),
                 'value' => 'job',
             ),
-            '2' => array(
-                'title' => trans('lang.search_filter_list.employers'),
-                'value' => 'employer',
-            ),
-            '3' => array(
-                'title' => trans('lang.search_filter_list.services'),
-                'value' => 'service',
-            ),
+            // '2' => array(
+            //     'title' => trans('lang.search_filter_list.employers'),
+            //     'value' => 'employer',
+            // ),
+            // '3' => array(
+            //     'title' => trans('lang.search_filter_list.services'),
+            //     'value' => 'service',
+            // ),
         );
         if (Helper::getAccessType() == 'jobs') {
             return Arr::except($list, [3]);

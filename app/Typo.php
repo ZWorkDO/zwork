@@ -43,7 +43,9 @@ class Typo extends Model
                     .wt-comfollowers ul li:hover a span,
                     .wt-postarticlemeta .wt-following span,
                     .tg-qrcodefeat h3 span,
-                    .active-category {
+                    .active-category,
+                    .wt-navigation ul li .sub-menu > li:hover > a,.wt-fwidgetcontent li:hover a
+                    {
                         color: <?php echo $styling[0]['primary_color'] ?>;
                     }
 
@@ -83,7 +85,8 @@ class Typo extends Model
                     .wt-pagination ul li span,
                     .la-banner-settings .wt-location h5:after,
                     .la-section-settings .wt-location h6:after,
-                    .wt-forgotpassword-holder .card .card-body form .form-group button[type=submit] {
+                    .wt-forgotpassword-holder .card .card-body form .form-group button[type=submit],
+                    .wt-footer {
                         background: <?php echo $styling[0]['primary_color'] ?>;
                     }
 
