@@ -44,7 +44,7 @@ class Typo extends Model
                     .wt-postarticlemeta .wt-following span,
                     .tg-qrcodefeat h3 span,
                     .active-category,
-                    .wt-navigation ul li .sub-menu > li:hover > a,.wt-fwidgetcontent li:hover a
+                    .wt-navigation ul li .sub-menu > li:hover > a
                     {
                         color: <?php echo $styling[0]['primary_color'] ?>;
                     }

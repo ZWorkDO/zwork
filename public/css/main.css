@@ -22,6 +22,16 @@ Version: 1.0.0
  10.	Grid
 */
 
+:root{
+	--color-2: #039ce6;
+	--color-3: #1c4f8c;
+	--color-4: #b1d131;
+	--color-5: #ffdf4c;
+	--color-6: #ed9f00;
+	--color-7: #ff6b57;
+}
+
+
 /* Theme Reset Style */
 @import url(https://fonts.googleapis.com/css?family=Poppins:400,500,600,700|Open+Sans:400,600,700);
 * {
@@ -1416,7 +1426,8 @@ body.wt-login .wt-userlogedin{display: block;}
 	align-items: center;
 	-webkit-align-content: center;
 	-ms-flex-line-pack: center;
-	height: 100%;
+	/* height: 100%; */
+	height: 700px;
 }
 .wt-bannerhead{
 	float: left;
@@ -1424,8 +1435,8 @@ body.wt-login .wt-userlogedin{display: block;}
 	margin: 0 0 13px;
 }
 .wt-bannercontent .wt-title h1{
-	color: #fff;
-	font-size: 50px;
+	color: #ffffff;
+	font-size: 38px;
 	font-weight: 600;
 	line-height: 58px;
 	margin: 0 0 21px;
@@ -4830,7 +4841,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	border-left: 1px solid rgba(255, 255, 255, 0.20);
 }
 .wt-footerholder .wt-fwidgettitle h3{color: #fff;}
-.wt-footerholder .wt-fwidgetcontent li a{color: #ccc;}
+.wt-footerholder .wt-fwidgetcontent li a{color: var(--color-3);}
 .wt-footerholder .wt-fwidgetcontent li.wt-viewmore a{color: #55acee;}
 .wt-joininfo{
 	padding: 25px 0;
