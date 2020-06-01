@@ -16,6 +16,12 @@ class Typo extends Model
      */
     public static function setSiteStyling()
     {
+        $color_2 = "#039ce6";
+        $color_3 = "#1c4f8c";
+        $color_4 = "#b1d131";
+        $color_5 = "#ffdf4c";
+        $color_6 = "#ed9f00";
+        $color_7 = "#ff6b57";
         $styling = SiteManagement::getMetaValue('settings');
         if (!empty($styling[0]['enable_theme_color']) && $styling[0]['enable_theme_color'] == 'true') {
             if (!empty($styling[0]['primary_color'])) {
@@ -50,22 +56,16 @@ class Typo extends Model
                     }
 
                     /* Theme Background Color */
-                    .wt-btn:hover,
                     .wt-dropdowarrow,
                     .navbar-toggle,
-                    .wt-btn,
                     .wt-navigationarea .wt-navigation>ul>li>a:after,
-                    .wt-searchbtn,
-                    .wt-sectiontitle:after,
                     .wt-navarticletab li a:after,
                     .wt-pagination ul li a:hover,
                     .wt-pagination ul li.wt-active a,
                     .wt-widgettag a:hover,
                     .wt-articlesingle-content .wt-description blockquote span i,
-                    .wt-searchgbtn,
                     .wt-filtertagclear a,
                     .ui-slider-horizontal .ui-slider-range,
-                    .wt-btnsearch,
                     .wt-newnoti a em,
                     .wt-notificationicon>a:after,
                     .wt-rightarea .wt-nav .navbar-toggler,
@@ -74,7 +74,6 @@ class Typo extends Model
                     .wt-filtertag .wt-filtertagclear a,
                     .loader:before,
                     .wt-offersmessages .wt-ad:after,
-                    .wt-btnsendmsg,
                     .wt-tabstitle li a:before,
                     .wt-tabscontenttitle:before,
                     .wt-tablecategories thead tr th:first-child:before,
@@ -88,6 +87,43 @@ class Typo extends Model
                     .wt-forgotpassword-holder .card .card-body form .form-group button[type=submit],
                     .wt-footer {
                         background: <?php echo $styling[0]['primary_color'] ?>;
+                    }
+                    
+                    .wt-,
+                    {
+                        background: <?php echo $color_2; ?>;
+                    }
+
+                    /* Theme Background Color 3 */
+                    .wt-,
+                    {
+                        background: <?php echo $color_3; ?>;
+                    }
+
+                    .wt-sectiontitle:after
+                    {
+                        background: <?php echo $color_4; ?>;
+                    }
+
+                    .wt-,
+                    {
+                        background: <?php echo $color_5; ?>;
+                    }
+
+                    .wt-,
+                    {
+                        background: <?php echo $color_6; ?>;
+                    }
+                    
+                    /* Theme Background Color 7 */
+                    .wt-btn,
+                    .wt-btn:hover,
+                    .wt-btnsearch,
+                    .wt-searchbtn,
+                    .wt-btnsendmsg, 
+                    .wt-searchgbtn
+                    {
+                        background: <?php echo $color_7; ?>;
                     }
 
                     /* Theme Border Color */

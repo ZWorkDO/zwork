@@ -16,7 +16,7 @@
                                 @endif
                                 @if (!empty($footer['description']))
                                     <div class="wt-description">
-                                        <p>{{{ str_limit($footer['description'], 150)  }}}</p>
+                                        <p>{{{ str_limit($footer['description'], 300)  }}}</p>
                                     </div>
                                 @endif
                                 @php Helper::displaySocials(); @endphp
