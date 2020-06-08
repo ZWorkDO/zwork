@@ -12,9 +12,7 @@ if [[ "$1" == "update_beta" ]]; then    # used only on server
 elif [[ "$1" == "update_prod" ]]; then    # used only on server
 
     cd /home/u219-fgz2rpsm789q/zwork
-    git reset
-    git checkout .
-    git pull --ff-only origin master
+    git pull origin master
     echo "Copying public/index_prod.php to public/index.php"
     cp public/index_prod.php public/index.php
     echo "Copying public/.htaccess_prod to public/.htaccess"
