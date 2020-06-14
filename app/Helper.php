@@ -1148,6 +1148,24 @@ class Helper extends Model
     }
 
     /**
+     * Check user has role
+     *
+     * @param integer $user_id UserID
+     *
+     * @access public
+     *
+     * @return array
+     */
+    public static function userHasRole($user_id, $role_name)
+    {
+        return DB::table('model_has_roles')
+            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->where('roles.name', $role_name)
+            ->where('model_id', $user_id)
+            ->count() > 0;
+    }
+
+    /**
      * Get role by roleID
      *
      * @param integer $role_id RoleID

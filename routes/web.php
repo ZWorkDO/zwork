@@ -73,10 +73,12 @@ if (Helper::getAccessType() == 'both' || Helper::getAccessType() == 'services') 
 Route::get('user/password/reset/{verify_code}', 'PublicController@resetPasswordView')->name('getResetPassView');
 Route::post('user/update/password', 'PublicController@resetUserPassword')->name('resetUserPassword');
 // Authentication|Guest Routes
+Route::post('register/update-user-profile', 'Auth\RegisterController@updateUserProfile');
 Route::post('register/login-register-user', 'PublicController@loginUser')->name('loginUser');
 Route::post('register/verify-user-code', 'PublicController@verifyUserCode');
 Route::post('register/form-step1-custom-errors', 'PublicController@RegisterStep1Validation');
 Route::post('register/form-step2-custom-errors', 'PublicController@RegisterStep2Validation');
+Route::post('register/form-step3-custom-errors', 'PublicController@RegisterStep3Validation');
 Route::get('search-results', 'PublicController@getSearchResult')->name('searchResults');
 Route::post('user/add-wishlist', 'UserController@addWishlist');
 // Admin Routes
@@ -177,6 +179,7 @@ Route::group(
         Route::post('admin/categories/delete-cats', 'CategoryController@destroy');
         Route::post('admin/categories/update-cats/{id}', 'CategoryController@update');
         Route::post('admin/categories/upload-temp-image', 'CategoryController@uploadTempImage');
+        Route::post('admin/categories/upload-temp-image-highlighted', 'CategoryController@uploadTempImageHighlighted');
         Route::post('admin/delete-checked-cats', 'CategoryController@deleteSelected');
         // Badges Routes
         Route::get('admin/badges', 'BadgeController@index')->name('badges');

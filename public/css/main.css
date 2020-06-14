@@ -2859,6 +2859,55 @@ body.wt-login .wt-userlogedin{display: block;}
 	margin: 0;
 	padding: 5px;
 }
+.wt-formregister .wt-categories,
+.wt-formregister .wt-roles  {
+  float:left;
+  display: flex;
+}
+.wt-formregister .wt-roles {
+  width: 100%;
+}
+.wt-formregister .wt-roles {
+  width: 100%;
+}
+.wt-formregister .wt-categories .wt-categories-group,
+.wt-formregister .wt-roles .wt-roles-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+.wt-formregister .wt-categories figure {
+  pointer-events: none;
+}
+.wt-formregister .wt-categories label,
+.wt-formregister .wt-roles label {
+  box-shadow: none;
+}
+.wt-formregister .wt-roles label input {
+  outline: none;
+  pointer-events: none;
+}
+.wt-formregister .wt-categories label {
+  height:95%; width:95%;
+}
+.wt-formregister .wt-categories label.active,
+.wt-formregister .wt-roles label.active  {
+  background-color: var(--color-2) !important;
+  box-shadow: none !important;
+}
+.wt-formregister .wt-categories label:hover,
+.wt-formregister .wt-roles label:hover  {
+  background-color: var(--color-2) !important;
+  box-shadow: 0 8px 8px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.wt-formregister .wt-categories label.active .img, 
+.wt-formregister .wt-categories label:not(.active) .img_highlighted,
+.wt-formregister .wt-categories label:hover .img {
+	display: none;
+}
+.wt-formregister .wt-categories label.active .img_highlighted,
+.wt-formregister .wt-categories label:hover .img_highlighted  {
+	display: block;
+}
 .wt-form-group-dropdown .form-control{padding: 10px 10px 10px 113px;}
 .wt-form-group-dropdown .wt-select{
 	top: 5px;

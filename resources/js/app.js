@@ -374,6 +374,7 @@ if (document.getElementById("registration")) {
             user_email: '',
             first_name: '',
             last_name: '',
+            password: '',
             company_name: '',
             phone: '',
             contact_name: '',
@@ -384,6 +385,9 @@ if (document.getElementById("registration")) {
             main_activity: '',
             nr: '',
             nationality: '',
+            camara_id: '',
+            profession_id: '',
+            grade_id: '',
             birth_place: '',
             birthdate: '',
             gender: '',
@@ -398,45 +402,48 @@ if (document.getElementById("registration")) {
                 is_first_name_error: false,
                 last_name_error: '',
                 is_last_name_error: false,
-            },
-            form_step2: {
-                locations_error: '',
-                is_locations_error: false,
                 password_error: '',
                 is_password_error: false,
                 password_confirm_error: '',
                 is_password_confirm_error: false,
-                termsconditions_error: '',
-                is_termsconditions_error: false,
-                company_name_error: '',
-                is_company_name_error: false,
-                phone_error: '',
-                contact_name_error: '',
-                position_error: '',
-                address_error: '',
-                rnc_error: '',
-                main_activity_error: '',
-                nr_error: '',
-                nationality_error: '',
-                birthdate_error: '',
-                genders_error: '',
-                marital_status_error: '',
-                professions_error: '',
-                is_phone_error: false,
-                is_contact_name_error: false,
-                is_position_error: false,
-                is_address_error: false,
-                is_rnc_error: false,
-                is_main_activity_error: false,
-                is_nr_error: false,
-                is_nationality_error: false,
-                is_birthdate_error: false,
-                is_genders_error: false,
-                is_marital_status_error: false,
-                is_professions_error: false,
+            },
+            form_step2: {
+              roles_error: '', 
+              categories_error: '', 
+              is_roles_error: false,
+              is_categories_error: false,
+            },   
+            form_step3: {
+              termsconditions_error: '',
+              nationality_error: '',
+              birthdate_error: '',
+              id_types_error: '',
+              id_number_error: '',
+              professions_error: '',
+              grades_error: '',
+              company_name_error: '',
+              rnc_error: '',
+              contact_name_error: '',
+              position_error: '',
+              camaras_error: '',
+              nr_error: '',
+              is_termsconditions_error: false,
+              is_nationality_error: false,
+              is_birthdate_error: false,
+              is_id_types_error: false,
+              is_id_number_error: false,
+              is_professions_error: false,
+              is_grades_error: false,
+              is_company_name_error: false,
+              is_rnc_error: false,
+              is_contact_name_error: false,
+              is_position_error: false,
+              is_camaras_error: false,
+              is_nr_error: false
             },   
             loading: false,
-            user_role: '',
+            is_freelancer: false,
+            is_employer: false,
             is_show_employer: false,
             is_show_freelancer: false,
             error_message: ''
@@ -452,15 +459,20 @@ if (document.getElementById("registration")) {
                 this.step++;
                 console.log(this.step);
             },
-            selectedRole: function (role) {
+            selectedRole: function (role, elId) {
+                let checkInput = document.getElementById(elId);
+                let checked = !checkInput.checked;
                 if (role == 'employer') {
-                    this.is_show_employer = true;
-                    this.is_show_freelancer = false;
+                  this.is_employer = checked;
+                  this.is_show_employer = checked;
+                  this.is_show_freelancer = !checked;
                 } else if (role == 'freelancer'){
-                    this.is_show_employer = false;
-                    this.is_show_freelancer = true;
+                  this.is_freelancer = checked;
+                  this.is_show_freelancer = checked;  
+                  this.is_show_employer = !checked;                    
                 }
-                console.log(role);
+                console.log("is_employer", this.is_employer)
+                console.log("is_freelancer", this.is_freelancer)
             },
             checkStep1: function (e) {
                 this.form_step1.first_name_error = '';
@@ -469,6 +481,10 @@ if (document.getElementById("registration")) {
                 this.form_step1.is_last_name_error = false;
                 this.form_step1.email_error = '';
                 this.form_step1.is_email_error = false;
+                this.form_step1.password_error = '';
+                this.form_step1.is_password_error = false;
+                this.form_step1.password_confirm_error = '';
+                this.form_step1.is_password_confirm_error = false;
                 var self = this;
                 let register_Form = document.getElementById('register_form');
                 let form_data = new FormData(register_Form);
@@ -489,108 +505,170 @@ if (document.getElementById("registration")) {
                             self.form_step1.email_error = error.response.data.errors.email[0];
                             self.form_step1.is_email_error = true;
                         }
+                        if (error.response.data.errors.password) {
+                            self.form_step1.password_error = error.response.data.errors.password[0];
+                            self.form_step1.is_password_error = true;
+                        }
+                        if (error.response.data.errors.password_confirmation) {
+                            self.form_step1.password_confirm_error = error.response.data.errors.password_confirmation[0];
+                            self.form_step1.is_password_confirm_error = true;
+                        }
                     });
             },
             checkStep2: function (error_message) {
                 this.error_message = error_message;
                 let register_Form = document.getElementById('register_form');
                 let form_data = new FormData(register_Form);
-                this.form_step2.password_error = '';
-                this.form_step2.is_password_error = false;
-                this.form_step2.password_confirm_error = '';
-                this.form_step2.is_password_confirm_error = false;
-                this.form_step2.termsconditions_error = '';
-                this.form_step2.is_termsconditions_error = false;
-                this.form_step2.company_name_error = '';
-                this.form_step2.is_company_name_error = false;
-                this.form_step2.phone_error = '';
-                this.form_step2.contact_name_error = '';
-                this.form_step2.position_error = '';
-                this.form_step2.address_error = '';
-                this.form_step2.rnc_error = '';
-                this.form_step2.main_activity_error = '';
-                this.form_step2.nr_error = '';
-                this.form_step2.nationality_error = '';
-                this.form_step2.birthdate_error = '';
-                this.form_step2.gender_error = '';
-                this.form_step2.marital_status_error = '';
-                this.form_step2.professions_error = '';
-                this.form_step2.is_phone_error = false;
-                this.form_step2.is_contact_name_error = false;
-                this.form_step2.is_position_error = false;
-                this.form_step2.is_address_error = false;
-                this.form_step2.is_rnc_error = false;
-                this.form_step2.is_main_activity_error = false;
-                this.form_step2.is_nr_error = false;
-                this.form_step2.is_nationality_error = false;
-                this.form_step2.is_birthdate_error = false;
-                this.form_step2.is_gender_error = false;
-                this.form_step2.is_marital_status_error = false;
-                this.form_step2.is_professions_error = false;
+                
+                this.form_step2.roles_error = ''; 
+                this.form_step2.categories_error = '';
+                this.form_step2.is_roles_error = false;                
+                this.form_step2.is_categories_error = false;
+
                 var self = this;
                 axios.post(APP_URL + '/register/form-step2-custom-errors', form_data).
                     then(function (response) {
                         self.submitUser();
                     })
                     .catch(function (error) {
-                        if (error.response.data.errors.password) {
-                            self.form_step2.password_error = error.response.data.errors.password[0];
-                            self.form_step2.is_password_error = true;
-                        }
-                        if (error.response.data.errors.password_confirmation) {
-                            self.form_step2.password_confirm_error = error.response.data.errors.password_confirmation[0];
-                            self.form_step2.is_password_confirm_error = true;
-                        }
-                        if (error.response.data.errors.termsconditions) {
-                            self.form_step2.termsconditions_error = error.response.data.errors.termsconditions[0];
-                            self.form_step2.is_termsconditions_error = true;
-                        }
-                        if (error.response.data.errors.company_name) {
-                            self.form_step2.company_name_error = error.response.data.errors.company_name[0];
-                            self.form_step2.is_company_name_error = true;
-                        }
-                        if (error.response.data.errors.phone) {
-                            self.form_step2.phone_error = error.response.data.errors.phone[0];
-                            self.form_step2.is_phone_error = true;
-                        }
-                        if (error.response.data.errors.contact_name) {
-                            self.form_step2.contact_name_error = error.response.data.errors.contact_name[0];
-                            self.form_step2.is_contact_name_error = true;
-                        }
-                        if (error.response.data.errors.position) {
-                            self.form_step2.position_error = error.response.data.errors.position[0];
-                            self.form_step2.is_position_error = true;
-                        }
-                        if (error.response.data.errors.address) {
-                            self.form_step2.address_error = error.response.data.errors.address[0];
-                            self.form_step2.is_address_error = true;
-                        }
-                        if (error.response.data.errors.rnc) {
-                            self.form_step2.rnc_error = error.response.data.errors.rnc[0];
-                            self.form_step2.is_rnc_error = true;
-                        }
-                        if (error.response.data.errors.nr) {
-                            self.form_step2.nr_error = error.response.data.errors.nr[0];
-                            self.form_step2.is_nr_error = true;
-                        }
-                        if (error.response.data.errors.nationality) {
-                            self.form_step2.nationality_error = error.response.data.errors.nationality[0];
-                            self.form_step2.is_nationality_error = true;
-                        }
-                        if (error.response.data.errors.birthdate) {
-                            self.form_step2.birthdate_error = error.response.data.errors.birthdate[0];
-                            self.form_step2.is_birthdate_error = true;
-                        }
-                        if (error.response.data.errors.gender) {
-                            self.form_step2.gender_error = error.response.data.errors.gender[0];
-                            self.form_step2.is_gender_error = true;
-                        }
-                        if (error.response.data.errors.marital_status) {
-                            self.form_step2.marital_status_error = error.response.data.errors.marital_status[0];
-                            self.form_step2.is_marital_status_error = true;
-                        }
+                      if (error.response.data.errors.roles) {
+                        self.form_step3.roles_error = error.response.data.errors.roles[0];
+                        self.form_step3.is_roles_error = true;
+                        self.showError(self.form_step3.roles_error);
+                      }
+                      if (error.response.data.errors.categories) {
+                        self.form_step3.categories_error = error.response.data.errors.categories[0];
+                        self.form_step3.is_categories_error = true;
+                        self.showError(self.form_step3.categories_error);
+                      }
                     });
             },
+            checkStep3: function (error_message) {
+              this.error_message = error_message;
+              let register_Form = document.getElementById('register_form3');
+              let form_data = new FormData(register_Form);
+
+              this.form_step3.termsconditions_error = '';
+              this.form_step3.nationality_error = '';
+              this.form_step3.birthdate_error = '';
+              this.form_step3.id_types_error = '';
+              this.form_step3.id_number_error = '';
+              this.form_step3.professions_error = '';
+              this.form_step3.grades_error = '';
+              this.form_step3.company_name_error = '';
+              this.form_step3.rnc_error = '';
+              this.form_step3.contact_name_error = '';
+              this.form_step3.position_error = '';
+              this.form_step3.camaras_error = '';
+              this.form_step3.nr_error = '';
+              this.form_step3.is_termsconditions_error = false;
+              this.form_step3.is_nationality_error = false;
+              this.form_step3.is_birthdate_error = false;
+              this.form_step3.is_id_types_error = false;
+              this.form_step3.is_id_number_error = false;
+              this.form_step3.is_professions_error = false;
+              this.form_step3.is_grades_error = false;
+              this.form_step3.is_company_name_error = false;
+              this.form_step3.is_rnc_error = false;
+              this.form_step3.is_contact_name_error = false;
+              this.form_step3.is_position_error = false;
+              this.form_step3.is_camaras_error = false;
+              this.form_step3.is_nr_error = false;
+              
+              var self = this;
+              axios.post(APP_URL + '/register/form-step3-custom-errors', form_data).
+                  then(function (response) {
+                    self.submitProfile();
+                  })
+                  .catch(function (error) {
+                    if (error.response.data.errors.termsconditions) {
+                      self.form_step3.termsconditions_error = error.response.data.errors.termsconditions[0];
+                      self.form_step3.is_termsconditions_error = true;
+                    }
+                    if (error.response.data.errors.nationality) {
+                      self.form_step3.nationality_error = error.response.data.errors.nationality[0];
+                      self.form_step3.is_nationality_error = true;
+                    }
+                    if (error.response.data.errors.birthdate) {
+                      self.form_step3.birthdate_error = error.response.data.errors.birthdate[0];
+                      self.form_step3.is_birthdate_error = true;
+                    }                    
+                    if (error.response.data.errors.id_type) {
+                      self.form_step3.id_types_error = error.response.data.errors.id_type[0];
+                      self.form_step3.is_id_types_error = true;
+                    }
+                    if (error.response.data.errors.id_number) {
+                      self.form_step3.id_number_error = error.response.data.errors.id_number[0];
+                      self.form_step3.is_id_number_error = true;
+                    }
+                    if (error.response.data.errors.profession_id) {
+                      self.form_step3.professions_error = error.response.data.errors.profession_id[0];
+                      self.form_step3.is_professions_error = true;
+                    }
+                    if (error.response.data.errors.grade_id) {
+                      self.form_step3.grades_error = error.response.data.errors.grade_id[0];
+                      self.form_step3.is_grades_error = true;
+                    }
+
+                    if (error.response.data.errors.company_name) {
+                      self.form_step3.company_name_error = error.response.data.errors.company_name[0];
+                      self.form_step3.is_company_name_error = true;
+                    }
+                    if (error.response.data.errors.rnc) {
+                      self.form_step3.rnc_error = error.response.data.errors.rnc[0];
+                      self.form_step3.is_rnc_error = true;
+                    }
+                    if (error.response.data.errors.contact_name) {
+                        self.form_step3.contact_name_error = error.response.data.errors.contact_name[0];
+                        self.form_step3.is_contact_name_error = true;
+                    }
+                    if (error.response.data.errors.position) {
+                        self.form_step3.position_error = error.response.data.errors.position[0];
+                        self.form_step3.is_position_error = true;
+                    }
+                    if (error.response.data.errors.camara_id) {
+                      self.form_step3.camaras_error = error.response.data.errors.camara_id[0];
+                      self.form_step3.is_camaras_error = true;
+                    }
+                    if (error.response.data.errors.nr) {
+                        self.form_step3.nr_error = error.response.data.errors.nr[0];
+                        self.form_step3.is_nr_error = true;
+                    }
+                  });
+            },
+            submitProfile: function () {
+              this.loading = true;
+              let register_Form = document.getElementById('register_form3');
+              let form_data = new FormData(register_Form);
+              var self = this;
+              axios.post(APP_URL + '/register/update-user-profile', form_data)
+                  .then(function (response) {
+                      self.loading = false;
+                      if (response.data.type == 'success') {
+                        if (response.data.email == 'not_configured') {
+                            window.location.replace(response.data.url);
+                        } else {
+                            self.next();
+                        }
+                      } else if (response.data.type == 'error') {
+                          self.loading = false;
+                          self.custom_error = true;
+                          if (response.data.email_error) self.form_errors.push(response.data.email_error);
+                          if (response.data.password_error) self.form_errors.push(response.data.password_error);
+                      }
+                      else if (response.data.type == 'server_error') {
+                          self.loading = false;
+                          self.custom_error = true;
+                          self.showError(response.data.message);
+                      }
+                  })
+                  .catch(function (error) {
+                      if (error.response.status == 500) {
+                          console.log(self.error_message);
+                          self.showError(self.error_message);
+                      }
+                  });
+          },
             submitUser: function () {
                 this.loading = true;
                 let register_Form = document.getElementById('register_form');
@@ -598,6 +676,7 @@ if (document.getElementById("registration")) {
                 form_data.append('email', this.user_email);
                 form_data.append('first_name', this.first_name);
                 form_data.append('last_name', this.last_name);
+                form_data.append('password', this.password);
                 var self = this;
                 axios.post(APP_URL + '/register', form_data)
                     .then(function (response) {
@@ -640,7 +719,7 @@ if (document.getElementById("registration")) {
                     .then(function (response) {
                         self.loading = false;
                         if (response.data.type == 'success') {
-                            self.next();
+                            self.loginRegisterUser();
                         } else if (response.data.type == 'error') {
                             self.showError(response.data.message);
                         }
@@ -1207,6 +1286,7 @@ if (document.getElementById("cat-list")) {
         },
         data: {
             uploaded_image: false,
+            uploaded_image_highlighted: false,
             color: '',
             rgb: '',
             wheel: '',
@@ -1218,6 +1298,10 @@ if (document.getElementById("cat-list")) {
                 this.uploaded_image = true;
                 document.getElementById(id).value = '';
             },
+            removeImageHighlighted: function (id) {
+              this.uploaded_image_highlighted = true;
+              document.getElementById(id).value = '';
+          },
             selectAll: function () {
                 this.is_show = !this.is_show;
                 jQuery("#wt-cats").change(function () {

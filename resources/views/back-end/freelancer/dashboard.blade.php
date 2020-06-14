@@ -96,6 +96,20 @@
                                     </div>
                                 </div>
                             </div>
+                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                                <div class="wt-insightsitem wt-dashboardbox">
+                                    <figure class="wt-userlistingimg">
+                                        {{ Helper::getImages('uploads/settings/icon',$latest_completed_project_icon, 'checkmark-circle') }}
+                                    </figure>
+                                    <div class="wt-insightdetails">
+                                        <div class="wt-title">
+                                            <h3>{{{ Helper::getTotalProposalsByStatus($freelancer_id, 'completed') }}}</h3>
+                                            <h3>{{ trans('lang.total_completed_jobs') }}</h3>
+                                            <a href="{{{ url('freelancer/jobs/completed') }}}">{{ trans('lang.click_view') }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endif
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
                             <div class="wt-insightsitem wt-dashboardbox">

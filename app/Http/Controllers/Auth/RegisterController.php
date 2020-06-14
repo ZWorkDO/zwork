@@ -97,6 +97,38 @@ class RegisterController extends Controller
         }
     }
 
+
+    
+    /**
+     * Validate user input.
+     *
+     * @param mixed $request Request Attributes
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateUserProfile(Request $request)
+    {
+        $validator = $this->validator($request->all());
+        $server = Helper::worketicIsDemoSiteAjax();
+        if (!empty($server)) {
+            $response['type'] = 'server_error';
+            $response['message'] = $server->getData()->message;
+            return $response;
+        }
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator, 'register');
+        } else {
+            $id = Session::get('user_id');
+            $user = User::find($id);
+            $user->updateProfile($request);
+            $json['type'] = 'success';
+            return $json;
+        }
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *

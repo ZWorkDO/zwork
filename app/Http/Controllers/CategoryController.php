@@ -189,6 +189,21 @@ class CategoryController extends Controller
     }
 
     /**
+     * Upload Image to temporary folder.
+     *
+     * @param mixed $request request attributes
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function uploadTempImageHighlighted(Request $request)
+    {
+        $path = Helper::PublicPath() . '/uploads/categories/temp/';
+        if (!empty($request['uploaded_image_highlighted'])) {
+            return Helper::uploadTempImage($path, $request['uploaded_image_highlighted']);
+        }
+    }
+
+    /**
      * All Categories Lisiting.
      *
      * @param \Illuminate\Http\Request $request request attributes

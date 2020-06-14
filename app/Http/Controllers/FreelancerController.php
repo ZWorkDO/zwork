@@ -759,6 +759,7 @@ class FreelancerController extends Controller
             $latest_saved_item_icon = !empty($icons['hidden_saved_item']) ? $icons['hidden_saved_item'] : 'img-22.png';
             $latest_cancel_project_icon = !empty($icons['hidden_cancel_project']) ? $icons['hidden_cancel_project'] : 'img-16.png';
             $latest_ongoing_project_icon = !empty($icons['hidden_ongoing_project']) ? $icons['hidden_ongoing_project'] : 'img-17.png';
+            $latest_completed_project_icon = !empty($icons['hidden_completed_project']) ? $icons['hidden_completed_project'] : 'img-18.png';
             $latest_pending_balance_icon = !empty($icons['hidden_pending_balance']) ? $icons['hidden_pending_balance'] : 'icon-01.png';
             $latest_current_balance_icon = !empty($icons['hidden_current_balance']) ? $icons['hidden_current_balance'] : 'icon-02.png';
             $published_services_icon = !empty($icons['hidden_published_services']) ? $icons['hidden_published_services'] : 'payment-method.png';
@@ -786,6 +787,7 @@ class FreelancerController extends Controller
                         'latest_saved_item_icon',
                         'latest_cancel_project_icon',
                         'latest_ongoing_project_icon',
+                        'latest_completed_project_icon',
                         'latest_pending_balance_icon',
                         'latest_current_balance_icon',
                         'published_services_icon',
@@ -816,6 +818,7 @@ class FreelancerController extends Controller
                         'latest_saved_item_icon',
                         'latest_cancel_project_icon',
                         'latest_ongoing_project_icon',
+                        'latest_completed_project_icon',
                         'latest_pending_balance_icon',
                         'latest_current_balance_icon',
                         'published_services_icon',

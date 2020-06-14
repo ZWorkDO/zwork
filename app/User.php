@@ -284,6 +284,56 @@ class User extends Authenticatable
             $this->attributes['slug'] = $temp;
         }
     }
+    
+     /**
+     * Update user profile information
+     *
+     * @param \Illuminate\Http\Request $request           code
+     *
+     * @access public
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateProfile($request) {
+      if (!empty($request)) {
+        $role_names = array_pluck($this->roles, 'name');
+        
+        $user_profile = Profile::where('user_id', $this->id)
+            ->get()->first();        
+
+        if (in_array("employer", $role_names)) {
+          $user_profile->company_name = filter_var($request['company_name'], FILTER_SANITIZE_STRING);
+          $user_profile->rnc = filter_var($request['rnc'], FILTER_SANITIZE_STRING);
+          
+          $user_profile->contact_name = filter_var($request['contact_name'], FILTER_SANITIZE_STRING);
+          $user_profile->position = filter_var($request['position'], FILTER_SANITIZE_STRING);
+          $user_profile->camara_id = intval($request['camara_id']);
+          $user_profile->nr = filter_var($request['nr'], FILTER_SANITIZE_STRING);
+
+          //$profile->address = filter_var($request['address'], FILTER_SANITIZE_STRING);
+          //$profile->phone = filter_var($request['phone'], FILTER_SANITIZE_STRING);
+          //$profile->rte_id = intval($request['rte']);                
+          //$profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
+        } 
+      
+        if (in_array("freelancer", $role_names)) {
+          $user_profile->nationality = filter_var($request['nationality'], FILTER_SANITIZE_STRING);
+          $user_profile->birthdate = filter_var($request['birthdate'], FILTER_SANITIZE_STRING);                
+          $user_profile->id_type = filter_var($request['id_type'], FILTER_SANITIZE_STRING);
+          $user_profile->id_number = filter_var($request['id_number'], FILTER_SANITIZE_STRING);
+          $user_profile->profession_id = intval($request['profession_id']);
+          $user_profile->grade_id = intval($request['grade_id']);
+          
+          //$profile->address = filter_var($request['address'], FILTER_SANITIZE_STRING);
+          //$profile->phone = filter_var($request['phone'], FILTER_SANITIZE_STRING);                
+          //$profile->gender = filter_var($request['gender'], FILTER_SANITIZE_STRING);
+          //$profile->marital_status = filter_var($request['marital_status'], FILTER_SANITIZE_STRING);
+          //$profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
+        }
+      
+        $user_profile->save();
+      }
+    }
 
     /**
      * Store user
@@ -306,17 +356,20 @@ class User extends Authenticatable
             $this->password = Hash::make($request['password']);
             $this->verification_code = $verification_code;
             $this->user_verified = 0;
-            $this->assignRole($request['role']);
+            $this->assignRole($request['roles']);
+
             if (!empty($request['locations'])) {
                 $location = Location::find($request['locations']);
                 $this->location()->associate($location);
-            }
+            }            
             $this->badge_id = null;
             $this->expiry_date = null;
             $this->save();
+
             $user_id = $this->id;
             $profile = new Profile();
             $profile->user()->associate($user_id);
+            
             if (!empty($request['category'])) {
                 $profile->no_of_employees = filter_var($request['category'], FILTER_SANITIZE_STRING);
             }
@@ -325,31 +378,11 @@ class User extends Authenticatable
                 // $department = Department::find($request['department_name']);
                 // $profile->department()->associate($department);
             }
-            if ($request['role'] === "employer") {
-                $profile->company_name = filter_var($request['company_name'], FILTER_SANITIZE_STRING);
-                $profile->phone = filter_var($request['phone'], FILTER_SANITIZE_STRING);
-                $profile->contact_name = filter_var($request['contact_name'], FILTER_SANITIZE_STRING);
-                $profile->position = filter_var($request['position'], FILTER_SANITIZE_STRING);
-                $profile->address = filter_var($request['address'], FILTER_SANITIZE_STRING);
-                $profile->rnc = filter_var($request['rnc'], FILTER_SANITIZE_STRING);
-                $profile->rte_id = intval($request['rte']);
-                $profile->camara_id = intval($request['camara']);
-                $profile->nr = filter_var($request['nr'], FILTER_SANITIZE_STRING);
-                $profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
-            } elseif ($request['role'] === "freelancer") {
-                $profile->nationality = filter_var($request['nationality'], FILTER_SANITIZE_STRING);
-                $profile->birthdate = filter_var($request['birthdate'], FILTER_SANITIZE_STRING);
-                $profile->phone = filter_var($request['phone'], FILTER_SANITIZE_STRING);
-                $profile->address = filter_var($request['address'], FILTER_SANITIZE_STRING);
-                $profile->gender = filter_var($request['gender'], FILTER_SANITIZE_STRING);
-                $profile->marital_status = filter_var($request['marital_status'], FILTER_SANITIZE_STRING);
-                $profile->id_type = filter_var($request['id_type'], FILTER_SANITIZE_STRING);
-                $profile->id_number = filter_var($request['id_number'], FILTER_SANITIZE_STRING);
-                $profile->profession_id = intval($request['profession_id']);
-                $profile->grade_id = intval($request['grade']);
-                $profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
-            }
+
             $profile->save();
+
+            $this->categories()->sync($request['categories']);
+
             $role_id = Helper::getRoleByUserID($user_id);
             $package = Package::select('id', 'title', 'cost')->where('role_id', $role_id)->where('trial', 1)->get()->first();
             $trial_invoice = Invoice::select('id')->where('type', 'trial')->get()->first();
