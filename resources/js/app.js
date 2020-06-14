@@ -463,7 +463,8 @@ if (document.getElementById("registration")) {
             },
             selectedRole: function (role, elId) {
                 let checkInput = document.getElementById(elId);
-                let checked = !checkInput.checked;
+                checkInput.checked = !checkInput.checked;
+                let checked = checkInput.checked;
                 if (role == 'employer') {
                   this.is_employer = checked;
                   this.is_show_employer = checked;
@@ -473,8 +474,6 @@ if (document.getElementById("registration")) {
                   this.is_show_freelancer = checked;  
                   this.is_show_employer = !checked;                    
                 }
-                console.log("is_employer", this.is_employer)
-                console.log("is_freelancer", this.is_freelancer)
             },
             checkStep1: function (e) {
                 this.form_step1.first_name_error = '';

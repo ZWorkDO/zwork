@@ -160,7 +160,7 @@
                                           <div class="wt-roles-group btn-group justify-content-md-center" data-toggle="buttons">
                                           @foreach ($roles as $key => $role)
                                             @if (!in_array($role['id'] == 1, $roles))
-                                            <label for="wt-role-{{{$role['id']}}}" class="btn btn-outline-primary" v-on:click="selectedRole('{{ $role['role_type'] }}','wt-role-{{$role['id']}}' )">
+                                            <label for="wt-role-{{{$role['id']}}}" class="btn btn-outline-primary" v-on:click.prevent="selectedRole('{{ $role['role_type'] }}','wt-role-{{$role['id']}}' )">
                                               <input class="mr-2"type="checkbox" id="wt-role-{{{$role['id']}}}" name="roles[]"  value="{{{ $role['role_type'] }}}" >
                                                     {{  trans('lang.choose_'.$role['name']) }}
                                             </label>
