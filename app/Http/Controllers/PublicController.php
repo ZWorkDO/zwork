@@ -181,7 +181,9 @@ class PublicController extends Controller
           $validate["profession_id"] = 'required';
           $validate["grade_id"] = 'required';
         }
-
+        
+        $validate["termsconditions"] = 'required';
+        
         $this->validate(
             $request, $validate
         );

@@ -406,40 +406,42 @@ if (document.getElementById("registration")) {
                 is_password_error: false,
                 password_confirm_error: '',
                 is_password_confirm_error: false,
+                phone_error: '',
+                is_phone_error: false
             },
             form_step2: {
               roles_error: '', 
-              categories_error: '', 
               is_roles_error: false,
+              categories_error: '', 
               is_categories_error: false,
             },   
             form_step3: {
-              termsconditions_error: '',
-              nationality_error: '',
-              birthdate_error: '',
-              id_types_error: '',
-              id_number_error: '',
-              professions_error: '',
-              grades_error: '',
-              company_name_error: '',
-              rnc_error: '',
-              contact_name_error: '',
-              position_error: '',
-              camaras_error: '',
-              nr_error: '',
-              is_termsconditions_error: false,
+              nationality_error: '',              
               is_nationality_error: false,
+              birthdate_error: '',
               is_birthdate_error: false,
+              id_types_error: '',
               is_id_types_error: false,
+              id_number_error: '',
               is_id_number_error: false,
+              professions_error: '',
               is_professions_error: false,
+              grades_error: '',
               is_grades_error: false,
+              company_name_error: '',
               is_company_name_error: false,
+              rnc_error: '',
               is_rnc_error: false,
+              contact_name_error: '',
               is_contact_name_error: false,
+              position_error: '',
               is_position_error: false,
+              camaras_error: '',
               is_camaras_error: false,
-              is_nr_error: false
+              nr_error: '',
+              is_nr_error: false,
+              termsconditions_error: '',
+              is_termsconditions_error: false,
             },   
             loading: false,
             is_freelancer: false,
@@ -532,14 +534,14 @@ if (document.getElementById("registration")) {
                     })
                     .catch(function (error) {
                       if (error.response.data.errors.roles) {
-                        self.form_step3.roles_error = error.response.data.errors.roles[0];
-                        self.form_step3.is_roles_error = true;
-                        self.showError(self.form_step3.roles_error);
+                        self.form_step2.roles_error = error.response.data.errors.roles[0];
+                        self.form_step2.is_roles_error = true;
+                        self.showError(self.form_step2.roles_error);
                       }
                       if (error.response.data.errors.categories) {
-                        self.form_step3.categories_error = error.response.data.errors.categories[0];
-                        self.form_step3.is_categories_error = true;
-                        self.showError(self.form_step3.categories_error);
+                        self.form_step2.categories_error = error.response.data.errors.categories[0];
+                        self.form_step2.is_categories_error = true;
+                        self.showError(self.form_step2.categories_error);
                       }
                     });
             },
@@ -634,6 +636,10 @@ if (document.getElementById("registration")) {
                         self.form_step3.nr_error = error.response.data.errors.nr[0];
                         self.form_step3.is_nr_error = true;
                     }
+                    if (error.response.data.errors.termsconditions) {
+                      self.form_step3.termsconditions_error = error.response.data.errors.termsconditions[0];
+                      self.form_step3.is_termsconditions_error = true;
+                  }
                   });
             },
             submitProfile: function () {

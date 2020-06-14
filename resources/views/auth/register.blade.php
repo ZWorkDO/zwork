@@ -104,6 +104,12 @@
                                                 <strong v-cloak>@{{form_step1.email_error}}</strong>
                                             </span>
                                         </div>
+                                        <div class="form-group form-group-half mr-4">
+                                            <input type="text" name="phone" class="form-control" placeholder="{{{ trans('lang.ph_phone') }}}" v-bind:class="{ 'is-invalid': form_step1.is_phone_error }" v-model="phone">
+                                            <span class="help-block" v-if="form_step1.phone_error">
+                                                <strong v-cloak>@{{form_step1.phone_error}}</strong>
+                                            </span>
+                                        </div>
                                         <div class="form-group form-group-half">
                                             <input id="password" type="password" class="form-control" name="password" placeholder="{{{ trans('lang.ph_pass') }}}" v-bind:class="{ 'is-invalid': form_step1.is_password_error }" v-model="password">
                                             <span class="help-block" v-if="form_step1.password_error">
@@ -247,7 +253,14 @@
                                       </li>
                                     </ul>      
                                   </div>                     
-                                  <div class="mt-4" style="float:left">
+                                  <div class="mt-4 ml-1" style="float:left">
+                                      <span class="wt-checkbox mb-4">
+                                            <input id="termsconditions" type="checkbox" name="termsconditions" checked="">
+                                            <label for="termsconditions"><span>{{{ $term_note }}}</span></label>
+                                            <span class="help-block" v-if="form_step3.termsconditions_error">
+                                                <strong style="color: red;" v-cloak>{{trans('lang.register_termsconditions_error')}}</strong>
+                                            </span>
+                                      </span>
                                       <a href="#" @click.prevent="checkStep3('{{ trans('lang.email_not_config') }}')" class="wt-btn">{{{ trans('lang.continue') }}}</a>
                                   </div>       
                                 </form>                                
