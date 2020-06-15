@@ -2981,7 +2981,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-formaccordionhold li:nth-child(even) .wt-accordiontitle{border-bottom: 1px solid #ddd;}
 .wt-formaccordionhold li:nth-child(even) .wt-accordiondetails{border:0;}
 .wt-formaccordionhold .wt-accordiontitle{padding: 0 20px;}
-.wt-formaccordionhold .wt-accordiontitle .wt-radio label{color: #999;line-height: 16px;padding: 17px 20px 17px 30px;}
+.wt-formaccordionhold .wt-accordiontitle .wt-radio label{font-weight: 700;color: #333;line-height: 16px;padding: 17px 20px 17px 8px;}
 .wt-formaccordionhold .wt-accordiontitle .wt-radio label span{color: #999;font-size: 13px;line-height: inherit;}
 .wt-formaccordionhold .wt-accordiontitle .wt-radio input[type=radio] + label:before{top: 50%;margin-top:-8px; }
 .wt-formaccordionhold .wt-accordiontitle .wt-radio input[type=radio] + label:after{top: 50%; margin-top:-3px;}

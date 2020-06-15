@@ -98,13 +98,13 @@
                                                 <strong v-cloak>@{{form_step1.last_name_error}}</strong>
                                             </span>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group form-group-half">
                                             <input id="user_email" type="email" class="form-control" name="email" placeholder="{{{ trans('lang.ph_email') }}}" value="{{ old('email') }}" v-bind:class="{ 'is-invalid': form_step1.is_email_error }" v-model="user_email">
                                             <span class="help-block" v-if="form_step1.email_error">
                                                 <strong v-cloak>@{{form_step1.email_error}}</strong>
                                             </span>
                                         </div>
-                                        <div class="form-group form-group-half mr-4">
+                                        <div class="form-group form-group-half">
                                             <input type="text" name="phone" class="form-control" placeholder="{{{ trans('lang.ph_phone') }}}" v-bind:class="{ 'is-invalid': form_step1.is_phone_error }" v-model="phone">
                                             <span class="help-block" v-if="form_step1.phone_error">
                                                 <strong v-cloak>@{{form_step1.phone_error}}</strong>
@@ -160,7 +160,7 @@
                                           <div class="wt-roles-group btn-group justify-content-md-center" data-toggle="buttons">
                                           @foreach ($roles as $key => $role)
                                             @if (!in_array($role['id'] == 1, $roles))
-                                            <label for="wt-role-{{{$role['id']}}}" class="btn btn-outline-primary" v-on:click.prevent="selectedRole('{{ $role['role_type'] }}','wt-role-{{$role['id']}}' )">
+                                            <label for="wt-role-{{{$role['id']}}}" class="btn btn-outline-primary" v-on:click="selectedRole('{{ $role['role_type'] }}','wt-role-{{$role['id']}}' )">
                                               <input class="mr-2"type="checkbox" id="wt-role-{{{$role['id']}}}" name="roles[]"  value="{{{ $role['role_type'] }}}" >
                                                     {{  trans('lang.choose_'.$role['name']) }}
                                             </label>
@@ -310,7 +310,7 @@
                         </div>
                     </div>
                     <div class="wt-registerformfooter">
-                        <span>{{{ trans('lang.have_account') }}}<a id="wt-lg" href="javascript:void(0);" @click.prevent='scrollTop()'>{{{ trans('lang.btn_login_now') }}}</a></span>
+                        <span>{{{ trans('lang.have_account') }}} <a id="wt-lg" href="javascript:void(0);" @click.prevent='scrollTop()'> {{{ trans('lang.btn_login_now') }}}</a></span>
                     </div>
                 </div>
             </div>
