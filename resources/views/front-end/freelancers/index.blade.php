@@ -124,7 +124,12 @@
                                                 @endif
                                             @endif
                                             <figure class="wt-userlistingimg">
-                                                <img src="{{{ asset(Helper::getImageWithSize('uploads/users/'.$freelancer->id, $freelancer->profile->avater, 'listing')) }}}" alt="{{ trans('lang.img') }}">
+                                                <?php //var_dump($freelancer->profile); die; ?>
+                                                <?php if (is_dir('uploads/users/'.$freelancer->id)) { ?>
+                                                    <img src="{{{ asset(Helper::getImageWithSize('uploads/users/'.$freelancer->id, $freelancer->profile->avater, 'listing')) }}}" alt="{{ trans('lang.img') }}">
+                                                <?php } else { ?>
+                                                    <img src="{{{ asset(Helper::getImageWithSize('/images/','user.jpg', 'listing')) }}}" alt="{{ trans('lang.img') }}">
+                                                <?php } ?>
                                             </figure>
                                             <div class="wt-userlistingcontent">
                                                 <div class="wt-contenthead">

@@ -49,6 +49,18 @@
                                             {!! Form::hidden( 'uploaded_image', '', ['id'=>'hidden_img'] ) !!}
                                         </div>
                                     </div>
+                                    <div class="wt-settingscontent">
+                                        <div class = "wt-formtheme wt-userform">
+                                            <upload-image
+                                                :id="'cat_image_highlighted'"
+                                                :img_ref="'cat_ref_highlighted'"
+                                                :url="'{{url('admin/categories/upload-temp-image-highlighted')}}'"
+                                                :name="'uploaded_image_highlighted'"
+                                                >
+                                            </upload-image>
+                                            {!! Form::hidden( 'uploaded_image_highlighted', '', ['id'=>'hidden_img_highlighted'] ) !!}
+                                        </div>
+                                    </div>
                                     <div class="form-group wt-btnarea">
                                         {!! Form::submit(trans('lang.add_cat'), ['class' => 'wt-btn']) !!}
                                     </div>
@@ -89,6 +101,7 @@
                                                 </span>
                                             </th>
                                             <th>{{{ trans('lang.cat_icon') }}}</th>
+                                            <th>{{{ trans('lang.cat_icon') }}}</th>
                                             <th>{{{ trans('lang.name') }}}</th>
                                             <th>{{{ trans('lang.slug') }}}</th>
                                             <th>{{{ trans('lang.action') }}}</th>
@@ -105,6 +118,7 @@
                                                     </span>
                                                 </td>
                                                 <td data-th="Icon"><span class="bt-content"><figure><img src="{{{ asset(\App\Helper::getCategoryImage($cat->image)) }}}" alt="{{{ $cat->title }}}"></figure></span></td>
+                                                <td data-th="Icon"><span class="bt-content"><figure><img src="{{{ asset(\App\Helper::getCategoryImage($cat->image_highlighted)) }}}" alt="{{{ $cat->title }}}"></figure></span></td>
                                                 <td>{{{ $cat->title }}}</td>
                                                 <td>{{{ $cat->slug }}}</td>
                                                 <td>

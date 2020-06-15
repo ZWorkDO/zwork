@@ -116,28 +116,36 @@ class Category extends Model
             $this->title = filter_var($request['category_title'], FILTER_SANITIZE_STRING);
             $this->slug = filter_var($request['category_title'], FILTER_SANITIZE_STRING);
             $this->abstract = filter_var($request['category_abstract'], FILTER_SANITIZE_STRING);
-            $old_path = Helper::PublicPath() . '/uploads/categories/temp';
-            if (!empty($request['uploaded_image'])) {
-                $filename = $request['uploaded_image'];
-                if (file_exists($old_path . '/' . $request['uploaded_image'])) {
-                    $new_path = Helper::PublicPath().'/uploads/categories/';
-                    if (!file_exists($new_path)) {
-                        File::makeDirectory($new_path, 0755, true, true);
-                    }
-                    $filename = time() . '-' . $request['uploaded_image'];
-                    rename($old_path . '/' . $request['uploaded_image'], $new_path . '/' . $filename);
-                    rename($old_path . '/small-' . $request['uploaded_image'], $new_path . '/small-' . $filename);
-                    rename($old_path . '/medium-' . $request['uploaded_image'], $new_path . '/medium-' . $filename);
-                }
-                $this->image = filter_var($filename, FILTER_SANITIZE_STRING);
-            } else {
-                $this->image = null;
-            }
+            
+            $this->updateCategoryImageField($request,'image');
+            $this->updateCategoryImageField($request,'image_highlighted');
+            
             $this->save();
             $json['type'] = 'success';
             $json['message'] = trans('lang.cat_created');
             return $json;
         }
+    }
+
+    private function updateCategoryImageField($request, $image_field) {
+      $old_path = Helper::PublicPath() . '/uploads/categories/temp';
+      $request_field = 'uploaded_'.$image_field;
+      if (!empty($request[$request_field])) {
+          $filename = $request[$request_field];
+          if (file_exists($old_path . '/' . $request[$request_field])) {
+              $new_path = Helper::PublicPath().'/uploads/categories/';
+              if (!file_exists($new_path)) {
+                  File::makeDirectory($new_path, 0755, true, true);
+              }
+              $filename = time() . '-' . $request[$request_field];
+              rename($old_path . '/' . $request[$request_field], $new_path . '/' . $filename);
+              rename($old_path . '/small-' . $request[$request_field], $new_path . '/small-' . $filename);
+              rename($old_path . '/medium-' . $request[$request_field], $new_path . '/medium-' . $filename);
+          }
+          $this[$image_field] = filter_var($filename, FILTER_SANITIZE_STRING);
+      } else {
+          $this[$image_field] = '';
+      }
     }
 
     /**
@@ -157,6 +165,10 @@ class Category extends Model
             }
             $cats->title = filter_var($request['category_title'], FILTER_SANITIZE_STRING);
             $cats->abstract = filter_var($request['category_abstract'], FILTER_SANITIZE_STRING);
+
+            $cats->updateCategoryImageField($request,'image');
+            $cats->updateCategoryImageField($request,'image_highlighted');
+/*
             $old_path = Helper::PublicPath() . '/uploads/categories/temp';
             if (!empty($request['uploaded_image'])) {
                 $filename = $request['uploaded_image'];
@@ -174,6 +186,7 @@ class Category extends Model
             } else {
                 $cats->image = null;
             }
+            */
             return $cats->save();
         }
     }

@@ -105,6 +105,8 @@ class PublicController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'email' => 'required|email|unique:users',
+                'password' => 'required|string|min:6|confirmed',
+                'password_confirmation' => 'required',
             ]
         );
     }
@@ -123,9 +125,11 @@ class PublicController extends Controller
         $this->validate(
             $request,
             [
-                'password' => 'required|string|min:6|confirmed',
-                'password_confirmation' => 'required',
-                'termsconditions' => 'required',
+              'categories' => 'required|array|min:1',
+              'roles' => 'required|array|between:1,2'
+                //'password' => 'required|string|min:6|confirmed',
+                //'password_confirmation' => 'required',
+                //'termsconditions' => 'required',
                 // 'company_name' => 'required',
                 // 'phone' => 'required',
                 // 'contact_name' => 'required',
@@ -140,6 +144,54 @@ class PublicController extends Controller
                 // 'marital_status' => 'required',
             ]
         );
+    }
+
+    /**
+     * Step3 Registeration Validation
+     *
+     * @param \Illuminate\Http\Request $request request attributes
+     *
+     * @access public
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function registerStep3Validation(Request $request)
+    {
+      $json = array();
+      if (Session::has('user_id')) {
+        $id = Session::get('user_id');
+        $user = User::find($id);
+        $roles = array_pluck($user->roles, 'name');
+
+        $validate = [];
+        if (in_array("employer", $roles)) {
+          $validate["company_name"] = 'required';
+          $validate["rnc"] = 'required';
+          $validate["contact_name"] = 'required';
+          $validate["position"] = 'required';
+          $validate["camara_id"] = 'required';
+          $validate["nr"] = 'required';
+        } 
+      
+        if (in_array("freelancer", $roles)) {
+          $validate["nationality"] = 'required';
+          $validate["birthdate"] = 'required';
+          $validate["id_type"] = 'required';
+          $validate["id_number"] = 'required';
+          $validate["profession_id"] = 'required';
+          $validate["grade_id"] = 'required';
+        }
+        
+        $validate["termsconditions"] = 'required';
+        
+        $this->validate(
+            $request, $validate
+        );
+      } else {
+        $json['type'] = 'error';
+        $json['message'] = trans('lang.session_expire');
+        return $json;
+      }
     }
 
     /**

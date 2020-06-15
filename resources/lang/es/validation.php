@@ -116,6 +116,9 @@ return [
         'roles' => [
             'required' => 'Por favor, seleccione el rol que desea asignar paquete',
         ],
+        'categories' => [
+          'required' => 'Por favor, seleccione al menos una categoria',
+        ],
         'review_option_title' => [
             'required' => 'Se requiere el título de la opción de revisión',
         ],

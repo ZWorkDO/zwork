@@ -72,6 +72,46 @@
                                             </div>
                                         @endif
                                     </div>
+                                    <div class="wt-settingscontent">
+                                    @if (!empty($cats['image_highlighted']))
+                                            <div class="wt-formtheme wt-userform">
+                                                <div v-if="this.uploaded_image_highlighted">
+                                                    <upload-image
+                                                        :id="'cat_image_highlighted'"
+                                                        :img_ref="'cat_img_highlighted'"
+                                                        :url="'{{url('admin/categories/upload-temp-image-highlighted')}}'"
+                                                        :name="'uploaded_image_highlighted'"
+                                                        >
+                                                    </upload-image>
+                                                    {!! Form::hidden( 'uploaded_image_highlighted', '', ['id'=>'hidden_img_highlighted'] ) !!}
+                                                </div>
+                                                <div class="form-group" v-else>
+                                                    <ul class="wt-attachfile">
+                                                        <li>
+                                                            <span>{{{ $cats['image_highlighted'] }}}</span>
+                                                            <em>{{{trans('lang.file_size')}}} <span data-dz-size></span>
+                                                                <a class="dz-remove" href="javascript:void();" v-on:click.prevent="removeImageHighlighted('hidden_img_highlighted')" >
+                                                                    <span class="lnr lnr-cross"></span>
+                                                                </a>
+                                                            </em>
+                                                        </li>
+                                                    </ul>
+                                                    <input type="hidden" name="uploaded_image_highlighted" id="hidden_img_highlighted" value="{{{$cats['image_highlighted']}}}">
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class = "wt-formtheme wt-userform">
+                                                <upload-image
+                                                    :id="'cat_image_highlighted'"
+                                                    :img_ref="'cat_ref_highlighted'"
+                                                    :url="'{{url('admin/categories/upload-temp-image-highlighted')}}'"
+                                                    :name="'uploaded_image_highlighted'"
+                                                    >
+                                                </upload-image>
+                                                {!! Form::hidden( 'uploaded_image_highlighted', '', ['id'=>'hidden_img_highlighted'] ) !!}
+                                            </div>
+                                        @endif
+                                    </div>
                                     <div class="form-group wt-btnarea">
                                         {!! Form::submit(trans('lang.update_cat'), ['class' => 'wt-btn']) !!}
                                     </div>
