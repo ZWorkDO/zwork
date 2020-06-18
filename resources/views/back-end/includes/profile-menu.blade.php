@@ -1,3 +1,8 @@
+@php
+  $user = !empty(Auth::user()) ? Auth::user() : '';
+  $is_freelancer = Helper::userHasRole($user->id, "freelancer");
+  $is_employer = Helper::userHasRole($user->id, "employer");
+@endphp
 <nav id="wt-profiledashboard" class="wt-usernav">
         <ul>
             @if ($role === 'admin')
@@ -274,6 +279,14 @@
                         <span>{{ trans('lang.saved_items') }}</span>
                     </a>
                 </li>
+            @endif
+            @if ($is_freelancer && $is_employer)
+            <li>
+                <a href="{{{ url($role.'/switch-to-'.($role === 'freelancer'? 'employer': 'freelancer')) }}}">
+                    <i class="lnr lnr-enter"></i>
+                    <span>{{($role === 'freelancer'? trans('lang.switch_to_employer'): trans('lang.switch_to_freelancer')) }}</span>
+                </a>
+            </li>
             @endif
             <li>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('profile-logout-form').submit();">

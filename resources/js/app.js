@@ -395,6 +395,7 @@ if (document.getElementById("registration")) {
             id_type: '',
             id_place: '',
             id_number: '',
+            person_type: "1",
             form_step1: {
                 email_error: '',
                 is_email_error: false,
@@ -446,6 +447,7 @@ if (document.getElementById("registration")) {
             loading: false,
             is_freelancer: false,
             is_employer: false,
+            is_legal_person: false,
             is_show_employer: false,
             is_show_freelancer: false,
             error_message: ''
@@ -460,6 +462,10 @@ if (document.getElementById("registration")) {
             next: function () {
                 this.step++;
                 console.log(this.step);
+            },
+            setIsLegalPerson: function (is_legal_person) {
+              this.is_legal_person = is_legal_person;
+              this.person_type = is_legal_person ? "2": "1";
             },
             selectedRole: function (role, elId) {
                 let checkInput = document.getElementById(elId);
@@ -546,7 +552,7 @@ if (document.getElementById("registration")) {
             },
             checkStep3: function (error_message) {
               this.error_message = error_message;
-              let register_Form = document.getElementById('register_form3');
+              let register_Form = document.getElementById('register_form');
               let form_data = new FormData(register_Form);
 
               this.form_step3.termsconditions_error = '';
@@ -643,7 +649,7 @@ if (document.getElementById("registration")) {
             },
             submitProfile: function () {
               this.loading = true;
-              let register_Form = document.getElementById('register_form3');
+              let register_Form = document.getElementById('register_form');
               let form_data = new FormData(register_Form);
               var self = this;
               axios.post(APP_URL + '/register/update-user-profile', form_data)
@@ -1786,6 +1792,63 @@ if (document.getElementById("user_profile")) {
                         }
                     });
             },
+            submitFreelancerPersonalInfo: function () {
+              var self = this;
+              var profile_data = document.getElementById('freelancer_profile');
+              let form_data = new FormData(profile_data);
+              axios.post(APP_URL + '/freelancer/store-personal-info', form_data)
+                  .then(function (response) {
+                      if (response.data.type == 'success') {
+                          self.showInfo(Vue.prototype.trans('lang.saving_profile'));
+                      } else if (response.data.type == 'error') {
+                          self.showError(response.data.message);
+                      }
+                  })
+                  .catch(function (error) {
+                    if (error.response.data.errors.first_name) {
+                      self.showError(error.response.data.errors.first_name[0]);
+                    }
+                    if (error.response.data.errors.last_name) {
+                        self.showError(error.response.data.errors.last_name[0]);
+                    }
+                    if (error.response.data.errors.nationality) {
+                        self.showError(error.response.data.errors.nationality[0]);
+                    }
+                    if (error.response.data.errors.birthdate) {
+                        self.showError(error.response.data.errors.birthdate[0]);
+                    }
+                    if (error.response.data.errors.id_type) {
+                        self.showError(error.response.data.errors.id_type[0]);
+                    }
+                    if (error.response.data.errors.id_number) {
+                        self.showError(error.response.data.errors.id_number[0]);
+                    }
+                    if (error.response.data.errors.profession_id) {
+                        self.showError(error.response.data.errors.profession_id[0]);
+                    }
+                    if (error.response.data.errors.grade_id) {
+                        self.showError(error.response.data.errors.grade_id[0]);
+                    }
+                    if (error.response.data.errors.company_name) {
+                        self.showError(error.response.data.errors.company_name[0]);
+                    }
+                    if (error.response.data.errors.rnc) {
+                        self.showError(error.response.data.errors.rnc[0]);
+                    }
+                    if (error.response.data.errors.contact_name) {
+                        self.showError(error.response.data.errors.contact_name[0]);
+                    }
+                    if (error.response.data.errors.position) {
+                        self.showError(error.response.data.errors.position[0]);
+                    }
+                    if (error.response.data.errors.camara_id) {
+                        self.showError(error.response.data.errors.camara_id[0]);
+                    }
+                    if (error.response.data.errors.nr) {
+                        self.showError(error.response.data.errors.nr[0]);
+                    }
+                  });
+            },
             submitExperienceEduction: function () {
                 var self = this;
                 var exp_edu_data = document.getElementById('experience_form');
@@ -1873,6 +1936,66 @@ if (document.getElementById("user_profile")) {
                         }
                         if (error.response.data.errors.longitude) {
                             self.showError(error.response.data.errors.longitude[0]);
+                        }
+                    });
+            },
+            submitEmployerPersonalInfo: function () {
+                var self = this;
+                var profile_data = document.getElementById('employer_data');
+                let form_data = new FormData(profile_data);
+                axios.post(APP_URL + '/employer/store-personal-info', form_data)
+                    .then(function (response) {
+                        if (response.data.type == 'success') {
+                            self.showInfo(response.data.process);
+                            setTimeout(function () {
+                                window.location.replace(APP_URL + '/employer/dashboard');
+                            }, 4000);
+                        } else if (response.data.type == 'error') {
+                            self.showError(response.data.message);
+                        }
+                    })
+                    .catch(function (error) {
+                        if (error.response.data.errors.first_name) {
+                            self.showError(error.response.data.errors.first_name[0]);
+                        }
+                        if (error.response.data.errors.last_name) {
+                            self.showError(error.response.data.errors.last_name[0]);
+                        }
+                        if (error.response.data.errors.nationality) {
+                            self.showError(error.response.data.errors.nationality[0]);
+                        }
+                        if (error.response.data.errors.birthdate) {
+                            self.showError(error.response.data.errors.birthdate[0]);
+                        }
+                        if (error.response.data.errors.id_type) {
+                            self.showError(error.response.data.errors.id_type[0]);
+                        }
+                        if (error.response.data.errors.id_number) {
+                            self.showError(error.response.data.errors.id_number[0]);
+                        }
+                        if (error.response.data.errors.profession_id) {
+                            self.showError(error.response.data.errors.profession_id[0]);
+                        }
+                        if (error.response.data.errors.grade_id) {
+                            self.showError(error.response.data.errors.grade_id[0]);
+                        }
+                        if (error.response.data.errors.company_name) {
+                            self.showError(error.response.data.errors.company_name[0]);
+                        }
+                        if (error.response.data.errors.rnc) {
+                            self.showError(error.response.data.errors.rnc[0]);
+                        }
+                        if (error.response.data.errors.contact_name) {
+                            self.showError(error.response.data.errors.contact_name[0]);
+                        }
+                        if (error.response.data.errors.position) {
+                            self.showError(error.response.data.errors.position[0]);
+                        }
+                        if (error.response.data.errors.camara_id) {
+                            self.showError(error.response.data.errors.camara_id[0]);
+                        }
+                        if (error.response.data.errors.nr) {
+                            self.showError(error.response.data.errors.nr[0]);
                         }
                     });
             },

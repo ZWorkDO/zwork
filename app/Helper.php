@@ -1142,7 +1142,9 @@ class Helper extends Model
      */
     public static function getRoleByUserID($user_id)
     {
-        $role = DB::table('model_has_roles')->select('role_id')->where('model_id', $user_id)
+        $role = DB::table('model_has_roles')->select('role_id')
+            ->where('model_id', $user_id)
+            ->where('is_active', "true")
             ->first();
         return $role->role_id;
     }
@@ -1158,11 +1160,7 @@ class Helper extends Model
      */
     public static function userHasRole($user_id, $role_name)
     {
-        return DB::table('model_has_roles')
-            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
-            ->where('roles.name', $role_name)
-            ->where('model_id', $user_id)
-            ->count() > 0;
+        return User::find($user_id)->hasRole($role_name);
     }
 
     /**

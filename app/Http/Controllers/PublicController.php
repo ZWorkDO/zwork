@@ -156,15 +156,17 @@ class PublicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function registerStep3Validation(Request $request)
-    {
-      $json = array();
-      if (Session::has('user_id')) {
-        $id = Session::get('user_id');
-        $user = User::find($id);
-        $roles = array_pluck($user->roles, 'name');
+    {      
 
         $validate = [];
-        if (in_array("employer", $roles)) {
+        $validate["nationality"] = 'required';
+        $validate["birthdate"] = 'required';
+        $validate["id_type"] = 'required';
+        $validate["id_number"] = 'required';
+        $validate["profession_id"] = 'required';
+        $validate["grade_id"] = 'required';
+
+        if ($request["person_type"] == 2) {
           $validate["company_name"] = 'required';
           $validate["rnc"] = 'required';
           $validate["contact_name"] = 'required';
@@ -172,26 +174,12 @@ class PublicController extends Controller
           $validate["camara_id"] = 'required';
           $validate["nr"] = 'required';
         } 
-      
-        if (in_array("freelancer", $roles)) {
-          $validate["nationality"] = 'required';
-          $validate["birthdate"] = 'required';
-          $validate["id_type"] = 'required';
-          $validate["id_number"] = 'required';
-          $validate["profession_id"] = 'required';
-          $validate["grade_id"] = 'required';
-        }
         
         $validate["termsconditions"] = 'required';
         
         $this->validate(
             $request, $validate
         );
-      } else {
-        $json['type'] = 'error';
-        $json['message'] = trans('lang.session_expire');
-        return $json;
-      }
     }
 
     /**

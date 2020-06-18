@@ -177,6 +177,54 @@ class Profile extends Model
         return $profile->save();
     }
 
+    /**
+     * Store Personal Info in database
+     *
+     * @param mixed   $request Request Attributes
+     * @param integer $user_id User ID
+     *
+     * @return json response
+     */
+    public function storePersonalInfo($request, $user_id)
+    {
+        $user = User::find($user_id);
+        if ($user->first_name . '-' . $user->last_name != $request['first_name'] . '-' . $request['last_name']) {
+            $user->slug = filter_var($request['first_name'], FILTER_SANITIZE_STRING) . '-' .
+                filter_var($request['last_name'], FILTER_SANITIZE_STRING);
+        }
+        $user->first_name = filter_var($request['first_name'], FILTER_SANITIZE_STRING);
+        $user->last_name = filter_var($request['last_name'], FILTER_SANITIZE_STRING);
+        if (!empty($request['email'])) {
+            $user->email = filter_var($request['email'], FILTER_SANITIZE_STRING);
+        }
+        $user->save();
+       
+        $user_profile = $this::select('id')->where('user_id', $user_id)
+            ->get()->first();
+        if (!empty($user_profile->id)) {
+            $profile = Profile::find($user_profile->id);
+        } else {
+            $profile = $this;
+        }
+
+        $profile->user()->associate($user_id);
+        $profile->freelancer_type = 'Basic';
+        $profile->nationality = filter_var($request['nationality'], FILTER_SANITIZE_STRING);
+        $profile->birthdate = filter_var($request['birthdate'], FILTER_SANITIZE_STRING);
+        $profile->id_type = filter_var($request['id_type'], FILTER_SANITIZE_STRING);
+        $profile->id_number = filter_var($request['id_number'], FILTER_SANITIZE_STRING);
+        $profile->profession_id = filter_var($request['profession_id'], FILTER_SANITIZE_STRING);
+        $profile->grade_id = filter_var($request['grade_id'], FILTER_SANITIZE_STRING);
+        $profile->company_name = filter_var($request['company_name'], FILTER_SANITIZE_STRING);
+        $profile->rnc = filter_var($request['rnc'], FILTER_SANITIZE_STRING);
+        $profile->contact_name = filter_var($request['contact_name'], FILTER_SANITIZE_STRING);
+        $profile->position = filter_var($request['position'], FILTER_SANITIZE_STRING);
+        $profile->camara_id = filter_var($request['camara_id'], FILTER_SANITIZE_STRING);
+        $profile->nr = filter_var($request['nr'], FILTER_SANITIZE_STRING);
+       
+        return $profile->save();
+    }
+
 
     /**
      * Store Email Notifications in database

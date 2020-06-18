@@ -3,5 +3,8 @@
         <li class="nav-item">
             <a class="{{{ \Request::route()->getName()==='personalDetail'? 'active': '' }}}" href="{{{ route('employerPersonalDetail') }}}">{{{ trans('lang.profile_detail') }}}</a>
         </li>
+        <li class="nav-item">
+            <a class="{{{ \Request::route()->getName()==='employerPersonalInfo'? 'active': '' }}}" href="{{{ route('employerPersonalInfo') }}}">{{{ trans('lang.personal_info') }}}</a>
+        </li>
     </ul>
 </div>

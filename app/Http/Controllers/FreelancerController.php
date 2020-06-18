@@ -135,6 +135,130 @@ class FreelancerController extends Controller
     }
 
     /**
+     * Show the form for update personal information
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function personalInfo()
+    {
+        $profile = $this->freelancer::where('user_id', Auth::user()->id)
+        ->get()->first();
+        $nationality = !empty($profile->nationality) ? $profile->nationality : '';
+        $birthdate = !empty($profile->birthdate) ? $profile->birthdate : '';
+        $id_type = !empty($profile->id_type) ? $profile->id_type : '';
+        $id_number = !empty($profile->id_number) ? $profile->id_number : '';
+        $profession_id = !empty($profile->profession_id) ? $profile->profession_id : '';
+        $grade_id = !empty($profile->grade_id) ? $profile->grade_id : '';
+        $company_name = !empty($profile->company_name) ? $profile->company_name : '';
+        $is_legal_person = !empty($company_name);
+        $rnc = !empty($profile->rnc) ? $profile->rnc : '';
+        $contact_name = !empty($profile->contact_name) ? $profile->contact_name : '';
+        $position = !empty($profile->position) ? $profile->position : '';
+        $camara_id = !empty($profile->camara_id) ? $profile->camara_id : '';
+        $nr = !empty($profile->nr) ? $profile->nr : '';
+
+        if (file_exists(resource_path('views/extend/back-end/freelancer/profile-settings/personal-info/index.blade.php'))) {
+            return view(
+                'extend.back-end.freelancer.profile-settings.personal-info.index',
+                  compact(
+                    'nationality',
+                    'birthdate',
+                    'id_type',
+                    'id_number',
+                    'profession_id',
+                    'grade_id',
+                    'company_name',
+                    'is_legal_person',
+                    'rnc',
+                    'contact_name',
+                    'position',
+                    'camara_id',
+                    'nr',
+                )
+              );
+        } else {
+            return view(
+                'back-end.freelancer.profile-settings.personal-info.index',
+                compact(
+                  'nationality',
+                  'birthdate',
+                  'id_type',
+                  'id_number',
+                  'profession_id',
+                  'grade_id',
+                  'company_name',
+                  'is_legal_person',
+                  'rnc',
+                  'contact_name',
+                  'position',
+                  'camara_id',
+                  'nr',
+              )
+            );
+        }
+    }
+
+    /**
+     * Store personal info
+     *
+     * @param \Illuminate\Http\Request $request request attributes
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storePersonalInfo(Request $request)
+    {
+        $server = Helper::worketicIsDemoSiteAjax();
+        if (!empty($server)) {
+            $response['type'] = 'error';
+            $response['message'] = $server->getData()->message;
+            return $response;
+        }
+
+        $validate = [
+          'first_name'    => 'required',
+          'last_name'    => 'required',
+          'nationality'   => 'required',
+          'birthdate'   => 'required',
+          'id_type'   => 'required',
+          'id_number'   => 'required',
+          'profession_id'   => 'required',
+          'grade_id'   => 'required',
+        ];
+
+        if($request->exists('company_name') || $request['is_legal_person']) {
+          $validate["company_name"] = 'required';
+          $validate["rnc"] = 'required';
+          $validate["contact_name"] = 'required';
+          $validate["position"] = 'required';
+          $validate["camara_id"] = 'required';
+          $validate["nr"] = 'required';
+        }
+
+        $this->validate(
+            $request,
+            $validate
+        );
+
+        $json = array();
+
+        if (!empty($request)) {
+            $user_id = Auth::user()->id;
+            $this->freelancer->storePersonalInfo($request, $user_id);
+            $json['type'] = 'success';
+            $json['process'] = trans('lang.saving_profile');
+            return $json;
+        }
+    }
+
+    public function switchToEmployer(Request $request){
+      if (Auth::user()) {
+          Auth::user()->switchToRole("employer");    
+
+          return Redirect::to('employer/dashboard');
+      }
+    }
+
+    /**
      * Upload Image to temporary folder.
      *
      * @param \Illuminate\Http\Request $request request attributes

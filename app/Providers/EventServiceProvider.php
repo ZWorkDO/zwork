@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'user.created' => [
             'App\Events\UserEvent@userCreated',
         ],
+        'Illuminate\Auth\Events\Logout' => [
+          'App\Events\LogSuccessfulLogout',
+        ],
     ];
 
     /**
