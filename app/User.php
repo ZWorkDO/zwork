@@ -301,14 +301,15 @@ class User extends Authenticatable
         
         $user_profile = Profile::where('user_id', $this->id)
             ->get()->first();        
-    
-        $user_profile->nationality = filter_var($request['nationality'], FILTER_SANITIZE_STRING);
-        $user_profile->birthdate = filter_var($request['birthdate'], FILTER_SANITIZE_STRING);                
-        $user_profile->id_type = filter_var($request['id_type'], FILTER_SANITIZE_STRING);
-        $user_profile->id_number = filter_var($request['id_number'], FILTER_SANITIZE_STRING);
-        $user_profile->profession_id = intval($request['profession_id']);
-        $user_profile->grade_id = intval($request['grade_id']);
         
+        if ($request['person_type'] == 1) {
+          $user_profile->nationality = filter_var($request['nationality'], FILTER_SANITIZE_STRING);
+          $user_profile->birthdate = filter_var($request['birthdate'], FILTER_SANITIZE_STRING);                
+          $user_profile->id_type = filter_var($request['id_type'], FILTER_SANITIZE_STRING);
+          $user_profile->id_number = filter_var($request['id_number'], FILTER_SANITIZE_STRING);
+          $user_profile->profession_id = intval($request['profession_id']);
+          $user_profile->grade_id = intval($request['grade_id']);
+        } 
         //$profile->address = filter_var($request['address'], FILTER_SANITIZE_STRING);
         //$profile->phone = filter_var($request['phone'], FILTER_SANITIZE_STRING);                
         //$profile->gender = filter_var($request['gender'], FILTER_SANITIZE_STRING);

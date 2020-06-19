@@ -9,12 +9,7 @@
 </div>
 <div class="lara-detail-form">
     <fieldset>
-        <div class="form-group form-group-half">
-            {!! Form::text( 'first_name', e(Auth::user()->first_name), ['class' =>'form-control', 'placeholder' => trans('lang.ph_first_name')] ) !!}
-        </div>
-        <div class="form-group form-group-half">
-            {!! Form::text( 'last_name', e(Auth::user()->last_name), ['class' =>'form-control', 'placeholder' => trans('lang.ph_last_name')] ) !!}
-        </div>
+      @if(!$is_legal_person)
         <div class="form-group  form-group-half">
             {!! Form::text( 'nationality', e($nationality), ['class' =>'form-control', 'placeholder' => trans('lang.ph_nationality')] ) !!}
         </div> 
@@ -39,6 +34,7 @@
               {!! Form::select('grade_id', $grades, e($grade_id), ['class' =>'form-control', 'placeholder' => trans('lang.grade')]) !!} 
             </span>
         </div> 
+        @endif
         @if($is_legal_person)
           {!! Form::hidden('is_legal_person', $is_legal_person) !!}
           <div class="form-group form-group-half">

@@ -213,17 +213,16 @@ class FreelancerController extends Controller
             $response['message'] = $server->getData()->message;
             return $response;
         }
-
-        $validate = [
-          'first_name'    => 'required',
-          'last_name'    => 'required',
-          'nationality'   => 'required',
-          'birthdate'   => 'required',
-          'id_type'   => 'required',
-          'id_number'   => 'required',
-          'profession_id'   => 'required',
-          'grade_id'   => 'required',
-        ];
+        if(!$request->exists('company_name')) {
+          $validate = [
+            'nationality'   => 'required',
+            'birthdate'   => 'required',
+            'id_type'   => 'required',
+            'id_number'   => 'required',
+            'profession_id'   => 'required',
+            'grade_id'   => 'required',
+          ];
+        }
 
         if($request->exists('company_name') || $request['is_legal_person']) {
           $validate["company_name"] = 'required';

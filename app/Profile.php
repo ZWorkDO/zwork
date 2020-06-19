@@ -186,19 +186,7 @@ class Profile extends Model
      * @return json response
      */
     public function storePersonalInfo($request, $user_id)
-    {
-        $user = User::find($user_id);
-        if ($user->first_name . '-' . $user->last_name != $request['first_name'] . '-' . $request['last_name']) {
-            $user->slug = filter_var($request['first_name'], FILTER_SANITIZE_STRING) . '-' .
-                filter_var($request['last_name'], FILTER_SANITIZE_STRING);
-        }
-        $user->first_name = filter_var($request['first_name'], FILTER_SANITIZE_STRING);
-        $user->last_name = filter_var($request['last_name'], FILTER_SANITIZE_STRING);
-        if (!empty($request['email'])) {
-            $user->email = filter_var($request['email'], FILTER_SANITIZE_STRING);
-        }
-        $user->save();
-       
+    {       
         $user_profile = $this::select('id')->where('user_id', $user_id)
             ->get()->first();
         if (!empty($user_profile->id)) {
@@ -208,7 +196,6 @@ class Profile extends Model
         }
 
         $profile->user()->associate($user_id);
-        $profile->freelancer_type = 'Basic';
         $profile->nationality = filter_var($request['nationality'], FILTER_SANITIZE_STRING);
         $profile->birthdate = filter_var($request['birthdate'], FILTER_SANITIZE_STRING);
         $profile->id_type = filter_var($request['id_type'], FILTER_SANITIZE_STRING);

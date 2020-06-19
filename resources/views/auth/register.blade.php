@@ -232,9 +232,11 @@
                                           </label>
                                         </div>
                                       </div>
-                                      @include('auth.register-freelancer')   
+                                      <div v-if="!is_legal_person">
+                                        @include('auth.register-non-legal-person')
+                                      </div>                   
                                       <div v-if="is_legal_person">
-                                        @include('auth.register-employer')   
+                                        @include('auth.register-legal-person')   
                                       </div>                          
                                       <div class="mt-4 ml-1" style="float:left">
                                           <span class="wt-checkbox mb-4">
