@@ -127,145 +127,131 @@
                                         </div>
                                     </div>
                                 </fieldset>
-                                <div class="wt-haslayout" v-if="step === 2" v-cloak>
+                                <fieldset class="wt-registerformgroup">
+                                  <div class="wt-haslayout" v-if="step === 2" v-cloak>
+                                      <fieldset class="wt-registerformgroup">
+                                          <div class="wt-registerhead">
+                                              <div class="wt-title">
+                                                  <h3>{{{ $reg_two_title }}}</h3>
+                                              </div>
+                                              @if (!empty($reg_two_subtitle))
+                                                  <div class="wt-description">
+                                                      <p>{{{ $reg_two_subtitle }}}</p>
+                                                  </div>
+                                              @endif
+                                          </div>
+                                          <ul class="wt-joinsteps">
+                                              <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
+                                              <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.02') }}}</a></li>
+                                              <li><a href="javascrip:void(0);">{{{ trans('lang.03') }}}</a></li>
+                                              <li><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
+                                          </ul>
+                                          @if (!empty($locations) && false)
+                                              <div class="form-group">
+                                                  <span class="wt-select">
+                                                      {!! Form::select('locations', $locations, null, array('placeholder' => trans('lang.select_locations'), 'v-bind:class' => '{ "is-invalid": form_step2.is_locations_error }')) !!}
+                                                      <span class="help-block" v-if="form_step2.locations_error">
+                                                          <strong v-cloak>@{{form_step2.locations_error}}</strong>
+                                                      </span>
+                                                  </span>
+                                              </div>
+                                          @endif
+                                          @if(!empty($roles))
+                                          <div class="wt-roles justify-content-md-center mt-4 mb-4">
+                                            <div class="wt-roles-group btn-group justify-content-md-center" data-toggle="buttons">
+                                            @foreach ($roles as $key => $role)
+                                              @if (!in_array($role['id'] == 1, $roles))
+                                              <label for="wt-role-{{{$role['id']}}}" class="btn btn-outline-primary" v-on:click.prevent="selectedRole('{{ $role['role_type'] }}','wt-role-{{$role['id']}}' )">
+                                                <input class="mr-2"type="checkbox" id="wt-role-{{{$role['id']}}}" name="roles[]"  value="{{{ $role['role_type'] }}}" >
+                                                      {{  trans('lang.choose_'.$role['name']) }}
+                                              </label>
+                                              @endif
+                                            @endforeach
+                                            </div>
+                                          </div>
+                                          @endif
+                                          @if(!empty($categories))
+                                          <div class="wt-registerhead">
+                                            <div class="wt-description">
+                                                    <p class="m-0">{{ trans('lang.choose_interest_categories') }}</p>
+                                            </div>
+                                          </div>
+                                          <div class="wt-categories">                                          
+                                            <div class="wt-categories-group justify-content-md-center" data-toggle="buttons">
+                                            @foreach ($categories as $key => $category)
+                                              <div class="col-6 col-lg-4 col-md-3 col-xl-3 pr-0 pl-0">
+                                              <label for="wt-category-{{{$category->id}}}" class="btn btn-outline-primary m-1">
+                                                <figure>
+                                                  <img class="img"
+                                                      src="{{{ asset(Helper::getCategoryImage($category->image)) }}}" alt="{{{ $category->title }}}">
+                                                  <img  class="img_highlighted"
+                                                      src="{{{ asset(Helper::getCategoryImage($category->image_highlighted)) }}}" alt="{{{ $category->title }}}">
+                                                </figure>
+                                                <input type="checkbox" id="wt-category-{{{$category->id}}}"  name="categories[]"  value="{{{$category->id}}}" style="clip:rect(0,0,0,0); position: absolute"> {{{ $category['title'] }}}
+                                              </label>
+                                              </div>
+                                            @endforeach
+                                            </div>
+                                          </div>
+                                          @endif 
+                                          <div class="mt-4" style="float:left">
+                                              <a href="#" @click.prevent="prev()" class="wt-btn">{{{ trans('lang.previous') }}}</a>
+                                              <a href="#" @click.prevent="checkStep2('{{ trans('lang.email_not_config') }}')" class="wt-btn">{{{ trans('lang.continue') }}}</a>
+                                          </div>                                       
+                                      </fieldset>
+                                  </div>
+                                </fieldset>
+                                <fieldset class="wt-registerformgroup">
+                                  <div class="wt-haslayout" v-if="step === 3" v-cloak>
                                     <fieldset class="wt-registerformgroup">
-                                        <div class="wt-registerhead">
-                                            <div class="wt-title">
-                                                <h3>{{{ $reg_two_title }}}</h3>
-                                            </div>
-                                            @if (!empty($reg_two_subtitle))
-                                                <div class="wt-description">
-                                                    <p>{{{ $reg_two_subtitle }}}</p>
-                                                </div>
-                                            @endif
+                                      <div class="wt-registerhead">
+                                        <div class="wt-title">
+                                            <h3>{{{ $reg_three_title }}}</h3>
                                         </div>
-                                        <ul class="wt-joinsteps">
-                                            <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
-                                            <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.02') }}}</a></li>
-                                            <li><a href="javascrip:void(0);">{{{ trans('lang.03') }}}</a></li>
-                                            <li><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
-                                        </ul>
-                                        @if (!empty($locations) && false)
-                                            <div class="form-group">
-                                                <span class="wt-select">
-                                                    {!! Form::select('locations', $locations, null, array('placeholder' => trans('lang.select_locations'), 'v-bind:class' => '{ "is-invalid": form_step2.is_locations_error }')) !!}
-                                                    <span class="help-block" v-if="form_step2.locations_error">
-                                                        <strong v-cloak>@{{form_step2.locations_error}}</strong>
-                                                    </span>
-                                                </span>
+                                        @if (!empty($reg_three_subtitle))
+                                            <div class="wt-description">
+                                                <p>{{{ $reg_three_subtitle }}}</p>
                                             </div>
                                         @endif
-                                        @if(!empty($roles))
-                                        <div class="wt-roles justify-content-md-center mt-4 mb-4">
-                                          <div class="wt-roles-group btn-group justify-content-md-center" data-toggle="buttons">
-                                          @foreach ($roles as $key => $role)
-                                            @if (!in_array($role['id'] == 1, $roles))
-                                            <label for="wt-role-{{{$role['id']}}}" class="btn btn-outline-primary" v-on:click="selectedRole('{{ $role['role_type'] }}','wt-role-{{$role['id']}}' )">
-                                              <input class="mr-2"type="checkbox" id="wt-role-{{{$role['id']}}}" name="roles[]"  value="{{{ $role['role_type'] }}}" >
-                                                    {{  trans('lang.choose_'.$role['name']) }}
-                                            </label>
-                                            @endif
-                                          @endforeach
-                                          </div>
-                                        </div>
-                                        @endif
-                                        @if(!empty($categories))
-                                        <div class="wt-registerhead">
-                                          <div class="wt-description">
-                                                  <p class="m-0">{{ trans('lang.choose_interest_categories') }}</p>
-                                          </div>
-                                        </div>
-                                        <div class="wt-categories">                                          
-                                          <div class="wt-categories-group justify-content-md-center" data-toggle="buttons">
-                                          @foreach ($categories as $key => $category)
-                                            <div class="col-6 col-lg-4 col-md-3 col-xl-3 pr-0 pl-0">
-                                            <label for="wt-category-{{{$category->id}}}" class="btn btn-outline-primary m-1">
-                                              <figure>
-                                                <img class="img"
-                                                    src="{{{ asset(Helper::getCategoryImage($category->image)) }}}" alt="{{{ $category->title }}}">
-                                                <img  class="img_highlighted"
-                                                    src="{{{ asset(Helper::getCategoryImage($category->image_highlighted)) }}}" alt="{{{ $category->title }}}">
-                                              </figure>
-                                              <input type="checkbox" id="wt-category-{{{$category->id}}}"  name="categories[]"  value="{{{$category->id}}}" style="clip:rect(0,0,0,0); position: absolute"> {{{ $category['title'] }}}
-                                            </label>
-                                            </div>
-                                          @endforeach
-                                          </div>
-                                        </div>
-                                        @endif 
-                                        <div class="mt-4" style="float:left">
-                                            <a href="#" @click.prevent="prev()" class="wt-btn">{{{ trans('lang.previous') }}}</a>
-                                            <a href="#" @click.prevent="checkStep2('{{ trans('lang.email_not_config') }}')" class="wt-btn">{{{ trans('lang.continue') }}}</a>
-                                        </div>                                       
-                                    </fieldset>
-                                </div>
-                            </form>
-                            <div class="wt-joinformc" v-if="step === 3" v-cloak>
-                              <fieldset class="wt-registerformgroup">
-                                <form method="POST" action="{{{ url('register/form-step3-custom-errors') }}}" class="wt-formtheme wt-formregister" @submit.prevent="checkStep3" id="register_form3">
-                                  <div class="wt-registerhead">
-                                      <div class="wt-title">
-                                          <h3>{{{ $reg_three_title }}}</h3>
                                       </div>
-                                      @if (!empty($reg_three_subtitle))
-                                          <div class="wt-description">
-                                              <p>{{{ $reg_three_subtitle }}}</p>
-                                          </div>
-                                      @endif
-                                  </div>
-                                  <ul class="wt-joinsteps">
-                                      <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
-                                      <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
-                                      <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.03') }}}</a></li>
-                                      <li><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
-                                  </ul>
-                                  <div v-if="is_freelancer && !is_employer">
-                                    @include('auth.register-freelancer')   
-                                  </div>
-                                  <div v-if="is_employer && !is_freelancer">
-                                    @include('auth.register-employer')   
-                                  </div>      
-                                  <div v-if="is_employer && is_freelancer">
-                                    <ul class="wt-accordionhold wt-formaccordionhold accordion">
-                                      <li>
-                                        <div class="wt-accordiontitle" id="headingOne"  data-target="#collapseFreelancer">
-                                          <span class="wt-radio">
-                                            <label >
-                                                {{ trans('lang.choose_freelancer') }}
-                                            </label>
-                                          </span>
+                                      <ul class="wt-joinsteps">
+                                          <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
+                                          <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
+                                          <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.03') }}}</a></li>
+                                          <li><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
+                                      </ul>
+                                      <div class="wt-person-type justify-content-md-center mt-4 mb-4">
+                                        <div class="wt-person-type-group btn-group btn-group-toggle justify-content-md-center" data-toggle="buttons">
+                                          <label for="wt-person-type-1" class="btn btn-outline-primary active" v-on:click="setIsLegalPerson(false)">
+                                            <input class="mr-2"type="radio" checked="" id="wt-person-type-1"  name="person_type" value="1">
+                                            {{{ trans('lang.physical_person') }}}
+                                          </label>
+                                          <label for="wt-person-type-2" class="btn btn-outline-primary" v-on:click="setIsLegalPerson(true)">
+                                            <input class="mr-2"type="radio" id="wt-person-type-2"  name="person_type" value="2">
+                                            {{{ trans('lang.legal_person') }}}
+                                          </label>
                                         </div>
-                                        <div class="wt-accordiondetails collapse show" id="collapseFreelancer" aria-labelledby="headingOne">
-                                          @include('auth.register-freelancer')
-                                        </div>                                        
-                                      </li>
-                                      <li>
-                                      <div class="wt-accordiontitle" id="headingOne" data-target="#collapseEmployer">
-                                          <span class="wt-radio">
-                                            <label >
-                                                {{ trans('lang.choose_employer') }}
-                                            </label>
+                                      </div>
+                                      <div v-if="!is_legal_person">
+                                        @include('auth.register-non-legal-person')
+                                      </div>                   
+                                      <div v-if="is_legal_person">
+                                        @include('auth.register-legal-person')   
+                                      </div>                          
+                                      <div class="mt-4 ml-1" style="float:left">
+                                          <span class="wt-checkbox mb-4">
+                                                <input id="termsconditions" type="checkbox" name="termsconditions" checked="">
+                                                <label for="termsconditions"><span>{{{ $term_note }}}</span></label>
+                                                <span class="help-block" v-if="form_step3.termsconditions_error">
+                                                    <strong style="color: red;" v-cloak>{{trans('lang.register_termsconditions_error')}}</strong>
+                                                </span>
                                           </span>
-                                        </div>
-                                        <div class="wt-accordiondetails collapse show" id="collapseEmployer" aria-labelledby="headingOne">
-                                          @include('auth.register-employer')
-                                        </div>                                        
-                                      </li>
-                                    </ul>      
-                                  </div>                     
-                                  <div class="mt-4 ml-1" style="float:left">
-                                      <span class="wt-checkbox mb-4">
-                                            <input id="termsconditions" type="checkbox" name="termsconditions" checked="">
-                                            <label for="termsconditions"><span>{{{ $term_note }}}</span></label>
-                                            <span class="help-block" v-if="form_step3.termsconditions_error">
-                                                <strong style="color: red;" v-cloak>{{trans('lang.register_termsconditions_error')}}</strong>
-                                            </span>
-                                      </span>
-                                      <a href="#" @click.prevent="checkStep3('{{ trans('lang.email_not_config') }}')" class="wt-btn">{{{ trans('lang.continue') }}}</a>
-                                  </div>       
-                                </form>                                
-                              </fieldset>
-                            </div>
+                                          <a href="#" @click.prevent="checkStep3('{{ trans('lang.email_not_config') }}')" class="wt-btn">{{{ trans('lang.continue') }}}</a>
+                                      </div>  
+                                    </fieldset>
+                                  </div>
+                                </fieldset>
+                            </form>
                             <div class="wt-joinformc" v-if="step === 4" v-cloak>
                                 <form method="POST" action="" class="wt-formtheme wt-formregister" id="verification_form">
                                     <div class="wt-registerhead">
@@ -279,8 +265,8 @@
                                     <ul class="wt-joinsteps">
                                         <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
                                         <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
-                                        <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.03') }}}</a></li>
-                                        <li><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
+                                        <li class="wt-done-next"><a href="javascrip:void(0);"><i class="fa fa-check"></i></a></li>
+                                        <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
                                     </ul>
                                     <figure class="wt-joinformsimg">
                                         <img src="{{ asset($register_image)}}" alt="{{{ trans('lang.verification_code_img') }}}">

@@ -2860,18 +2860,18 @@ body.wt-login .wt-userlogedin{display: block;}
 	padding: 5px;
 }
 .wt-formregister .wt-categories,
-.wt-formregister .wt-roles  {
+.wt-formregister .wt-roles,
+.wt-formregister .wt-person-type  {
   float:left;
   display: flex;
 }
-.wt-formregister .wt-roles {
-  width: 100%;
-}
-.wt-formregister .wt-roles {
+.wt-formregister .wt-roles,
+.wt-formregister .wt-person-type {
   width: 100%;
 }
 .wt-formregister .wt-categories .wt-categories-group,
-.wt-formregister .wt-roles .wt-roles-group {
+.wt-formregister .wt-roles .wt-roles-group,
+.wt-formregister .wt-person-type .wt-person-type-group {
   display: flex;
   flex-wrap: wrap;
 }

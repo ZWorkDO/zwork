@@ -4,6 +4,9 @@
             <a class="{{{ \Request::route()->getName()==='personalDetail'? 'active': '' }}}" href="{{{ route('personalDetail') }}}">{{{ trans('lang.personal_detail') }}}</a>
         </li>
         <li class="nav-item">
+            <a class="{{{ \Request::route()->getName()==='personalInfo'? 'active': '' }}}" href="{{{ route('personalInfo') }}}">{{{ trans('lang.personal_info') }}}</a>
+        </li>
+        <li class="nav-item">
             <a class="{{{ \Request::route()->getName()==='experienceEducation'? 'active': '' }}}" href="{{{ route('experienceEducation') }}}">{{{ trans('lang.experience_education') }}}</a>
         </li>
         <li class="nav-item">

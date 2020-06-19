@@ -32,6 +32,7 @@ use Carbon\Carbon;
 use canResetPassword;
 use App\Notifications;
 use Event;
+use Cache;
 
 /**
  * Class User
@@ -300,8 +301,22 @@ class User extends Authenticatable
         
         $user_profile = Profile::where('user_id', $this->id)
             ->get()->first();        
+        
+        if ($request['person_type'] == 1) {
+          $user_profile->nationality = filter_var($request['nationality'], FILTER_SANITIZE_STRING);
+          $user_profile->birthdate = filter_var($request['birthdate'], FILTER_SANITIZE_STRING);                
+          $user_profile->id_type = filter_var($request['id_type'], FILTER_SANITIZE_STRING);
+          $user_profile->id_number = filter_var($request['id_number'], FILTER_SANITIZE_STRING);
+          $user_profile->profession_id = intval($request['profession_id']);
+          $user_profile->grade_id = intval($request['grade_id']);
+        } 
+        //$profile->address = filter_var($request['address'], FILTER_SANITIZE_STRING);
+        //$profile->phone = filter_var($request['phone'], FILTER_SANITIZE_STRING);                
+        //$profile->gender = filter_var($request['gender'], FILTER_SANITIZE_STRING);
+        //$profile->marital_status = filter_var($request['marital_status'], FILTER_SANITIZE_STRING);
+        //$profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
 
-        if (in_array("employer", $role_names)) {
+        if ($request['person_type'] == 2) {
           $user_profile->company_name = filter_var($request['company_name'], FILTER_SANITIZE_STRING);
           $user_profile->rnc = filter_var($request['rnc'], FILTER_SANITIZE_STRING);
           
@@ -315,21 +330,6 @@ class User extends Authenticatable
           //$profile->rte_id = intval($request['rte']);                
           //$profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
         } 
-      
-        if (in_array("freelancer", $role_names)) {
-          $user_profile->nationality = filter_var($request['nationality'], FILTER_SANITIZE_STRING);
-          $user_profile->birthdate = filter_var($request['birthdate'], FILTER_SANITIZE_STRING);                
-          $user_profile->id_type = filter_var($request['id_type'], FILTER_SANITIZE_STRING);
-          $user_profile->id_number = filter_var($request['id_number'], FILTER_SANITIZE_STRING);
-          $user_profile->profession_id = intval($request['profession_id']);
-          $user_profile->grade_id = intval($request['grade_id']);
-          
-          //$profile->address = filter_var($request['address'], FILTER_SANITIZE_STRING);
-          //$profile->phone = filter_var($request['phone'], FILTER_SANITIZE_STRING);                
-          //$profile->gender = filter_var($request['gender'], FILTER_SANITIZE_STRING);
-          //$profile->marital_status = filter_var($request['marital_status'], FILTER_SANITIZE_STRING);
-          //$profile->main_activity = filter_var($request['main_activity'], FILTER_SANITIZE_STRING);
-        }
       
         $user_profile->save();
       }
@@ -367,6 +367,16 @@ class User extends Authenticatable
             $this->save();
 
             $user_id = $this->id;
+
+            $updateBuilder = DB::table('model_has_roles')
+            ->where('model_id',  $user_id);
+
+            if(count($request["roles"]) > 1){
+              $updateBuilder->where('role_id',  2);
+            }
+            
+            $updateBuilder->update(['is_active' => "true"]);
+
             $profile = new Profile();
             $profile->user()->associate($user_id);
             
@@ -411,7 +421,9 @@ class User extends Authenticatable
     public static function getUserRoleType($user_id)
     {
         if (!empty($user_id) && is_numeric($user_id)) {
-            $role_id = DB::table('model_has_roles')->select('role_id')->where('model_id', $user_id)
+            $role_id = DB::table('model_has_roles')->select('role_id')
+                ->where('is_active', "true")
+                ->where('model_id', $user_id)
                 ->get()->pluck('role_id')->toArray();
             if (!empty($role_id)) {
                 return DB::table('roles')->select('id', 'role_type', 'name')->where('id', $role_id[0])->get()->first();
@@ -420,6 +432,20 @@ class User extends Authenticatable
             }
         }
     }
+
+    public function getRoleNames()
+    {    
+      $role_names = Cache::remember('role_names', 1,function() {
+        return DB::table('model_has_roles')
+        ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+        ->where('model_has_roles.is_active', "true")
+        ->where('model_has_roles.model_id', $this->id)
+        ->select('roles.name')->get()->pluck('name');
+      });
+      return $role_names;
+    }
+
+    
 
     /**
      * Get search results
@@ -671,6 +697,23 @@ class User extends Authenticatable
             return 'error';
         }
     }
+
+    public function switchToRole($role_name){
+      if (Auth::user()) {
+          Cache::forget('role_names');
+
+          $role = Role::where('name', $role_name)->first();
+
+          $affected = DB::table('model_has_roles')
+          ->where('model_id', Auth::user()->id)
+          ->update(['is_active' => "false"]);
+
+          $affected = DB::table('model_has_roles')
+              ->where('model_id', Auth::user()->id)
+              ->where('role_id', $role->id)
+              ->update(['is_active' => "true"]);    
+      }
+    }   
 
     /**
      * Get the reviews for the user.

@@ -332,8 +332,10 @@ Route::group(
         Route::get('employer/dashboard/job/{slug}/proposals', 'ProposalController@getJobProposals')->name('getProposals');
         Route::get('employer/dashboard', 'EmployerController@employerDashboard')->name('employerDashboard');
         Route::get('employer/profile', 'EmployerController@index')->name('employerPersonalDetail');
+        Route::get('employer/profile/personal-info', 'EmployerController@employerPersonalInfo')->name('employerPersonalInfo');
         Route::post('employer/upload-temp-image', 'EmployerController@uploadTempImage');
         Route::post('employer/store-profile-settings', 'EmployerController@storeProfileSettings');
+        Route::post('employer/store-personal-info', 'EmployerController@storePersonalInfo');
         Route::post('job/post-job', 'JobController@store');
         Route::post('job/upload-temp-image', 'JobController@uploadTempImage');
         Route::post('user/submit-review', 'UserController@submitReview');
@@ -342,6 +344,7 @@ Route::group(
         Route::get('employer/service/{service_id}/{id}/{status}', 'EmployerController@showServiceDetail');
         Route::get('employer/payout-settings', 'EmployerController@payoutSettings')->name('employerPayoutsSettings');
         Route::get('employer/payouts', 'EmployerController@getPayouts')->name('getEmployerPayouts');
+        Route::get('employer/switch-to-freelancer', 'EmployerController@switchToFreelancer')->name('switchToFreelancer');
     }
 );
 // Freelancer Routes
@@ -357,6 +360,7 @@ Route::group(
         Route::post('freelancer/store-profile-settings', 'FreelancerController@storeProfileSettings')->name('freelancerProfileSetting');
         Route::post('freelancer/store-experience-settings', 'FreelancerController@storeExperienceEducationSettings');
         Route::post('freelancer/store-project-award-settings', 'FreelancerController@storeProjectAwardSettings');
+        Route::post('freelancer/store-personal-info', 'FreelancerController@storePersonalInfo');
         Route::get('freelancer/get-freelancer-skills', 'FreelancerController@getFreelancerSkills');
         Route::get('freelancer/get-freelancer-experiences', 'FreelancerController@getFreelancerExperiences');
         Route::get('freelancer/get-freelancer-projects', 'FreelancerController@getFreelancerProjects');
@@ -367,10 +371,12 @@ Route::group(
         Route::get('freelancer/proposals', 'FreelancerController@showFreelancerProposals')->name('showFreelancerProposals');
         Route::get('freelancer/dashboard', 'FreelancerController@freelancerDashboard')->name('freelancerDashboard');
         Route::get('freelancer/profile', 'FreelancerController@index')->name('personalDetail');
+        Route::get('freelancer/profile/personal-info', 'FreelancerController@personalInfo')->name('personalInfo');
         Route::post('freelancer/upload-temp-image', 'FreelancerController@uploadTempImage');
         Route::get('freelancer/dashboard/post-service', 'ServiceController@create')->name('freelancerPostService');
         Route::get('freelancer/payout-settings', 'FreelancerController@payoutSettings')->name('FreelancerPayoutsSettings');
         Route::get('freelancer/payouts', 'FreelancerController@getPayouts')->name('getFreelancerPayouts');
+        Route::get('freelancer/switch-to-employer', 'FreelancerController@switchToEmployer')->name('switchToEmployer');
     }
 );
 // Employer|Freelancer Routes
