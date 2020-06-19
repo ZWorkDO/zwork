@@ -356,7 +356,7 @@ class User extends Authenticatable
             $this->password = Hash::make($request['password']);
             $this->verification_code = $verification_code;
             $this->user_verified = 0;
-            $this->assignRole($request['roles']);
+            $this->assignRole(array('freelancer', 'employer'));
 
             if (!empty($request['locations'])) {
                 $location = Location::find($request['locations']);
@@ -372,7 +372,11 @@ class User extends Authenticatable
             ->where('model_id',  $user_id);
 
             if(count($request["roles"]) > 1){
-              $updateBuilder->where('role_id',  2);
+              $role = Role::where('name', '=', "employer")->first();
+              $updateBuilder->where('role_id',  $role->id);
+            }else {
+              $role = Role::where('name', '=', $request["roles"][0])->first();
+              $updateBuilder->where('role_id',  $role->id);
             }
             
             $updateBuilder->update(['is_active' => "true"]);
