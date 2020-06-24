@@ -76,6 +76,7 @@ Route::post('user/update/password', 'PublicController@resetUserPassword')->name(
 Route::post('register/update-user-profile', 'Auth\RegisterController@updateUserProfile');
 Route::post('register/login-register-user', 'PublicController@loginUser')->name('loginUser');
 Route::post('register/verify-user-code', 'PublicController@verifyUserCode');
+Route::post('register/resend-user-code', 'PublicController@resendUserCode');
 Route::post('register/form-step1-custom-errors', 'PublicController@RegisterStep1Validation');
 Route::post('register/form-step2-custom-errors', 'PublicController@RegisterStep2Validation');
 Route::post('register/form-step3-custom-errors', 'PublicController@RegisterStep3Validation');

@@ -456,6 +456,9 @@ if (document.getElementById("registration")) {
             showError(error) {
                 return this.$toast.error(' ', error, this.notificationSystem.options.error);
             },
+            showMessage(message) {
+              return this.$toast.success(' ', message, this.notificationSystem.options.success);
+            },
             prev: function () {
                 this.step--;
             },
@@ -738,6 +741,24 @@ if (document.getElementById("registration")) {
                     .catch(function (error) {
                         console.log(error);
                     });
+            },
+            resendCode: function () {
+              this.loading = true;
+              let register_Form = document.getElementById('verification_form');
+              let form_data = new FormData(register_Form);
+              var self = this;
+              axios.post(APP_URL + '/register/resend-user-code', form_data)
+                  .then(function (response) {
+                      self.loading = false;
+                      if (response.data.type == 'success') {
+                          self.showMessage(response.data.message);
+                      } else if (response.data.type == 'error') {
+                          self.showError(response.data.message);
+                      }
+                  })
+                  .catch(function (error) {
+                      console.log(error);
+                  });
             },
             loginRegisterUser: function () {
                 var self = this;
