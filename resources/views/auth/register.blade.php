@@ -286,6 +286,9 @@
                                                 @endif
                                             </label>
                                             <input type="text" name="code" class="form-control" placeholder="{{{ trans('lang.enter_code') }}}">
+                                            <label class="mt-2">
+                                              <a href="#" @click.prevent="resendCode()">{{{ trans('lang.resend_code') }}}</a>
+                                            </label>
                                         </div>
                                         <div class="form-group wt-btnarea">
                                             <a href="#" @click.prevent="verifyCode()" class="wt-btn">{{{ trans('lang.continue') }}}</a>

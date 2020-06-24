@@ -184,6 +184,57 @@ class PublicController extends Controller
         );
     }
 
+
+     /**
+     * Resend user verification code.
+     *
+     * @param array $request returns request
+     */
+    protected function resendUserCode(Request $request)
+    {
+      if (Session::has('user_id')) {
+        $id = Session::get('user_id');
+        $user = User::find($id);
+        session()->put(['user_id' => $id]);
+        session()->put(['email' => $user->email]);
+
+        $random_number = Helper::generateRandomCode(4);
+        $verification_code = strtoupper($random_number);
+        $user->verification_code = $verification_code;
+        $user->save();
+      
+        if (!empty(config('mail.username')) && !empty(config('mail.password'))) {
+          $email_params = array();
+          $template = DB::table('email_types')->select('id')
+              ->where('email_type', 'verification_code')->get()->first();
+          if (!empty($template->id)) {
+              $template_data = EmailTemplate::getEmailTemplateByID($template->id);
+              $email_params['verification_code'] = $user->verification_code;
+              $email_params['name'] = Helper::getUserName($user->id);
+              $email_params['email'] = $user->email;
+              Mail::to($user->email)
+                  ->send(
+                      new GeneralEmailMailable(
+                          'verification_code',
+                          $template_data,
+                          $email_params
+                      )
+                  );
+          }
+        } else {
+          $id = Session::get('user_id');
+          $user = User::find($id);
+          Auth::login($user);
+          $json['email'] = 'not_configured';
+          $json['url'] = url($user->getRoleNames()->first().'/dashboard');
+        }  
+      }
+      
+      $json['message'] = trans('lang.verify_code_note');
+      $json['type'] = 'success';
+      return $json;
+    }
+
     /**
      * Set slug before saving in DB
      *

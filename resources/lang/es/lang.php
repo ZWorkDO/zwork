@@ -378,6 +378,7 @@ return [
     'verification_code_not_verified' => 'El código de verificación no está verificado o caducado',
     'why_need_code' => '¿Por qué necesito el código?',
     'enter_code' => 'Ingrese el código de verificación',
+    'resend_code' => 'Reenviar código de verificación',
     'desc_required' => 'descripción requerida',
     'congrats' => '¡Felicidades!',
     'start_adding' => 'Comience a agregar ahora',
