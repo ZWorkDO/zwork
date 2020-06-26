@@ -716,8 +716,6 @@ class User extends Authenticatable
 
     public function switchToRole($role_name){
       if (Auth::user()) {
-          Cache::forget('role_names');
-
           $role = Role::where('name', $role_name)->first();
 
           $affected = DB::table('model_has_roles')
