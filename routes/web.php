@@ -19,7 +19,7 @@ Route::fallback(
     }
 );
 // Authentication route
-Auth::routes();
+Auth::routes(['verify' => true]);
 // Cache clear route
 Route::get(
     'cache-clear',
@@ -84,7 +84,7 @@ Route::get('search-results', 'PublicController@getSearchResult')->name('searchRe
 Route::post('user/add-wishlist', 'UserController@addWishlist');
 // Admin Routes
 Route::group(
-    ['middleware' => ['role:admin']],
+    ['middleware' => ['verified','role:admin']],
     function () {
         // Article Category Routes
         Route::get('admin/article/categories', 'ArticleCategoryController@index')->name('articleCategories');
@@ -296,7 +296,7 @@ Route::group(
 );
 
 Route::group(
-    ['middleware' => ['role:employer|admin']],
+    ['middleware' => ['verified','role:employer|admin']],
     function () {
         Route::get('job/edit-job/{job_slug}', 'JobController@edit')->name('editJob');
         Route::post('job/get-stored-job-skills', 'JobController@getJobSkills');
@@ -307,7 +307,7 @@ Route::group(
     }
 );
 Route::group(
-    ['middleware' => ['role:freelancer|admin']],
+    ['middleware' => ['verified','role:freelancer|admin']],
     function () {
         if (Helper::getAccessType() == 'both' || Helper::getAccessType() == 'services') {
             Route::get('freelancer/services/{status}', 'FreelancerController@showServices')->name('ServiceListing');
@@ -324,7 +324,7 @@ Route::group(
 );
 //Employer Routes
 Route::group(
-    ['middleware' => ['role:employer']],
+    ['middleware' => ['verified','role:employer']],
     function () {
         Route::post('skills/get-job-skills', 'SkillController@getJobSkills');
         Route::get('employer/dashboard/post-job', 'JobController@postJob')->name('employerPostJob');
@@ -350,7 +350,7 @@ Route::group(
 );
 // Freelancer Routes
 Route::group(
-    ['middleware' => ['role:freelancer']],
+    ['middleware' => ['verified','role:freelancer']],
     function () {
         Route::get('/get-freelancer-skills', 'SkillController@getFreelancerSkills');
         Route::get('/get-skills', 'SkillController@getSkills');
@@ -382,7 +382,7 @@ Route::group(
 );
 // Employer|Freelancer Routes
 Route::group(
-    ['middleware' => ['role:employer|freelancer|admin']],
+    ['middleware' => ['verified','role:employer|freelancer|admin']],
     function () {
         Route::post('proposal/upload-temp-image', 'ProposalController@uploadTempImage');
         Route::get('job/proposal/{job_slug}', 'ProposalController@createProposal')->name('createProposal');

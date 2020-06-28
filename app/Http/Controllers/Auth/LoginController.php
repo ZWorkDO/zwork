@@ -53,10 +53,17 @@ class LoginController extends Controller
     {
         if (Schema::hasTable('users')) {
             if (!empty($user->verification_code)) {
-                Session::flash('error', trans('lang.verification_code_not_verified'));
-                Auth::logout();
-                return Redirect::to('/');
+                if(Auth::user()->id == session()->get('verify_user_id')) {
+                  $url = session()->get('verify_redirect_url');
+                  session()->forget('verify_user_id');
+                  session()->forget('verify_redirect_url');
+                  return Redirect::to($url);  
+                } 
+                $user->sendEmailVerificationNotification();
+                return Redirect::to('/email/verify');
             } else {
+                session()->forget('verify_user_id');
+                session()->forget('verify_redirect_url');
                 $user_id = Auth::user()->id;
                 $user_role_type = User::getUserRoleType($user_id);
                 if (empty($user_role_type)) {
