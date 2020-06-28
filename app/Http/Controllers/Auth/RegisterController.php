@@ -87,7 +87,8 @@ class RegisterController extends Controller
                 ->withInput()
                 ->withErrors($validator, 'register');
         } else {
-            event(new Registered($user = $this->create($request->all())));
+            //event(new Registered($user = $this->create($request->all())));
+            $this->create($request->all());
             if (empty(config('mail.username')) && empty(config('mail.password'))) {
                 $json['email'] = $user['email'];
                 $json['url'] = $user['url'];

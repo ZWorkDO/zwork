@@ -32,13 +32,13 @@ use Carbon\Carbon;
 use canResetPassword;
 use App\Notifications;
 use Event;
-use Cache;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
  * Class User
  *
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use HasRoles;
@@ -79,6 +79,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Mark the given user's email as verified.
+     *
+     * @return bool
+     */
+    public function markEmailAsVerified()
+    {
+        return $this->forceFill([
+            'email_verified_at' => $this->freshTimestamp(),
+            'user_verified' => 1,
+            'verification_code' => null
+        ])->save();
+    }
 
     /**
      * User Can have multiple articles
@@ -437,16 +451,28 @@ class User extends Authenticatable
         }
     }
 
+    
+    /**
+     * A model may have multiple roles.
+     */
+    public function roles(): MorphToMany
+    {
+        return $this->morphToMany(
+            config('permission.models.role'),
+            'model',
+            config('permission.table_names.model_has_roles'),
+            config('permission.column_names.model_morph_key'),
+            'role_id'
+        )->withPivot('is_active');
+    }
+
     public function getRoleNames()
-    {    
-      $role_names = Cache::remember('role_names', 1,function() {
-        return DB::table('model_has_roles')
-        ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
-        ->where('model_has_roles.is_active', "true")
-        ->where('model_has_roles.model_id', $this->id)
-        ->select('roles.name')->get()->pluck('name');
-      });
-      return $role_names;
+    {   
+        $filtered = $this->roles->filter(function ($value, $key) {
+          return $value->pivot->is_active == "true";
+        });
+
+        return $filtered->pluck('name');
     }
 
     
@@ -704,8 +730,6 @@ class User extends Authenticatable
 
     public function switchToRole($role_name){
       if (Auth::user()) {
-          Cache::forget('role_names');
-
           $role = Role::where('name', $role_name)->first();
 
           $affected = DB::table('model_has_roles')
