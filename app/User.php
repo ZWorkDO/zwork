@@ -38,7 +38,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * Class User
  *
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use HasRoles;
@@ -79,6 +79,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Mark the given user's email as verified.
+     *
+     * @return bool
+     */
+    public function markEmailAsVerified()
+    {
+        return $this->forceFill([
+            'email_verified_at' => $this->freshTimestamp(),
+            'user_verified' => 1,
+            'verification_code' => null
+        ])->save();
+    }
 
     /**
      * User Can have multiple articles
