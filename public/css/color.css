@@ -22,9 +22,9 @@ a:active,
 .wt-postarticlemeta .wt-following span,
 .tg-qrcodefeat h3 span,
 .active-category,
-.wt-freelancers-content .dc-title span strong,
-.wt-bannerholderthree .wt-bannercontent .wt-title h1 em,
-.wt-bannerholderthree .wt-bannercontent .wt-videoholder .wt-videoshow a i
+.wt-freelancers-content .dc-title span strong
+/*.wt-bannerholderthree .wt-bannercontent .wt-title h1 em,
+.wt-bannerholderthree .wt-bannercontent .wt-videoholder .wt-videoshow a i*/
 
 { color: #ff5851; }
 /* Theme Background Color */

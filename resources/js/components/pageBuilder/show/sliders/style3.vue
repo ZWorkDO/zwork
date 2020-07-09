@@ -3,14 +3,17 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-                    <div class="wt-bannercontent">
+                    <div class="wt-bannercontent" v-bind:class="{ 'float-right': alignRight }">
                         <div class="wt-bannerhead">
-                            <div class="wt-title">
-                                <h1><span><em>{{slider.title}}</em></span>{{slider.subtitle}}</h1>
+                            <div class="wt-title" v-for="(slide, index) in slider.slider_image" :key="index" v-if="sliderIndex === index" >
+                                <h1><span><em>{{trans('lang.home_slider.'+(index+1)+'.title')}}</em></span>
+                                    {{trans('lang.home_slider.'+(index+1)+'.subtitle')}}
+                                </h1>
                             </div>
                             <div class="wt-description" v-if="slider.description" v-html="slider.description"></div>
                         </div>
-                        <search-form
+                        
+                        <search-form v-if="!linkToJobs && !linkToFreelancer"
                         :widget_type="'home'"
                         :placeholder="trans('lang.looking_for')"
                         :freelancer_placeholder="trans('lang.search_filter_list.freelancer')"
@@ -18,8 +21,14 @@
                         :job_placeholder="trans('lang.search_filter_list.jobs')"
                         :service_placeholder="trans('lang.search_filter_list.services')"
                         :no_record_message="trans('lang.no_record')"
+                        @on-activate="handleOnActivate"
+                        @on-deactivate="handleOnDeactivate"
                         >
                         </search-form>
+                        <div v-if="linkToFreelancer || linkToJobs" class="cta-btn">
+                          <a v-if="linkToFreelancer" v-bind:href="appUrl + '/search-results?type=freelancer'" class="wt-btn">{{trans('lang.connect_to_a_freelancer')}}</a>
+                          <a v-if="linkToJobs" v-bind:href="appUrl + '/search-results?type=job'" class="wt-btn">{{trans('lang.join_to_a_project')}}</a>
+                        </div>
                         <div class="wt-videoholder" v-if="slider.video_link && slider.video_link !='#'">
                             <div class="wt-videoshow">
                                 <a data-rel="prettyPhoto[video]" :href="slider.video_link" rel="prettyPhoto[video]"><i class="fa fa-play"></i></a>
@@ -55,12 +64,18 @@ export default {
     data() {
         return {
             imageUrl:APP_URL+'/uploads/pages/'+this.page_id+'/',
+            appUrl: APP_URL,
             slider:[],
+            sliderIndex:0,
+            alignRight: true,
+            linkToJobs: false,
+            linkToFreelancer: false,
         }
     },
     updated() {
+        var self = this;
         var slider = jQuery('.owl-carousel')
-        slider.owlCarousel({
+        var carousel = slider.owlCarousel({
             items: 1,
             animateOut: 'fadeOut',
             animateIn: 'fadeIn',
@@ -69,6 +84,12 @@ export default {
             margin: 0,
             autoplay:true,
         });
+        carousel.on('changed.owl.carousel', function(event) {
+            self.sliderIndex = event.page.index;
+            self.alignRight = (self.sliderIndex == 0);
+            self.linkToFreelancer =(self.sliderIndex == 1);
+            self.linkToJobs = (self.sliderIndex == 2);
+        })
         jQuery("a[data-rel]").each(function () {
             jQuery(this).attr("rel", jQuery(this).data("rel"));
         });
@@ -96,6 +117,14 @@ export default {
                 }
             })
             .catch(function(error) {  });
+        },
+        handleOnActivate(event) {
+          var slider = jQuery('.owl-carousel');
+          slider.trigger('stop.owl.autoplay');
+        },
+        handleOnDeactivate(event) {
+          var slider = jQuery('.owl-carousel');
+          slider.trigger('play.owl.autoplay',[1000]);
         }
     },
     created: function() {
