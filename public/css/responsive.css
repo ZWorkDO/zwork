@@ -46,7 +46,8 @@
 		padding: 0;
 		width: 50%;
 		float: none;
-		margin: 0 auto;
+    margin-left: 5%;
+    margin-right: 5%;
 		/*text-align: center;*/
 	}
 	.wt-bannerholderthree .wt-bannercontent .wt-title h1,

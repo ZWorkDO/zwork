@@ -147,6 +147,12 @@
                 this.$refs.searchfield.inputValue = '';
                 this.isActive = false;
             },
+            handleOnActivate: function() {
+              this.$emit('on-activate');
+            },
+            handleOnDeactivate: function() {
+              this.$emit('on-deactivate');
+            },
             watchSearchResults:function(types){
                 if(jQuery('.wt-radioholder').css('display') == 'block') {
                     jQuery('.wt-radioholder').css("display", "none");
@@ -190,9 +196,11 @@
             },
             toggleDropdown: function(){
                 if (this.isActive == false) {
+                    this.handleOnActivate();
                     this.isActive = true;
                     jQuery('.wt-related-result').remove();
                 } else {
+                    this.handleOnDeactivate();
                     this.isActive = false;
                 }
             },
@@ -233,6 +241,7 @@
         },
         mounted: function () {
             var urlParams = new URLSearchParams(window.location.search);
+            var self = this;
             if (urlParams.get('type')) {
                 var type = urlParams.get('type');
                 this.displayFiltersName(type);
@@ -250,6 +259,12 @@
                         }
                     }
                 });
+            });
+            jQuery(".search-field").focus(function(){
+              self.handleOnActivate();
+            });
+            jQuery(".search-field").blur(function(){
+              self.handleOnDeactivate();
             });
         },
         created: function() {
