@@ -5,12 +5,14 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                     <div class="wt-bannercontent" v-bind:class="{ 'float-right': alignRight }">
                         <div class="wt-bannerhead">
-                            <div class="wt-title" v-for="(slide, index) in slider.slider_image" :key="index" v-if="sliderIndex === index" >
+                          <div v-for="(slide, index) in slider.slider_image" :key="index">
+                            <div class="wt-title" v-if="sliderIndex === index" >
                                 <h1><span><em>{{trans('lang.home_slider.'+(index+1)+'.title')}}</em></span>
                                     {{trans('lang.home_slider.'+(index+1)+'.subtitle')}}
                                 </h1>
                             </div>
-                            <div class="wt-description" v-if="slider.description" v-html="slider.description"></div>
+                          </div>
+                          <div class="wt-description" v-if="slider.description" v-html="slider.description"></div>
                         </div>
                         
                         <search-form v-if="!linkToJobs && !linkToFreelancer"
