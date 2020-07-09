@@ -1,4 +1,4 @@
-@media (max-width:1680px){
+
 	.wt-headervfour .wt-username h3,
 	.wt-headervfour .wt-username span{color: #323232;}
 	.wt-bannerimg{
@@ -47,7 +47,7 @@
 		width: 50%;
 		float: none;
 		margin: 0 auto;
-		text-align: center;
+		/*text-align: center;*/
 	}
 	.wt-bannerholderthree .wt-bannercontent .wt-title h1,
 	.wt-bannerholderthree .wt-bannercontent .wt-bannerhead .wt-description p,
@@ -55,17 +55,17 @@
 		color: #fff;
 	}
 	.wt-bannerholderthree .wt-bannercontent .wt-videoholder{
-		width: 350px;
+		/*width: 350px;*/
 		display: flex;
-		align-items: center;
-		justify-content: center;
+		/*align-items: center;
+		justify-content: center;*/
 	}
 	.wt-headervfour{border: 0;}
 	.wt-headervfour .wt-nav{
 		float: right;
 		padding-left: 100px;
 	}
-}
+
 @media (max-width:1600px){
 	.wt-comingsoonimg figure{padding: 0;}
 	.wt-comingsoon-content{padding-left:20px; }
@@ -201,7 +201,6 @@
 	}
 }
 @media (max-width:1080px){
-	.wt-bannerholderthree .wt-bannercontent {width: 70%;}
 	.wt-chatpopup .wt-chatbox .wt-messages{height: 300px;}
 	.wt-categoryslidercontent figure{
 		float: none;
@@ -237,8 +236,8 @@
 	.wt-bannerholderthree .wt-bannercontent{
 		padding: 0 !important; 
 	}
-	.wt-bannerholderthree .wt-bannercontent {width: 80%;}
-	.wt-bannerholdervtwo .wt-bannercontent .wt-videoholder{width: auto;}
+	/*.wt-bannerholderthree .wt-bannercontent {width: 80%;}*/
+	/*.wt-bannerholdervtwo .wt-bannercontent .wt-videoholder{width: auto;}*/
 	.wt-bannerholdervtwo .wt-bannercontent{
 		padding-top: 76px;
 		padding-bottom: 0; 

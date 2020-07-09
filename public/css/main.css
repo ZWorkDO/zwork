@@ -8328,14 +8328,6 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	float: left;
 	width: auto;
 }
-.wt-bannerimg img{
-	width: 100%;
-	display: block;
-	border-radius: 50%;
-	max-width: none;
-	min-width: 850px;
-	min-height: 850px;
-}
 .wt-bannerslider-two:after{
 	content: '';
 	position: absolute;
@@ -8387,7 +8379,6 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 .wt-bannerholdervtwo .wt-formoptions .wt-dropdown{min-width: 255px;}
 .wt-bannerholdervtwo .wt-formoptions .wt-dropdown > span{width: 100%;}
 .wt-bannerholdervtwo .wt-formoptions > .wt-searchbtn{
-	width: 155px;
 	text-transform: uppercase;
 	font:700 13px/60px 'Poppins', Arial, Helvetica, sans-serif;
 }
