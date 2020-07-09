@@ -1203,6 +1203,20 @@ return [
         'insta' => 'Instagram',
         'gplus' => 'Google Mas',
     ],
+    'home_slider' => [
+      '1' => [
+          'title' => "Profesionales especializados",
+          'subtitle' => "que dan vida a ideas grandiosas"
+      ],
+      '2' => [
+          'title' => "Tu equipo de trabajo",
+          'subtitle' => "ahora más grande de lo que pensabas"
+      ],
+      '3' => [
+        'title' => "Multiplica el valor de tu portafolio",
+        'subtitle' => "mientras entregas calidad a tus clientes"
+      ]
+    ],
     'payment_methods' => [
         'paypal' => 'Paypal',
         'stripe' => 'Raya',

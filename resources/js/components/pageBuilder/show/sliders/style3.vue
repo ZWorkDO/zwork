@@ -5,8 +5,10 @@
                 <div class="offset-lg-2 col-xs-12 col-sm-12 col-md-12 col-lg-6">
                     <div class="wt-bannercontent">
                         <div class="wt-bannerhead">
-                            <div class="wt-title">
-                                <h1><span><em>{{slider.title}}</em></span>{{slider.subtitle}}</h1>
+                            <div class="wt-title" v-for="(slide, index) in slider.slider_image" :key="index" v-if="slider_index === index" >
+                                <h1><span><em>{{trans('lang.home_slider.'+index+'.title')}}</em></span>
+                                    {{trans('lang.home_slider.'+index+'.subtitle')}}
+                                </h1>
                             </div>
                             <div class="wt-description" v-if="slider.description" v-html="slider.description"></div>
                         </div>
@@ -56,11 +58,13 @@ export default {
         return {
             imageUrl:APP_URL+'/uploads/pages/'+this.page_id+'/',
             slider:[],
+            slider_index:0
         }
     },
     updated() {
+        var self = this;
         var slider = jQuery('.owl-carousel')
-        slider.owlCarousel({
+        var carousel = slider.owlCarousel({
             items: 1,
             animateOut: 'fadeOut',
             animateIn: 'fadeIn',
@@ -69,6 +73,9 @@ export default {
             margin: 0,
             autoplay:true,
         });
+        carousel.on('changed.owl.carousel', function(event) {
+            self.slider_index = event.page.index;
+        })
         jQuery("a[data-rel]").each(function () {
             jQuery(this).attr("rel", jQuery(this).data("rel"));
         });
