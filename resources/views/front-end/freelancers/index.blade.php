@@ -6,6 +6,7 @@
 @endpush
 @section('title'){{ $f_list_meta_title }} @stop
 @section('description', $f_list_meta_desc)
+@section('keywords', $f_list_meta_keywords)
 @section('content')
     @if ($show_f_banner == 'true')
         @php $breadcrumbs = Breadcrumbs::generate('searchResults'); @endphp

@@ -40,6 +40,14 @@
                 </div>
             </div>
         </div>
+        <div class="wt-settingscontent">
+            <div class="wt-description"><p>{{ trans('lang.seo_meta_keywords') }}</p></div>
+            <div class="wt-formtheme wt-userform">
+                <div class="form-group">
+                    {!! Form::textarea('inner_page[0][f_list_meta_keywords]', $f_list_meta_keywords, array('class' => 'form-control')) !!}
+                </div>
+            </div>
+        </div>
         <div class="wt-settingscontent la-settingsradio">
             <div class="wt-description"><p>{{ trans('lang.show_f_banner') }}</p></div>
             <switch_button v-model="show_f_banner">{{{ trans('lang.show_hide_banner') }}}</switch_button>
@@ -68,6 +76,14 @@
             <div class="wt-formtheme wt-userform">
                 <div class="form-group">
                     {!! Form::textarea('inner_page[0][emp_list_meta_desc]', $emp_list_meta_desc, array('class' => 'form-control')) !!}
+                </div>
+            </div>
+        </div>
+        <div class="wt-settingscontent">
+            <div class="wt-description"><p>{{ trans('lang.seo_meta_keywords') }}</p></div>
+            <div class="wt-formtheme wt-userform">
+                <div class="form-group">
+                    {!! Form::textarea('inner_page[0][emp_list_meta_keywords]', $emp_list_meta_keywords, array('class' => 'form-control')) !!}
                 </div>
             </div>
         </div>
@@ -102,6 +118,14 @@
                 </div>
             </div>
         </div>
+        <div class="wt-settingscontent">
+            <div class="wt-description"><p>{{ trans('lang.seo_meta_keywords') }}</p></div>
+            <div class="wt-formtheme wt-userform">
+                <div class="form-group">
+                    {!! Form::textarea('inner_page[0][job_list_meta_keywords]', $job_list_meta_keywords, array('class' => 'form-control')) !!}
+                </div>
+            </div>
+        </div>
         <div class="wt-settingscontent la-settingsradio">
             <div class="wt-description"><p>{{ trans('lang.show_job_banner') }}</p></div>
             <switch_button v-model="show_job_banner">{{{ trans('lang.show_hide_banner') }}}</switch_button>
@@ -133,6 +157,14 @@
                 </div>
             </div>
         </div>
+        <div class="wt-settingscontent">
+            <div class="wt-description"><p>{{ trans('lang.seo_meta_keywords') }}</p></div>
+            <div class="wt-formtheme wt-userform">
+                <div class="form-group">
+                    {!! Form::textarea('inner_page[0][service_list_meta_keywords]', $service_list_meta_keywords, array('class' => 'form-control')) !!}
+                </div>
+            </div>
+        </div>
         <div class="wt-settingscontent la-settingsradio">
             <div class="wt-description"><p>{{ trans('lang.show_service_banner') }}</p></div>
             <switch_button v-model="show_service_banner">{{{ trans('lang.show_hide_banner') }}}</switch_button>
@@ -161,6 +193,14 @@
             <div class="wt-formtheme wt-userform">
                 <div class="form-group">
                     {!! Form::textarea('inner_page[0][article_list_meta_desc]', $article_meta_desc, array('class' => 'form-control')) !!}
+                </div>
+            </div>
+        </div>
+        <div class="wt-settingscontent">
+            <div class="wt-description"><p>{{ trans('lang.seo_meta_keywords') }}</p></div>
+            <div class="wt-formtheme wt-userform">
+                <div class="form-group">
+                    {!! Form::textarea('inner_page[0][article_list_meta_keywords]', $article_meta_keywords, array('class' => 'form-control')) !!}
                 </div>
             </div>
         </div>

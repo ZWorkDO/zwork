@@ -659,6 +659,7 @@ class PublicController extends Controller
                 if ($type === 'employer') {
                     $emp_list_meta_title = !empty($inner_page) && !empty($inner_page[0]['emp_list_meta_title']) ? $inner_page[0]['emp_list_meta_title'] : trans('lang.emp_listing');
                     $emp_list_meta_desc = !empty($inner_page) && !empty($inner_page[0]['emp_list_meta_desc']) ? $inner_page[0]['emp_list_meta_desc'] : trans('lang.emp_meta_desc');
+                    $emp_list_meta_keywords = !empty($inner_page) && !empty($inner_page[0]['emp_list_meta_keywords']) ? $inner_page[0]['emp_list_meta_keywords'] : trans('lang.emp_meta_keywords');
                     $show_emp_banner = !empty($inner_page) && !empty($inner_page[0]['show_emp_banner']) ? $inner_page[0]['show_emp_banner'] : 'true';
                     $e_inner_banner = !empty($inner_page) && !empty($inner_page[0]['e_inner_banner']) ? $inner_page[0]['e_inner_banner'] : null;
                     if (file_exists(resource_path('views/extend/front-end/employers/index.blade.php'))) {
@@ -677,6 +678,7 @@ class PublicController extends Controller
                                 'current_date',
                                 'emp_list_meta_title',
                                 'emp_list_meta_desc',
+                                'emp_list_meta_keywords',
                                 'show_emp_banner',
                                 'e_inner_banner',
                                 'enable_package',
@@ -699,6 +701,7 @@ class PublicController extends Controller
                                 'current_date',
                                 'emp_list_meta_title',
                                 'emp_list_meta_desc',
+                                'emp_list_meta_keywords',
                                 'show_emp_banner',
                                 'e_inner_banner',
                                 'enable_package',
@@ -709,6 +712,7 @@ class PublicController extends Controller
                 } elseif ($type === 'freelancer') {
                     $f_list_meta_title = !empty($inner_page) && !empty($inner_page[0]['f_list_meta_title']) ? $inner_page[0]['f_list_meta_title'] : trans('lang.freelancer_listing');
                     $f_list_meta_desc = !empty($inner_page) && !empty($inner_page[0]['f_list_meta_desc']) ? $inner_page[0]['f_list_meta_desc'] : trans('lang.freelancer_meta_desc');
+                    $f_list_meta_keywords = !empty($inner_page) && !empty($inner_page[0]['f_list_meta_keywords']) ? $inner_page[0]['f_list_meta_keywords'] : trans('lang.freelancer_meta_keywords');
                     $show_f_banner = !empty($inner_page) && !empty($inner_page[0]['show_f_banner']) ? $inner_page[0]['show_f_banner'] : 'true';
                     $f_inner_banner = !empty($inner_page) && !empty($inner_page[0]['f_inner_banner']) ? $inner_page[0]['f_inner_banner'] : null;
                     if (file_exists(resource_path('views/extend/front-end/freelancers/index.blade.php'))) {
@@ -729,6 +733,7 @@ class PublicController extends Controller
                                 'current_date',
                                 'f_list_meta_title',
                                 'f_list_meta_desc',
+                                'f_list_meta_keywords',
                                 'show_f_banner',
                                 'f_inner_banner',
                                 'enable_package',
@@ -753,6 +758,7 @@ class PublicController extends Controller
                                 'current_date',
                                 'f_list_meta_title',
                                 'f_list_meta_desc',
+                                'f_list_meta_keywords',
                                 'show_f_banner',
                                 'f_inner_banner',
                                 'enable_package',
@@ -766,6 +772,7 @@ class PublicController extends Controller
             } elseif ($type == 'service') {
                 $service_list_meta_title = !empty($inner_page) && !empty($inner_page[0]['service_list_meta_title']) ? $inner_page[0]['service_list_meta_title'] : trans('lang.service_listing');
                 $service_list_meta_desc = !empty($inner_page) && !empty($inner_page[0]['service_list_meta_desc']) ? $inner_page[0]['service_list_meta_desc'] : trans('lang.service_meta_desc');
+                $service_list_meta_keywords = !empty($inner_page) && !empty($inner_page[0]['service_list_meta_keywords']) ? $inner_page[0]['service_list_meta_keywords'] : trans('lang.service_meta_keywords');
                 $show_service_banner = !empty($inner_page) && !empty($inner_page[0]['show_service_banner']) ? $inner_page[0]['show_service_banner'] : 'true';
                 $service_inner_banner = !empty($inner_page) && !empty($inner_page[0]['service_inner_banner']) ? $inner_page[0]['service_inner_banner'] : null;
                 // $services= Service::all();
@@ -797,6 +804,7 @@ class PublicController extends Controller
                             'response_time',
                             'service_list_meta_title',
                             'service_list_meta_desc',
+                            'service_list_meta_keywords',
                             'show_service_banner',
                             'service_inner_banner',
                             'show_breadcrumbs'
@@ -818,6 +826,7 @@ class PublicController extends Controller
                             'response_time',
                             'service_list_meta_title',
                             'service_list_meta_desc',
+                            'service_list_meta_keywords',
                             'show_service_banner',
                             'service_inner_banner',
                             'show_breadcrumbs'
@@ -828,6 +837,7 @@ class PublicController extends Controller
                 $Jobs_total_records = Job::count();
                 $job_list_meta_title = !empty($inner_page) && !empty($inner_page[0]['job_list_meta_title']) ? $inner_page[0]['job_list_meta_title'] : trans('lang.job_listing');
                 $job_list_meta_desc = !empty($inner_page) && !empty($inner_page[0]['job_list_meta_desc']) ? $inner_page[0]['job_list_meta_desc'] : trans('lang.job_meta_desc');
+                $job_list_meta_keywords = !empty($inner_page) && !empty($inner_page[0]['job_list_meta_keywords']) ? $inner_page[0]['job_list_meta_keywords'] : trans('lang.job_meta_keywords');
                 $show_job_banner = !empty($inner_page) && !empty($inner_page[0]['show_job_banner']) ? $inner_page[0]['show_job_banner'] : 'true';
                 $job_inner_banner = !empty($inner_page) && !empty($inner_page[0]['job_inner_banner']) ? $inner_page[0]['job_inner_banner'] : null;
                 $project_settings = !empty(SiteManagement::getMetaValue('project_settings')) ? SiteManagement::getMetaValue('project_settings') : array();
@@ -861,6 +871,7 @@ class PublicController extends Controller
                                 'symbol',
                                 'job_list_meta_title',
                                 'job_list_meta_desc',
+                                'job_list_meta_keywords',
                                 'show_job_banner',
                                 'job_inner_banner',
                                 'show_breadcrumbs'
@@ -884,6 +895,7 @@ class PublicController extends Controller
                                 'symbol',
                                 'job_list_meta_title',
                                 'job_list_meta_desc',
+                                'job_list_meta_keywords',
                                 'show_job_banner',
                                 'job_inner_banner',
                                 'show_breadcrumbs'

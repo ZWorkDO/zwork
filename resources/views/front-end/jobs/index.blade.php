@@ -3,6 +3,7 @@
  'front-end.master', ['body_class' => 'wt-innerbgcolor'] )
 @section('title'){{ $job_list_meta_title }} @stop
 @section('description', $job_list_meta_desc)
+@section('keywords', $job_list_meta_keywords)
 @section('content')
     @if ($show_job_banner == 'true')
         @php $breadcrumbs = Breadcrumbs::generate('searchResults'); @endphp

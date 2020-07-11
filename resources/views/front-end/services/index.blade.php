@@ -6,6 +6,7 @@
 @endpush
 @section('title'){{ $service_list_meta_title }} @stop
 @section('description', $service_list_meta_desc)
+@section('keywords', $service_list_meta_keywords)
 @section('content')
     @if ($show_service_banner == 'true')
         @php $breadcrumbs = Breadcrumbs::generate('searchResults'); @endphp

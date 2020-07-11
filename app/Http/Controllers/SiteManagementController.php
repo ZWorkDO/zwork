@@ -138,12 +138,15 @@ class SiteManagementController extends Controller
         $inner_page  = SiteManagement::getMetaValue('inner_page_data');
         $f_list_meta_title = !empty($inner_page) && !empty($inner_page[0]['f_list_meta_title']) ? $inner_page[0]['f_list_meta_title'] : '';
         $f_list_meta_desc = !empty($inner_page) && !empty($inner_page[0]['f_list_meta_desc']) ? $inner_page[0]['f_list_meta_desc'] : '';
+        $f_list_meta_keywords = !empty($inner_page) && !empty($inner_page[0]['f_list_meta_keywords']) ? $inner_page[0]['f_list_meta_keywords'] : '';
         $show_f_banner = !empty($inner_page) && !empty($inner_page[0]['show_f_banner']) ? $inner_page[0]['show_f_banner'] : '';
         $emp_list_meta_title = !empty($inner_page) && !empty($inner_page[0]['emp_list_meta_title']) ? $inner_page[0]['emp_list_meta_title'] : '';
         $emp_list_meta_desc = !empty($inner_page) && !empty($inner_page[0]['emp_list_meta_desc']) ? $inner_page[0]['emp_list_meta_desc'] : '';
+        $emp_list_meta_keywords = !empty($inner_page) && !empty($inner_page[0]['emp_list_meta_keywords']) ? $inner_page[0]['emp_list_meta_keywords'] : '';
         $show_emp_banner = !empty($inner_page) && !empty($inner_page[0]['show_emp_banner']) ? $inner_page[0]['show_emp_banner'] : '';
         $job_list_meta_title = !empty($inner_page) && !empty($inner_page[0]['job_list_meta_title']) ? $inner_page[0]['job_list_meta_title'] : '';
         $job_list_meta_desc = !empty($inner_page) && !empty($inner_page[0]['job_list_meta_desc']) ? $inner_page[0]['job_list_meta_desc'] : '';
+        $job_list_meta_keywords = !empty($inner_page) && !empty($inner_page[0]['job_list_meta_keywords']) ? $inner_page[0]['job_list_meta_keywords'] : '';
         $show_job_banner = !empty($inner_page) && !empty($inner_page[0]['show_job_banner']) ? $inner_page[0]['show_job_banner'] : '';
         $f_inner_banner = !empty($inner_page) && !empty($inner_page[0]['f_inner_banner']) ? $inner_page[0]['f_inner_banner'] : null;
         $e_inner_banner = !empty($inner_page) && !empty($inner_page[0]['e_inner_banner']) ? $inner_page[0]['e_inner_banner'] : null;
@@ -152,8 +155,10 @@ class SiteManagementController extends Controller
         $service_inner_banner = !empty($inner_page) && !empty($inner_page[0]['service_inner_banner']) ? $inner_page[0]['service_inner_banner'] : null;
         $service_meta_title = !empty($inner_page) && !empty($inner_page[0]['service_list_meta_title']) ? $inner_page[0]['service_list_meta_title'] : '';
         $service_meta_desc = !empty($inner_page) && !empty($inner_page[0]['service_list_meta_desc']) ? $inner_page[0]['service_list_meta_desc'] : '';
+        $service_list_meta_keywords = !empty($inner_page) && !empty($inner_page[0]['service_list_meta_keywords']) ? $inner_page[0]['service_list_meta_keywords'] : '';
         $article_meta_title = !empty($inner_page) && !empty($inner_page[0]['article_list_meta_title']) ? $inner_page[0]['article_list_meta_title'] : '';
         $article_meta_desc = !empty($inner_page) && !empty($inner_page[0]['article_list_meta_desc']) ? $inner_page[0]['article_list_meta_desc'] : '';
+        $article_meta_keywords = !empty($inner_page) && !empty($inner_page[0]['article_list_meta_keywords']) ? $inner_page[0]['article_list_meta_keywords'] : '';
         $show_article_banner = !empty($inner_page) && !empty($inner_page[0]['show_article_banner']) ? $inner_page[0]['show_article_banner'] : '';
         $article_inner_banner = !empty($inner_page) && !empty($inner_page[0]['article_inner_banner']) ? $inner_page[0]['article_inner_banner'] : null;
         $app_access_type = DB::table('site_managements')->select('meta_value')->where('meta_key', 'access_type')->get()->first();
@@ -205,7 +210,9 @@ class SiteManagementController extends Controller
                     'show_job_banner', 'f_inner_banner', 'e_inner_banner', 'job_inner_banner',
                     'favicon', 'show_service_banner', 'service_inner_banner', 'service_meta_title',
                     'service_meta_desc', 'access_type', 'reg_form_banner', 'port', 'host', 'homepage_list',
-                    'selected_homepage', 'article_meta_title','article_meta_desc','show_article_banner','article_inner_banner'
+                    'selected_homepage', 'article_meta_title','article_meta_desc','show_article_banner','article_inner_banner',
+                    'f_list_meta_keywords', 'emp_list_meta_keywords', 'job_list_meta_keywords', 'service_list_meta_keywords',
+                    'article_meta_keywords'
                 )
             );
         } else {
@@ -235,7 +242,9 @@ class SiteManagementController extends Controller
                     'show_job_banner', 'f_inner_banner', 'e_inner_banner', 'job_inner_banner',
                     'favicon', 'show_service_banner', 'service_inner_banner', 'service_meta_title',
                     'service_meta_desc', 'access_type', 'reg_form_banner', 'port', 'host', 'homepage_list',
-                    'selected_homepage', 'article_meta_title','article_meta_desc','show_article_banner','article_inner_banner'
+                    'selected_homepage', 'article_meta_title','article_meta_desc','show_article_banner','article_inner_banner',
+                    'f_list_meta_keywords', 'emp_list_meta_keywords', 'job_list_meta_keywords', 'service_list_meta_keywords',
+                    'article_meta_keywords'
                 )
             );
         }
