@@ -9,29 +9,12 @@
     }
     
     @endphp
-    <div class="wt-haslayout wt-innerbannerholder">
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-6 push-lg-3">
-                    <div class="wt-innerbannercontent">
-                    <div class="wt-title"><h2>{{ trans('lang.404_error') }}</h2></div>
-                    @if (!empty($show_breadcrumbs) && $show_breadcrumbs === 'true')
-                        <ol class="wt-breadcrumb">
-                            <li><a href="{{ url('/') }}">{{ trans('lang.home') }}</a></li>
-                            <li class="wt-active">{{ trans('lang.404_error') }}</li>
-                        </ol>
-                    @endif    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="wt-haslayout wt-main-section">
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-xs-12 col-sm-12 col-md-10 push-md-1 col-lg-8 push-lg-2">
                     <div class="wt-404errorpage">
-                        <figure class="wt-404errorimg"><img src="{{{ asset('images/404-img.jpg') }}}" alt="{{ trans('lang.404_img') }}"></figure>
+                        <figure class="wt-404errorimg"><img src="{{{ asset('images/404-img.png') }}}" alt="{{ trans('lang.404_img') }}"></figure>
                         <div class="wt-404errorcontent">
                             <div class="wt-title">
                                 <h3>{{ trans('lang.link_crashed') }}</h3>
