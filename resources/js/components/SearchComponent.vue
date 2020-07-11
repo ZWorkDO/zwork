@@ -2,7 +2,7 @@
     <form class="wt-formtheme wt-formbanner wt-formbannertwo" id="main-search-form" v-if="this.widget_type == 'home'">
         <fieldset>
             <div class="wt-dropdown"  @click="toggleDropdown">
-                <span>{{trans('lang.in')}} <em class="selected-search-type">{{selected_type}} </em><i class="lnr lnr-chevron-down"></i></span>
+                <span> <em class="selected-search-type">{{selected_type}} </em><i class="lnr lnr-chevron-down"></i></span>
             </div>
             <div class="wt-radioholder" v-bind:style='{"display" : (isActive? "block" : "none" )}'>
                 <span class="wt-radio" v-for="(filter, index) in filters" :key="index">
