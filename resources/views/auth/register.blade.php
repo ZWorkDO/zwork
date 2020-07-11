@@ -23,6 +23,7 @@
     $reg_three_title = !empty($register_form) && !empty($register_form[0]['step3-title']) ? $register_form[0]['step3-title'] : trans('lang.pro_info');
     $reg_three_subtitle = !empty($register_form) && !empty($register_form[0]['step3-subtitle']) ? $register_form[0]['step3-subtitle'] : '';
     $register_image = !empty($register_form) && !empty($register_form[0]['register_image']) ? '/uploads/settings/home/'.$register_form[0]['register_image'] : 'images/work.jpg';
+    $verify_code_image = !empty($register_form) && !empty($register_form[0]['verify_code_image']) ? '/uploads/settings/home/'.$register_form[0]['verify_code_image'] : 'images/verify-code.png';
     $reg_page = !empty($register_form) && !empty($register_form[0]['step3-page']) ? $register_form[0]['step3-page'] : '';
     $reg_four_title = !empty($register_form) && !empty($register_form[0]['step4-title']) ? $register_form[0]['step4-title'] : trans('lang.congrats');
     $reg_four_subtitle = !empty($register_form) && !empty($register_form[0]['step4-subtitle']) ? $register_form[0]['step4-subtitle'] : trans('lang.acc_creation_note');
@@ -269,7 +270,7 @@
                                         <li class="wt-active"><a href="javascrip:void(0);">{{{ trans('lang.04') }}}</a></li>
                                     </ul>
                                     <figure class="wt-joinformsimg">
-                                        <img src="{{ asset($register_image)}}" alt="{{{ trans('lang.verification_code_img') }}}">
+                                        <img src="{{ asset($verify_code_image)}}" alt="{{{ trans('lang.verification_code_img') }}}">
                                     </figure>
                                     <fieldset>
                                         <div class="form-group">
