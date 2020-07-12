@@ -305,7 +305,7 @@ class Helper extends Model
             $banner =  'images/e-1110x300.jpg';
         } elseif (empty($image) && isset($_GET['type']) && ($_GET['type'] == 'job' || $_GET['type'] == 'service')) {
             $banner =  'images/bannerimg/img-02.jpg';
-        } elseif (Request::segment(1) == 'articles') {
+        } elseif (empty($image) && Request::segment(1) == 'articles') {
             $banner =  'images/bannerimg/img-02.jpg';
         } else {
             $banner = $path . '/' . $image;
