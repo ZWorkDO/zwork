@@ -6,6 +6,7 @@
 @endpush
 {{-- @section('title'){{ $f_list_meta_title }} @stop
 @section('description', $f_list_meta_desc) --}}
+@section('keywords', $article_meta_keywords)
 @section('content')
     @if ($show_article_banner == 'true')
         <div class="wt-haslayout wt-innerbannerholder" style="background-image:url({{{ asset(Helper::getBannerImage($article_inner_banner, 'uploads/settings/general')) }}})">

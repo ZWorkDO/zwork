@@ -228,6 +228,7 @@ class ArticleController extends Controller
         $cats = ArticleCategory::all()->toArray();
         $latest_article = $this->article->latest()->take(3)->get();
         $inner_page  = SiteManagement::getMetaValue('inner_page_data');
+        $article_meta_keywords = !empty($inner_page) && !empty($inner_page[0]['article_list_meta_keywords']) ? $inner_page[0]['article_list_meta_keywords'] : '';
         $article_inner_banner = !empty($inner_page) && !empty($inner_page[0]['article_inner_banner']) ? $inner_page[0]['article_inner_banner'] : null;
         $show_article_banner = !empty($inner_page) && !empty($inner_page[0]['show_article_banner']) ? $inner_page[0]['show_article_banner'] : 'true';
         if (!empty($category)) {
@@ -244,12 +245,12 @@ class ArticleController extends Controller
             $articles = $this->article->paginate(4);
         }
         if (file_exists(resource_path('views/extend/front-end/articles/index.blade.php'))) {
-            return View::make('extend.front-end.articles.index', compact('cats', 'articles', 'latest_article','article_inner_banner','show_article_banner'));
+            return View::make('extend.front-end.articles.index', compact('cats', 'articles', 'latest_article','article_inner_banner','show_article_banner', 'article_meta_keywords'));
         } else {
             return View::make(
                 'front-end.articles.index',
                 compact(
-                    'cats', 'articles', 'latest_article','article_inner_banner','show_article_banner'
+                    'cats', 'articles', 'latest_article','article_inner_banner','show_article_banner', 'article_meta_keywords'
                 )
             );
         }
