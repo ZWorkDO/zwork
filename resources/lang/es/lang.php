@@ -1209,7 +1209,7 @@ return [
     'home_slider' => [
       '1' => [
           'title' => "Profesionales especializados",
-          'subtitle' => "que dan vida a ideas grandiosas"
+          'subtitle' => "que dan vida a ideas grandiosas "
       ],
       '2' => [
           'title' => "Tu equipo de trabajo",

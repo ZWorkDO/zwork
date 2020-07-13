@@ -8,7 +8,7 @@
                           <div v-for="(slide, index) in slider.slider_image" :key="index">
                             <div class="wt-title" v-if="sliderIndex == index" >
                                 <h1><span><em>{{trans('lang.home_slider.'+(index+1)+'.title')}}</em></span>
-                                    {{trans('lang.home_slider.'+(index+1)+'.subtitle')}}
+                                    {{trans('lang.home_slider.' +(index+1)+'.subtitle')}}
                                 </h1>
                             </div>
                           </div>
