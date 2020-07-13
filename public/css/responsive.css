@@ -31,13 +31,13 @@
 		top: 0;
 		left: 0;
 		padding: 0;
-		z-index: -1;
+		/*z-index: -1;*/
 		max-width: 100%;
 		flex: 0 0 100%;
 	}
 	.wt-bannerholderthree .row div:nth-child(1)[class*="col-"]{
 		z-index: 9;
-		height: 100%;
+		height: 704px;
 	}
 	.wt-slidericons{
 		display: none;

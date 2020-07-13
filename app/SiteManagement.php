@@ -168,18 +168,23 @@ class SiteManagement extends Model
             foreach ($inner_page_data as $key => $inner_page) {
                 $inner_page_data_array[$key]['f_list_meta_title'] = $inner_page['f_list_meta_title'];
                 $inner_page_data_array[$key]['f_list_meta_desc'] = $inner_page['f_list_meta_desc'];
+                $inner_page_data_array[$key]['f_list_meta_keywords'] = $inner_page['f_list_meta_keywords'];
                 $inner_page_data_array[$key]['show_f_banner'] = $inner_page['show_f_banner'];
                 $inner_page_data_array[$key]['emp_list_meta_title'] = $inner_page['emp_list_meta_title'];
                 $inner_page_data_array[$key]['emp_list_meta_desc'] = $inner_page['emp_list_meta_desc'];
+                $inner_page_data_array[$key]['emp_list_meta_keywords'] = $inner_page['emp_list_meta_keywords'];
                 $inner_page_data_array[$key]['show_emp_banner'] = $inner_page['show_emp_banner'];
                 $inner_page_data_array[$key]['job_list_meta_title'] = $inner_page['job_list_meta_title'];
                 $inner_page_data_array[$key]['job_list_meta_desc'] = $inner_page['job_list_meta_desc'];
+                $inner_page_data_array[$key]['job_list_meta_keywords'] = $inner_page['job_list_meta_keywords'];
                 $inner_page_data_array[$key]['show_job_banner'] = $inner_page['show_job_banner'];
                 $inner_page_data_array[$key]['service_list_meta_title'] = $inner_page['service_list_meta_title'];
                 $inner_page_data_array[$key]['service_list_meta_desc'] = $inner_page['service_list_meta_desc'];
+                $inner_page_data_array[$key]['service_list_meta_keywords'] = $inner_page['service_list_meta_keywords'];
                 $inner_page_data_array[$key]['show_service_banner'] = $inner_page['show_service_banner'];
                 $inner_page_data_array[$key]['article_list_meta_title'] = $inner_page['article_list_meta_title'];
                 $inner_page_data_array[$key]['article_list_meta_desc'] = $inner_page['article_list_meta_desc'];
+                $inner_page_data_array[$key]['article_list_meta_keywords'] = $inner_page['article_list_meta_keywords'];
                 $inner_page_data_array[$key]['show_article_banner'] = $inner_page['show_article_banner'];
                 if (!empty($inner_page['f_inner_banner'])) {
                     if (file_exists($old_path . '/' . $inner_page['f_inner_banner'])) {

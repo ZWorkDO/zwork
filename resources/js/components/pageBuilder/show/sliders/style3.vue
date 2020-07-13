@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                     <div class="wt-bannerslider-holder">
-                        <div id="wt-bannerslider-two" class="wt-bannerslider-two owl-carousel">
+                        <div id="wt-bannerslider-two" class="wt-bannerslider-two owl-carousel owl-theme">
                             <div class="item" v-for="(slide, index) in slider.slider_image" :key="index">
                                 <figure class="wt-bannerimg">
                                     <img :src="imageUrl+slide" alt="slideimg">
@@ -83,6 +83,7 @@ export default {
             animateIn: 'fadeIn',
             loop:true,
             nav:false,
+            dots: true,
             margin: 0,
             autoplay:true,
         });

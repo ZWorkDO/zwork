@@ -458,6 +458,7 @@ return [
     'role' => 'Papel',
     'description' => 'Descripción',
     'seo_meta_desc' => 'Añadir SEO Descripción Meta (Opcional)',
+    'seo_meta_keywords' => 'Añadir SEO Keywords Meta (Opcional)',
     'add_menu_to_navbar' => 'Añadir página al menú de la barra de navegación',
     'select_year' => 'Seleccione el año',
     'download' => 'Descargar',
@@ -1266,6 +1267,11 @@ return [
     'freelancer_meta_desc' => 'Profesional meta description',
     'emp_meta_desc' => 'Descripción de la meta del empleador',
     'job_meta_desc' => 'Descripción de la meta del proyecto',
+    'freelancer_meta_keywords' => 'freelancer keywords',
+    'emp_meta_keywords' => 'emp keywords',
+    'service_meta_keywords' => 'service keywords',
+    'article_meta_keywords' => 'article keywords',
+    'job_meta_keywords' => 'job keywords',
     'freelancer_listing' => 'Listado de Profesional',
     'emp_listing' => 'Listado de clientes',
     'job_listing' => 'Listado de proyectos',
@@ -1360,5 +1366,5 @@ return [
     'select_professions' => 'Seleccione su profesión',
     'select_camaras' => 'Camara de Comercio',
     'select_rtes' => 'Regimén',
-    'grade' => 'Grado Académico',
+    'grade' => 'Grado Académico'
 ];

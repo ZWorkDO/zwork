@@ -4661,22 +4661,22 @@ body.wt-login .wt-userlogedin{display: block;}
 	min-height: 30px;
 }
 /* 404 Error Page Style */
-.wt-404errorpage{
+.wt-404errorpage, .wt-500errorpage{
 	float: left;
 	width: 100%;
 }
-.wt-404errorimg{
+.wt-404errorimg, .wt-500errorimg {
 	margin: 0;
 	float: left;
 	width: 100%;
 	border-radius: 4px 4px 0 0;
 }
-.wt-404errorimg img{
+.wt-404errorimg img, .wt-500errorimg img {
 	width: 100%;
 	display: block;
 	border-radius: 4px 4px 0 0;
 }
-.wt-404errorcontent{
+.wt-404errorcontent, .wt-500errorcontent {
 	float: left;
 	width: 100%;
 	padding: 60px;
@@ -4684,19 +4684,19 @@ body.wt-login .wt-userlogedin{display: block;}
 	text-align: center;
 	border-radius: 0 0 4px 4px;
 }
-.wt-404errorcontent .wt-title h3{
+.wt-404errorcontent .wt-title h3, .wt-500errorcontent .wt-title h3  {
 	margin: 0;
 	font-size: 20px;
 	line-height: 20px;
 	font-weight: 400;
 	margin: 0 0 10px;
 }
-.wt-404errorcontent .wt-description p{
+.wt-404errorcontent .wt-description p, .wt-500errorcontent .wt-description p{
 	margin: 0;
 	font-size: 16px;
 	line-height: 24px;
 }
-.wt-404errorcontent .wt-description p a{
+.wt-404errorcontent .wt-description p a, .wt-500errorcontent .wt-description p a{
 	color: #55acee;
 	text-decoration: none;
 }

@@ -19,11 +19,13 @@
                                 <div class="wt-description">
                                   @if (session('resent'))
                                     <div class="alert alert-success" role="alert">
-                                        {{ __('Un nuevo link de verificación ha sido enviado a tu correo electrónico.') }}
+                                        {{ __('Un nuevo enlace de verificación ha sido enviado a tu correo electrónico.') }}
                                     </div>
                                   @endif
-
-                                  {{ __('Antes de proceder, por favor verifica tu cuenta usando el link de verificación que hemos enviado a tu correo electrónico.') }}
+                                  <br>
+                                  {{ __('Antes de proceder, por favor verifica tu cuenta usando el enlace de verificación que hemos enviado a tu correo electrónico.') }}
+                                  <br>
+                                  <br>
                                   {{ __('Si no has recibido un correo electrónico de verificación de tu cuenta') }}, <a href="{{ route('verification.resend') }}">{{ __('haz click aquí para solicitar otro') }}</a>.
                                 </div>
                               </div>

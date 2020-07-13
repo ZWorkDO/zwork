@@ -3,6 +3,7 @@
  'front-end.master', ['body_class' => 'wt-innerbgcolor'] )
 @push('sliderStyle') 
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet">
 @endpush
 @push('stylesheets')
     <link href="{{ asset('css/prettyPhoto-min.css') }}" rel="stylesheet">
