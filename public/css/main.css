@@ -1427,7 +1427,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	-webkit-align-content: center;
 	-ms-flex-line-pack: center;
 	/* height: 100%; */
-	height: 700px;
+	height: 640px;
 }
 .wt-bannerhead{
 	float: left;
@@ -8351,6 +8351,12 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	float: left;
 	width: 100%;
 }
+.owl-theme .owl-dots, .owl-theme .owl-nav {
+  margin: 0 auto;
+  left:auto;
+  width: 100%;
+}
+
 .wt-slidericons{
 	float: left;
 	width: 100%;
