@@ -3501,14 +3501,23 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-featuredtag.wt-featuredtagcolor3{border-top-color: #ff5851;}
 .wt-featuredtag{
 	top: 0;
-	left: 0;
+  /*left: 0;*/
+  right: 275px;
 	width: 40px;
 	height: 40px;
 	position: absolute;
-	border-top: 40px solid #4679B3;
+	/*border-top: 40px solid #4679B3;*/
 	border-right: 40px solid transparent;
 }
-.wt-featuredtag img{max-width: 40px;margin: -85px 4px 0;border:0;}
+.wt-proposalholder .wt-featuredtag, .wt-dashboradsaveitem .wt-featuredtag {
+  right: 15px;
+}
+.wt-featuredtag img{
+  max-width: 40px;
+  /*margin: -85px 4px 0;*/
+  margin-top: -10px;
+  border:0;
+}
 .wt-userlistingholder .wt-pagination{margin-top:40px; }
 .wt-viewjobholder{
 	top: 0;
