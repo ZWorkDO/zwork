@@ -4675,6 +4675,8 @@ body.wt-login .wt-userlogedin{display: block;}
 	width: 100%;
 	display: block;
 	border-radius: 4px 4px 0 0;
+	background-color: white;
+
 }
 .wt-404errorcontent, .wt-500errorcontent {
 	float: left;
