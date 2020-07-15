@@ -123,7 +123,7 @@
                                                 <strong v-cloak>@{{form_step1.password_confirm_error}}</strong>
                                             </span>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group justify-content-center d-flex wt-register-btns">
                                             <button type="submit" class="wt-btn">{{{  trans('lang.btn_startnow') }}}</button>
                                         </div>
                                     </div>
@@ -195,9 +195,11 @@
                                             </div>
                                           </div>
                                           @endif 
-                                          <div class="mt-4" style="float:left">
-                                              <a href="#" @click.prevent="prev()" class="wt-btn">{{{ trans('lang.previous') }}}</a>
-                                              <a href="#" @click.prevent="checkStep2('{{ trans('lang.email_not_config') }}')" class="wt-btn">{{{ trans('lang.continue') }}}</a>
+                                          <div class="mt-4 justify-content-center d-flex w-100" style="float:left">
+                                              <div class="wt-register-btns">
+                                                <a href="#" @click.prevent="prev()" class="wt-btn">{{{ trans('lang.previous') }}}</a>
+                                                <a href="#" @click.prevent="checkStep2('{{ trans('lang.email_not_config') }}')" class="wt-btn">{{{ trans('lang.continue') }}}</a>
+                                              </div>
                                           </div>                                       
                                       </fieldset>
                                   </div>
@@ -247,8 +249,12 @@
                                                     <strong style="color: red;" v-cloak>{{trans('lang.register_termsconditions_error')}}</strong>
                                                 </span>
                                           </span>
-                                          <a href="#" @click.prevent="checkStep3('{{ trans('lang.email_not_config') }}')" class="wt-btn">{{{ trans('lang.continue') }}}</a>
                                       </div>  
+                                      <div class="mt-4 ml-1">
+                                        <div class="justify-content-center w-100 d-flex wt-register-btns">
+                                            <a href="#" @click.prevent="checkStep3('{{ trans('lang.email_not_config') }}')" class="wt-btn">{{{ trans('lang.continue') }}}</a>
+                                        </div>
+                                      </div>
                                     </fieldset>
                                   </div>
                                 </fieldset>
@@ -291,7 +297,7 @@
                                               <a href="#" @click.prevent="resendCode()">{{{ trans('lang.resend_code') }}}</a>
                                             </label>
                                         </div>
-                                        <div class="form-group wt-btnarea">
+                                        <div class="form-group wt-btnarea justify-content-center w-100 d-flex wt-register-btns">
                                             <a href="#" @click.prevent="verifyCode()" class="wt-btn">{{{ trans('lang.continue') }}}</a>
                                         </div>
                                     </fieldset>

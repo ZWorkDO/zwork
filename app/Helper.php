@@ -1353,6 +1353,11 @@ class Helper extends Model
                 'title' => trans('lang.social_icons.gplus'),
                 'color' => '#dd4b39',
                 'icon' => 'fab fa-google-plus-g',
+            ),
+            'linkedin' => array(
+              'title' => trans('lang.social_icons.linkedin'),
+              'color' => '#0077b5',
+              'icon' => 'fab fa-linkedin',
             )
         );
         return $social;

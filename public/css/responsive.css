@@ -37,7 +37,7 @@
 	}
 	.wt-bannerholderthree .row div:nth-child(1)[class*="col-"]{
 		z-index: 9;
-		height: 704px;
+		height: 640px;
 	}
 	.wt-slidericons{
 		display: none;
