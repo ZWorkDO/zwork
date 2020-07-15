@@ -2859,6 +2859,9 @@ body.wt-login .wt-userlogedin{display: block;}
 	margin: 0;
 	padding: 5px;
 }
+.wt-formregister .wt-register-btns .wt-btn {
+  padding: 0 40px;
+}
 .wt-formregister .wt-categories,
 .wt-formregister .wt-roles,
 .wt-formregister .wt-person-type  {
