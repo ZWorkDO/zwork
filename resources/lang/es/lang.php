@@ -493,7 +493,7 @@ return [
     'menu_title' => 'Título del menú',
     'update_package' => 'Paquete de actualización',
     'email_address' => 'Dirección de correo electrónico',
-    'send_pass_reset_link' => 'Enviar contraseña Restablecer enlace',
+    'send_pass_reset_link' => 'Enviar contraseña',
     'pass' => 'Contraseña',
     'confirm_pass' => 'Confirmar contraseña',
     'join_for_free' => 'Registrase gratis',

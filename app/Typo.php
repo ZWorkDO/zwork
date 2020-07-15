@@ -89,6 +89,10 @@ class Typo extends Model
                         background: <?php echo $styling[0]['primary_color'] ?>;
                     }
                     
+                    .wt-forgotpassword-holder .card .card-body form .form-group button[type=submit] {
+                      background: <?php echo $color_7 ?>;
+                    }
+
                     .wt-,
                     {
                         background: <?php echo $color_2; ?>;
