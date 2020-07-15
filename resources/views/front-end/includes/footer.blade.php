@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         @if (!empty($footer['menu_title_1']) || !empty($footer['menu_pages_1']))
-                            <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="col-12 col-sm-6 col-md-3 col-lg-3 mt-4">
                                 <div class="wt-footercol wt-widgetcompany">
                                     @if (!empty($footer['menu_title_1']))
                                         <div class="wt-fwidgettitle">
@@ -44,7 +44,7 @@
                             </div>
                         @endif
                         @if (!empty($search_menu) || !empty($menu_title))
-                            <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="col-12 col-sm-6 col-md-3 col-lg-3 mt-4">
                                 <div class="wt-footercol wt-widgetcompany">
                                     @if (!empty($menu_title))
                                         <div class="wt-fwidgettitle">

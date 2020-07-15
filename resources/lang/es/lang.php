@@ -1203,6 +1203,7 @@ return [
         'youtube' => 'Youtube',
         'insta' => 'Instagram',
         'gplus' => 'Google Mas',
+        'linkedin' => 'LinkedIn',
     ],
     'join_to_a_project' => 'Únete a un projecto',
     'connect_to_a_freelancer' => 'Conecta con un profesional',
