@@ -34,6 +34,7 @@ use App\Notifications;
 use Event;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
+
 /**
  * Class User
  *
@@ -497,6 +498,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function getSearchResult(
         $type,
         $keyword,
+        $search_categories,
         $search_locations,
         $search_employees,
         $search_skills,
@@ -519,6 +521,20 @@ class User extends Authenticatable implements MustVerifyEmail
                 $users->orWhere('slug', 'like', '%' . $keyword . '%');
                 $users->whereIn('id', $user_by_role);
                 $users->where('is_disabled', 'false');
+            }
+            if (!empty($search_categories)) {
+              $filters['category'] = $search_categories;
+              foreach ($search_categories as $key => $search_category) {
+                  $categor_obj = Category::where('slug', $search_category)->first();
+                  $category = Category::find($categor_obj->id);
+                  if (!empty($category->freelancers)) {
+                      $category_freelancers = $category->freelancers->pluck('id')->toArray();
+                      foreach ($category_freelancers as $id) {
+                          $user_id[] = $id;
+                      }
+                  }
+              }
+              $users->whereIn('id', $user_id)->get();
             }
             if (!empty($search_locations)) {
                 $filters['locations'] = $search_locations;
