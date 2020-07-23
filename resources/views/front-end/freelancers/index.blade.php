@@ -39,9 +39,6 @@
     @endif
     @if (!empty($categories) && $categories->count() > 0)
         <div class="wt-categoriesslider-holder wt-haslayout {{$show_f_banner == 'false' ? 'la-categorty-top-mt' : ''}}">
-            <div class="wt-title">
-                <h2>{{ trans('lang.browse_job_cats') }}</h2>
-            </div>
             <div id="wt-categoriesslider" class="wt-categoriesslider owl-carousel">
                 @foreach ($categories as $cat)
                     @php
@@ -52,8 +49,8 @@
                     <div class="wt-categoryslidercontent item {{$active_wrapper}}">
                         <figure><img src="{{{ asset(Helper::getCategoryImage($cat->image)) }}}" alt="{{{ $cat->title }}}"></figure>
                         <div class="wt-cattitle">
-                        <h3><a href="{{{url('search-results?type=job&category%5B%5D='.$cat->slug)}}}" class="{{$active}}">{{{ $cat->title }}}</a></h3>
-                            <span>Items: {{{$category->jobs->count()}}}</span>
+                        <h3><a href="{{{url('search-results?type=freelancer&category%5B%5D='.$cat->slug)}}}" class="{{$active}}">{{{ $cat->title }}}</a></h3>
+                            <span>Items: {{{$category->freelancers->count()}}}</span>
                         </div>
                     </div>
                 @endforeach
@@ -231,7 +228,8 @@
                     0:{items:1,},
                     481:{items:2,},
                     768:{items:3,},
-                    1440:{items:4,},
+                    1280:{items:5,},
+                    1440:{items:5,},
                     1760:{items:6,}
                 }
             });

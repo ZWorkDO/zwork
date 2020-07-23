@@ -1,6 +1,9 @@
 @extends(file_exists(resource_path('views/extend/front-end/master.blade.php')) ? 
 'extend.front-end.master':
  'front-end.master', ['body_class' => 'wt-innerbgcolor'] )
+@push('stylesheets')
+    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
+@endpush
 @section('title'){{ $job_list_meta_title }} @stop
 @section('description', $job_list_meta_desc)
 @section('keywords', $job_list_meta_keywords)
@@ -31,6 +34,26 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    @endif
+    @if (!empty($categories) && $categories->count() > 0)
+        <div class="wt-categoriesslider-holder wt-haslayout {{$show_job_banner == 'false' ? 'la-categorty-top-mt' : ''}}">
+            <div id="wt-categoriesslider" class="wt-categoriesslider owl-carousel">
+                @foreach ($categories as $cat)
+                    @php
+                        $category = \App\Category::find($cat->id);
+                        $active = (!empty($_GET['category']) && in_array($cat->id, $_GET['category'])) ? 'active-category' : '';
+                        $active_wrapper = ( !empty($_GET['category']) && in_array($cat->id, $_GET['category'])) ? 'active-category-wrapper' : '';
+                    @endphp
+                    <div class="wt-categoryslidercontent item {{$active_wrapper}}">
+                        <figure><img src="{{{ asset(Helper::getCategoryImage($cat->image)) }}}" alt="{{{ $cat->title }}}"></figure>
+                        <div class="wt-cattitle">
+                        <h3><a href="{{{url('search-results?type=job&category%5B%5D='.$cat->slug)}}}" class="{{$active}}">{{{ $cat->title }}}</a></h3>
+                            <span>Items: {{{$category->jobs->count()}}}</span>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     @endif
@@ -192,4 +215,33 @@
             </div>
         </div>
     </div>
-    @endsection
+    @push('scripts')
+        <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+        <script>
+            if (APP_DIRECTION == 'rtl') {
+                var direction = true;
+            } else {
+                var direction = false;
+            }
+            
+            jQuery("#wt-categoriesslider").owlCarousel({
+                item: 6,
+                rtl:direction,
+                loop:true,
+                nav:false,
+                margin: 0,
+                autoplay:false,
+                center: true,
+                responsiveClass:true,
+                responsive:{
+                    0:{items:1,},
+                    481:{items:2,},
+                    768:{items:3,},
+                    1280:{items:5,},
+                    1440:{items:5,},
+                    1760:{items:6,}
+                }
+            });
+        </script>
+    @endpush
+@endsection

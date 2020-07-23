@@ -643,6 +643,7 @@ class PublicController extends Controller
                 $search =  User::getSearchResult(
                     $type,
                     $keyword,
+                    $search_categories,
                     $search_locations,
                     $search_employees,
                     $search_skills,
