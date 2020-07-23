@@ -34,33 +34,7 @@
                     @endif
                 </fieldset>
             </div>
-        </div>
-        <div class="wt-widget wt-effectiveholder">
-            <div class="wt-widgettitle">
-                <h2>{{ trans('lang.location') }}</h2>
-            </div>
-            <div class="wt-widgetcontent">
-                <fieldset>
-                    <div class="form-group">
-                        <input type="text" class="form-control filter-records" placeholder="{{ trans('lang.search_loc') }}">
-                        <a href="javascrip:void(0);" class="wt-searchgbtn"><i class="lnr lnr-magnifier"></i></a>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    @if (!empty($locations))
-                        <div class="wt-checkboxholder wt-verticalscrollbar">
-                            @foreach ($locations as $location)
-                                @php $checked = ( !empty($_GET['locations']) && in_array($location->slug, $_GET['locations'])) ? 'checked' : '' @endphp
-                                <span class="wt-checkbox">
-                                    <input id="location-{{{ $location->slug }}}" type="checkbox" name="locations[]" value="{{{$location->slug}}}" {{$checked}} >
-                                    <label for="location-{{{ $location->slug }}}"> <img src="{{{asset(App\Helper::getLocationFlag($location->flag))}}}" alt="{{ trans('lang.img') }}"> {{{ $location->title }}}</label>
-                                </span>
-                            @endforeach
-                        </div>
-                    @endif
-                </fieldset>
-            </div>
-        </div>
+        </div>       
         <div class="wt-widget wt-effectiveholder">
             <div class="wt-widgettitle">
                 <h2>{{{ trans('lang.hourly_rate') }}}</h2>
