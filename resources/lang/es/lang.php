@@ -195,7 +195,8 @@ return [
     'cancelled_services' => 'Servicios cancelados',
     'show_emplyr_inn_sec' => 'Mostrar u ocultar la sección interna del empleador',
     'show_hide' => 'Mostrar u ocultar',
-    'fixed' => 'Fija',
+    'fixed' => 'Tiempo completo',
+    'hourly' => 'Tiempo parcial',
     'total_ongoing_services' => 'Servicios continuos totales',
     'total_completed_services' => 'Total de servicios completados',
     'total_cancelled_services' => 'Servicios cancelados totales',
@@ -1108,7 +1109,7 @@ return [
     'projecttype' => [
         'projects' => 'Cualquier tipo de proyecto',
         'hourly' => 'Proyecto basado en horas',
-        'fixed' => 'Proyecto de precio fijo',
+        'fixed' => 'Proyecto de tiempo completo',
     ],
     'project_status' => [
         'completed' => 'Terminado',
@@ -1125,7 +1126,7 @@ return [
     'jobtype' => [
         'all' => 'Todos los tipos',
         'featured' => 'Proyectos destacados',
-        'fixed' => 'Proyectos fijos',
+        'fixed' => 'Proyectos de tiempo completo',
         'hourly' => 'Proyectos por hora',
     ],
     'freelancer_hourly_rate' => [

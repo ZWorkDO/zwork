@@ -93,7 +93,7 @@
                                     @endif
                                     @if (!empty($job->project_type))
                                         @php $project_type  = Helper::getProjectTypeList($job->project_type); @endphp
-                                        <li><span class="wt-clicksavefolder"><i class="far fa-folder wt-viewjobfolder"></i> {{ trans('lang.type') }} {{{ $project_type }}}</span></li>
+                                        <li><span class="wt-clicksavefolder"><i class="far fa-folder wt-viewjobfolder"></i>   {{{ $project_type }}}</span></li>
                                     @endif
                                     @if (!empty($job->duration))
                                         <li><span class="wt-dashboradclock"><i class="far fa-clock wt-viewjobclock"></i> {{ trans('lang.duration') }} {{{ Helper::getJobDurationList($job->duration) }}}</span></li>
