@@ -48,7 +48,7 @@ class BadgeSeeder extends Seeder
                     'title' => 'Bronze',
                     'slug' => 'Bronze',
                     'image' => 'featured.png',
-                    'color' => '#2ecc71',
+                    'color' => '#b1d131',
                     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                     'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 ],

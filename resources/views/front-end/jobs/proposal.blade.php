@@ -6,10 +6,10 @@
     <div class="wt-haslayout wt-innerbannerholder">
         <div class="container">
             <div class="row justify-content-md-center">
-                <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-6 push-lg-3">
+                <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-8 push-lg-3">
                     <div class="wt-innerbannercontent">
                         <div class="wt-title"><h2>{{ trans('lang.job_proposal') }}</h2></div>
-                        @if (!empty($show_breadcrumbs) && $show_breadcrumbs === 'true')
+                        @if (!empty($show_breadcrumbs) && $show_breadcrumbs === 'true' && false)
                             <ol class="wt-breadcrumb">
                                 @foreach ($breadcrumbs as $breadcrumb)
                                     @if ($breadcrumb->url && !$loop->last)

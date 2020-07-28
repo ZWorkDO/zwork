@@ -3215,7 +3215,7 @@ input[type=text] {
     right: 0;
     bottom: 0; }
   .list__item.success .fa:before {
-    color: #2ecc71; }
+    color: #b1d131; }
   .list__item.error .fa:before {
     color: #e74c3c; }
 
@@ -3243,7 +3243,7 @@ input[type=text] {
     margin-right: 7px;
     font-weight: 400; }
 .list__item--permissions.success i:before {
-  color: #2ecc71;
+  color: #b1d131;
   vertical-align: 1px; }
 .list__item--permissions.error i:before {
   color: #e74c3c;

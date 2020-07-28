@@ -112,7 +112,7 @@ INSERT INTO `badges` (`id`, `title`, `slug`, `image`, `color`, `created_at`, `up
 VALUES
 	(1,'Gold','gold','featured.png','#f1c40f','2020-03-05 13:56:45','2020-03-05 13:56:45'),
 	(2,'Silver','silver','featured.png','#e67e22','2020-03-05 13:56:45','2020-03-05 13:56:45'),
-	(3,'Bronze','Bronze','featured.png','#2ecc71','2020-03-05 13:56:45','2020-03-05 13:56:45');
+	(3,'Bronze','Bronze','featured.png','#b1d131','2020-03-05 13:56:45','2020-03-05 13:56:45');
 
 /*!40000 ALTER TABLE `badges` ENABLE KEYS */;
 UNLOCK TABLES;

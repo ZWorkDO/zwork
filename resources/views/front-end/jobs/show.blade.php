@@ -64,11 +64,10 @@
                                                 )
                                                 <ul class="wt-userlisting-breadcrumb wt-userlisting-breadcrumbvtwo">
                                                     @if (!empty($job->project_level))
-                                                        <li><span><i class="fa fa-dollar-sign wt-viewjobdollar"></i> {{{Helper::getProjectLevel($job->project_level)}}}</span></li>
-                                                    @endif
-                                                    @if (!empty($job->location->title))
-                                                        <li><span><img src="{{{asset(Helper::getLocationFlag($job->location->flag))}}}" alt="{{ trans('lang.img') }}"> {{{ $job->location->title }}}</span></li>
-                                                    @endif
+                                                      <li><span>
+                                                      {!! html_entity_decode(str_repeat('<i class="fa fa-dollar-sign wt-viewjobdollar"></i>', Helper::getProjectLevelCode($job->project_level) + 1)) !!}
+                                                      </span></li>
+                                                    @endif                                                    
                                                     @if (!empty($job->project_type))
                                                         <li><span class="wt-clicksavefolder"><i class="far fa-folder wt-viewjobfolder"></i> {{ trans('lang.type') }} {{{$project_type}}}</span></li>
                                                     @endif
