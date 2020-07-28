@@ -2229,7 +2229,7 @@ if (document.getElementById("settings")) {
             show_job_banner: false,
             show_service_banner: false,
             show_article_banner: false,
-            primary_color: '#ff5851',
+            primary_color: '#ff6b57',
             enable_theme_color: false,
             enable_color_text: '',
             cat_section_display: false,

@@ -580,6 +580,29 @@ class Helper extends Model
     }
 
     /**
+     * Get Project List
+     *
+     * @param string $key key
+     *
+     * @access public
+     *
+     * @return array
+     */
+    public static function getProjectLevelCode($key = "")
+    {
+        $list = array(
+            'basic'     => trans('lang.project_level.basic'),
+            'medium'    => trans('lang.project_level.medium'),
+            'expensive' => trans('lang.project_level.expensive'),
+        );
+        if (!empty($key) && array_key_exists($key, $list)) {
+            return array_search($key, array_keys($list));
+        } else {
+            return 0;
+        }
+    }
+
+    /**
      * Get Project Type
      *
      * @param string $key key

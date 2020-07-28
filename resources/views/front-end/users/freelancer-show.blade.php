@@ -108,13 +108,9 @@
                                         <h3 data-from="0" data-to="{{{ Helper::getProposals($user->id, 'completed')->count() }}}" data-speed="8000" data-refresh-interval="100">{{{ Helper::getProposals($user->id, 'completed')->count() }}}</h3>
                                         <h4>{{ trans('lang.completed_projects') }}</h4>
                                     </div>
-                                    <div class="wt-statisticcontent wt-countercolor4">
+                                    <div class="wt-statisticcontent-full wt-countercolor4">
                                         <h3 data-from="0" data-to="{{{ Helper::getProposals($user->id, 'cancelled')->count() }}}" data-speed="800" data-refresh-interval="02">{{{ Helper::getProposals($user->id, 'cancelled')->count() }}}</h3>
-                                        <h4>{{ trans('lang.cancelled_projects') }}</h4>
-                                    </div>
-                                    <div class="wt-statisticcontent wt-countercolor3">
-                                        <h3 data-from="0" data-to="{{ $amount }}" data-speed="8000" data-refresh-interval="100">{{ empty($amount) ? $symbol.'0.00' : $symbol."".$amount }}</h3>
-                                        <h4>{{ trans('lang.total_earnings') }}</h4>
+                                        <h4>{{ trans('lang.average_delivery_time') }}</h4>
                                     </div>
                                     <div class="wt-description">
                                         <p>{{ trans('lang.send_offer_note') }}</p>

@@ -157,7 +157,7 @@ jQuery(document).on('ready', function() {
 	jQuery('.template-content').tipso({
 			speed             : 400,        
 			background        : '#fff',
-			titleBackground   : '#3498db',
+			titleBackground   : '#039ce3',
 			color             : '#999999',
 			titleColor        : '#ffffff',
 			width             : 105,

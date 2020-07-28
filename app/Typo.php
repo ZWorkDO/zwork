@@ -20,7 +20,7 @@ class Typo extends Model
         $color_3 = "#1c4f8c";
         $color_4 = "#b1d131";
         $color_5 = "#ffdf4c";
-        $color_6 = "#ed9f00";
+        $color_6 = "#ffdf4c";
         $color_7 = "#ff6b57";
         $styling = SiteManagement::getMetaValue('settings');
         if (!empty($styling[0]['enable_theme_color']) && $styling[0]['enable_theme_color'] == 'true') {
