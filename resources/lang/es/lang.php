@@ -884,6 +884,7 @@ return [
     'latest_proposals' => 'Últimas propuestas',
     'browse_job_cats' => 'Categorías Populares:',
     'session_expire' => 'Sesión expirada.',
+    'your_session_expire' => 'Tu sesión ha expirado, por favor, inicia sesión e intenta nuevamente.',
     'items' => 'Artículos:',
     'users' => 'Usuarios',
     'stripe_settings' => 'Ajustes de la raya',
