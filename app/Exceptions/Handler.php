@@ -42,7 +42,7 @@ class Handler extends ExceptionHandler
         // if ($exception instanceof \Swift_TransportException) {
         //     Session::flash('error', trans('lang.file_not_found'));
         //     return Redirect::back();
-        // }
+        // }     
         parent::report($exception);
     }
 
@@ -58,6 +58,10 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
             abort(503);
+        }
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+          Session::flash('error', trans('lang.your_session_expire'));  
+          return redirect('/');
         }
         return parent::render($request, $exception);
     }
