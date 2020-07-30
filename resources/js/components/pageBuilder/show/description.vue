@@ -1,11 +1,9 @@
 <template>
     <section class="wt-haslayout" v-bind:style="{ background: content.sectionColor}">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="wt-greeting-holder" v-if="content.description" v-html="content.description">
-                        
-                    </div>
+                <div v-if="content.description" class="col-12 col-sm-12 col-md-12 col-lg-12" v-html="content.description">
+                    
                 </div>
             </div>
         </div>
