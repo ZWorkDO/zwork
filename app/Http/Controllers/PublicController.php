@@ -105,7 +105,20 @@ class PublicController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'email' => 'required|email|unique:users',
-                'password' => 'required|string|min:6|confirmed',
+                'password' => [
+                  'required',
+                  'string',
+                  'min:8',
+                  function ($attribute, $value, $fail) {
+                    if ($value === strtolower($value)) {
+                        $fail(trans('validation.alpha_with_uppercase_and_numeric', ['attribute' => $attribute]));
+                    }
+                    if (preg_match('~[0-9]~', $value) !== 1) {
+                        $fail(trans('validation.alpha_with_uppercase_and_numeric', ['attribute' => $attribute]));
+                    }
+                  },
+                  'confirmed'                  
+                ],
                 'password_confirmation' => 'required',
             ]
         );

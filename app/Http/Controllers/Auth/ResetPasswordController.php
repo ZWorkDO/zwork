@@ -50,4 +50,25 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => [
+              'required',
+              'string',
+              'min:8',
+              function ($attribute, $value, $fail) {
+                  if ($value === strtolower($value)) {
+                    $fail(trans('validation.alpha_with_uppercase_and_numeric', ['attribute' => $attribute]));
+                  }
+                  if (preg_match('~[0-9]~', $value) !== 1) {
+                    $fail(trans('validation.alpha_with_uppercase_and_numeric', ['attribute' => $attribute]));
+                  }
+                }
+            ],
+        ];
+    }
 }

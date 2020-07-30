@@ -189,7 +189,19 @@ class UserController extends Controller
                 $request,
                 [
                     'old_password'         => 'required',
-                    'confirm_password'     => 'required',
+                    'confirm_password'     => [
+                      'required',
+                      'string',
+                      'min:8',
+                      function ($attribute, $value, $fail) {
+                          if ($value === strtolower($value)) {
+                            $fail(trans('validation.alpha_with_uppercase_and_numeric', ['attribute' => $attribute]));
+                          }
+                          if (preg_match('~[0-9]~', $value) !== 1) {
+                            $fail(trans('validation.alpha_with_uppercase_and_numeric', ['attribute' => $attribute]));
+                          }
+                        }
+                    ],
                     'confirm_new_password' => 'required',
                 ]
             );

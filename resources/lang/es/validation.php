@@ -103,6 +103,7 @@ return [
     'uploaded' => 'El :attribute no se pudo cargar.',
     'url' => 'El formato de :attribute no es válido.',
     'uuid' => 'El :attribute debe ser un UUID válido.',
+    'alpha_with_uppercase_and_numeric' => 'El :attribute debe contener al menos un número y una letra mayúscula.',    
     'custom' => [
         'package_title' => [
             'required' => 'Se requiere el título del paquete',
