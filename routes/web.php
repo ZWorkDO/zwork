@@ -270,6 +270,7 @@ Route::group(
         Route::post('admin/pages/delete-page', 'PageController@destroy');
         Route::post('admin/pages/update-page/{id}', 'PageController@update');
         Route::post('admin/delete-checked-pages', 'PageController@deleteSelected');
+        Route::post('admin/pages/file-upload', 'PageController@fileUpload');
         //All Jobs
         Route::get('admin/jobs', 'JobController@jobsAdmin')->name('allJobs');
         Route::get('admin/jobs/search', 'JobController@jobsAdmin');

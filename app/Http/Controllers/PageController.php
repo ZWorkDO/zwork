@@ -24,6 +24,7 @@ use App\User;
 use App\Helper;
 use App\SiteManagement;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class PageController
@@ -463,6 +464,24 @@ class PageController extends Controller
             return $json;
         }
     }
+
+    
+     /**
+     * Handle file upload and return location.
+     *
+     * @param  Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function fileUpload(Request $request)
+    {
+        $validatedData = $request->validate([
+            'file' => 'required|file',
+        ]);
+	
+        $path = $request->file('file')->store('pages_images', 'local_public');
+        return ['location' => asset("uploads/pages_images/".basename($path))];
+    }	 
+    
 
     /**
      * Remove the specified resource from storage.

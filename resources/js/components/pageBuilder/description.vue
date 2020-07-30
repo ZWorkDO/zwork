@@ -16,13 +16,14 @@
             <div class="wt-sliderbox__form">
                 <div class="form-group">
                     <tinymce-editor 
-                        v-model="content.description" 
-                        :init="{plugins: 'paste link code advlist autolink lists link image charmap print', toolbar1: 'undo redo code | bold italic underline strikethrough | fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist', menubar:false, statusbar: false, extended_valid_elements:'span[style],i[class]'}">
+                        v-model="content.description"                         
+                        :init="{
+                          plugins: 'paste link code advlist autolink lists link image charmap print', relative_urls: false, convert_urls: false, file_picker_types: 'image', toolbar1: 'undo redo code | bold italic underline strikethrough | fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | image', menubar:false, statusbar: false,paste_data_images: true, images_upload_handler: upload_handler,extended_valid_elements:'span[style],i[class]'}">
                     </tinymce-editor>
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
 </template>
 <script>
 import Editor from '@tinymce/tinymce-vue'
@@ -45,6 +46,17 @@ export default {
                 }
             }
             return -1
+        },
+        upload_handler: function (blobInfo, success, failure) {
+          let data = new FormData();
+          data.append('file', blobInfo.blob(), blobInfo.filename());
+          axios.post(APP_URL +'/admin/pages/file-upload', data)
+              .then(function (res) {
+                  success(res.data.location);
+              })
+              .catch(function (err) {
+                  failure('HTTP Error: ' + err.message);
+              });
         },
         removeSection: function() {
             this.$emit("removeElement", 'remove-section');
