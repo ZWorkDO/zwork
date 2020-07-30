@@ -24,7 +24,7 @@ use App\User;
 use App\Helper;
 use App\SiteManagement;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 /**
  * Class PageController
@@ -477,9 +477,17 @@ class PageController extends Controller
         $validatedData = $request->validate([
             'file' => 'required|file',
         ]);
-	
-        $path = $request->file('file')->store('pages_images', 'local_public');
-        return ['location' => asset("uploads/pages_images/".basename($path))];
+
+        $new_path = Helper::PublicPath().'/uploads/pages_images/';
+        if (!file_exists($new_path)) {
+            File::makeDirectory($new_path, 0755, true, true);
+        }
+
+        $file = $request->file('file');
+        $filename = time() . '-' . $file->getClientOriginalName();	
+        $image = Image::make($file);
+        $image->save($new_path.$filename);
+        return ['location' => asset('/uploads/pages_images/'.$filename)];
     }	 
     
 

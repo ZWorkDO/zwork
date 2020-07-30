@@ -49,7 +49,12 @@ export default {
         },
         upload_handler: function (blobInfo, success, failure) {
           let data = new FormData();
-          data.append('file', blobInfo.blob(), blobInfo.filename());
+          let filename = blobInfo.filename();
+
+          if( typeof(blobInfo.blob().name) !== undefined )
+              filename = blobInfo.blob().name;
+          
+          data.append('file', blobInfo.blob(), filename);
           axios.post(APP_URL +'/admin/pages/file-upload', data)
               .then(function (res) {
                   success(res.data.location);
