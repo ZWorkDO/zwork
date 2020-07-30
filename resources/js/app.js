@@ -203,6 +203,7 @@ jQuery(document).ready(function () {
         toolbar1: 'undo redo | insert | image | styleselect | bold italic | alignleft aligncenter alignright alignjustify code',
         image_advtab: true,
         inline_styles : true,
+        convert_urls: false,
         remove_script_host: false,
         extended_valid_elements  : "span[style],i[class]",
         relative_urls: false
