@@ -238,6 +238,7 @@ class ProposalController extends Controller
                                         $email_params['freelancer_profile'] = url('profile/' . $user->slug);
                                         $email_params['title'] = $job->title;
                                         $email_params['link'] = url('job/' . $job->slug);
+                                        $email_params['proposals_link'] = url('employer/dashboard/job/'.$job->slug.'/proposals');
                                         $email_params['amount'] = $request['amount'];
                                         $email_params['duration'] = Helper::getJobDurationList($request['completion_time']);
                                         $email_params['message'] = $request['description'];

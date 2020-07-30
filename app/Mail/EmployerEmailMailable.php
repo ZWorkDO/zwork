@@ -86,7 +86,7 @@ class EmployerEmailMailable extends Mailable
         $freelancer_name = $freelancer;
         $freelancer_link = $freelancer_profile;
         $project_title = $title;
-        $project_link = $link;
+        $project_link = $link;        
         $proposal_amount = $amount;
         $proposal_duration = $duration;
         $proposal_message = $message;
@@ -107,6 +107,7 @@ class EmployerEmailMailable extends Mailable
         }
         $app_content = str_replace("%employer_name%", $employer_name, $app_content);
         $app_content = str_replace("%freelancer_link%", $freelancer_link, $app_content);
+        $app_content = str_replace("%proposals_link%", $proposals_link, $app_content);
         $app_content = str_replace("%freelancer_name%", $freelancer_name, $app_content);
         $app_content = str_replace("%project_link%", $project_link, $app_content);
         $app_content = str_replace("%project_title%", $project_title, $app_content);
