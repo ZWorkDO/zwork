@@ -122,7 +122,7 @@ class Page extends Model
                                 $meta->meta_value = serialize($meta_value);
                                 $page->meta()->save($meta);
                             }
-                        } elseif ($key == 'content') {
+                        } elseif ($key == 'content' || $key == 'maps') {
                             foreach ($value as $meta_key => $meta_value) {
                                 $content_section = array();
                                 $meta = new Meta();
@@ -384,7 +384,7 @@ class Page extends Model
                                 $meta->meta_value = serialize($meta_value);
                                 $pages->meta()->save($meta);
                             }
-                        } elseif ($key == 'content') {
+                        } elseif ($key == 'content' || $key == "maps") {
                             foreach ($value as $meta_key => $meta_value) {
                                 $content_section = array();
                                 $meta = new Meta();

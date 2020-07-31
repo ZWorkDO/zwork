@@ -790,6 +790,13 @@ class Helper extends Model
                 'icon' => 'img-10.png',
                 'id' => '',
             ),
+            '10' => array(
+              'name' => trans('lang.map_section'),
+              'section' => 'map_section',
+              'value' => 'maps',
+              'icon' => 'img-11.png',
+              'id' => '',
+          ),
         );
         if (!empty($key) && array_key_exists($key, $list)) {
             return $list[$key];

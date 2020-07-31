@@ -50,6 +50,13 @@
                       @removeElement="removeSection(index, 'content')"
                       v-if="element.section =='content_section'"
                     ></description>
+                    <map-section
+                      :element_id="element.id"
+                      :parent_index="index" 
+                      :maps="form.meta.maps"
+                      @removeElement="removeSection(index, 'maps')"
+                      v-if="element.section =='map_section'">
+                    </map-section>
                     <slider
                       :element_id="element.id"
                       :sliders="form.meta.sliders"
@@ -282,6 +289,7 @@ import WorkVideoSection from "./work_video";
 import WorkTabSection from "./work_tab";
 import FreelancerSection from "./freelancers";
 import description from "./description";
+import MapSection from './map'
 import Event from "../../event";
 import articleSection from './articles'
 import Editor from '@tinymce/tinymce-vue'
@@ -301,6 +309,7 @@ export default {
     WorkTabSection,
     FreelancerSection,
     description,
+    MapSection,
     articleSection,
     'tinymce-editor': Editor,
   },
@@ -332,6 +341,7 @@ export default {
           sliders: [],
           app_section: [],
           articles:[],
+          maps:[],
           title: {
             show: true
           }
@@ -511,7 +521,18 @@ export default {
             parentIndex: ""
           };
           this.form.meta.content.push(desciption);
-        } else if (evt.added.element.section == "work_tab_section") {
+        } else if (evt.added.element.section == 'map_section') {
+          var lmap = {
+            latitude:'18.4711669',
+            longitude:'-69.9476338',
+            title: "",
+            description: "",
+            sectionColor: '#ffffff',
+            id:this.sections[evt.added.newIndex].id,
+            parentIndex:''
+          }
+          this.form.meta.maps.push(lmap)
+        }  else if (evt.added.element.section == "work_tab_section") {
           var work = {
             background_image: "",
             first_tab_icon: "",

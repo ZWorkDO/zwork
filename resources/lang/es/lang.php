@@ -15,6 +15,7 @@ return [
     'our_latest_articles' => 'Últimos artículos',
     'popular_articles' => 'Artículos Populares',
     'article_section' => 'Sección del artículo',
+    'map_section' => 'Sección de mapa',
     'video_poster' => 'Video Poster',
     'manage_articles' => 'Gerenciar artículos',
     'categories' => 'Categorias',

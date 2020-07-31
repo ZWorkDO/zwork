@@ -32,6 +32,13 @@
                       @removeElement="removeSection(index, 'content')"
                       v-if="element.section =='content_section'">
                     </description>
+                    <map-section 
+                      :element_id="element.id"
+                      :parent_index="index" 
+                      :maps="form.meta.maps"
+                      @removeElement="removeSection(index, 'maps')"
+                      v-if="element.section =='map_section'">
+                    </map-section>
                     <slider 
                       :element_id="element.id"
                       :sliders="form.meta.sliders"
@@ -212,6 +219,7 @@ import WorkVideoSection from './work_video'
 import WorkTabSection from './work_tab'
 import FreelancerSection from './freelancers'
 import description from './description'
+import MapSection from './map'
 import articleSection from './articles'
 import Event from '../../event'
 export default {
@@ -231,6 +239,7 @@ export default {
     FreelancerSection,
     description,
     articleSection,
+    MapSection
   },
   props:['pages', 'sections_list', 'app_styles', 'slider_styles'],
   data() {
@@ -250,6 +259,7 @@ export default {
           sliders:[],
           app_section:[],
           articles:[],
+          maps:[],
           title:{
             show:true
           } 
@@ -400,6 +410,17 @@ export default {
             parentIndex:''
           }
           this.form.meta.content.push(desciption)
+        } else if (evt.added.element.section == 'map_section') {
+          var lmap = {
+            latitude:'',
+            longitude:'',
+            title: "",
+            description: "",
+            sectionColor: '#ffffff',
+            id:this.sections[evt.added.newIndex].id,
+            parentIndex:''
+          }
+          this.form.meta.maps.push(lmap)
         } else if (evt.added.element.section == 'work_tab_section') {
           var work = {
             background_image:'',

@@ -13,6 +13,12 @@
         :page_id="pageData.id"
         v-if="element.section =='category'">
       </categories>
+      <gmap  
+        :element_id="element.id"
+        :maps="selectedPage.meta.maps" 
+        :page_id="pageData.id"
+        v-if="element.section =='map_section'">
+      </gmap>
       <services  
         :element_id="element.id"
         :services="selectedPage.meta.services" 
@@ -76,8 +82,9 @@ import freelancer from './freelancers'
 import workVideo from './work_video'
 import articles from './articles'
 import description from './description'
+import gmap from './map'
 export default {
-  components:{slider, categories, services, welcome, app, workTab, freelancer, workVideo, articles, description},
+  components:{slider, categories, services, welcome, app, workTab, freelancer, workVideo, articles, description, gmap},
   props: [
     "sections_list", "page", "type"
   ],
@@ -97,6 +104,7 @@ export default {
           sliders: [],
           app_section: [],
           articles:[],
+          maps:[],
           title: {
             show: true
           }
