@@ -16,6 +16,7 @@ return [
     'popular_articles' => 'Artículos Populares',
     'article_section' => 'Sección del artículo',
     'map_section' => 'Sección de mapa',
+    'contact_us_section' => 'Sección de contacto',
     'video_poster' => 'Video Poster',
     'manage_articles' => 'Gerenciar artículos',
     'categories' => 'Categorias',
@@ -459,6 +460,7 @@ return [
     'subject' => 'Tema',
     'role' => 'Papel',
     'description' => 'Descripción',
+    'content' => 'Contenido',
     'seo_meta_desc' => 'Añadir SEO Descripción Meta (Opcional)',
     'seo_meta_keywords' => 'Añadir SEO Keywords Meta (Opcional)',
     'add_menu_to_navbar' => 'Añadir página al menú de la barra de navegación',
@@ -495,6 +497,7 @@ return [
     'menu_title' => 'Título del menú',
     'update_package' => 'Paquete de actualización',
     'email_address' => 'Dirección de correo electrónico',
+    'email_address_short' => 'Correo electrónico',
     'send_pass_reset_link' => 'Enviar contraseña',
     'pass' => 'Contraseña',
     'confirm_pass' => 'Confirmar contraseña',
@@ -1371,5 +1374,6 @@ return [
     'select_professions' => 'Seleccione su profesión',
     'select_camaras' => 'Camara de Comercio',
     'select_rtes' => 'Regimén',
-    'grade' => 'Grado Académico'
+    'grade' => 'Grado Académico',
+    'full_width' => "Tamaño completo"
 ];

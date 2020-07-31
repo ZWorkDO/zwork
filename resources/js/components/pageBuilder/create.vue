@@ -39,6 +39,13 @@
                       @removeElement="removeSection(index, 'maps')"
                       v-if="element.section =='map_section'">
                     </map-section>
+                    <contact-us-section
+                      :element_id="element.id"
+                      :parent_index="index" 
+                      :contact_us_sections="form.meta.contact_us_sections"
+                      @removeElement="removeSection(index, 'contact_us_sections')"
+                      v-if="element.section =='contact_us_section'">
+                    </contact-us-section>
                     <slider 
                       :element_id="element.id"
                       :sliders="form.meta.sliders"
@@ -220,6 +227,7 @@ import WorkTabSection from './work_tab'
 import FreelancerSection from './freelancers'
 import description from './description'
 import MapSection from './map'
+import ContactUsSection from './contact_us'
 import articleSection from './articles'
 import Event from '../../event'
 export default {
@@ -238,6 +246,7 @@ export default {
     WorkTabSection,
     FreelancerSection,
     description,
+    ContactUsSection,
     articleSection,
     MapSection
   },
@@ -260,9 +269,10 @@ export default {
           app_section:[],
           articles:[],
           maps:[],
-          title:{
-            show:true
-          } 
+          contact_us_sections:[],
+          title: {
+            show: true
+          }
         },
         show_page_banner: true,
         show_page: false,
@@ -420,8 +430,17 @@ export default {
             id:this.sections[evt.added.newIndex].id,
             parentIndex:''
           }
-          this.form.meta.maps.push(lmap)
-        } else if (evt.added.element.section == 'work_tab_section') {
+          this.form.meta.maps.push(lmap);
+        } else if (evt.added.element.section == 'contact_us_section') {
+          var contact_us = {
+            description: "",
+            content: "",
+            sectionColor: '#ffffff',
+            id:this.sections[evt.added.newIndex].id,
+            parentIndex:''
+          }
+          this.form.meta.contact_us_sections.push(contact_us);
+        } else if (evt.added.element.section == "work_tab_section") {
           var work = {
             background_image:'',
             first_tab_icon:'',

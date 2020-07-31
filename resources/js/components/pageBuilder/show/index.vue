@@ -19,6 +19,12 @@
         :page_id="pageData.id"
         v-if="element.section =='map_section'">
       </gmap>
+      <contact-us  
+        :element_id="element.id"
+        :contact_us_sections="selectedPage.meta.contact_us_sections" 
+        :page_id="pageData.id"
+        v-if="element.section =='contact_us_section'">
+      </contact-us>
       <services  
         :element_id="element.id"
         :services="selectedPage.meta.services" 
@@ -83,8 +89,9 @@ import workVideo from './work_video'
 import articles from './articles'
 import description from './description'
 import gmap from './map'
+import contactUs from './contact_us'
 export default {
-  components:{slider, categories, services, welcome, app, workTab, freelancer, workVideo, articles, description, gmap},
+  components:{slider, categories, services, welcome, app, workTab, freelancer, workVideo, articles, description, gmap, contactUs},
   props: [
     "sections_list", "page", "type"
   ],
@@ -105,6 +112,7 @@ export default {
           app_section: [],
           articles:[],
           maps:[],
+          contact_us_sections:[],
           title: {
             show: true
           }

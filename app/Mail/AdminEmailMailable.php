@@ -73,7 +73,10 @@ class AdminEmailMailable extends Mailable
             $email_message = $this->prepareAdminEmailDisputeRaised($this->email_params);
         } elseif ($this->type == 'admin_new_order_received') {
             $email_message = $this->prepareAdminNewOrder($this->email_params);
+        } elseif ($this->type == 'admin_email_contact_us') {
+            $email_message = $this->prepareAdminContactUs($this->email_params);
         }
+
         $message = $this->from($from_email, $from_email_id)
             ->subject($subject)->view('emails.index')
             ->with(
@@ -533,6 +536,40 @@ class AdminEmailMailable extends Mailable
         $app_content = str_replace("%name%", $user_name, $app_content);
         $app_content = str_replace("%order_id%", $order, $app_content);
         $app_content = str_replace("%signature%", $signature, $app_content);
+
+        $body = "";
+        $body .= EmailHelper::getEmailHeader();
+        $body .= $app_content;
+        $body .= EmailHelper::getEmailFooter();
+        return $body;
+    }
+
+    /**
+     * Email contact us
+     *
+     * @param array $email_params Email Parameters
+     *
+     * @access public
+     *
+     * @return string
+     */
+    public function prepareAdminContactUs($email_params)
+    {
+        extract($email_params);
+        $app_content = $this->template->content;
+
+        $email_content_default =    "Hi Admin,
+                                    User %name% with mail %email%. Has a message:
+
+                                    %message%";
+        //set default contents
+        if (empty($app_content)) {
+            $app_content = $email_content_default;
+        }
+
+        $app_content = str_replace("%name%", $name, $app_content);
+        $app_content = str_replace("%email%", $email, $app_content);
+        $app_content = str_replace("%message%", $message, $app_content);
 
         $body = "";
         $body .= EmailHelper::getEmailHeader();
