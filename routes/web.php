@@ -448,6 +448,7 @@ Route::post('message-center/get-messages', 'MessageController@getUserMessages');
 Route::post('message', 'MessageController@store')->name('message.store');
 Route::get('get/{type}/{filename}/{id}', 'PublicController@getFile')->name('getfile');
 Route::post('submit-report', 'UserController@storeReport');
+Route::post('contact-us', 'PublicController@contactUs');
 Route::post('badge/get-color', 'BadgeController@getBadgeColor');
 Route::get('check-proposal-auth-user', 'PublicController@checkProposalAuth');
 Route::get('check-service-auth-user', 'PublicController@checkServiceAuth');

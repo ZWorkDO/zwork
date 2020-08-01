@@ -57,6 +57,13 @@
                       @removeElement="removeSection(index, 'maps')"
                       v-if="element.section =='map_section'">
                     </map-section>
+                    <contact-us-section
+                      :element_id="element.id"
+                      :parent_index="index" 
+                      :contact_us_sections="form.meta.contact_us_sections"
+                      @removeElement="removeSection(index, 'contact_us_sections')"
+                      v-if="element.section =='contact_us_section'">
+                    </contact-us-section>
                     <slider
                       :element_id="element.id"
                       :sliders="form.meta.sliders"
@@ -290,6 +297,7 @@ import WorkTabSection from "./work_tab";
 import FreelancerSection from "./freelancers";
 import description from "./description";
 import MapSection from './map'
+import ContactUsSection from './contact_us'
 import Event from "../../event";
 import articleSection from './articles'
 import Editor from '@tinymce/tinymce-vue'
@@ -310,6 +318,7 @@ export default {
     FreelancerSection,
     description,
     MapSection,
+    ContactUsSection,
     articleSection,
     'tinymce-editor': Editor,
   },
@@ -342,6 +351,7 @@ export default {
           app_section: [],
           articles:[],
           maps:[],
+          contact_us_sections:[],
           title: {
             show: true
           }
@@ -523,16 +533,25 @@ export default {
           this.form.meta.content.push(desciption);
         } else if (evt.added.element.section == 'map_section') {
           var lmap = {
-            latitude:'18.4711669',
-            longitude:'-69.9476338',
+            latitude:'',
+            longitude:'',
             title: "",
             description: "",
             sectionColor: '#ffffff',
             id:this.sections[evt.added.newIndex].id,
             parentIndex:''
           }
-          this.form.meta.maps.push(lmap)
-        }  else if (evt.added.element.section == "work_tab_section") {
+          this.form.meta.maps.push(lmap);
+        } else if (evt.added.element.section == 'contact_us_section') {
+          var contact_us = {
+            description: "",
+            content: "",
+            sectionColor: '#ffffff',
+            id:this.sections[evt.added.newIndex].id,
+            parentIndex:''
+          }
+          this.form.meta.contact_us_sections.push(contact_us);
+        } else if (evt.added.element.section == "work_tab_section") {
           var work = {
             background_image: "",
             first_tab_icon: "",

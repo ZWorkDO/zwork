@@ -1177,4 +1177,55 @@ class PublicController extends Controller
             return $json;
         }
     }
+
+    /**
+     * Email admin with contact info
+     *
+     * @param \Illuminate\Http\Request $request request attributes
+     *
+     * @access public
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function contactUs(Request $request)
+    {
+        $json = array();
+
+        $name =  $request['name'];
+        $email =  $request['email'];
+        $message =  $request['message'];
+
+        $this->validate(
+            $request, [
+                'name'    => 'required',
+                'email'    => 'required|email',
+                'message'    => 'required|string|min:20'
+            ]
+        );
+      
+        if (!empty(config('mail.username')) && !empty(config('mail.password'))) {
+            $email_params = array();
+            $admin_template = DB::table('email_types')->select('id')->where('email_type', 'admin_email_contact_us')->get()->first();
+            if (!empty($admin_template->id)) {
+                $template_data = EmailTemplate::getEmailTemplateByID($admin_template->id);
+                $email_params['name'] = $name;
+                $email_params['email'] = $email;
+                $email_params['message'] = $message;
+                $mail = new AdminEmailMailable(
+                            'admin_email_contact_us',
+                            $template_data,
+                            $email_params
+                );
+                $mail->replyTo($email, $name);
+                Mail::to(config('mail.username'))
+                    ->send(
+                        $mail
+                      );
+                $json['type'] = 'success';
+                $json['message'] = trans('lang.msg_sent');
+            }
+        }
+          
+        return $json;
+    }
 }
