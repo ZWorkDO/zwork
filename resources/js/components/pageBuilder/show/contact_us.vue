@@ -16,7 +16,7 @@
                                 <input type="email" v-bind:placeholder="trans('lang.email_address_short')"  v-model="form.email" name="email" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <input type="textarea" wi v-bind:placeholder="trans('lang.ph_type_msg')" v-model="form.message" name="message" class="form-control" />
+                                <textarea wi v-bind:placeholder="trans('lang.ph_type_msg')" v-model="form.message" name="message" class="form-control" />
                             </div>
                             <div class="form-group wt-btnarea">
                                 <input type="submit" class="wt-btn" v-bind:value="trans('lang.btn_submit')">
