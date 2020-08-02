@@ -9062,3 +9062,6 @@ a:focus{text-decoration: none !important;}
     position: absolute;
 }
 .wt-article-tag a:last-child:after{display:none}
+.font-gotham {
+  font-family: GothamPro !important;
+}

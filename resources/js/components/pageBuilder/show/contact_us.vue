@@ -6,7 +6,7 @@
               </div>
               <div class="d-flex flex-wrap" v-bind:class="[ contact_us_section.full_width  ? 'container-fluid' : 'container']"> 
                 <div v-if="contact_us_section.content" v-outer-html="contact_us_section.content"></div>
-                <div class="flex-fill">
+                <div class="flex-fill" style="flex-basis: 30% !important;">
                   <form method="POST" id="contact-us-form" class="wt-formtheme" @submit.prevent="submitContactUs()">
                         <fieldset>
                             <div class="form-group">
