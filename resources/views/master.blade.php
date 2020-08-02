@@ -23,8 +23,9 @@
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/normalize-min.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/scrollbar-min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/fontawesome/fontawesome-all.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/fontawesome/fontawesome-all.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/gotham.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/themify-icons.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/jquery-ui-min.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/linearicons.css') }}" rel="stylesheet">
