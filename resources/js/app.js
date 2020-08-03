@@ -96,6 +96,45 @@ Vue.component('show-page', require('./components/pageBuilder/show/index.vue').de
 Vue.component('second-slider', require('./components/pageBuilder/show/sliders/style2.vue').default);
 Vue.component('third-slider', require('./components/pageBuilder/show/sliders/style3.vue').default);
 
+function parallaxImg() {
+  const paralaxes = document.querySelectorAll(".img-parallax");
+  Array.prototype.forEach.call(paralaxes, (el, index) => {
+    var img = jQuery(el);
+    var imgParent = jQuery(el).parent() ;
+    var speed = img.data('speed') || 2;
+    var imgY = imgParent.offset().top;
+    var winY = jQuery(document).scrollTop();
+    var winH = jQuery(document).height();
+    var parentH = imgParent.innerHeight();
+  
+  
+    // The next pixel to show on screen      
+    var winBottom = winY + winH;
+  
+    // If block is shown on screen
+    if (winBottom > imgY && winY > imgY) {
+      // Number of pixels shown after block appear
+      var imgBottom = ((winBottom - (imgY + parentH)) * speed);
+      // Max number of pixels until block disappear
+      var imgTop = winH + parentH;
+      // Porcentage between start showing until disappearing
+      var imgPercent = ((imgBottom / imgTop) * 100) + (50 - (speed * 50));
+    }
+    img.css({
+      top: imgPercent + '%',
+      transform: 'translate(-50%, -' + imgPercent + '%)'
+    });
+  });
+}
+
+$(document).on({
+  scroll: function () {
+    parallaxImg();
+  }, ready: function () {
+    parallaxImg();
+  }
+});
+
 jQuery(document).ready(function () {
     jQuery(document).on('click', '.wt-back', function (e) {
         e.preventDefault();
