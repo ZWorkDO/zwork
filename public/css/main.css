@@ -9065,3 +9065,18 @@ a:focus{text-decoration: none !important;}
 .font-gotham {
   font-family: GothamPro !important;
 }
+.img-parallax-block{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  font-size: 16px;
+}
+.img-parallax {
+  width: 100vmax;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,0);
+  pointer-events: none
+}
