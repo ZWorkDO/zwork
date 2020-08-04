@@ -161,7 +161,7 @@
                 <section class="wt-haslayout wt-main-section">
                     <div class="container">
                         <div class="row justify-content-md-center">
-                            <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-6 push-lg-3">
+                            <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-8 push-lg-3">
                                 <div class="wt-sectionhead wt-textcenter">
                                     <div class="wt-sectiontitle">
                                         <h2>{{{ Helper::getHomeSection('cat_sec_title') }}}</h2>

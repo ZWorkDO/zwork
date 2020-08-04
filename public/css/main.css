@@ -23,6 +23,7 @@ Version: 1.0.0
 */
 
 :root{
+  --color-1: #767676;
 	--color-2: #039ce6;
 	--color-3: #1c4f8c;
 	--color-4: #b1d131;
@@ -39,10 +40,10 @@ Version: 1.0.0
 	padding: 0px;
 }
 body {
-	color: #767676;
+	color: var(--color-1);
 	background: #fff;
 	overflow-x: hidden;
-	font:400 14px/23px 'GothamPro', Arial, Helvetica, sans-serif;
+	font:300 14px/23px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 body h1,
 body h2,
@@ -52,18 +53,17 @@ body h5,
 body h6 {
 	color: #323232;
 	margin: 0 0 8px;
-	font-weight: 700;
 	line-height: 1.5;
 	font-style: normal;
 	text-transform:capitalize;
 	font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
-h1 { font-size: 48px;}
-h2 { font-size: 36px;}
-h3 { font-size: 24px;}
-h4 { font-size: 18px;}
-h5 { font-size: 16px;}
-h6 { font-size: 14px;}
+h1, .h1 { font-size: 48px; font-weight: 700;}
+h2, .h2 { font-size: 36px; font-weight: 700;}
+h3, .h3 { font-size: 24px; font-weight: lighter;}
+h4, .h4 { font-size: 18px; font-weight: 600;}
+h5, .h5 { font-size: 16px; font-weight: lighter;}
+h6, .h6 { font-size: 14px; font-weight: 600;}
 h1 a,
 h2 a,
 h3 a,
@@ -74,7 +74,8 @@ p a,
 p a:hover { text-decoration:underline;}
 p {
 	margin: 0 0 20px;
-	line-height: 20px;
+  line-height: 20px;
+  font-weight: 300;
 	letter-spacing: normal;
 }
 a { text-decoration: none; }
@@ -91,7 +92,7 @@ img {
 	height: auto;
 	max-width: 100%;
 }
-strong { color: #414141; }
+strong { font-weight: normal; }
 iframe {
 	width: 100%;
 	float: left;
@@ -135,7 +136,8 @@ input[type="color"],
 	text-transform: inherit;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+  box-sizing: border-box;
+  font-weight: 300;
 }
 .form-group textarea::placeholder{color: #999;}
 textarea.form-control{
@@ -163,7 +165,7 @@ input:focus,
 label {
 	color: #666;
 	display: block;
-	font-weight: 400;
+	font-weight: 300;
 	margin-bottom: 10px;
 }
 form p {
@@ -313,9 +315,9 @@ address { font-style: italic; }
 .wt-checkbox input[type=checkbox]:checked + label:before {content:'\f00c';}
 .wt-checkbox input[type=checkbox] + label,
 .wt-radio input[type=radio] + label {
-	color:#767676;
+	color:var(--color-1);
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: 300;
 	line-height: 20px;
 	padding: 0 0 0 30px;
 	text-transform: capitalize;
@@ -424,7 +426,7 @@ address { font-style: italic; }
 	display: inline-block;
 	vertical-align: middle;
 	text-transform: uppercase;
-	font:700 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
+	font:500 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 input[type=submit],
 .wt-btn[type=submit]{border: 0 !important;}
@@ -905,7 +907,7 @@ li.wt-rss a { background:#ff6600; }
 	display:inline-block;
 	vertical-align:middle;
 	text-transform: capitalize;
-	font:400 18px/18px 'GothamPro', Arial, Helvetica, sans-serif;
+	font:300 18px/18px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-breadcrumb li {
 	width: auto;
@@ -966,7 +968,7 @@ li.wt-rss a { background:#ff6600; }
 }
 .wt-sectiontitle span{
 	display: block;
-	color: #767676;
+	color: var(--color-1);
 	font-size: 18px;
 	line-height: 18px;
 }
@@ -988,7 +990,7 @@ li.wt-rss a { background:#ff6600; }
 	width: 100%;
 	float: left;
 	text-transform: capitalize;
-	font:400 16px/16px 'GothamPro', Arial, Helvetica, sans-serif;
+	font:300 16px/16px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-navigation{
 	padding: 0;
@@ -1017,7 +1019,7 @@ li.wt-rss a { background:#ff6600; }
 	display: inline-block;
 }
 .wt-navigation ul li a{
-	color: #767676;
+	color: var(--color-1);
 	display: block;
 	position: relative;
 }
@@ -1207,7 +1209,7 @@ li.wt-rss a { background:#ff6600; }
 .wt-logininfo .wt-checkbox{width: auto;margin-left:20px;padding: 11px 0;}
 .wt-logininfo .wt-checkbox label{
 	font-size: 14px;
-	color: #767676;
+	color: var(--color-1);
 	line-height: 36px;
 }
 .wt-loginfooterinfo{
@@ -1261,7 +1263,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-username{overflow:hidden;}
 .wt-username h3{
 	font-size:16px;
-	font-weight:400;
+	font-weight:300;
 	margin: 0 0 5px;
 	line-height:16px;
 }
@@ -1309,7 +1311,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-usernav ul li + li{border-top:1px solid #eee;}
 .wt-usernav ul li a{
-	color:#767676;
+	color:var(--color-1);
 	display:block;
 	padding:11px 20px;
 	line-height:inherit;
@@ -1437,14 +1439,14 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-bannercontent .wt-title h1{
 	color: #ffffff;
 	font-size: 38px;
-	font-weight: 600;
+	font-weight: 500;
 	line-height: 58px;
 	margin: 0 0 21px;
 	text-transform: inherit;
 }
 .wt-bannercontent .wt-title h1 span{
 	display: block;
-	font-weight:400;
+	font-weight:300;
 }
 .wt-bannercontent .wt-bannerhead .wt-description p{
 	color: #fff;
@@ -1657,7 +1659,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-cattitle h3{
 	margin: 0;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 20px;
 }
 .wt-categoryexpl > .float-left:nth-child(n+5){margin-top:30px; }
@@ -1670,7 +1672,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	display: block;
 	font-size: 16px;
 	padding: 0 20px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 16px;
 	visibility: hidden;
 	border-radius: 50%;
@@ -1901,7 +1903,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-navarticletab li a{
 	display: block;
-	color: #767676;
+	color: var(--color-1);
 	font-size: 16px;
 	padding: 0 25px 15px;
 	position: relative;
@@ -1967,7 +1969,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	display: block;
 	color: #323232;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 28px;
 }
 .wt-classicaricle-holder .wt-articlecontent .wt-title h2{line-height: 22px;}
@@ -2262,7 +2264,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	color: #323232;
 	font-size: 16px;
 	line-height: 14px;
-	font-weight: 400;
+	font-weight: 300;
 }
 .wt-authorhead span{
 	display: block;
@@ -2286,7 +2288,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-comments > h2{
 	font-size: 20px;
 	margin: 0 0 16px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 18px;
 }
 .wt-comments ul{
@@ -2323,7 +2325,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-replaybox h2{
 	font-size: 20px;
 	margin: 0 0 16px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 18px;
 }
 .wt-formreply .wt-inputwithicon .form-control{padding: 10px 10px 10px 40px;}
@@ -2342,7 +2344,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-btnreply span{
 	float: left;
-	color: #767676;
+	color: var(--color-1);
 	font-size: 14px;
 	line-height: inherit;
 	padding: 0 10px 0 0;
@@ -2408,7 +2410,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-widgettitle h2{
 	margin: 0;
 	display: block;
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 18px;
 	line-height: 18px;
 }
@@ -2431,7 +2433,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-categoriescontent li + li{margin-top: 20px;}
 .wt-categoriescontent li a{
-	color:#767676;
+	color:var(--color-1);
 	display: block;
 	font-size: 14px;
 	line-height: inherit;
@@ -2469,7 +2471,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	margin: 0 0 9px;
 	font-size: 14px;
 	line-height: 22px;
-	font-weight: 400;
+	font-weight: 300;
 }
 .wt-particlecontent span{
 	color: #999;
@@ -2493,7 +2495,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	float: left;
 	margin: 5px;
 	padding: 0 18px;
-	color: #767676;
+	color: var(--color-1);
 	font-size: 14px;
 	line-height: 38px;
 	text-align: center;
@@ -2512,7 +2514,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	line-height:28px;
 }
 .wt-classicaricle-header .wt-description p{
-	color: #767676;
+	color: var(--color-1);
 	font-size:16px;
 	line-height: 26px;
 	margin: 0 0 22px;
@@ -2558,7 +2560,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-statisticcontent h3{
 	font-size:28px;
 	line-height:28px;
-	font-weight: 700;
+	font-weight: 500;
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -2567,13 +2569,13 @@ body.wt-login .wt-userlogedin{display: block;}
 	float:left;
 	width: 100%;
 	font-size:16px;
-	color: #767676;
-	font-weight:400;
+	color: var(--color-1);
+	font-weight:300;
 	line-height:16px;
 }
 .wt-statisticcontent em{
 	font-size: 28px;
-	font-weight:600;
+	font-weight:500;
 	font-style:normal;
 	line-height: 28px;
 }
@@ -2612,7 +2614,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-signupcontent .wt-title h2 span{
 	display: block;
-	font-weight: 400;
+	font-weight: 300;
 }
 .wt-signupcontent .wt-description p{
 	color: #fff;
@@ -2672,7 +2674,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	display: block;
 	font-size: 18px;
 	line-height: 18px;
-	font-weight: 400;
+	font-weight: 300;
 }
 .wt-teamcontent .wt-title{
 	font-size: 14px;
@@ -2768,7 +2770,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-accordiondetails .wt-title h3{
 	font-size: 18px;
 	line-height: 20px;
-	font-weight: 400;
+	font-weight: 30;
 }
 .wt-accordiondetails .wt-description p{
 	font-size: 14px;
@@ -2800,7 +2802,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-registerhead .wt-title h3{
 	font-size: 28px;
 	line-height:30px;
-	font-weight: 700;
+	font-weight: 500;
 	margin: 0 0 19px;
 	text-transform: inherit;
 }
@@ -2845,7 +2847,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	text-align: center;
 	border-radius: 50px;
 	border:2px solid #ddd;
-	font: 700 13px/38px 'GothamPro', Arial, Helvetica, sans-serif;
+	font: 500 13px/38px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-joinsteps li.wt-done-next a{
 	color: #fff;
@@ -2927,7 +2929,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-formtitle h4{
 	font-size:18px;
 	margin: 0 0 7px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 18px;
 }
 .wt-joinnowholder{
@@ -2939,7 +2941,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-joinnowholder .wt-title h4{
 	font-size:18px;
 	margin: 0 0 6px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 20px;
 }
 .wt-joinnowholder .wt-description p{
@@ -2981,7 +2983,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-iconwithtext li a em{
 	padding: 0 20px;
-	font-weight: 700;
+	font-weight: 500;
 	font-style: normal;
 	line-height: inherit;
 }
@@ -3006,7 +3008,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-radioboxholder .wt-title h4{
 	margin: 0 0 13px;
 	font-size: 16px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 18px;
 }
 .wt-radioboxholder .wt-radio + .wt-radio{margin: 18px 0 0;}
@@ -3041,7 +3043,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-verifyform .form-group{
 	margin: 0;
 }
-.wt-verifyform .form-group label{margin: 0 0 7px;font-size: 14px;line-height: 16px;color: #767676;}
+.wt-verifyform .form-group label{margin: 0 0 7px;font-size: 14px;line-height: 16px;color: var(--color-1);}
 .wt-verifyform .form-group label a{color: #55acee;}
 .wt-verifyform .form-group.wt-btnarea{margin: 10px 0 0;}
 .wt-gotodashboard{
@@ -3084,7 +3086,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-effectivecontent li a{
 	display: block;
-	color: #767676;
+	color: var(--color-1);
 	font-size: 14px;
 	line-height: inherit;
 }
@@ -3113,7 +3115,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-reportdescription .wt-title h3{
 	font-size: 20px;
 	margin: 0 0 12px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 20px;
 }
 .wt-reportdescription .wt-description p{
@@ -3166,7 +3168,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-categoriesslider-holder .wt-title h2{
 	margin: 0;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 20px;
 }
 .wt-categoriesslider{
@@ -3220,7 +3222,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-categoryslidercontent .wt-cattitle h3{
 	font-size: 14px;
 	margin: 0 0 4px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 16px;
 	display: block;
 	overflow: hidden;
@@ -3259,7 +3261,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-formsearch fieldset .wt-checkboxholder{margin: 0;}
 .wt-formsearch fieldset .wt-checkboxholder .wt-checkbox label{
 	font-size: 14px;
-	color: #767676;
+	color: var(--color-1);
 }
 .wt-formsearch fieldset .wt-checkboxholder{max-height: 150px;}
 .wt-formsearch fieldset .wt-checkboxholder .wt-checkbox label img{
@@ -3321,7 +3323,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-userlistingtitle span{
 	display: block;
-	font:400 16px/18px 'GothamPro', Arial, Helvetica, sans-serif;
+	font:300 16px/18px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-userlistingtitle span em{color: #323232;font-style: normal;}
 .wt-filterholder{
@@ -3352,7 +3354,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-filtertag li a{
 	display: block;
-	color: #767676;
+	color: var(--color-1);
 	background: #fff;
 	font-size: 12px;
 	padding: 0 13px;
@@ -3426,11 +3428,11 @@ body.wt-login .wt-userlogedin{display: block;}
 	display: block;
 	color:#323232;
 	margin: 0 0 9px;
-	font:400 14px/16px 'GothamPro', Arial, Helvetica, sans-serif;
+	font:300 14px/16px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-contenthead .wt-title h2{
 	margin: 0;
-	font-weight: 400;
+	font-weight: 300;
 	margin: 0 0 16px;
 	font-size: 18px;
 	line-height: 22px;
@@ -3456,7 +3458,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-userlisting-breadcrumb li span,
 .wt-userlisting-breadcrumb li a{
 	display: block;
-	color: #767676;
+	color: var(--color-1);
 	font-size: 13px;
 	line-height: inherit;
 }
@@ -3493,7 +3495,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-starcontent sub{
 	bottom: 0;
 	font-size: 70%;
-	color: #767676;
+	color: var(--color-1);
 }
 .wt-starcontent em{
 	font-style: normal;
@@ -3561,7 +3563,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-viewjobholder ul li span i{font-size: 13px;}
 .wt-viewjobholder ul li a i,
 .wt-viewjobholder ul li span i:last-child{width: 30px;}
-.wt-clicklike{color: #767676;}
+.wt-clicklike{color: var(--color-1);}
 .wt-viewjobdollar{color: #b1d131;}
 .wt-viewjobfolder{color: #039ce3;}
 .wt-viewjobclock{color: #ff6b57;}
@@ -3590,7 +3592,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	padding: 0;
 	width: 100%;
 	height: auto;
-	color: #767676;
+	color: var(--color-1);
 	font-size: 14px;
 	text-align: center;
 }
@@ -3662,7 +3664,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	font-size: 20px;
 	margin: 0 0 10px;
 	line-height: 22px;
-	font-weight: 400;
+	font-weight: 300;
 }
 .wt-projectdetail .wt-description{margin: 0 0 30px;}
 .wt-projectdetail .wt-description p{
@@ -3828,13 +3830,13 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .tg-qrcodefeat h3 {
     margin: 0;
-	font-weight: 400;
-    font-size: 16px;
+	  font-weight: 300;
+    font-size: 14px;
     line-height: 20px;
 }
 .tg-qrcodefeat h3 span {
 	display: block;
-	font-weight: 700;
+	font-weight: 500;
 	font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-clicksavearea{
@@ -3851,13 +3853,13 @@ body.wt-login .wt-userlogedin{display: block;}
 	margin-bottom:20px;
 }
 .wt-clicksavebtn{
-	color: #767676;
+	color: var(--color-1);
 	padding: 0 50px;
 	border:1px solid;
 	border-radius: 4px;
 	display: inline-block;
 	vertical-align: middle;
-	font:700 13px/48px 'GothamPro', Arial, Helvetica, sans-serif;
+	font:400 13px/48px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-clicksavearea .wt-clicksavebtn{
 	min-width: 225px;
@@ -3891,12 +3893,12 @@ body.wt-login .wt-userlogedin{display: block;}
 	display: block;
 	color: #323232;
 	margin: 0 0 9px;
-	font: 400 14px/16px 'GothamPro', Arial, Helvetica, sans-serif;
+	font: 300 14px/16px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-companysinfo .wt-title a i {color: #b1d131;}
 .wt-companysinfo .wt-title h2 {
     margin: 0;
-    font-weight: 400;
+    font-weight: 300;
     margin: 0 0 18px;
     font-size: 18px;
     line-height: 22px;
@@ -3917,7 +3919,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	padding: 0;
 	width: 100%;
 }
-.wt-sharejob .wt-socialiconssimple li a {font-size: 14px;color: #767676;}
+.wt-sharejob .wt-socialiconssimple li a {font-size: 14px;color: var(--color-1);}
 .wt-sharejob .wt-socialiconssimple li a i{font-size: 18px;width: 30px;}
 .wt-sharejob .wt-socialiconssimple li.wt-facebook:hover a{ color: #3b5999; }
 .wt-sharejob .wt-socialiconssimple li.wt-twitter:hover a{ color: #55acee; }
@@ -4046,7 +4048,7 @@ body.wt-login .wt-userlogedin{display: block;}
     font-size: 20px;
     margin: 0 0 10px;
     line-height: 22px;
-    font-weight: 400;
+    font-weight: 300;
 }
 .wt-comcontent .wt-description p {
     font-size: 16px;
@@ -4088,7 +4090,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-jobalerts .alert span em{
 	margin: 0;
 	font-size: 14px;
-	font-weight: 700;
+	font-weight: 500;
 	font-style: normal;
 	line-height: inherit;
 	display: inline-block;
@@ -4138,7 +4140,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	margin: 0;
 	font-size: 20px;
 	line-height: 20px;
-	font-weight: 400;
+	font-weight: 300;
 }
 .wt-proposalamount{
 	float: left;
@@ -4231,8 +4233,8 @@ body.wt-login .wt-userlogedin{display: block;}
 	line-height: inherit;
 }
 .wt-totalamount li span strong{
-	color: #767676;
-	font-weight: 700;
+	color: var(--color-1);
+	font-weight: 500;
 }
 .wt-formproposal{padding: 30px;}
 .wt-formproposal .form-group{margin-bottom:10px;}
@@ -4243,7 +4245,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	font-size: 16px;
 	line-height: 16px;
 	margin: 0 0 20px;
-	font-weight: 400;
+	font-weight: 300;
 }
 .wt-attachmentsvtwo .wt-attachfile{border-radius: 4px;}
 .wt-attachmentsvtwo .wt-title h3{display: inline-block;vertical-align: middle;}
@@ -4391,7 +4393,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-userprofile .wt-title h3{
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 300;
 	margin: 0 0 14px;
 	line-height: 20px;
 }
@@ -4447,7 +4449,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-profilecounter .wt-statisticcontent:first-child,
 .wt-profilecounter .wt-statisticcontent:nth-child(4){background: #f5f5f5;}
 .wt-profilecounter .wt-statisticcontent em,
-.wt-profilecounter .wt-statisticcontent h3{font-size: 24px;font-weight: 700;}
+.wt-profilecounter .wt-statisticcontent h3{font-size: 24px;font-weight: 500;}
 .wt-profilecounter .wt-statisticcontent h4{
 	font-size: 13px;
 	line-height: 18px;
@@ -4471,7 +4473,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-articlesuser .wt-particlecontent{margin: 0;}
 .wt-articlesuser .wt-particlehold:hover figure img{opacity: 0.60;}
-.wt-articlesuser .wt-particlecontent h3{font-weight: 400;}
+.wt-articlesuser .wt-particlecontent h3{font-weight: 300;}
 .wt-articlesuser .wt-particlecontent span{
 	font-size: 12px;
 	line-height: 14px;
@@ -4553,7 +4555,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-usersingle .wt-usertitle h2{
 	margin: 0;
 	font-size: 20px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 22px;
 }
 .wt-usersingle .wt-titlewithselect{padding: 17px 30px;}
@@ -4576,7 +4578,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-userlistingsingle .wt-userlisting-breadcrumb li span,
 .wt-userlistingsingle .wt-userlisting-breadcrumb li a{line-height: 16px;}
 .wt-userlistingsingle .wt-title h3 {
-    font-weight: 400;
+    font-weight: 300;
     margin: 0 0 16px;
     font-size: 16px;
     line-height: 22px;
@@ -4630,7 +4632,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-projectcontent h3{
 	margin: 0 0 8px;
 	font-size: 16px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 16px;
 }
 .wt-projectcontent a{
@@ -4660,7 +4662,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-experiencelisting .wt-title h3{
 	margin: 0 0 17px;
 	font-size: 16px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 18px;
 }
 .wt-experiencecontent{
@@ -4707,7 +4709,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	margin: 0;
 	font-size: 20px;
 	line-height: 20px;
-	font-weight: 400;
+	font-weight: 300;
 	margin: 0 0 10px;
 }
 .wt-404errorcontent .wt-description p, .wt-500errorcontent .wt-description p{
@@ -4734,7 +4736,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	padding: 0 20px;
 	text-align: center;
 	border-radius: 0 4px 4px 0;
-	font:700 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
+	font:500 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-btnsearch:hover,
 .wt-btnsearch:focus{color: #fff;}
@@ -4784,7 +4786,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-comingsoon-content .wt-title h2 span{
 	display: block;
-	font-weight: 400;
+	font-weight: 300;
 }
 .wt-comingsoon-content .wt-description{color: #fff;}
 .wt-comingsoon-content .wt-description p{
@@ -4858,7 +4860,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	margin: 0;
 	display: block;
 	font-size:18px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 21px;
 }
 .wt-fwidgetcontent{
@@ -4879,7 +4881,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-fwidgetcontent li:last-child{padding-bottom:0; }
 .wt-fwidgetcontent li a{
 	display: block;
-	color: #767676;
+	color: var(--color-1);
 	line-height: inherit;
 }
 .wt-fwidgetcontent li:hover a,
@@ -4928,7 +4930,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-companyinfo span a{
 	color: #55acee;
-	font:700 22px/22px 'GothamPro', Arial, Helvetica, sans-serif;
+	font:500 22px/22px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-fbtnarea{float: right;}
 .wt-footerbottom{
@@ -4947,7 +4949,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-comingsoon-wt-copyrights{
 	width: 100%;
-	color: #767676;
+	color: var(--color-1);
 	font-size: 16px;
 	margin: -44px 0 0;
 	text-align: center;
@@ -4990,7 +4992,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	margin: 0;
 	font-size: 16px;
 	line-height:20px;
-	font-weight: 400;
+	font-weight: 300;
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -5055,7 +5057,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-projectselect-content h3{
 	margin: 0 0 10px;
-	font-weight:400;
+	font-weight:300;
 	font-size: 14px;
 	line-height: 16px;
 }
@@ -5235,7 +5237,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	padding: 0;
 	width: 100%;
 	float: left;
-	color: #767676;
+	color: var(--color-1);
 	line-height: 34px;
 }
 .chosen-container .chosen-results li.active-result:hover{color: #323232}
@@ -5257,10 +5259,10 @@ body.wt-login .wt-userlogedin{display: block;}
 	z-index: 2;
     background: #fff;
 	height: 54px;
-	color: #767676;
+	color: var(--color-1);
 	line-height: 20px;
 	padding:17px 45px;
-	font-weight: 600;
+	font-weight: 500;
 	border-radius: 4px;
 	font-size: 14px;
 	box-shadow: none;
@@ -5279,7 +5281,7 @@ body.wt-login .wt-userlogedin{display: block;}
     position: relative;
     border-top: 1px solid #ddd;
     margin: 0;
-	color: #767676;
+	color: var(--color-1);
 	border-radius: 0  0 4px 4px;
 }
 .wt-related-result:hover{
@@ -5287,14 +5289,14 @@ body.wt-login .wt-userlogedin{display: block;}
 	border-color: #007bff;
 }
 .wt-related-result span{
-	color: #767676;
+	color: var(--color-1);
 	display: block;
 	padding: 10px 47px;
 }
 .wt-related-result span em{
 	color: #414141;
 	font-style: normal;
-	font-weight: 700;
+	font-weight: 500;
 }
 .wt-related-result:hover{color:#fff;}
 .list-group{
@@ -5440,7 +5442,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-offersmessages .wt-ad h3{
 	margin: 0;
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 20px;
 	overflow: hidden;
 	display: -webkit-box;
@@ -5475,7 +5477,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	margin: 0;
 	color: #363b4d;
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 20px;
 	overflow: hidden;
 	display: -webkit-box;
@@ -5701,7 +5703,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	margin: 0;
 	font-size: 16px;
 	line-height: 20px;
-	font-weight: 400;
+	font-weight: 300;
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -5877,7 +5879,7 @@ select.is-invalid {border-color: #dc3545;}
     padding: 10px 30px;
     background: #fcfcfc;
 	display: block;
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 16px;
 	line-height: 20px;
     margin:0 0 20px;
@@ -6036,7 +6038,7 @@ select.is-invalid {border-color: #dc3545;}
 	color: #323232;
 	font-size: 28px;
 	line-height: 30px;
-	font-weight: 700;
+	font-weight: 500;
 	margin: 0 0 19px;
 	text-transform: inherit;
 }
@@ -6055,7 +6057,7 @@ select.is-invalid {border-color: #dc3545;}
 }
 .iziToast.iziToast-color-green .iziToast-body .iziToast-title{color: #01a774 !important;}
 .iziToast:after{display: none !important;}
-.iziToast-body .iziToast-title{font-weight: 500;}
+.iziToast-body .iziToast-title{font-weight: 400;}
 .wt-viewjobholder ul li span img{
 	width: 18px;
 	margin: 0 9px 0 0;
@@ -6071,7 +6073,7 @@ select.is-invalid {border-color: #dc3545;}
 	color: #323232;
 	background: #fff;
 	border-color: #ddd;
-	font: 400 18px/20px 'GothamPro', Arial, Helvetica, sans-serif;
+	font: 300 18px/20px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-forgotpassword-holder .card{
 	border-radius: 4px;
@@ -6205,7 +6207,7 @@ select.is-invalid {border-color: #dc3545;}
 .wt-attachfile > li > em,
 .dz-processing em strong {
     color: #999;
-    font-weight: 400;
+    font-weight: 300;
 }
 .la-jobdetails-holder .wt-userform .wt-attachmentsholder .multile-file-attachments{padding: 0;}
 .la-jobdetails-holder .wt-userform .wt-attachmentsholder .lara-attachment-files .form-group.input-preview{padding:5px 5px 0;}
@@ -6295,7 +6297,7 @@ select.is-invalid {border-color: #dc3545;}
 .wt-offersmessages .wt-ad h3{
 	margin: 0;
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 20px;
 	overflow: hidden;
 	display: -webkit-box;
@@ -6333,7 +6335,7 @@ select.is-invalid {border-color: #dc3545;}
 	margin: 0;
 	color: #363b4d;
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 20px;
 	overflow: hidden;
 	display: -webkit-box;
@@ -6702,7 +6704,7 @@ select.is-invalid {border-color: #dc3545;}
 .swal2-container .swal2-popup .swal2-title {
     margin: 0;
     color: #323232;
-    font: 500 20px/22px 'GothamPro', Arial, Helvetica, sans-serif;
+    font: 400 20px/22px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .swal2-popup #swal2-content{
 	margin: 0;
@@ -6778,7 +6780,7 @@ select.is-invalid {border-color: #dc3545;}
 .wt-userlisting .wt-userlistingcontent .wt-contenthead .wt-title h2 a{
 	margin: 0;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 300;
 	overflow: hidden;
 	line-height: 22px;
 	white-space: nowrap;
@@ -6819,7 +6821,7 @@ select.is-invalid {border-color: #dc3545;}
     border-radius: 4px;
     font-size: 12px;
     text-align: center;
-    font-weight: 400;
+    font-weight: 300;
     font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .la-jobalerts-holder .wt-jobalerts{margin: 0;}
@@ -6857,7 +6859,7 @@ span.wt-stars span:after{
 	color: #565656;
 	font-size: 13px;
 	line-height: 13px;
-	font-weight: 600;
+	font-weight: 500;
 }
 .wt-form-paycard fieldset .form-group .form-control{
     height: 36px;
@@ -6890,7 +6892,7 @@ span.wt-stars span:after{
 .wt-form-paycard fieldset .wt-btnarea{margin: 0;}
 .la-pay-stripe .modal-header h5{
 	margin: 0;
-	font-weight:400;
+	font-weight:300;
 	font-size: 18px;
 	line-height: 20px;
 }
@@ -6918,7 +6920,7 @@ span.wt-stars span:after{
 	margin: 0;
 	display: block;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 24px;
 }
 .sj-checkouttable{
@@ -6931,7 +6933,7 @@ span.wt-stars span:after{
     font-size: 18px;
     text-align: left;
     line-height: 18px;
-    font-weight: 400;
+    font-weight: 300;
     padding: 15px 30px;
     border: 1px solid #eee;
 }
@@ -6969,7 +6971,7 @@ span.wt-stars span:after{
     overflow: hidden
 }
 .sj-producttitle .sj-checkpaydetails span {
-    color: #767676;
+    color: var(--color-1);
     font-size: 13px;
     display: block;
     margin: 13px 0 0;
@@ -6977,7 +6979,7 @@ span.wt-stars span:after{
 .sj-producttitle .sj-checkpaydetails h4{
 	margin: 0;
 	color: #222;
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 16px;
 	line-height: 16px;
 }
@@ -7004,7 +7006,7 @@ span.wt-stars span:after{
 	margin: 0;
 	display: block;
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 24px;
 }
 .sj-checkpaymentmethod .sj-rightarea figure{margin: 0;}
@@ -7055,7 +7057,7 @@ span.wt-stars span:after{
 }
 .sj-paymentmethod li a span em{
 	display: block;
-	color: #767676;
+	color: var(--color-1);
 	font-size: 13px;
 	font-style:normal;
 }
@@ -7120,7 +7122,7 @@ body.lang-pt .wt-loginfooterinfo a + a:before{
 	left: 50%;
 	margin-left: -15px;
 }
-body.lang-es .wt-userlogedin .wt-usernav{width: 310px;}
+body.lang-es .wt-userlogedin .wt-usernav{width: 320px;}
 body.lang-pt .wt-userlogedin .wt-usernav{width: 270px;}
 body.lang-fr .wt-userlogedin .wt-usernav{width:290px;}
 body.lang-bn .wt-userlogedin .wt-usernav{width: 240px;}
@@ -7190,12 +7192,12 @@ body.lang-fr .wt-dashboardsave .wt-proposalsr .wt-proposalsrcontent .wt-title{wi
 	color: #999;
 	float: right;
 	text-transform: uppercase;
-	font: 700 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
+	font: 500 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-search-remove:hover{color: #999;}
 .wt-header.wt-search-have.show-sform .wt-navigationarea .wt-formbannervtwo .wt-searchbtn span{
 	text-transform: uppercase;
-	font: 700 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
+	font: 500 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-respsonsive-search{
 	float: right;
@@ -7266,7 +7268,7 @@ body.lang-fr .wt-dashboardsave .wt-proposalsr .wt-proposalsrcontent .wt-title{wi
     bottom: 60%;
     width: 180px;
     padding: 10px;
-    color: #767676;
+    color: var(--color-1);
     display: block;
     font-size: 12px;
     line-height: 15px;
@@ -7287,7 +7289,7 @@ body.lang-fr .wt-dashboardsave .wt-proposalsr .wt-proposalsrcontent .wt-title{wi
 .version-area{
     padding: 10px 0 0 0;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 500;
     color: #b1d131;
 }
 body.lang-ja .wt-dropdown > span em{width: 61%;}
@@ -7342,7 +7344,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 .wt-services-holder .wt-title h2{
 	margin: 0;
 	font-size: 20px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 22px;
 }
 .wt-services-content{
@@ -7505,7 +7507,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	line-height: 17px;
 }
 .wt-servicesingle-title .wt-userlisting-breadcrumb li{float: left;}
-.wt-servicesingle-title .wt-userlisting-breadcrumb li + li{border-color:#767676; }
+.wt-servicesingle-title .wt-userlisting-breadcrumb li + li{border-color:var(--color-1); }
 .wt-servicesingle-title .wt-userlisting-breadcrumb li{padding: 0 15px;}
 .wt-servicesingle-title .wt-userlisting-breadcrumb li:first-child{padding-left:0; }
 .wt-servicesgallery,
@@ -7541,7 +7543,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 .wt-service-details .wt-description p:last-child{margin: 0;}
 .wt-service-details .wt-description .wt-title h3{
 	font-size: 20px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 26px;
 	margin: 0 0 7px;
 }
@@ -7585,7 +7587,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 .wt-user-service .wt-companysinfo .wt-title .wt-btn{
 	color: #fff;
 	margin: 27px 0 0;
-	font: 700 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
+	font: 500 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-user-service .wt-userprofile .wt-title span a{font-family: 'GothamPro', Arial, Helvetica, sans-serif;margin:4px 0 0;}
 .wt-user-service .wt-userprofile .wt-title h3{margin: 0 0 9px;}
@@ -7644,7 +7646,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 .iconcolor2{color: #9b59b6;}
 .iconcolor3{color: #f1c40f;}
 .iconcolor4{color: #e67e22;}
-.wt-service-info li strong{color: #767676;}
+.wt-service-info li strong{color: var(--color-1);}
 .wt-ratingcontent p em{font-style: normal;}
 .wt-featuredtagvtwo {
     top: 0;
@@ -7757,14 +7759,14 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	display: block;
 	color: #323232;
 	margin: 0 0 6px;
-	font: 400 14px/14px 'GothamPro', Arial, Helvetica, sans-serif;
+	font: 300 14px/14px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-freelancers-content .dc-title a i{color: #b1d131;}
 .wt-freelancers-content .dc-title{float: left;width: 100%;}
 .wt-freelancers-content .dc-title h3{
 	font-size:16px;
 	margin: 0 0 6px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 26px;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
@@ -7832,7 +7834,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 .la-order-status h4{
 	margin: 0;
 	display: block;
-	font-weight: 500;
+	font-weight: 400;
 	color: #b1d131;
 	font-size: 16px;
 	line-height: 18px;
@@ -8207,11 +8209,11 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	color: #fecb02;
 }
 .wt-freelanceritems .wt-userlistingcontent .wt-viewjobholder ul li span{
-	color: #767676;
+	color: var(--color-1);
 	font-size: 13px;
 }
 .wt-freelanceritems .wt-userlistingcontent .wt-viewjobholder ul li + li{margin: 8px 0 0;}
-.wt-freelanceritems .wt-userlistingcontent .wt-viewjobholder .wt-freestars{color: #767676;}
+.wt-freelanceritems .wt-userlistingcontent .wt-viewjobholder .wt-freestars{color: var(--color-1);}
 .wt-freelanceritems .wt-userlistingcontent .wt-viewjobholder li a em{
 	color: #55acee;
 	font-size: 13px;
@@ -8409,7 +8411,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 .wt-bannerholdervtwo .wt-formoptions .wt-dropdown > span{width: 100%;}
 .wt-bannerholdervtwo .wt-formoptions > .wt-searchbtn{
 	text-transform: uppercase;
-	font:700 13px/60px 'GothamPro', Arial, Helvetica, sans-serif;
+	font:500 13px/60px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-bannerholdervtwo .wt-formoptions .wt-radioholder{width: 255px;}
 .wt-bannerholdervtwo .wt-formbanner fieldset .form-group .form-control{padding-right:175px; }
@@ -8507,14 +8509,14 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	display: block;
 	color: #323232;
 	margin: 0 0 6px;
-	font: 400 14px/14px 'GothamPro', Arial, Helvetica, sans-serif;
+	font: 300 14px/14px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-freelancers-content .dc-title a i{color: #b1d131;}
 .wt-freelancers-content .dc-title{float: left;width: 100%;}
 .wt-freelancers-content .dc-title h3{
 	font-size:16px;
 	margin: 0 0 6px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 26px;
 }
 .wt-freelancers-content .dc-title span{
@@ -8581,7 +8583,7 @@ a:focus{text-decoration: none !important;}
 	color: #fff;
 	font-size: 40px;
 	line-height: 40px;
-	font-weight: 400;
+	font-weight: 300;
 }
 .wt-appicons {
 	width: 100%;
@@ -8706,7 +8708,7 @@ a:focus{text-decoration: none !important;}
 	display: inline-block;
 	vertical-align: middle;
 	text-transform: uppercase;
-	font: 700 13px/36px 'GothamPro', Arial, Helvetica, sans-serif;
+	font: 500 13px/36px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 /* Articles Style*/
 .wt-articlesholder{
@@ -8757,7 +8759,7 @@ a:focus{text-decoration: none !important;}
 .wt-articles .wt-articlecontents .wt-title h3{
 	margin: 0 0 4px;
 	font-size: 18px;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 28px;
 }
 .wt-articles .wt-articlecontents .wt-title h3 a{color: #3d4461;}
@@ -8771,7 +8773,7 @@ a:focus{text-decoration: none !important;}
 }
 .wt-datetime{
 	display: block;
-	color: #767676;
+	color: var(--color-1);
 	font-size: 13px;
 	line-height: 16px;
 }
@@ -8814,7 +8816,7 @@ a:focus{text-decoration: none !important;}
 	display: inline-block;
 	vertical-align: middle;
     text-overflow: ellipsis;
-	font: 400 14px/20px 'GothamPro', Arial, Helvetica, sans-serif;
+	font: 300 14px/20px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-articles:hover .wt-articlesdocinfo span{width: auto;}
 .wt-moreoptions{
@@ -8839,7 +8841,7 @@ a:focus{text-decoration: none !important;}
 }
 .wt-moreoptions li:last-child{padding: 0;}
 .wt-moreoptions li a{
-	color: #767676;
+	color: var(--color-1);
 	line-height: inherit;
 	display: inline-block;
 	font-size: 13px;
@@ -8914,7 +8916,7 @@ a:focus{text-decoration: none !important;}
 	clear: both;
 	padding: 0 5px;
 	font-size: 10px;
-	font-weight: 700;
+	font-weight: 400;
 	margin-right:-4px; 
 	line-height: 18px;
 	position: relative;
@@ -8964,7 +8966,7 @@ a:focus{text-decoration: none !important;}
 	width: 140px;
 	display: block;
 	font-size: 12px;
-	font-weight: 700;
+	font-weight: 500;
 	text-align: center;
 	line-height:40px;
 	text-decoration: none;
@@ -9011,7 +9013,7 @@ a:focus{text-decoration: none !important;}
 	font-size: 16px;
 	line-height:18px;
 	margin: 0 0 11px;
-	font-weight: 500;
+	font-weight: 400;
 }
 .wt-demo-heading p{
 	margin: 0;
@@ -9019,7 +9021,7 @@ a:focus{text-decoration: none !important;}
 	line-height: 18px;
 }
 .wt-demo-heading p em{
-	font-weight: 700;
+	font-weight: 500;
 	font-style: normal;
 }
 .wt-demo-heading .wt-demo-btn{width: 100%;}
@@ -9079,4 +9081,10 @@ a:focus{text-decoration: none !important;}
   left: 50%;
   transform: translate(-50%,0);
   pointer-events: none
+}
+.text-normal {
+	text-transform:none !important;
+}
+.text-default {
+	color: var(--color-1) !important;
 }
