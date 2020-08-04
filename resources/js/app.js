@@ -101,7 +101,13 @@ function parallaxImg() {
   Array.prototype.forEach.call(paralaxes, (el, index) => {
     var img = jQuery(el);
     var imgParent = jQuery(el).parent() ;
-    var speed = img.data('speed') || 2;
+    
+    var [speed] = jQuery.grep(img.get(0).classList, function(v, i){
+        return v.indexOf('p-speed-') === 0;
+    });
+
+    var speed = parseInt((speed || "p-speed-3").substring(8), 10);
+    
     var imgY = imgParent.offset().top;
     var winY = jQuery(document).scrollTop();
     var winH = jQuery(document).height();
@@ -112,14 +118,14 @@ function parallaxImg() {
     var winBottom = winY + winH;
   
     // If block is shown on screen
-    if (winBottom > imgY && winY > imgY) {
+    //if (winBottom > imgY && winY > imgY) {
       // Number of pixels shown after block appear
       var imgBottom = ((winBottom - (imgY + parentH)) * speed);
       // Max number of pixels until block disappear
       var imgTop = winH + parentH;
       // Porcentage between start showing until disappearing
       var imgPercent = ((imgBottom / imgTop) * 100) + (50 - (speed * 50));
-    }
+    //}
     img.css({
       top: imgPercent + '%',
       transform: 'translate(-50%, -' + imgPercent + '%)'

@@ -10,7 +10,7 @@
         <div class="wt-haslayout wt-innerbannerholder" style="background-image:url({{{ asset(Helper::getBannerImage($e_inner_banner, 'uploads/settings/general')) }}})">
             <div class="container">
                 <div class="row justify-content-md-center">
-                    <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-6 push-lg-3">
+                    <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-8 push-lg-3">
                         <div class="wt-innerbannercontent">
                             <div class="wt-title">
                                 <h2>{{ trans('lang.employers') }}</h2>

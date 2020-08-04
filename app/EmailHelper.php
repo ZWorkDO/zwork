@@ -33,7 +33,7 @@ class EmailHelper extends Model
         $email_banner = !empty($setting) && !empty($setting[0]['email_banner']) ? url('uploads/settings/email/'.$setting[0]['email_banner']): '';
         ?>
         <div style="min-width:100%;background-color:#f6f7f9;margin:0;width:100%;color:#283951;font-family:'Helvetica','Arial',sans-serif;padding: 60px 0;">
-        <div style="background: #FFF;max-width: 600px; width: 100%; margin: 0 auto; overflow: hidden; color: #919191; font:400 16px/26px 'Open Sans', Arial, Helvetica, sans-serif;">
+        <div style="background: #FFF;max-width: 600px; width: 100%; margin: 0 auto; overflow: hidden; color: #919191; font:400 16px/26px 'GothamPro', Arial, Helvetica, sans-serif;">
             <div style="width: 100%; float: left; padding: 30px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;">
                 <strong style="float: left; padding: 0 0 0 30px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;">
                 <a style="float: left; color: #55acee; text-decoration: none;" href="#"><?php echo Self::getSiteTitle(); ?></a>

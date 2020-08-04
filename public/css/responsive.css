@@ -379,7 +379,7 @@
 	.wt-headervthhree .wt-rightarea .wt-nav .navbar-toggler{margin: 21px 0;}
 	.wt-headervthhree .wt-navigationarea .wt-navigation > ul > li > a{
 		padding: 15px 13px;
-		color: #767676;
+		color: var(--color-1);
 	}
 	.wt-rightarea .wt-nav .navbar-toggler{
 		color: #fff;

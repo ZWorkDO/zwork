@@ -40,7 +40,7 @@
     <div class="wt-haslayout wt-innerbannerholder" style="background-image:url({{{ asset(Helper::getBannerImage('uploads/settings/home/'.$reg_form_banner)) }}})">
         <div class="container"> 
             <div class="row justify-content-md-center">
-                <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-6 push-lg-3">
+                <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-8 push-lg-3">
                     <div class="wt-innerbannercontent">
                         <div class="wt-title">
                             <h2>{{ trans('lang.join_for_free') }}</h2>
