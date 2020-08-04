@@ -1,4 +1,4 @@
-<table class="wt-tablecategories" style="font-family:'Poppins', Arial, Helvetica, sans-serif; background-size:2px;background-size: 100% 2px; background-repeat: no-repeat;border: 1px solid #eee;">
+<table class="wt-tablecategories" style="font-family:'GothamPro', Arial, Helvetica, sans-serif; background-size:2px;background-size: 100% 2px; background-repeat: no-repeat;border: 1px solid #eee;">
     <thead>
         <tr style="background: #fcfcfc;">
             <th style="font-weight: 500;color: #323232;font-size: 15px;line-height: 20px;text-align: left;padding: 15px 20px;">{{ trans('lang.user_name') }}</th>

@@ -87,7 +87,7 @@ body{background: #f7f7f7;}
 .wt-navdashboard {
 	width: 270px;
 	float: left;;
-	font:400 13px/46px 'Poppins', Arial, Helvetica, sans-serif;
+	font:400 13px/46px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-navdashboard ul{
 	width: 100%;
@@ -704,7 +704,7 @@ body{background: #f7f7f7;}
 	display: block;
 	padding: 20px 30px;
 	position: relative;
-	font:400 16px/20px 'Poppins', Arial, Helvetica, sans-serif;;
+	font:400 16px/20px 'GothamPro', Arial, Helvetica, sans-serif;;
 }
 .wt-tabstitle li a.active{background: #fff;}
 .wt-tabscontent{
@@ -1033,7 +1033,7 @@ body{background: #f7f7f7;}
 	float:left;
 	color:#323232;
 	padding: 14px 0;
-	font:400 16px/22px 'Poppins', Arial, Helvetica, sans-serif;
+	font:400 16px/22px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-updatall .wt-btnarea .wt-btn{float: left;}
 .wt-updatall .wt-btn{
@@ -1137,7 +1137,7 @@ body{background: #f7f7f7;}
     vertical-align: middle;
     text-transform: uppercase;
 	background: #b1d131 !important;
-    font: 700 13px/50px 'Poppins', Arial, Helvetica, sans-serif;
+    font: 700 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .form-group-label label input{display: none;}
 .wt-experienceaccordion .wt-collapseexp fieldset .form-group .wt-labelgroup span{
@@ -1213,7 +1213,7 @@ body{background: #f7f7f7;}
 	background: #fcfcfc;
 	vertical-align: middle;
 	border-top: 1px solid #eff2f5;
-	font-family: 'Poppins', Arial, Helvetica, sans-serif;
+	font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-tablecategories .wt-radio,
 .wt-tablecategories .wt-radio label,
@@ -1438,7 +1438,7 @@ table.wt-tablecategories tbody tr td figure img{
 	color: #767676;
 	font-style: normal;
 	font-size: 13px;
-	font-family: 'Poppins', Arial, Helvetica, sans-serif;
+	font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
 /* Account Settings */
 .wt-securitysettings{
@@ -1583,7 +1583,7 @@ table.wt-tablecategories tbody tr td figure img{
 	padding: 10px 0;
 	display: inline-block;
 	vertical-align: middle;
-	font:400 13px/16px 'Poppins', Arial, Helvetica, sans-serif;
+	font:400 13px/16px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-designtitle .wt-btn{
 	min-width: 100px;
@@ -1879,7 +1879,7 @@ table.wt-tablecategories tbody tr td figure img{
 	display: inline-block;
 	vertical-align: middle;
 	text-transform: uppercase;
-	font: 700 13px/36px 'Poppins', Arial, Helvetica, sans-serif;
+	font: 700 13px/36px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-canceljobholder .wt-userlistinghold .wt-rightarea .wt-btnarea a + a{
 	margin-left: 25px;
@@ -2289,7 +2289,7 @@ li.collapsed .wt-msgbtns .wt-msgbtn i.lnr-chevron-up:before{content: "\e874";}
     vertical-align: top;
     line-height: inherit;
     display: inline-block;
-    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-jobalertsdashboard .wt-alertbtn{margin:2px 0; }
 .wt-jobalertsdashboard .wt-jobalerts .alert .close{padding: 20px 17px;}
@@ -2336,7 +2336,7 @@ li.collapsed .wt-msgbtns .wt-msgbtn i.lnr-chevron-up:before{content: "\e874";}
 .wt-posteditem span{
 	display: block;
 	margin-bottom:8px;
-	font:400 14px/18px 'Poppins', Arial, Helvetica, sans-serif;
+	font:400 14px/18px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-posteditem span a{color: #323232;}
 .wt-posteditem span i{color: #b1d131}
@@ -3598,7 +3598,7 @@ input[type=submit],
 	display: block;
 	letter-spacing: 0;
 	margin-bottom: 20px;
-	font: 500 20px/22px 'Poppins', Arial, Helvetica, sans-serif;
+	font: 500 20px/22px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-selectdesign ul li{width:100%;}
 .wt-designimg{
@@ -3612,7 +3612,7 @@ input[type=submit],
 }
 .la-designtitle-holder .wt-designtitle span{
     padding-top: 0;
-    font: 500 14px/20px 'Poppins', Arial, Helvetica, sans-serif;
+    font: 500 14px/20px 'GothamPro', Arial, Helvetica, sans-serif;
     display: block;
 }
 .la-designtitle-holder .wt-designtitle + .wt-designtitle {
@@ -3772,7 +3772,7 @@ table.wt-tableservice tbody tr td{padding: 20px;}
 	height: auto;
 	padding: 0 15px;
 	text-transform: uppercase;
-	font:700 12px/30px 'Poppins', Arial, Helvetica, sans-serif;
+	font:700 12px/30px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-uploadrating .wt-modalcontent{padding: 0;border: 0;}
 .wt-uploadrating .wt-boxtitle{margin: 0;}
@@ -3808,13 +3808,13 @@ table.wt-tableservice tbody tr td{padding: 20px;}
     display: block;
     font-size: 13px;
     line-height: 16px;
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-freelancers-content .dc-title span strong {
     font-size: 20px;
     display: inline-block;
     line-height: inherit;
-    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
 table.wt-tablecategories.wt-tableservice tbody tr td figure img{width: 80px;}
 .wt-titlewithsearch .wt-formsearch.la-mailfilter{
@@ -4441,7 +4441,7 @@ body.rtl .wt-uploadrating .modal-body{text-align: right;}
 	color: #323232 !important;
 	min-height: 60px;
 	text-transform: capitalize;
-	font-family: 'Poppins', Arial, Helvetica, sans-serif;
+	font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .ant-collapse > .ant-collapse-item > .ant-collapse-header:before{
 	content: "\f039";
@@ -4505,7 +4505,7 @@ body.rtl .wt-uploadrating .modal-body{text-align: right;}
 	font-size: 18px;
     font-weight: 400;
 	text-transform: capitalize;
-    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .sortable-ghost img{
 	display: none !important;
@@ -4699,7 +4699,7 @@ body.rtl .wt-uploadrating .modal-body{text-align: right;}
 .amt-section-footer #switchespages{
 	color: #333333;
 	display: block;
-	font: 700 16px/16px 'Poppins', Arial, Helvetica, sans-serif;
+	font: 700 16px/16px 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .amt-section-footer #switchespages i{
 	float: right;
