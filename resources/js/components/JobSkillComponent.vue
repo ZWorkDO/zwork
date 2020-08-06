@@ -6,7 +6,7 @@
             </transition>
             <fieldset>
                 <div class="form-group">
-                    <div class="form-group-holder">
+                    <div class="form-group-holder col-lg-10">
                         <span class="wt-select">
                             <select id="freelancer_skill" class="job-skills">
                                 <option v-if="is_empty">{{this.all_skills_selected}}</option>
