@@ -106,30 +106,30 @@ function parallaxImg() {
         return v.indexOf('p-speed-') === 0;
     });
 
-    var speed = parseInt((speed || "p-speed-3").substring(8), 10);
+    var [bottomOffset] = jQuery.grep(img.get(0).classList, function(v, i){
+      return v.indexOf('p-boffset-') === 0;
+    });
+
+    speed = parseInt((speed || "p-speed-1").substring(8), 10);
+    bottomOffset = parseInt((bottomOffset || "p-boffset-200").substring(10), 10);
     
     var imgY = imgParent.offset().top;
     var winY = jQuery(document).scrollTop();
-    var winH = jQuery(document).height();
+    var viewportHeight = $(window).height();
     var parentH = imgParent.innerHeight();
-  
-  
-    // The next pixel to show on screen      
-    var winBottom = winY + winH;
-  
-    // If block is shown on screen
-    //if (winBottom > imgY && winY > imgY) {
-      // Number of pixels shown after block appear
-      var imgBottom = ((winBottom - (imgY + parentH)) * speed);
-      // Max number of pixels until block disappear
-      var imgTop = winH + parentH;
-      // Porcentage between start showing until disappearing
-      var imgPercent = ((imgBottom / imgTop) * 100) + (50 - (speed * 50));
-    //}
-    img.css({
-      top: imgPercent + '%',
-      transform: 'translate(-50%, -' + imgPercent + '%)'
-    });
+    var imgDisplayPercent = (winY - imgY + viewportHeight)/(viewportHeight + parentH);
+    
+    if(imgDisplayPercent > 0 && imgDisplayPercent < 1){
+      speed = speed * (1 - imgDisplayPercent);
+      var imgPercent = 100 * imgDisplayPercent + (50 - (speed * 50));
+      if(imgPercent > 0 && imgPercent < bottomOffset){
+        img.css({
+          top: imgPercent + '%',
+          transform: 'translate(-50%, -' + imgPercent + '%)'
+        });
+      }
+    }    
+
   });
 }
 
