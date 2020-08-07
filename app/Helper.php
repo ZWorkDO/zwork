@@ -303,8 +303,10 @@ class Helper extends Model
             $banner =  'images/frbanner-1920x400.jpg';
         } elseif (empty($image) && isset($_GET['type']) && $_GET['type'] == 'employer') {
             $banner =  'images/e-1110x300.jpg';
-        } elseif (empty($image) && isset($_GET['type']) && ($_GET['type'] == 'job' || $_GET['type'] == 'service')) {
-            $banner =  'images/bannerimg/img-02.jpg';
+        } elseif (empty($image) && isset($_GET['type']) && $_GET['type'] == 'job') {
+            $banner =  'images/frbanner-1920x400.jpg';
+        } elseif (empty($image) && isset($_GET['type']) && $_GET['type'] == 'service') {
+            $banner =  'images/e-1110x300.jpg';
         } elseif (empty($image) && Request::segment(1) == 'articles') {
             $banner =  'images/bannerimg/img-02.jpg';
         } else {
