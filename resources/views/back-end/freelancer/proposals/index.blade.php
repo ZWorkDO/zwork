@@ -52,7 +52,7 @@
                                                                 <li><span><img src="{{{asset(Helper::getLocationFlag($proposal->job->location->flag))}}}" alt="{{{ trans('lang.locations') }}}"> {{{ $proposal->job->location->title }}}</span></li>
                                                             @endif
                                                             @if (!empty($proposal->job->project_type))
-                                                                <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-folder"></i> {{ trans('lang.type') }} {{{ $proposal->job->project_type }}}</a></li>
+                                                                <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-calendar"></i> {{ trans('lang.type') }} {{{ $proposal->job->project_type }}}</a></li>
                                                             @endif
                                                             @if (!empty($proposal->job->duration))
                                                                 <li><span class="wt-dashboradclock"><i class="far fa-clock"></i> {{ trans('lang.duration') }} {{{ $duration }}}</span></li>

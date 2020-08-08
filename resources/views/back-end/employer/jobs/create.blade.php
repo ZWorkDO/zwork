@@ -98,7 +98,7 @@
                                 </div>
                                 <job_skills :placeholder="'skills already selected'"></job_skills>
                             </div>
-                            <div class="wt-joblocation wt-tabsinfo">
+                            <div class="wt-joblocation wt-tabsinfo wt-displaynone">
                                 <div class="wt-tabscontenttitle">
                                     <h2>{{ trans('lang.your_loc') }}</h2>
                                 </div>
