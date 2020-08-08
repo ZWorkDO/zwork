@@ -1014,7 +1014,7 @@ class PublicController extends Controller
             return $json;
         } else {
             $json['auth'] = false;
-            $json['message'] = trans('lang.not_authorize');
+            $json['message'] = trans('lang.please_change_freelancer');
             return $json;
         }
     }
@@ -1034,7 +1034,7 @@ class PublicController extends Controller
             return $json;
         } else {
             $json['auth'] = false;
-            $json['message'] = trans('lang.not_authorize');
+            $json['message'] = trans('lang.please_change_employer');
             return $json;
         }
     }

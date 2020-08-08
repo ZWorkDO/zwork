@@ -1991,7 +1991,7 @@ class UserController extends Controller
                 }
             } else {
                 $json['type'] = 'error';
-                $json['message'] = trans('lang.not_authorize');
+                $json['message'] = trans('lang.please_change_employer');
                 return $json;
             }
         } else {

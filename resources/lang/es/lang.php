@@ -855,6 +855,8 @@ return [
     'img_not_found' => 'Imagen no encontrada',
     'update_pkg' => 'Necesita actualizar su paquete antes de actualizar su perfil.',
     'not_authorize' => 'No estás autorizado para realizar esta acción.',
+    'please_change_freelancer' => 'Favor cambiar a perfil de profesional',
+    'please_change_employer' => 'Favor cambiar a perfil de proyecto',
     'need_login_proposal_message' => 'Por favor inicie sesión para enviar su propuesta.',
     'cannot_add_morethan' => 'No se puede agregar más que',
     'saving_profile' => 'Grabando perfil',
