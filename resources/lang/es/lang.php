@@ -141,7 +141,7 @@ return [
     'direct_bank_transfer' => 'Direct Bank Transfer',
     'add_paypal_email_address' => 'Add Paypal Email Address',
     'select_month' => 'Seleccione mes',
-    'status' => 'Estado',
+    'status' => 'Estatus',
     'reg_form_banner_note' => 'Puede habilitar / deshabilitar el formulario de registro Banner desde aquí',
     'registration_form_banner' => 'Banner de formulario de registro',
     'breadcrumbs_option_note' => 'Puede habilitar / deshabilitar las migas de pan desde aquí',
@@ -1118,6 +1118,10 @@ return [
         'completed' => 'Terminado',
         'cancelled' => 'Cancelar',
         'hired' => 'Contratado',
+    ],
+    'article_status' => [
+        'draft' => 'Borrador',
+        'published' => 'Publicado',
     ],
     'job_duration' => [
         'weekly' => 'Menos de una semana',

@@ -309,7 +309,7 @@ return [
     'total' => 'Total:',
     'proposal_amount' => 'Montant de la proposition',
     'amount_note' => 'Montant total que le client verra sur votre proposition',
-    'worketic' => 'Worketic',
+    'worketic' => 'ZWork',
     'service_fee' => 'Frais de service',
     'receiving_amount' => 'Montant que vous recevrez après',
     'fee_deduction' => 'Déduction des frais de service',

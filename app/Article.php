@@ -16,7 +16,7 @@ class Article extends Model
      * @var array $fillable
      */
     protected $fillable = array(
-        'title', 'slug', 'description'
+        'title', 'slug', 'description', 'status'
     );
 
     /**
@@ -89,6 +89,7 @@ class Article extends Model
             $this->title = filter_var($request['title'], FILTER_SANITIZE_STRING);
             $this->slug = filter_var($request['title'], FILTER_SANITIZE_STRING);
             $this->description = $request['description'];
+            $this->status = $request['status'];
             $this->user()->associate(Auth::user());
             $old_path = Helper::PublicPath() . '/uploads/articles/temp';
             if (!empty($request['uploaded_image'])) {
@@ -138,6 +139,7 @@ class Article extends Model
             }
             $article->title = filter_var($request['title'], FILTER_SANITIZE_STRING);
             $article->description = $request['description'];
+            $article->status = $request['status'];
             $old_path = Helper::PublicPath() . '/uploads/articles/temp';
             if (!empty($request['uploaded_image'])) {
                 $filename = $request['uploaded_image'];
@@ -157,6 +159,7 @@ class Article extends Model
             } else {
                 $article->banner = null;
             }
+            // dd($article);
             $article->save();
             $article->categories()->detach();
             if (!empty($request['cats'])) {

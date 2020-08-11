@@ -320,7 +320,7 @@ return [
     'total' => 'مجموع:',
     'proposal_amount' => 'مبلغ الاقتراح',
     'amount_note' => 'المبلغ الإجمالي الذي سيراه العميل في اقتراحك',
-    'worketic' => 'Worketic',
+    'worketic' => 'ZWork',
     'service_fee' => 'رسوم الخدمة',
     'receiving_amount' => 'المبلغ الذي ستتلقاه بعد',
     'fee_deduction' => 'خصم رسوم الخدمة',

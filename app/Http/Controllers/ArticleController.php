@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Input;
 use Session;
 use View;
 use App\Helper;
+use Auth;
 
 class ArticleController extends Controller
 {
@@ -40,16 +41,33 @@ class ArticleController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        $role = $user->getRoleNames()->first();
         if (!empty($_GET['keyword'])) {
             $keyword = $_GET['keyword'];
-            $articles = $this->article::where('title', 'like', '%' . $keyword . '%')->paginate(7)->setPath('');
+            if ($role === 'admin'){
+                //Retreive all articles
+                $articles = $this->article::where('title', 'like', '%' . $keyword . '%')->paginate(7)->setPath('');
+            } else {    
+                //Retreive just articles from user
+                $articles = $this->article::where([
+                    ['title', 'like', '%' . $keyword . '%'],
+                    ['user_id', '=', $user->id],
+                ])->paginate(7)->setPath('');
+            }
             $pagination = $articles->appends(
                 array(
                     'keyword' => Input::get('keyword')
                 )
             );
         } else {
-            $articles = $this->article->paginate(10);
+            if ($role === 'admin'){
+                //Retreive all articles
+                $articles = $this->article->paginate(10);
+            } else {    
+                //Retreive just articles from user
+                $articles = $this->article::where('user_id', '=', $user->id)->paginate(10);
+            } 
         }
         $cats = ArticleCategory::all()->pluck('title', 'id')->toArray();
         if (file_exists(resource_path('views/extend/back-end/admin/manage-articles/articles/index.blade.php'))) {
@@ -117,12 +135,14 @@ class ArticleController extends Controller
             $articles = $this->article::find($id);
             $selected_cats = $articles->categories->pluck('title', 'id')->toArray();
             $cats = ArticleCategory::all()->pluck('title', 'id')->toArray();
+            $article_status = Helper::getArticleStatus();
+            $role = Auth::user()->getRoleNames()->first();
             if (!empty($cats)) {
                 if (file_exists(resource_path('views/extend/back-end/admin/manage-articles/articles/edit.blade.php'))) {
-                    return View::make('extend.back-end.admin.manage-articles.articles.edit', compact('cats, articles', 'selected_cats'));
+                    return View::make('extend.back-end.admin.manage-articles.articles.edit', compact('cats, articles', 'selected_cats', 'article_status','role'));
                 } else {
                     return View::make(
-                        'back-end.admin.manage-articles.articles.edit', compact('id', 'cats', 'articles', 'selected_cats')
+                        'back-end.admin.manage-articles.articles.edit', compact('id', 'cats', 'articles', 'selected_cats', 'article_status','role')
                     );
                 }
                 return Redirect::to('admin/articles');
@@ -139,6 +159,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $role = Auth::user()->getRoleNames()->first();
         $server_verification = Helper::worketicIsDemoSite();
         if (!empty($server_verification)) {
             Session::flash('error', $server_verification);
@@ -149,6 +170,10 @@ class ArticleController extends Controller
                 'title' => 'required',
             ]
         );
+        if ($role != 'admin'){
+            $request['status'] = 'draft';
+        }
+        // dd($request);
         $this->article->updateArticles($request, $id);
         Session::flash('message', trans('lang.article_updated'));
         return Redirect::to('admin/articles');
@@ -270,14 +295,15 @@ class ArticleController extends Controller
         $show_article_banner = !empty($inner_page) && !empty($inner_page[0]['show_article_banner']) ? $inner_page[0]['show_article_banner'] : 'true';
         $cats = ArticleCategory::all()->pluck('title', 'id')->toArray();
         $article = $this->article::where('slug', $slug)->first();
+        $article_status = Helper::getArticleStatus();
         if (!empty($article)) {
             if (file_exists(resource_path('views/extend/front-end/articles/show.blade.php'))) {
-                return View::make('extend.front-end.articles.show', compact('cats', 'article','article_inner_banner','show_article_banner'));
+                return View::make('extend.front-end.articles.show', compact('cats', 'article','article_inner_banner','show_article_banner','article_status'));
             } else {
                 return View::make(
                     'front-end.articles.show',
                     compact(
-                        'cats', 'article', 'article_inner_banner','show_article_banner'
+                        'cats', 'article', 'article_inner_banner','show_article_banner','article_status'
                     )
                 );
             }

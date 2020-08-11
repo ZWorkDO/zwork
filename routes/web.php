@@ -95,15 +95,6 @@ Route::group(
         Route::post('admin/article/categories/update-cats/{id}', 'ArticleCategoryController@update');
         Route::post('admin/articles/categories/upload-temp-image', 'ArticleCategoryController@uploadTempImage');
         Route::post('admin/article/delete-checked-cats', 'ArticleCategoryController@deleteSelected');
-        // Articles Routes
-        Route::get('admin/articles', 'ArticleController@index')->name('articles');
-        Route::get('admin/articles/edit-article/{id}', 'ArticleController@edit')->name('editArticle');
-        Route::post('admin/articles/store-article', 'ArticleController@store');
-        Route::get('admin/articles/search', 'ArticleController@index');
-        Route::post('admin/articles/delete-article', 'ArticleController@destroy');
-        Route::post('admin/articles/update-article/{id}', 'ArticleController@update');
-        Route::post('admin/articles/upload-temp-image', 'ArticleController@uploadTempImage');
-        Route::post('admin/article/delete-checked-article', 'ArticleController@deleteSelected');
 
         Route::post('admin/clear-cache', 'SiteManagementController@clearCache');
         Route::get('admin/clear-allcache', 'SiteManagementController@clearAllCache');
@@ -420,6 +411,16 @@ Route::group(
         Route::post('user/upload-temp-image/{type?}', 'UserController@uploadTempImage');
         Route::post('user/submit/transection', 'UserController@submitTransection');
         Route::get('project-management', 'ProjectManagementController@index')->name('manageTasks');
+
+        // Articles Routes
+        Route::get('admin/articles', 'ArticleController@index')->name('articles');
+        Route::get('admin/articles/edit-article/{id}', 'ArticleController@edit')->name('editArticle');
+        Route::post('admin/articles/store-article', 'ArticleController@store');
+        Route::get('admin/articles/search', 'ArticleController@index');
+        Route::post('admin/articles/delete-article', 'ArticleController@destroy');
+        Route::post('admin/articles/update-article/{id}', 'ArticleController@update');
+        Route::post('admin/articles/upload-temp-image', 'ArticleController@uploadTempImage');
+        Route::post('admin/article/delete-checked-article', 'ArticleController@deleteSelected');
     }
 );
 Route::get('page/get-page-data/{id}', 'PageController@getPage');

@@ -61,7 +61,7 @@ class SiteManagementSeeder extends Seeder
                 ],
                 [
                     'meta_key' => 'footer_settings',
-                    'meta_value' => 'a:6:{s:11:"footer_logo";s:20:"1554450384-flogo.png";s:11:"description";s:187:"Dotem eiusmod tempor incune utnaem labore etdolore maigna aliqua enim poskina ilukita ylokem lokateise ination voluptate velit esse cillum dolore eu fugiat nulla pariatur lokaim urianewce";s:9:"copyright";s:61:"Copyright © 2019 The Worketic, All Right Reserved Amentotech";s:12:"menu_title_1";s:7:"Company";s:12:"menu_pages_1";a:3:{i:0;s:1:"2";i:1;s:1:"3";i:2;s:1:"4";}s:5:"pages";a:3:{i:0;s:1:"2";i:1;s:1:"3";i:2;s:1:"4";}}',
+                    'meta_value' => 'a:6:{s:11:"footer_logo";s:20:"1554450384-flogo.png";s:11:"description";s:187:"Dotem eiusmod tempor incune utnaem labore etdolore maigna aliqua enim poskina ilukita ylokem lokateise ination voluptate velit esse cillum dolore eu fugiat nulla pariatur lokaim urianewce";s:9:"copyright";s:61:"Copyright © 2019 The ZWork, All Right Reserved Amentotech";s:12:"menu_title_1";s:7:"Company";s:12:"menu_pages_1";a:3:{i:0;s:1:"2";i:1;s:1:"3";i:2;s:1:"4";}s:5:"pages";a:3:{i:0;s:1:"2";i:1;s:1:"3";i:2;s:1:"4";}}',
                     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                     'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 ],
@@ -85,7 +85,7 @@ class SiteManagementSeeder extends Seeder
                 ],
                 [
                     'meta_key' => 'settings',
-                    'meta_value' => 'a:1:{i:0;a:5:{s:5:"title";s:8:"Worketic";s:5:"email";s:20:"exprotest3@gmail.com";s:16:"connects_per_job";N;s:12:"gmap_api_key";N;s:4:"logo";s:19:"1555333800-logo.png";}}',
+                    'meta_value' => 'a:1:{i:0;a:5:{s:5:"title";s:8:"ZWork";s:5:"email";s:20:"exprotest3@gmail.com";s:16:"connects_per_job";N;s:12:"gmap_api_key";N;s:4:"logo";s:19:"1555333800-logo.png";}}',
                     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                     'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 ],

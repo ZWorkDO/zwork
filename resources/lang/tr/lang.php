@@ -391,7 +391,7 @@ return [
     'total' => 'Genel Toplam:',
     'proposal_amount' => 'Teklif Tutarı',
     'amount_note' => 'Müşterinin teklifinizde göreceği toplam tutar',
-    'worketic' => 'Worketic',
+    'worketic' => 'ZWork',
     'service_fee' => 'Servis ücreti',
     'receiving_amount' => 'Sonra Alacağınız Miktar',
     'fee_deduction' => 'Hizmet Ücreti indirimi',

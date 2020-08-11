@@ -303,7 +303,7 @@ return [
     'total' => 'মোট:',
     'proposal_amount' => 'প্রস্তাব পরিমাণ',
     'amount_note' => 'ক্লায়েন্ট আপনার প্রস্তাব দেখতে হবে মোট পরিমাণ',
-    'worketic' => 'Worketic',
+    'worketic' => 'ZWork',
     'service_fee' => 'পরিসেবা চার্জ',
     'receiving_amount' => 'আপনি পরে পাবেন পরিমাণ',
     'fee_deduction' => 'সেবা ফি কাটা',
