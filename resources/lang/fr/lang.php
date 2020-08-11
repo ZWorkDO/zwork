@@ -128,7 +128,7 @@ return [
     'project' => 'Projet',
     'term_note' => 'Termes et note de condition',
     'freelancer_val' => 'freelancers',
-    'jobs_val' => 'trabajos',
+    'jobs_val' => 'proyectos',
     'employers_val' => 'empleadores',
     'save_location' => 'Lieu enregistré avec succès',
     'alert' => 'Alerte:',

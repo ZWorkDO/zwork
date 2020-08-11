@@ -1222,7 +1222,7 @@ return [
           'subtitle' => "que dan vida a ideas grandiosas "
       ],
       '2' => [
-          'title' => "Tu equipo de trabajo",
+          'title' => "Tu equipo de proyecto",
           'subtitle' => "ahora más grande de lo que pensabas"
       ],
       '3' => [
