@@ -39,7 +39,7 @@
                                             @foreach ($cats as $key => $cat)
                                             @php 
                                                 $selected_category = \App\ArticleCategory::where('id', $cat['id'])->first(); 
-                                                $article_count = $selected_category->articles->count();
+                                                $article_count = $selected_category->articles->where('status', '=', 'published')->count();
                                             @endphp
                                             <li><a href="{{{ url('articles/'.$cat['slug']) }}}">{{$cat['title']}}<em>{{$article_count}}</em></a></li>
                                             @endforeach
