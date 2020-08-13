@@ -306,7 +306,7 @@ return [
     'total' => 'Всего:',
     'proposal_amount' => 'Сумма предложения',
     'amount_note' => 'Общая сумма, которую клиент увидит в вашем предложении',
-    'worketic' => 'Worketic',
+    'worketic' => 'ZWork',
     'service_fee' => 'Плата за обслуживание',
     'receiving_amount' => 'Сумма, которую вы получите после',
     'fee_deduction' => 'Удержание платы за обслуживание',

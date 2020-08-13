@@ -97,9 +97,10 @@
                                                     <label for="wt-cats"></label>
                                                 </span>
                                             </th>
-                                            <th>{{{ trans('lang.cat_icon') }}}</th>
+                                            <th>{{{ trans('lang.img') }}}</th>
                                             <th>{{{ trans('lang.name') }}}</th>
                                             <th>{{{ trans('lang.slug') }}}</th>
+                                            <th>{{{ trans('lang.status') }}}</th>
                                             <th>{{{ trans('lang.action') }}}</th>
                                         </tr>
                                     </thead>
@@ -116,6 +117,7 @@
                                                 <td data-th="Icon"><span class="bt-content"><figure><img src="{{{asset(Helper::getImage('uploads/articles', $article->banner, '', 'small-default-article.png')) }}}" alt="{{{ $article->title }}}"></figure></span></td>
                                                 <td>{{{ $article->title }}}</td>
                                                 <td>{{{ $article->slug }}}</td>
+                                                <td>{{{ trans("lang.article_status.".$article->status) }}}</td>
                                                 <td>
                                                     <div class="wt-actionbtn">
                                                         <a href="{{{ url('admin/articles/edit-article') }}}/{{{ $article->id }}}" class="wt-addinfo wt-skillsaddinfo">

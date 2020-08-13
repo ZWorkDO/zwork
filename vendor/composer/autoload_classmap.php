@@ -22,6 +22,7 @@ return array(
     'App\\EmailHelper' => $baseDir . '/app/EmailHelper.php',
     'App\\EmailTemplate' => $baseDir . '/app/EmailTemplate.php',
     'App\\Events\\ExampleEvent' => $baseDir . '/app/Events/ExampleEvent.php',
+    'App\\Events\\LogSuccessfulLogout' => $baseDir . '/app/Events/LogSuccessfulLogout.php',
     'App\\Events\\MessageSent' => $baseDir . '/app/Events/MessageSent.php',
     'App\\Events\\UserEvent' => $baseDir . '/app/Events/UserEvent.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',

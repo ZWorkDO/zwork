@@ -306,7 +306,7 @@ return [
     'total' => 'Gesamt:',
     'proposal_amount' => 'Vorschlagsbetrag',
     'amount_note' => 'Gesamtbetrag, den der Kunde in Ihrem Angebot sehen wird',
-    'worketic' => 'Worketic',
+    'worketic' => 'ZWork',
     'service_fee' => 'Servicegebühr',
     'receiving_amount' => 'Betrag, den Sie nach erhalten',
     'fee_deduction' => 'Servicegebühr Abzug',

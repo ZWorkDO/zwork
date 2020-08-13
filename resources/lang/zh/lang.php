@@ -306,7 +306,7 @@ return [
     'total' => '总：',
     'proposal_amount' => '提案金额',
     'amount_note' => '客户将在您的提案中看到的总金额',
-    'worketic' => 'Worketic',
+    'worketic' => 'ZWork',
     'service_fee' => '服务费',
     'receiving_amount' => '你将获得的金额',
     'fee_deduction' => '服务费扣除',

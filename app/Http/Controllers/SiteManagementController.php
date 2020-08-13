@@ -103,7 +103,7 @@ class SiteManagementController extends Controller
         $footer_settings = $this->settings::getMetaValue('footer_settings');
         $footer_logo = !empty($footer_settings['footer_logo']) ? $footer_settings['footer_logo'] : null;
         $footer_desc = !empty($footer_settings['description']) ? $footer_settings['description'] : null;
-        $footer_copyright = !empty($footer_settings['copyright']) ? $footer_settings['copyright'] : 'Worketic. All Rights Reserved.';
+        $footer_copyright = !empty($footer_settings['copyright']) ? $footer_settings['copyright'] : 'ZWork. All Rights Reserved.';
         $menu_pages = !empty($footer_settings['pages']) ? $footer_settings['pages'] : array();
         $menu_pages_1 = !empty($footer_settings['menu_pages_1']) ? $footer_settings['menu_pages_1'] : array();
         $menu_title_1 = !empty($footer_settings['menu_title_1']) ? $footer_settings['menu_title_1'] : '';

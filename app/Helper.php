@@ -651,6 +651,28 @@ class Helper extends Model
     }
 
     /**
+     * Get Article Status
+     *
+     * @param string $key key
+     *
+     * @access public
+     *
+     * @return array
+     */
+    public static function getArticleStatus($key = "")
+    {
+        $list = array(
+            'draft' => trans('lang.article_status.draft'),
+            'published' => trans('lang.article_status.published'),
+        );
+        if (!empty($key) && array_key_exists($key, $list)) {
+            return $list[$key];
+        } else {
+            return $list;
+        }
+    }
+
+    /**
      * Get Project Status
      *
      * @param string $key key

@@ -128,6 +128,12 @@
             @endif
             @if ($role === 'employer' || $role === 'freelancer' )
                 <li>
+                    <a href="{{{ route('articles') }}}">
+                        <i class="ti-layers"></i>
+                        <span>{{ trans('lang.manage_articles') }}</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{{ url($role.'/dashboard') }}}">
                         <i class="ti-desktop"></i>
                         <span>{{ trans('lang.dashboard') }}</span>

@@ -141,7 +141,7 @@ return [
     'direct_bank_transfer' => 'Direct Bank Transfer',
     'add_paypal_email_address' => 'Add Paypal Email Address',
     'select_month' => 'Seleccione mes',
-    'status' => 'Estado',
+    'status' => 'Estatus',
     'reg_form_banner_note' => 'Puede habilitar / deshabilitar el formulario de registro Banner desde aquí',
     'registration_form_banner' => 'Banner de formulario de registro',
     'breadcrumbs_option_note' => 'Puede habilitar / deshabilitar las migas de pan desde aquí',
@@ -1122,6 +1122,10 @@ return [
         'cancelled' => 'Cancelar',
         'hired' => 'Contratado',
     ],
+    'article_status' => [
+        'draft' => 'Borrador',
+        'published' => 'Publicado',
+    ],
     'job_duration' => [
         'weekly' => 'Menos de una semana',
         'monthly' => 'Menos de un mes',
@@ -1221,7 +1225,7 @@ return [
           'subtitle' => "que dan vida a ideas grandiosas "
       ],
       '2' => [
-          'title' => "Tu equipo de trabajo",
+          'title' => "Tu equipo de proyecto",
           'subtitle' => "ahora más grande de lo que pensabas"
       ],
       '3' => [

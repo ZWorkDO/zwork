@@ -408,7 +408,7 @@ return [
     'total' => 'Total:',
     'proposal_amount' => 'Proposal Amount',
     'amount_note' => 'Total amount the client will see on your proposal',
-    'worketic' => 'Worketic',
+    'worketic' => 'ZWork',
     'service_fee' => 'ServiceFee',
     'receiving_amount' => 'Amount You’ll Recive after',
     'fee_deduction' => 'Service Fee deduction',

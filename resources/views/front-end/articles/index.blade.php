@@ -67,6 +67,26 @@
                                     </div>
                                 </div>
                             @endif
+                            @if (!empty($draft_articles)  && count($draft_articles) !== 0)
+                                <div class="wt-widget wt-widgetarticlesholder">
+                                    <div class="wt-widgettitle">
+                                        <h2>{{ trans('lang.draft') }}</h2>
+                                    </div>
+                                    <div class="wt-widgetcontent">
+                                        @foreach ($draft_articles as $key => $article)
+                                            <div class="wt-particlehold">
+                                                <figure>
+                                                    <img src="{{{asset(Helper::getImage('uploads/articles', $article->banner, 'x-small-', 'xsmall-default-article.png'))}}}" alt="image description">
+                                                </figure>
+                                                <div class="wt-particlecontent">
+                                                    <h3><a href="{{{ url('article/'.$article->slug) }}}">{{$article->title}}</a></h3>
+                                                    <span><i class="lnr lnr-clock"></i>{{ \Carbon\Carbon::parse($article->updated_at)->format('M d, Y')}}</span>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
                         </aside>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-8 float-left">

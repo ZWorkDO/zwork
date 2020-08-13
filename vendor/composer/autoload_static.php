@@ -1036,6 +1036,7 @@ class ComposerStaticInit4d7be38c62d71c7b93a82a7774ba8d5e
         'App\\EmailHelper' => __DIR__ . '/../..' . '/app/EmailHelper.php',
         'App\\EmailTemplate' => __DIR__ . '/../..' . '/app/EmailTemplate.php',
         'App\\Events\\ExampleEvent' => __DIR__ . '/../..' . '/app/Events/ExampleEvent.php',
+        'App\\Events\\LogSuccessfulLogout' => __DIR__ . '/../..' . '/app/Events/LogSuccessfulLogout.php',
         'App\\Events\\MessageSent' => __DIR__ . '/../..' . '/app/Events/MessageSent.php',
         'App\\Events\\UserEvent' => __DIR__ . '/../..' . '/app/Events/UserEvent.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
