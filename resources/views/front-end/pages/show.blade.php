@@ -1,6 +1,6 @@
 @extends(file_exists(resource_path('views/extend/front-end/master.blade.php')) ? 
 'extend.front-end.master':
- 'front-end.master', ['body_class' => 'wt-innerbgcolor'] )
+ 'front-end.master', ['body_class' => 'wt-innerbgcolor pb-0'] )
 @push('sliderStyle') 
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet">
@@ -34,7 +34,7 @@
 @section('content')
     @if ($show_banner_image == true && $home == false)
         @php $breadcrumbs = Breadcrumbs::generate('showPage',$page, $slug); @endphp
-        <div class="wt-haslayout wt-innerbannerholder" style="background-image:url({{{ asset($banner) }}})">
+        <div class="wt-haslayout wt-innerbannerholder wt-pagebannerholder" style="background-image:url({{{ asset($banner) }}})">
             <div class="container">
                 <div class="row justify-content-md-center">
                     <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-8 push-lg-3">

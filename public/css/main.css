@@ -5965,8 +5965,8 @@ select.is-invalid {border-color: #dc3545;}
 	background: #fcfcfc;
 }
 .wt-profilephoto .wt-location.wt-tabsinfo{margin: 0;}
-.wt-innerbannerholder,
-.wt-bannerholder{margin: 0 0 20px;}
+.wt-innerbannerholder:not(.wt-pagebannerholder),
+.wt-bannerholder:not(.wt-pagebannerholder){margin: 0 0 20px;}
 #pages-list .wt-innerbannerholder,
 #pages-list .wt-bannerholder{margin: 0;}
 .wt-ratepoints{
