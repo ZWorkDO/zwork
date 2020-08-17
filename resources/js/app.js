@@ -36,6 +36,71 @@ Vue.filter('two_digits', function (value) {
     return value.toString();
 });
 
+let $_boostrapModal = jQuery.fn['modal'];
+let $_boostrapCarousel =  jQuery.fn['carousel'];
+
+Event.$on('description-component-render', (data) => {
+    let infoModalCarousels = data.el.querySelectorAll(".info-modal-carousel");
+    Array.prototype.forEach.call(infoModalCarousels, (el, index) => {
+        let imcId = "imc-"+index;
+        let imcCarouselId = "imc-carousel-"+index;
+        let imcItemsQuery =  Array.prototype.slice.call(el.querySelectorAll(".imc-item"));
+        let imcItems = imcItemsQuery.reduce(function(acc, item, itemIndex ) {
+            let imcTitle = item.querySelector(".imc-title").innerHTML;
+            let imcContent = item.querySelector(".imc-content").innerHTML;
+            let imcImg = item.querySelector(".imc-img");
+            let imcClickHandler = item.querySelector(".imc-click-handler");
+            imcClickHandler.style.cursor = "pointer";
+            jQuery(imcClickHandler).on('click', function (e) {
+                e.preventDefault();
+                $_boostrapModal.call($('#'+imcId),"show",imcClickHandler);
+                $_boostrapCarousel.call($('#'+imcCarouselId),itemIndex);                
+            });
+
+            let imcImgSrc = imcImg.src;
+            let itemHtml = `<div class="carousel-item ${itemIndex == 0? "active": ""}">
+                        <div class="row p-5">
+                            <div class="col-lg-5 col-12 mb-lg-0 mb-4">
+                                <div class="d-flex h-100 align-items-center">
+                                    <figure class="m-0">
+                                        <img src="${imcImgSrc}">
+                                    </figure>
+                                </div>                                
+                            </div>
+                            <div class="col-lg-7 col-12">
+                                <div class="d-flex mb-3">
+                                    <h4 style="color: var(--color-2);">${imcTitle}</h4>
+                                </div>
+                                <div>
+                                    ${imcContent}
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            `;
+
+            return acc + itemHtml;
+        }, '');
+
+        let modalHtml = `<div id="${imcId}"  class="modal fade info-modal-carousel" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div id="${imcCarouselId}" class="carousel slide" data-interval="false" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        ${imcItems}
+                                    </div>
+                                    <a class="carousel-control-prev" role="button" href="#${imcCarouselId}" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                                    <a class="carousel-control-next" role="button" href="#${imcCarouselId}" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+        let modal = jQuery(modalHtml);
+        el.appendChild(modal[0]);
+    });
+})
+
+
 Vue.use(VueGoogleMaps, {
     load: {
         key: Map_key,
@@ -141,7 +206,30 @@ $(document).on({
   }
 });
 
-jQuery(document).ready(function () {
+jQuery(document).ready(function () {   
+   
+/*
+    var MY_SELECTOR = ".info-modal-carousel";
+    var observer = new MutationObserver(function(mutations){
+        for (var i=0; i < mutations.length; i++){
+        for (var j=0; j < mutations[i].addedNodes.length; j++){
+            // We're iterating through _all_ the elements as the parser parses them,
+            // deciding if they're the one we're looking for.
+            if ($(mutations[i].addedNodes[j]).is(MY_SELECTOR)){
+            alert("My Element Is Ready!");
+    
+            // We found our element, we're done:
+            observer.disconnect();
+            };
+        }
+        }
+    });
+  
+    observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true
+    });*/    
+
     jQuery(document).on('click', '.wt-back', function (e) {
         e.preventDefault();
         jQuery('.wt-back').parents('.wt-messages-holder').removeClass('wt-openmsg');

@@ -9088,3 +9088,24 @@ a:focus{text-decoration: none !important;}
 .text-default {
 	color: var(--color-1) !important;
 }
+.modal.info-modal-carousel .modal-dialog
+{
+    max-width:80%;
+}
+.modal.info-modal-carousel .modal-dialog .modal-content
+{
+    border: none;
+    background-color: transparent;
+}
+.modal.info-modal-carousel .modal-dialog .modal-content .carousel-inner
+{
+    background-color: white;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.modal.info-modal-carousel .modal-dialog .modal-content .carousel-control-prev,
+.modal.info-modal-carousel .modal-dialog .modal-content .carousel-control-next
+{
+    width: 10%;
+}
