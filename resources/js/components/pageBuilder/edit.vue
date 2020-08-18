@@ -19,7 +19,7 @@
               <div class="form-group la-section-title" v-if="form.body && form.body !='null'">
                 <tinymce-editor 
                     v-model="form.body" 
-                    :init="{plugins: 'paste link code advlist autolink lists link image charmap print', toolbar1: 'undo redo code | bold italic underline strikethrough | fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist', menubar:false, statusbar: false, extended_valid_elements:'span[style],i[class]'}">
+                    :init="{plugins: 'paste link code advlist autolink lists link image charmap print', toolbar1: 'undo redo code | bold italic underline strikethrough | fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist link anchor', menubar:false, statusbar: false, extended_valid_elements:'span[style],i[class]', resize: true}">
                 </tinymce-editor>
                 <!-- <textarea class="form-control wt-tinymceeditor" id="wt-tinymceeditor" :placeholder="trans('lang.ph_desc')" name="content">{{pageData.body}}</textarea> -->
               </div>

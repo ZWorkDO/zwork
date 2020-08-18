@@ -333,7 +333,7 @@ jQuery(document).ready(function () {
         plugins: ['code advlist autolink lists link image charmap print preview hr anchor pagebreak'],
         menubar: false,
         statusbar: false,
-        toolbar1: 'undo redo | insert | image | styleselect | bold italic | alignleft aligncenter alignright alignjustify code',
+        toolbar1: 'undo redo | insert | image | styleselect | bold italic | alignleft aligncenter alignright alignjustify code link anchor',
         image_advtab: true,
         inline_styles : true,
         convert_urls: false,

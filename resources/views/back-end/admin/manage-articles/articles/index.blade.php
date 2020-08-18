@@ -48,6 +48,7 @@
                                             </select>
                                         </span>
                                     </div>
+                                    {{ Form::hidden('status', 'draft') }}
                                     <div class="form-group">
                                         <upload-image
                                             :id="'article_image'"
