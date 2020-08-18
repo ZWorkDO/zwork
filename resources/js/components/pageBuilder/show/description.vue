@@ -11,7 +11,7 @@
 </template>
 <script>
 import Editor from '@tinymce/tinymce-vue'
-
+import Event from '../../../event.js';
 export default {
     props:['parent_index', 'element_id', 'content_section'],
     data() {
@@ -34,6 +34,9 @@ export default {
         removeSection: function() {
             this.$emit("removeElement", 'remove-section');
         }
+    },
+    mounted: function () {
+        Event.$emit('description-component-render', { el: this.$el });
     },
     created: function() {
         var index = this.getArrayIndex(this.content_section, 'id', this.element_id)
