@@ -84,12 +84,52 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="wt-jobdetails wt-tabsinfo">
+                            <div class="wt-jobdetails wt-tabsinfo wt-none">
                                 <div class="wt-tabscontenttitle">
                                     <h2>{{ trans('lang.job_dtl') }}</h2>
                                 </div>
                                 <div class="wt-formtheme wt-userform wt-userformvtwo">
                                     {!! Form::textarea('description', null, ['class' => 'wt-tinymceeditor', 'id' => 'wt-tinymceeditor', 'placeholder' => trans('lang.job_dtl_note')]) !!}
+                                </div>
+                            </div>
+                            <div class="wt-jobdetails wt-tabsinfo">
+                                <div class="wt-tabscontenttitle">
+                                    <h2>{{ trans('lang.job_dtl_1') }}</h2>
+                                </div>
+                                <div class="wt-formtheme wt-userform wt-userformvtwo">
+                                    {!! Form::textarea('description_1', null, ['class' => 'wt-tinymceeditor', 'id' => 'wt-tinymceeditor-1', 'placeholder' => trans('lang.job_dtl_note')]) !!}
+                                </div>
+                            </div>
+                            <div class="wt-jobdetails wt-tabsinfo">
+                                <div class="wt-tabscontenttitle">
+                                    <h2>{{ trans('lang.job_dtl_2') }}</h2>
+                                </div>
+                                <div class="wt-formtheme wt-userform wt-userformvtwo">
+                                    {!! Form::textarea('description_2', null, ['class' => 'wt-tinymceeditor', 'id' => 'wt-tinymceeditor-2', 'placeholder' => trans('lang.job_dtl_note')]) !!}
+                                </div>
+                            </div>
+                            <div class="wt-jobdetails wt-tabsinfo">
+                                <div class="wt-tabscontenttitle">
+                                    <h2>{{ trans('lang.job_dtl_3') }}</h2>
+                                </div>
+                                <div class="wt-formtheme wt-userform wt-userformvtwo">
+                                    {!! Form::textarea('description_3', null, ['class' => 'wt-tinymceeditor', 'id' => 'wt-tinymceeditor-3', 'placeholder' => trans('lang.job_dtl_note')]) !!}
+                                </div>
+                            </div>
+                            <div class="wt-jobdetails wt-tabsinfo">
+                                <div class="wt-tabscontenttitle">
+                                    <h2>{{ trans('lang.job_dtl_4') }}</h2>
+                                </div>
+                                <div class="wt-formtheme wt-userform wt-userformvtwo">
+                                    {!! Form::textarea('description_4', null, ['class' => 'wt-tinymceeditor', 'id' => 'wt-tinymceeditor-4', 'placeholder' => trans('lang.job_dtl_note')]) !!}
+                                </div>
+                            </div>
+                            <div class="wt-jobdetails wt-tabsinfo">
+                                <div class="wt-tabscontenttitle">
+                                    <h2>{{ trans('lang.job_dtl_5') }}</h2>
+                                </div>
+                                <div class="wt-formtheme wt-userform wt-userformvtwo">
+                                    {!! Form::textarea('description_5', null, ['class' => 'wt-tinymceeditor', 'id' => 'wt-tinymceeditor-5', 'placeholder' => trans('lang.job_dtl_note')]) !!}
                                 </div>
                             </div>
                             <div class="wt-jobskills wt-jobskills-holder wt-tabsinfo">

@@ -1809,7 +1809,7 @@ table.wt-tablecategories tbody tr td figure img{
 	float: left;
 	width: 100%;
 }
-.wt-jobdetails .wt-userformvtwo .form-group textarea.form-control{height: 300px;}
+.wt-jobdetails .wt-userformvtwo .form-group textarea.form-control{height: 200px;}
 .wt-jobskills .wt-userform fieldset .form-group:first-child{width: 75%;}
 .wt-jobskills .wt-userform fieldset .form-group:nth-child(2){width: 25%;}
 .wt-jobskills .wt-userform fieldset .form-group.wt-btnarea:nth-child(2) .wt-btn{padding: 0 10px;width: 100%;}
@@ -4766,4 +4766,7 @@ body.rtl .wt-uploadrating .modal-body{text-align: right;}
 .amt-delbtn:focus,
 .amt-delbtn:hover{
 	color: #fff;
+}
+.wt-none {
+	display: none;
 }
