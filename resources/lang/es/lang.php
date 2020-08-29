@@ -668,7 +668,7 @@ return [
     'click_view' => 'Click para ver',
     'img' => 'imagen',
     'latest_jobs' => 'Ultimos proyectos',
-    'view_saved_items' => 'Ver artículos guardados',
+    'view_saved_items' => 'Ver favoritos',
     'purchase_date' => 'Fecha de compra',
     'cancelled_jobs' => 'Proyectos cancelados',
     'dispute' => 'Disputa',
