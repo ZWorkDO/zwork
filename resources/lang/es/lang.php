@@ -763,7 +763,7 @@ return [
     'pkg_inv' => 'Facturas de paquetes',
     'project_inv' => 'Facturas de proyectos',
     'saved_items' => 'Mis favoritos',
-    'verified_company' => 'Empresa verificada',
+    'verified_company' => 'Usuário verificado',
     'company_followers' => 'Seguidores de la compañía',
     'no_followers' => 'No hay seguidores',
     'report_employer' => 'Informe a este empleador',

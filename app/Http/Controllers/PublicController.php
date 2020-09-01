@@ -348,6 +348,7 @@ class PublicController extends Controller
         }
     }
 
+
     /**
      * Show user profile.
      *
@@ -355,8 +356,11 @@ class PublicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showUserProfile($slug)
+    public function showUserProfile($slug, $role)
+    // public function showUserProfile($slug)
     {
+        // dd($slug);
+        // $role = 'freelancer';
         $user = User::select('id')->where('slug', $slug)->first();
         if (!empty($user)) {
             $user = User::find($user->id);
@@ -374,7 +378,9 @@ class PublicController extends Controller
             $current_date = Carbon::now()->format('M d, Y');
             $tagline = !empty($profile) ? $profile->tagline : '';
             $desc = !empty($profile) ? $profile->description : '';
-            if ($user->getRoleNames()->first() === 'freelancer') {
+            $temp = $user->getRoleNames()->first();
+            // dd($temp);
+            if ($role === 'freelancer') {
                 $services = array();
                 if (Schema::hasTable('services') && Schema::hasTable('service_user')) {
                     $services = $user->services;
@@ -485,7 +491,8 @@ class PublicController extends Controller
                         )
                     );
                 }
-            } elseif ($user->getRoleNames()->first() === 'employer') {
+            // } elseif ($user->getRoleNames()->first() === 'employer') {
+            } elseif ($role === 'employer') {
                 $jobs = Job::where('user_id', $profile->user_id)->latest()->paginate(7);
                 $followers = DB::table('followers')->where('following', $profile->user_id)->get();
                 $save_employer = !empty(auth()->user()->profile->saved_employers) ? unserialize(auth()->user()->profile->saved_employers) : array();
@@ -494,6 +501,7 @@ class PublicController extends Controller
                 $symbol   = !empty($currency) && !empty($currency[0]['currency']) ? Helper::currencyList($currency[0]['currency']) : array();
                 $breadcrumbs_settings = SiteManagement::getMetaValue('show_breadcrumb');
                 $show_breadcrumbs = !empty($breadcrumbs_settings) ? $breadcrumbs_settings : 'true';
+                // dd($show_breadcrumbs);
                 if (file_exists(resource_path('views/extend/front-end/users/employer-show.blade.php'))) {
                     return View(
                         'extend.front-end.users.employer-show',
@@ -547,6 +555,24 @@ class PublicController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    /**
+     * Get filtered list.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showUserProfileProfessional($slug){
+        return $this->showUserProfile($slug,'freelancer');
+    }
+
+    /**
+     * Get filtered list.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showUserProfileProject($slug){
+        return $this->showUserProfile($slug,'employer');
     }
 
     /**

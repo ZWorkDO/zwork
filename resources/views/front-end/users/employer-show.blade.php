@@ -4,7 +4,7 @@
 @section('title'){{ $user_name }} | {{ $tagline }} @stop
 @section('description', "$desc")
 @section('content')
-    @php $breadcrumbs = Breadcrumbs::generate('showUserProfile', $user->slug); @endphp
+    @php $breadcrumbs = Breadcrumbs::generate('showUserProfileProfessional', $user->slug); @endphp
     <div class="wt-haslayout wt-innerbannerholder">
         <div class="container">
             <div class="row justify-content-md-center">

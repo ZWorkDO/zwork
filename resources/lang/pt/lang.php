@@ -612,7 +612,7 @@ return [
     'pkg_inv' => 'Faturas de pacote',
     'project_inv' => 'Faturas do Projeto',
     'saved_items' => 'Meus itens salvos',
-    'verified_company' => 'Empresa verificada',
+    'verified_company' => 'Usuário verificado',
     'company_followers' => 'Seguidores da empresa',
     'no_followers' => 'Sem seguidores',
     'report_employer' => 'Denunciar este empregador',
