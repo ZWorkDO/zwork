@@ -1567,6 +1567,7 @@ class Helper extends Model
         }
     }
 
+
     /**
      * Get user profile image
      *
@@ -1577,7 +1578,7 @@ class Helper extends Model
      *
      * @return array
      */
-    public static function getUserProfileBanner($user_id, $size = '')
+    public static function getUserProfileBanner($user_id, $size = '', $role = '')
     {
         $user = User::getUserRoleType($user_id);
         $profile_banner = User::find($user_id)->profile->banner;
@@ -1585,9 +1586,10 @@ class Helper extends Model
             if (!empty($size)) {
                 return '/uploads/users/' . $user_id . '/' . $size . '-' . $profile_banner;
             } else {
+                // dd('/uploads/users/' . $user_id . '/' . $profile_banner);
                 return '/uploads/users/' . $user_id . '/' . $profile_banner;
             }
-        } elseif ($user->role_type == 'freelancer') {
+        } elseif ($role == 'freelancer') {
             if (!empty($size)) {
                 if (file_exists('images/' . $size . '-frbanner-1920x400.jpg')) {
                     return 'images/' . $size . '-frbanner-1920x400.jpg';
@@ -1597,7 +1599,7 @@ class Helper extends Model
             } else {
                 return 'images/frbanner-1920x400.jpg';
             }
-        } elseif ($user->role_type == 'employer') {
+        } elseif ($role == 'employer') {
             if (!empty($size)) {
                 if (file_exists('images/' . $size . '-e-1110x300.jpg')) {
                     return 'images/' . $size . '-e-1110x300.jpg';
@@ -1610,6 +1612,14 @@ class Helper extends Model
         }
     }
 
+    
+    public static function getUserProfileProfessionalBanner($user_id, $size = '') {
+        return Helper::getUserProfileBanner($user_id, $size, 'freelancer');
+    }
+    
+    public static function getUserProfileProjectBanner($user_id, $size = '') {
+        return Helper::getUserProfileBanner($user_id, $size, 'employer');
+    }
 
     /**
      * Get user profile image

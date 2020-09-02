@@ -39,7 +39,7 @@
                                                         @if (!empty($user_name) || !empty($job->title) )
                                                             <div class="wt-title">
                                                                 @if (!empty($user_name))
-                                                                <a href="{{{ url('profile/'.$job->employer->slug) }}}">@if($verified_user === 1)
+                                                                <a href="{{{ url('profile-project/'.$job->employer->slug) }}}">@if($verified_user === 1)
                                                                     <i class="fa fa-check-circle"></i>@endif&nbsp;{{{ $user_name }}}</a>
                                                                 @endif
                                                                 @if (!empty($job->title))
@@ -108,15 +108,15 @@
                                                     <div class="wt-userlistingcontent">
                                                         <div class="wt-contenthead wt-followcomhead">
                                                             <div class="wt-title">
-                                                                <a href="{{{ url('profile/'.$emp->slug) }}}">
+                                                                <a href="{{{ url('profile-project/'.$emp->slug) }}}">
                                                                     @if($verified_user === 1)
                                                                         <i class="fa fa-check-circle"></i> {{ trans('lang.verified_company') }}</a>
                                                                     @endif
-                                                                <h3><a href="{{ url('profile/'.$emp->slug) }}">{{{ $user_name }}}</a></h3>
+                                                                <h3><a href="{{ url('profile-project/'.$emp->slug) }}">{{{ $user_name }}}</a></h3>
                                                             </div>
                                                             <ul class="wt-followcompomy-breadcrumb wt-userlisting-breadcrumb">
-                                                                <li><a href="{{{ url('profile/'.$emp->slug) }}}"> {{ trans('lang.open_jobs') }}  </a></li>
-                                                                <li><a href="{{{ url('profile/'.$emp->slug) }}}"> {{ trans('lang.full_profile') }}</a></li>
+                                                                <li><a href="{{{ url('profile-project/'.$emp->slug) }}}"> {{ trans('lang.open_jobs') }}  </a></li>
+                                                                <li><a href="{{{ url('profile-project/'.$emp->slug) }}}"> {{ trans('lang.full_profile') }}</a></li>
                                                                 <li><a href="javascript:void(0);" class="wt-savefollow"> {{ trans('lang.following') }}</a></li>
                                                             </ul>
                                                         </div>
@@ -173,10 +173,10 @@
                                             <div class="wt-userlistingcontent">
                                                 <div class="wt-contenthead">
                                                     <div class="wt-title">
-                                                        <a href="{{{ url('profile/'.$user->slug) }}}">
+                                                        <a href="{{{ url('profile-professional/'.$user->slug) }}}">
                                                             @if($verified_user === 1) <i class="fa fa-check-circle"></i> @endif
                                                             {{{ $user_name }}}</a>
-                                                        <h2><a href="{{ url('profile/'.$user->slug) }}">{{{ $profile->tagline }}}</a></h2>
+                                                        <h2><a href="{{ url('profile-professional/'.$user->slug) }}">{{{ $profile->tagline }}}</a></h2>
                                                     </div>
                                                     <ul class="wt-userlisting-breadcrumb">
                                                         @if (!empty($profile->hourly_rate))

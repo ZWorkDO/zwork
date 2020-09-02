@@ -103,7 +103,7 @@
                                                         <div class="wt-contenthead">
                                                             <div class="wt-title">
                                                                 @if (!empty($job->employer->slug))
-                                                                    <a href="{{ url('profile/'.$job->employer->slug) }}"><i class="fa fa-check-circle"></i> {{{ Helper::getUserName($job->employer->id) }}}</a>
+                                                                    <a href="{{ url('profile-project/'.$job->employer->slug) }}"><i class="fa fa-check-circle"></i> {{{ Helper::getUserName($job->employer->id) }}}</a>
                                                                 @endif
                                                                 <h2><a href="{{ url('job/'.$job->slug) }}">{{{$job->title}}}</a></h2>
                                                             </div>
@@ -157,7 +157,7 @@
                                                 <div class="wt-userlistingcontent">
                                                     <div class="wt-contenthead">
                                                         <div class="wt-title">
-                                                            <a href="{{ url('profile/'.$job->employer->slug) }}"><i class="fa fa-check-circle"></i> {{{ Helper::getUserName($job->employer->id) }}}</a>
+                                                            <a href="{{ url('profile-project/'.$job->employer->slug) }}"><i class="fa fa-check-circle"></i> {{{ Helper::getUserName($job->employer->id) }}}</a>
                                                             <h2><a href="{{ url('job/'.$job->slug) }}">{{{$job->title}}}</a></h2>
                                                         </div>
                                                         <div class="wt-description">

@@ -75,7 +75,7 @@ class LoginController extends Controller
                 $user_role = $user_role_type->role_type;                
                 if (strpos(app('url')->to('home'), url()->previous()) !== false) {                               
                   if ($user_role === 'freelancer') {
-                      return Redirect::to('freelancer/dashboard');
+                      return Redirect::to('professional/dashboard');
                   } elseif ($user_role === 'employer') {
                       return Redirect::to('employer/dashboard');
                   }else {

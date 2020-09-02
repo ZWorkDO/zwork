@@ -61,7 +61,7 @@
 																	@if ($employer->user_verified == 1)
 																		<span class="wt-featuredtagvtwo">{{ trans('lang.featured') }}</span>
 																	@endif
-																	<a href="{{{url('profile/'.$employer->slug)}}}"><h3>{{{Helper::getUserName($employer->id)}}}</h3></a>
+																	<a href="{{{url('profile-project/'.$employer->slug)}}}"><h3>{{{Helper::getUserName($employer->id)}}}</h3></a>
 																</div>
 															</div>
 														</div>
@@ -79,7 +79,7 @@
 														<a href="{{{route('serviceDetail',$service->slug)}}}" class="wt-viewinfo">
 															<i class="lnr lnr-eye"></i>
 														</a>
-														<a href="{{{url('freelancer/service/'.$order->id.'/'.$order->status)}}}" class="wt-addinfo wt-skillsaddinfo">
+														<a href="{{{url('professional/service/'.$order->id.'/'.$order->status)}}}" class="wt-addinfo wt-skillsaddinfo">
 															<i class="lnr lnr-history"></i>
 														</a>
 														@if ($order->status == 'cancelled' && Helper::getOrderPayout($order->id)->count() == 0)

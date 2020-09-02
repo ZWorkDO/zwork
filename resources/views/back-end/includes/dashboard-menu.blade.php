@@ -20,7 +20,7 @@
         <div id="wt-verticalscrollbar" class="wt-verticalscrollbar">
             <div class="wt-companysdetails wt-usersidebar">
                 <figure class="wt-companysimg">
-                    <img src="{{{ asset(Helper::getUserProfileBanner($user->id, 'small')) }}}" alt="{{{ trans('lang.profile_banner') }}}">
+                    <img src="{{{ asset(Helper::getUserProfileProjectBanner($user->id, 'small')) }}}" alt="{{{ trans('lang.profile_banner') }}}">
                 </figure>
                 <div class="wt-companysinfo">
                     <figure><img src="{{{ asset(Helper::getImageWithSize('uploads/users/'.$user->id, $profile->avater, 'listing')) }}}" alt="{{ trans('lang.profile_photo') }}"></figure>
@@ -263,9 +263,9 @@
                                     <span>{{ trans('lang.all_projects') }}</span>
                                 </a>
                                 <ul class="sub-menu">
-                                    <li><hr><a href="{{{ url('freelancer/jobs/completed') }}}">{{ trans('lang.completed_projects') }}</a></li>
-                                    <li><hr><a href="{{{ url('freelancer/jobs/cancelled') }}}">{{ trans('lang.cancelled_projects') }}</a></li>
-                                    <li><hr><a href="{{{ url('freelancer/jobs/hired') }}}">{{ trans('lang.ongoing_projects') }}</a></li>
+                                    <li><hr><a href="{{{ url('professional/jobs/completed') }}}">{{ trans('lang.completed_projects') }}</a></li>
+                                    <li><hr><a href="{{{ url('professional/jobs/cancelled') }}}">{{ trans('lang.cancelled_projects') }}</a></li>
+                                    <li><hr><a href="{{{ url('professional/jobs/hired') }}}">{{ trans('lang.ongoing_projects') }}</a></li>
                                 </ul>
                             </li>
                             @if (Helper::getAccessType() == 'both' || Helper::getAccessType() == 'services')
@@ -303,7 +303,7 @@
                                         <span>{{ trans('lang.invoices') }}</span>
                                     </a>
                                     <ul class="sub-menu">
-                                        <li><hr><a href="{{{ url('freelancer/package/invoice') }}}">{{ trans('lang.pkg_inv') }}</a></li>
+                                        <li><hr><a href="{{{ url('professional/package/invoice') }}}">{{ trans('lang.pkg_inv') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>

@@ -222,7 +222,7 @@ export default {
     getEducations() {
       let self = this;
       axios
-        .get(APP_URL + "/freelancer/get-freelancer-educations")
+        .get(APP_URL + "/professional/get-freelancer-educations")
         .then(function(response) {
           self.stored_educations = response.data.educations;
           console.log(self.stored_educations);

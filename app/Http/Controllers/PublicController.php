@@ -292,7 +292,7 @@ class PublicController extends Controller
                             $template_data = EmailTemplate::getEmailTemplateByID($admin_template->id);
                             $email_params['name'] = Helper::getUserName($id);
                             $email_params['email'] = $email;
-                            $email_params['link'] = url('profile/' . $user->slug);
+                            $email_params['link'] = url('profile-project/' . $user->slug);
                             Mail::to(config('mail.username'))
                                 ->send(
                                     new AdminEmailMailable(
@@ -372,7 +372,6 @@ class PublicController extends Controller
             $profile = Profile::all()->where('user_id', $user->id)->first();
             $reasons = Helper::getReportReasons();
             $avatar = !empty($profile->avater) ? '/uploads/users/' . $profile->user_id . '/' . $profile->avater : '/images/user.jpg';
-            $banner = !empty($profile->banner) ? '/uploads/users/' . $profile->user_id . '/' . $profile->banner : Helper::getUserProfileBanner($user->id);
             $auth_user = Auth::user() ? true : false;
             $user_name = Helper::getUserName($profile->user_id);
             $current_date = Carbon::now()->format('M d, Y');
@@ -381,6 +380,7 @@ class PublicController extends Controller
             $temp = $user->getRoleNames()->first();
             // dd($temp);
             if ($role === 'freelancer') {
+                $banner = !empty($profile->banner) ? '/uploads/users/' . $profile->user_id . '/' . $profile->banner : Helper::getUserProfileProfessionalBanner($user->id);
                 $services = array();
                 if (Schema::hasTable('services') && Schema::hasTable('service_user')) {
                     $services = $user->services;
@@ -493,6 +493,8 @@ class PublicController extends Controller
                 }
             // } elseif ($user->getRoleNames()->first() === 'employer') {
             } elseif ($role === 'employer') {
+                $banner = !empty($profile->banner) ? '/uploads/users/' . $profile->user_id . '/' . $profile->banner : Helper::getUserProfileProjectBanner($user->id);
+                // dd($banner);
                 $jobs = Job::where('user_id', $profile->user_id)->latest()->paginate(7);
                 $followers = DB::table('followers')->where('following', $profile->user_id)->get();
                 $save_employer = !empty(auth()->user()->profile->saved_employers) ? unserialize(auth()->user()->profile->saved_employers) : array();
@@ -501,7 +503,6 @@ class PublicController extends Controller
                 $symbol   = !empty($currency) && !empty($currency[0]['currency']) ? Helper::currencyList($currency[0]['currency']) : array();
                 $breadcrumbs_settings = SiteManagement::getMetaValue('show_breadcrumb');
                 $show_breadcrumbs = !empty($breadcrumbs_settings) ? $breadcrumbs_settings : 'true';
-                // dd($show_breadcrumbs);
                 if (file_exists(resource_path('views/extend/front-end/users/employer-show.blade.php'))) {
                     return View(
                         'extend.front-end.users.employer-show',
@@ -572,6 +573,7 @@ class PublicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showUserProfileProject($slug){
+        // dd($slug);
         return $this->showUserProfile($slug,'employer');
     }
 

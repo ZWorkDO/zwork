@@ -87,4 +87,11 @@ Breadcrumbs::for(
     }
 );
 
+Breadcrumbs::for(
+    'showUserProfileProject', function ($trail, $slug) {
+        $trail->parent('home');
+        $trail->push(trans('lang.profile'), route('showUserProfileProject', ['slug' => $slug]));
+    }
+);
+
 

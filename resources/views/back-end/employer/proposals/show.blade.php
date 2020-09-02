@@ -40,7 +40,7 @@
                                             @if (!empty($employer_name) || !empty($job->title) )
                                                 <div class="wt-title">
                                                     @if (!empty($employer_name))
-                                                        <a href="{{{ url('profile/'.$job->employer->slug) }}}">@if ($verified_user === 1)<i class="fa fa-check-circle"></i>@endif&nbsp;{{{ $employer_name }}}</a>
+                                                        <a href="{{{ url('profile-project/'.$job->employer->slug) }}}">@if ($verified_user === 1)<i class="fa fa-check-circle"></i>@endif&nbsp;{{{ $employer_name }}}</a>
                                                     @endif
                                                     @if (!empty($job->title))
                                                         <h2>{{{ $job->title }}}</h2>
@@ -110,7 +110,7 @@
                                             @if (!empty($freelancer_name))
                                                 <div class="wt-contenthead">
                                                     <div class="wt-title">
-                                                        <a href="{{ url('profile/'.$user_slug) }}">{{{ $freelancer_name }}}</a>
+                                                        <a href="{{ url('profile-professional/'.$user_slug) }}">{{{ $freelancer_name }}}</a>
                                                     </div>
                                                 </div>
                                             @endif

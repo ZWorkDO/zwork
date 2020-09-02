@@ -31,7 +31,7 @@
                                 </ul>
                             @endif
                             <div class="wt-awardsholder" id="wt-awards">
-                                {!! Form::open(['url' => url('freelancer/store-project-award-settings'), 'class' =>'wt-formtheme wt-userform wt-formprojectinfo', 'id' => 'awards_projects', '@submit.prevent' => 'submitAwardsProjects']) !!}
+                                {!! Form::open(['url' => url('professional/store-project-award-settings'), 'class' =>'wt-formtheme wt-userform wt-formprojectinfo', 'id' => 'awards_projects', '@submit.prevent' => 'submitAwardsProjects']) !!}
                                     <div class="wt-addprojectsholder wt-tabsinfo">
                                         @if (file_exists(resource_path('views/extend/back-end/freelancer/profile-settings/projects-awards/projects.blade.php'))) 
                                             @include('extend.back-end.freelancer.profile-settings.projects-awards.projects')

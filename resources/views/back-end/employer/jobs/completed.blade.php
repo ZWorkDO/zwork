@@ -26,7 +26,7 @@
                                         <div class="wt-userlistingcontent wt-userlistingcontentvtwo">
                                             <div class="wt-contenthead">
                                                 <div class="wt-title">
-                                                    <a href="{{{ url('profile/'.$job->employer->slug) }}}">
+                                                    <a href="{{{ url('profile-project/'.$job->employer->slug) }}}">
                                                         @if ($verified_user === 1)
                                                             <i class="fa fa-check-circle"></i>
                                                         @endif

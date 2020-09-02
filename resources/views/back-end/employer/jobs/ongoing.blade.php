@@ -36,7 +36,7 @@
                                                     @if (!empty($user_name) || !empty($job->title) )
                                                         <div class="wt-title">
                                                             @if (!empty($user_name))
-                                                                <a href="{{{ url('profile/'.$job->employer->slug) }}}">@if($verified_user === 1)<i class="fa fa-check-circle"></i>@endif&nbsp;{{{ $user_name }}}</a>
+                                                                <a href="{{{ url('profile-project/'.$job->employer->slug) }}}">@if($verified_user === 1)<i class="fa fa-check-circle"></i>@endif&nbsp;{{{ $user_name }}}</a>
                                                             @endif
                                                             @if (!empty($job->title))
                                                                 <h2>{{{ $job->title }}}</h2>
