@@ -56,14 +56,17 @@ class ResetPassword extends Notification
             return call_user_func(static::$toMailCallback, $notifiable, $this->token);
         }
 
-        return (new MailMessage)
+        $mail = (new MailMessage)
+            // ->from("ZWork")
             ->subject(Lang::getFromJson('Reset Password Notification'))
-            ->line(Lang::getFromJson('You are receiving this email because we received a password reset request for your account.'))
-            ->action(Lang::getFromJson('Reset Password'), url(config('app.url').route('password.reset', $this->token, false)))
-            ->line(Lang::getFromJson('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.users.expire')]))
-            ->line(Lang::getFromJson('If you did not request a password reset, no further action is required.'));
-    }
+            ->line(Lang::getFromJson('Nos enteramos de que olvidaste la contraseña de tu cuenta, pero no te preocupes. Haciendo click en el botón debajo podrás volver a crear una nueva.'))
+            ->action(Lang::getFromJson('Restablecer contraseña'), url(config('app.url').route('password.reset', $this->token, false)))
+            ->line(Lang::getFromJson('Ese enlace se expira en :count minutos.', ['count' => config('auth.passwords.users.expire')]))
+            ->line(Lang::getFromJson('Si no fuiste quién solicitó un cambio de contraseña, por favor ignorar este mensaje.'));
+        // dd($mail);    
 
+        return $mail;
+    }
     /**
      * Set a callback that should be used when building the notification mail message.
      *

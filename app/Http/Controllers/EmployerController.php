@@ -215,7 +215,7 @@ class EmployerController extends Controller
     public function switchToFreelancer(Request $request){
       if (Auth::user()) {
           Auth::user()->switchToRole("freelancer");
-          return Redirect::to('professional/dashboard');
+          return Redirect::to('freelancer/dashboard');
       }
     }   
 
