@@ -41,13 +41,13 @@ class VerifyEmail extends Notification
         }
 
         return (new MailMessage)
-            ->subject(Lang::getFromJson('Verify Email Address'))
-            ->line(Lang::getFromJson('Please click the button below to verify your email address.'))
+            ->subject(Lang::getFromJson('Verificación de Correo'))
+            ->line(Lang::getFromJson('Favor clicar en el botón abajo para validar su correo eletrónico.'))
             ->action(
-                Lang::getFromJson('Verify Email Address'),
+                Lang::getFromJson('Validar Correo'),
                 $this->verificationUrl($notifiable)
             )
-            ->line(Lang::getFromJson('If you did not create an account, no further action is required.'));
+            ->line(Lang::getFromJson('Si no fuiste tu que creaste la cuenta en ZWork favor desconsiderar ese correo.'));
     }
 
     /**
