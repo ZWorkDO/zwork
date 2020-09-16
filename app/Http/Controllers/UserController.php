@@ -16,6 +16,7 @@ namespace App\Http\Controllers;
 
 use App\EmailTemplate;
 use App\Helper;
+use App\CyberSourceHelper;
 use App\Invoice;
 use App\Job;
 use App\Language;
@@ -55,6 +56,8 @@ use App\Service;
 use App\Order;
 use App\Mail\EmployerEmailMailable;
 use Illuminate\Support\Facades\Schema;
+use App\BillingAddress;
+
 
 /**
  * Class UserController
@@ -1218,10 +1221,20 @@ class UserController extends Controller
             $payment_gateway = !empty($payout_settings) && !empty($payout_settings[0]['payment_method']) ? $payout_settings[0]['payment_method'] : array();
             $symbol = !empty($payout_settings) && !empty($payout_settings[0]['currency']) ? Helper::currencyList($payout_settings[0]['currency']) : array();
             $mode = !empty($payout_settings) && !empty($payout_settings[0]['payment_mode']) ? $payout_settings[0]['payment_mode'] : 'true';
+            
+            $product_info = array();
+            $product_info["product_id"] = $package->id;
+            $product_info["product_name"] = $package->title;
+            $product_info["product_type"] = "package";
+            $product_info["project_type"] = "";
+            $product_info["service_seller"] = 0;
+            $product_info["cost"] = $package->cost;
+            $payment_info = CyberSourceHelper::buildRequestParams($product_info);            
+
             if (file_exists(resource_path('views/extend/back-end/package/checkout.blade.php'))) {
-                return view::make('extend.back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'symbol', 'mode'));
+                return view::make('extend.back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'payment_info', 'symbol', 'mode'));
             } else {
-                return view::make('back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'symbol', 'mode'));
+                return view::make('back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'payment_info', 'symbol', 'mode'));
             }
         }
     }

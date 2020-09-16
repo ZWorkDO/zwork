@@ -1878,8 +1878,16 @@ class Helper extends Model
     public static function currencyList($code = "")
     {
         $currency_array = array(
-            'USD' => array(
+            'DOP' => array(
                 'numeric_code'  => 840,
+                'code'          => 'DOP',
+                'name'          => 'Peso Dominicano',
+                'symbol'        => 'RD$',
+                'fraction_name' => 'Centavo',
+                'decimals'      => 2
+            ),
+            'USD' => array(
+                'numeric_code'  => 214,
                 'code'          => 'USD',
                 'name'          => 'United States dollar',
                 'symbol'        => '$',
@@ -2157,12 +2165,38 @@ class Helper extends Model
                 'title' => trans('lang.payment_methods.stripe'),
                 'value' => 'stripe',
             ),
+            'cybsrc' => array(
+                'title' => trans('lang.payment_methods.cybsrc'),
+                'value' => 'cybsrc',
+            ),
         );
         if (!empty($key) && array_key_exists($key, $list)) {
             return $list[$key];
         } else {
             return $list;
         }
+    }
+
+
+    /**
+     * Get country list
+     *
+     * @param string $key key
+     *
+     * @access public
+     *
+     * @return array
+     */
+    public static function getCountries()
+    {
+        return collect(countries())->keyBy('iso_3166_1_alpha2')->map(function ($country,$key) {
+            $translations = country($key)->getTranslations();
+            if(array_key_exists("spa", $translations)){
+                return country($key)->getTranslations()["spa"]["common"];
+            }else {
+                return $country["name"];
+            }
+        });
     }
 
     /**

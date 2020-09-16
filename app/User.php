@@ -156,6 +156,16 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Get the billing address record associated with the user.
+     *
+     * @return relation
+     */
+    public function billingAddress()
+    {
+        return $this->hasOne('App\BillingAddress');
+    }
+
+    /**
      * Get the payout record associated with the user.
      *
      * @return relation

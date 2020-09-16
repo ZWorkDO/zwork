@@ -7,6 +7,7 @@ use App\Language;
 use App\Category;
 use App\Location;
 use App\Helper;
+use App\CyberSourceHelper;
 use App\ResponseTime;
 use App\DeliveryTime;
 use App\Service;
@@ -652,6 +653,16 @@ class ServiceController extends Controller
                 $payment_gateway = !empty($payout_settings) && !empty($payout_settings[0]['payment_method']) ? $payout_settings[0]['payment_method'] : null;
                 $currency   = SiteManagement::getMetaValue('commision');
                 $symbol = !empty($currency) && !empty($currency[0]['currency']) ? Helper::currencyList($currency[0]['currency']) : array();
+
+                $product_info = array();
+                $product_info["product_id"] = $service->id;
+                $product_info["product_name"] = $service->title;
+                $product_info["product_type"] = "project";
+                $product_info["project_type"] = "service";
+                $product_info["service_seller"] = $freelancer->id;
+                $product_info["cost"] = $service->price;
+                $payment_info = CyberSourceHelper::buildRequestParams($product_info);  
+
                 if (file_exists(resource_path('views/extend/back-end/employer/services/checkout.blade.php'))) {
                     return view(
                         'extend.back-end.employer.services.checkout',
@@ -662,7 +673,8 @@ class ServiceController extends Controller
                             'payment_gateway',
                             'symbol',
                             'user_id',
-                            'freelancer'
+                            'freelancer',
+                            'payment_info'
                         )
                     );
                 } else {
@@ -675,7 +687,8 @@ class ServiceController extends Controller
                             'payment_gateway',
                             'symbol',
                             'user_id',
-                            'freelancer'
+                            'freelancer',
+                            'payment_info'
                         )
                     );
                 }

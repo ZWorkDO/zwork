@@ -352,6 +352,7 @@ return [
     'personal_detail' => 'Detalles personales y habilidades',
     'experience_education' => 'Experiencia y Educación',
     'project_awards' => 'Proyectos y Premios',
+    'billing_address' => 'Dirección de facturación',
     'verify_code' => 'Se necesita un código de verificación',
     'invalid_verify_code' => 'El código de verificación no es válido',
     'account_settings_saved' => 'Configuraciones de cuenta guardadas',
@@ -404,6 +405,7 @@ return [
     'your_personal_info' => 'Tu información personal',
     'banner_photo' => 'Banner Foto',
     'profile_banner' => 'Perfil de banner',
+    'your_billing_address' => 'Tu dirección de facturación',
     'profile_photo' => 'Foto de perfil',
     'file_size' => 'Tamaño del archivo:',
     'file_not_found' => 'Archivo no encontrado:',
@@ -802,6 +804,7 @@ return [
     'grand_total' => 'Gran total:',
     'select_pay_method' => 'Seleccione el método de pago',
     'stripe_key' => 'Clave de la raya',
+    'stripe_secret' => 'Secreto de la raya',
     'stripe_secret' => 'Secreto de la raya',
     'shiping_amnt' => 'Cantidad de envío',
     'handling_amnt' => 'Cantidad de manipulación',
@@ -1232,7 +1235,8 @@ return [
     ],
     'payment_methods' => [
         'paypal' => 'Paypal',
-        'stripe' => 'Raya',
+        'stripe' => 'Stripe',
+        'cybsrc' => 'CyberSource',
     ],
     'currency' => [
         'usd' => 'Dólar de los Estados Unidos',
@@ -1377,5 +1381,12 @@ return [
     'select_camaras' => 'Camara de Comercio',
     'select_rtes' => 'Regimén',
     'grade' => 'Grado Académico',
-    'full_width' => "Tamaño completo"
+    'full_width' => "Tamaño completo",
+
+    'ba_address_line_1' => "Línea de dirección 1",
+    'ba_address_line_2' => "Línea de dirección 2",
+    'ba_city' => "Ciudad",
+    'ba_state' => "Estado / Provincia",
+    'ba_country' => "País",
+    'ba_postal_code' => "Código postal",
 ];

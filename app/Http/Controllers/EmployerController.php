@@ -14,6 +14,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Helper;
+use App\CyberSourceHelper;
 use App\Department;
 use App\Location;
 use App\Profile;
@@ -41,6 +42,7 @@ use App\SiteManagement;
 use App\Service;
 use App\Review;
 use App\Payout;
+use App\BillingAddress;
 
 /**
  * Class EmployerController
@@ -147,6 +149,53 @@ class EmployerController extends Controller
             );
         }
     }
+
+    /**
+     * Show the form for update billing address 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function billingAddress()
+    {
+        $billing_address = BillingAddress::where('user_id', Auth::user()->id)
+        ->get()->first();
+        $first_name = !empty($billing_address->first_name) ? $billing_address->first_name : Auth::user()->first_name;
+        $last_name = !empty($billing_address->birthdate) ? $billing_address->last_name : Auth::user()->last_name;
+        $address_line1 = !empty($billing_address->address_line1) ? $billing_address->address_line1 : '';
+        $address_line2 = !empty($billing_address->address_line2) ? $billing_address->address_line2 : '';
+        $city = !empty($billing_address->city) ? $billing_address->city : '';
+        $state = !empty($billing_address->state) ? $billing_address->state : '';
+        $country = !empty($billing_address->country) ? $billing_address->country : '';
+
+        if (file_exists(resource_path('views/extend/back-end/employer/profile-settings/billing-address/index.blade.php'))) {
+            return view(
+                'extend.back-end.employer.profile-settings.billing-address.index',
+                  compact(
+                    'first_name',
+                    'last_name',
+                    'address_line1',
+                    'address_line2',
+                    'city',
+                    'state',
+                    'country',
+                )
+              );
+        } else {
+            return view(
+                'back-end.employer.profile-settings.billing-address.index',
+                compact(
+                    'first_name',
+                    'last_name',
+                    'address_line1',
+                    'address_line2',
+                    'city',
+                    'state',
+                    'country',
+              )
+            );
+        }
+    }
+    
 
      /**
      * Show the form for update personal information
@@ -354,6 +403,51 @@ class EmployerController extends Controller
         if (!empty($request)) {
             $user_id = Auth::user()->id;
             $this->employer->storeProfile($request, $user_id);
+            $json['type'] = 'success';
+            $json['process'] = trans('lang.saving_profile');
+            return $json;
+        }
+    }
+
+    
+     /**
+     * Store billing address
+     *
+     * @param \Illuminate\Http\Request $request request attributes
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storeBillingAddress(Request $request)
+    {
+        $server = Helper::worketicIsDemoSiteAjax();
+        if (!empty($server)) {
+            $response['type'] = 'error';
+            $response['message'] = $server->getData()->message;
+            return $response;
+        }
+
+        $this->validate(
+            $request,
+            [
+                'first_name'   => 'required',
+                'last_name'   => 'required',
+                'address_line1'   => 'required|max:60',
+                'address_line2'   => 'max:60',
+                'city'   => 'required',
+                'state'   => 'required',
+                'country'   => 'required',
+            ]
+        );
+
+        $json = array();
+
+        if (!empty($request)) {
+            $billing_address = BillingAddress::where('user_id', Auth::user()->id)
+            ->get()->first();
+            if (empty($billing_address->id)) {
+                $billing_address = new BillingAddress();
+            }
+            $billing_address->storeBillingAddress($request, Auth::user()->id); 
             $json['type'] = 'success';
             $json['process'] = trans('lang.saving_profile');
             return $json;
@@ -697,6 +791,16 @@ class EmployerController extends Controller
                 $payment_gateway = !empty($payout_settings) && !empty($payout_settings[0]['payment_method']) ? $payout_settings[0]['payment_method'] : null;
                 $currency   = SiteManagement::getMetaValue('commision');
                 $symbol = !empty($currency) && !empty($currency[0]['currency']) ? Helper::currencyList($currency[0]['currency']) : array();
+
+                $product_info = array();
+                $product_info["product_id"] = $proposal->id;
+                $product_info["product_name"] = $job->title;
+                $product_info["product_type"] = "project";
+                $product_info["project_type"] = "";
+                $product_info["service_seller"] = 0;
+                $product_info["cost"] = $proposal->amount;
+                $payment_info = CyberSourceHelper::buildRequestParams($product_info); 
+
                 if (file_exists(resource_path('views/extend/back-end/employer/jobs/checkout.blade.php'))) {
                     return view(
                         'extend.back-end.employer.jobs.checkout',
@@ -706,7 +810,8 @@ class EmployerController extends Controller
                             'profile_image',
                             'proposal',
                             'payment_gateway',
-                            'symbol'
+                            'symbol',
+                            'payment_info'
                         )
                     );
                 } else {
@@ -718,7 +823,8 @@ class EmployerController extends Controller
                             'profile_image',
                             'proposal',
                             'payment_gateway',
-                            'symbol'
+                            'symbol',
+                            'payment_info'
                         )
                     );
                 }

@@ -266,7 +266,7 @@ address { font-style: italic; }
 	position: absolute;
 	text-align: center;
 	font-size: inherit;
-	line-height: 50px;
+	line-height: 36px;
 	font-family: 'Linearicons-Free';
 }
 .wt-select select {
@@ -6885,7 +6885,7 @@ span.wt-stars span:after{
 }
 .wt-form-paycard fieldset .wt-inputwithicon img{
 	z-index: 2;
-	right: 20px;
+	right: 30px;
 	bottom: 10px;
 	position: absolute;
 }
@@ -7062,8 +7062,8 @@ span.wt-stars span:after{
 	font-style:normal;
 }
 .sj-checkpaymentmethod .sj-title{margin-bottom:30px; }
-.wt-stripe-form{margin-top: 20px;}
-.wt-stripe-form .wt-settingscontent {margin:0 0 10px 0;}
+.wt-stripe-form, .wt-cybsrc-form{margin-top: 20px;}
+.wt-stripe-form .wt-settingscontent, .wt-cybsrc-form .wt-settingscontent {margin:0 0 10px 0;}
 .la-form-error.is-invalid .invalid-feedback {display: block;}
 .wt-accountsettingholder .wt-securityhold .wt-userform .wt-updatall.la-btn-setting{width: 100%;}
 .wt-userlistinghold .wt-userlistingcontent .wt-rightarea .wt-stars{

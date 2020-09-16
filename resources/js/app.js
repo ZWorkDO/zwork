@@ -23,6 +23,7 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import Verte from 'verte';
 import 'verte/dist/verte.css';
 import { Collapse } from 'ant-design-vue';
+import VueCardFormat from 'vue-credit-card-validation';
 import './mixins/helper.js'
 
 Vue.prototype.trans = (key) => {
@@ -112,6 +113,7 @@ Vue.use(SmoothScrollbar)
 Vue.use(VueSweetalert2);
 Vue.use(Vuebar);
 Vue.use(Collapse);
+Vue.use(VueCardFormat);
 
 window.Vue = require('vue');
 window.flashVue = new Vue();
@@ -2003,6 +2005,48 @@ if (document.getElementById("user_profile")) {
                         self.showError(error.response.data.errors.nr[0]);
                     }
                   });
+            },
+            submitFreelancerBillingAddress: function () {
+                this.submitBillingAddress("freelancer");
+            },
+            submitEmployerBillingAddress: function () {
+                this.submitBillingAddress("employer");
+            },
+            submitBillingAddress: function (user_type) {
+                var self = this;
+                var profile_data = document.getElementById(user_type+'_billing_address');
+                let form_data = new FormData(profile_data);
+                axios.post(APP_URL + '/' + user_type + '/store-billing-address', form_data)
+                    .then(function (response) {
+                        if (response.data.type == 'success') {
+                            self.showInfo(Vue.prototype.trans('lang.saving_profile'));
+                        } else if (response.data.type == 'error') {
+                            self.showError(response.data.message);
+                        }
+                    })
+                    .catch(function (error) {
+                      if (error.response.data.errors.first_name) {
+                        self.showError(error.response.data.errors.first_name[0]);
+                      }
+                      if (error.response.data.errors.last_name) {
+                          self.showError(error.response.data.errors.last_name[0]);
+                      }
+                      if (error.response.data.errors.address_line1) {
+                          self.showError(error.response.data.errors.address_line1[0]);
+                      }
+                      if (error.response.data.errors.address_line2) {
+                          self.showError(error.response.data.errors.address_line2[0]);
+                      }
+                      if (error.response.data.errors.city) {
+                          self.showError(error.response.data.errors.city[0]);
+                      }
+                      if (error.response.data.errors.state) {
+                          self.showError(error.response.data.errors.state[0]);
+                      }
+                      if (error.response.data.errors.country) {
+                          self.showError(error.response.data.errors.country[0]);
+                      }
+                    });
             },
             submitExperienceEduction: function () {
                 var self = this;
@@ -4025,6 +4069,16 @@ if (document.getElementById("packages")) {
             private_chat: false,
             packageID: '',
             loading: false,
+            validate: false,
+            cardBrand: null,
+            cybsrc_form: {
+                cc_expiry_month_error: '',
+                is_cc_expiry_month_error: false,
+                cc_expiry_year_error: '',
+                is_cc_expiry_year_error: false,
+                cc_expire_month: '',
+                cc_expire_year: '',
+            },
             package: {
                 conneects: '',
                 skills: '',
@@ -4046,6 +4100,26 @@ if (document.getElementById("packages")) {
                     },
                 }
             },
+        },
+        computed: {
+            card_type: function() {
+                let brand = this.cardBrand;
+                switch(brand){
+                    case "visa": 
+                        return "001";
+                    case "mastercard": 
+                        return "002";
+                    case "amex": 
+                        return "003";
+                    case "discovery": 
+                        return "004";
+                    default:
+                        return "";
+                }
+            },
+            card_expire_date: function () {
+                return this.cybsrc_form.cc_expire_month + "-" + this.cybsrc_form.cc_expire_year;
+            }
         },
         methods: {
             showMessage(message) {
@@ -4170,6 +4244,9 @@ if (document.getElementById("packages")) {
             getStriprForm: function () {
                 this.$refs.myModalRef.show()
             },
+            getCybSrcForm: function () {
+                this.$refs.cybSrcModalRef.show()
+            },
             submitStripeFrom: function () {
                 this.loading = true;
                 let stripe_payment = document.getElementById('stripe-payment-form');
@@ -4193,6 +4270,51 @@ if (document.getElementById("packages")) {
                         self.loading = false;
                         console.log(error);
                     });
+            },
+            submitCybSrcFrom: function (e) {
+                let cybsrc_payment = document.getElementById('cybsrc-payment-form');
+                let fields =  $('#cybsrc-payment-form .reference_fields, #cybsrc-payment-form .validatable_fields');
+                let data = fields.serializeArray().reduce((acc, {name, value}) => ({...acc, [name]: value}),{});
+                var self = this;
+            
+                self.cybsrc_form.cc_expiry_month_error = '';
+                self.cybsrc_form.is_cc_expiry_month_error = false;
+                self.cybsrc_form.cc_expiry_year_error = '';
+                self.cybsrc_form.is_cc_expiry_year_error = false;
+
+                if(!self.validate) {
+                    this.loading = true;
+                    e.preventDefault();
+                    
+                    axios.post(APP_URL + '/pre-pay/cybsrc', data)
+                    .then(function (response) {
+                        console.log(response.data);
+                        if (response.data.type == 'success') {
+                            self.loading = false;
+                            self.validate = true;
+                            let cc_input = $('#cybsrc-payment-form [data-card-brand]');
+                            cc_input.val(cc_input.val().replace(/ /g,''));
+                            cybsrc_payment.submit();
+                        } else if (response.data.type == 'error') {
+                            self.loading = false;
+                            self.validate = false;
+                            self.errors = response.data.message;
+                        }
+                    })
+                    .catch(function (error) {
+                        self.loading = false;
+                        self.validate = false;
+                    
+                        if (error.response.data.errors.ccExpiryMonth) {
+                            self.cybsrc_form.cc_expiry_month_error = error.response.data.errors.ccExpiryMonth[0];
+                            self.cybsrc_form.is_cc_expiry_month_error = true;
+                        }
+                        if (error.response.data.errors.ccExpiryYear) {
+                            self.cybsrc_form.cc_expiry_year_error = error.response.data.errors.ccExpiryYear[0];
+                            self.cybsrc_form.is_cc_expiry_year_error = true;
+                        }                        
+                    });
+                }           
             },
         }
     });

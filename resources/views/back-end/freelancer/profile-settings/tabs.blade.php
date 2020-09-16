@@ -12,5 +12,8 @@
         <li class="nav-item">
             <a class="{{{ \Request::route()->getName()==='projectAwards'? 'active': '' }}}" href="{{{ route('projectAwards') }}}">{{{ trans('lang.project_awards') }}}</a>
         </li>
+        <li class="nav-item">
+            <a class="{{{ \Request::route()->getName()==='billingAddress'? 'active': '' }}}" href="{{{ route('billingAddress') }}}">{{{ trans('lang.billing_address') }}}</a>
+        </li>
     </ul>
 </div>

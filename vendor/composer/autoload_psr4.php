@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
+    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
     'Zend\\Diactoros\\' => array($vendorDir . '/zendframework/zend-diactoros/src'),
     'XdgBaseDir\\' => array($vendorDir . '/dnoegel/php-xdg-base-dir/src'),
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
@@ -43,6 +43,7 @@ return array(
     'Spatie\\Permission\\' => array($vendorDir . '/spatie/laravel-permission/src'),
     'Spatie\\JsonApiPaginate\\' => array($vendorDir . '/spatie/laravel-json-api-paginate/src'),
     'Scn\\DeeplApiConnector\\' => array($vendorDir . '/scn/deepl-api-connector/src'),
+    'Rinvex\\Country\\' => array($vendorDir . '/rinvex/countries/src'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'RachidLaasri\\LaravelInstaller\\' => array($vendorDir . '/rachidlaasri/laravel-installer/src'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src'),
@@ -148,7 +149,7 @@ return array(
     'GPBMetadata\\Google\\Cloud\\Automl\\' => array($vendorDir . '/google/cloud/AutoMl/metadata'),
     'GPBMetadata\\Google\\Cloud\\Asset\\' => array($vendorDir . '/google/cloud/Asset/metadata'),
     'GPBMetadata\\Google\\Bigtable\\' => array($vendorDir . '/google/cloud/Bigtable/metadata'),
-    'GPBMetadata\\Google\\' => array($vendorDir . '/google/common-protos/metadata', $vendorDir . '/google/gax/metadata', $vendorDir . '/google/cloud/CommonProtos/metadata'),
+    'GPBMetadata\\Google\\' => array($vendorDir . '/google/cloud/CommonProtos/metadata', $vendorDir . '/google/common-protos/metadata', $vendorDir . '/google/gax/metadata'),
     'FontLib\\' => array($vendorDir . '/phenx/php-font-lib/src/FontLib'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Fideloper\\Proxy\\' => array($vendorDir . '/fideloper/proxy/src'),
@@ -174,5 +175,5 @@ return array(
     'Ben182\\AutoTranslate\\' => array($vendorDir . '/ben182/laravel-auto-translate/src'),
     'Barryvdh\\DomPDF\\' => array($vendorDir . '/barryvdh/laravel-dompdf/src'),
     'App\\' => array($baseDir . '/app'),
-    '' => array($vendorDir . '/nesbot/carbon/src', $vendorDir . '/google/grpc-gcp/src/generated'),
+    '' => array($vendorDir . '/google/grpc-gcp/src/generated', $vendorDir . '/nesbot/carbon/src'),
 );

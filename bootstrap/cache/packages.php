@@ -1,4 +1,26 @@
 <?php return array (
+  'barryvdh/laravel-dompdf' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PDF' => 'Barryvdh\\DomPDF\\Facade',
+    ),
+  ),
+  'ben182/laravel-auto-translate' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Ben182\\AutoTranslate\\AutoTranslateServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'AutoTranslate' => 'Ben182\\AutoTranslate\\AutoTranslateFacade',
+    ),
+  ),
   'beyondcode/laravel-dump-server' => 
   array (
     'providers' => 
@@ -15,6 +37,17 @@
     'aliases' => 
     array (
       'Stripe' => 'Cartalyst\\Stripe\\Laravel\\Facades\\Stripe',
+    ),
+  ),
+  'chumper/zipper' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Chumper\\Zipper\\ZipperServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Zipper' => 'Chumper\\Zipper\\Zipper',
     ),
   ),
   'davejamesmiller/laravel-breadcrumbs' => 
@@ -79,6 +112,13 @@
       'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
+  'mariuzzo/laravel-js-localization' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
@@ -98,6 +138,13 @@
     'providers' => 
     array (
       0 => 'RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider',
+    ),
+  ),
+  'rinvex/countries' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Rinvex\\Country\\Providers\\CountryServiceProvider',
     ),
   ),
   'simplesoftwareio/simple-qrcode' => 
@@ -125,28 +172,6 @@
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
-  'barryvdh/laravel-dompdf' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'PDF' => 'Barryvdh\\DomPDF\\Facade',
-    ),
-  ),
-  'chumper/zipper' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Chumper\\Zipper\\ZipperServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Zipper' => 'Chumper\\Zipper\\Zipper',
-    ),
-  ),
   'srmklive/paypal' => 
   array (
     'providers' => 
@@ -156,13 +181,6 @@
     'aliases' => 
     array (
       'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
-    ),
-  ),
-  'mariuzzo/laravel-js-localization' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider',
     ),
   ),
   'tanmuhittin/laravel-google-translate' => 
@@ -177,17 +195,6 @@
     'providers' => 
     array (
       0 => 'Themsaid\\Langman\\LangmanServiceProvider',
-    ),
-  ),
-  'ben182/laravel-auto-translate' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Ben182\\AutoTranslate\\AutoTranslateServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'AutoTranslate' => 'Ben182\\AutoTranslate\\AutoTranslateFacade',
     ),
   ),
 );

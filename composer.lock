@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f55abd9916cadcb850fba59cb454f30",
+    "content-hash": "850f7e78ee4c5e2cdf9870e449f5a3b3",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -229,7 +229,59 @@
                 "laravel",
                 "zip"
             ],
+            "abandoned": true,
             "time": "2020-02-25T11:57:40+00:00"
+        },
+        {
+            "name": "cybersource/sdk-php",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CyberSource/cybersource-sdk-php.git",
+                "reference": "0f190744932cf0f374837381a9df70bc0a3560af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CyberSource/cybersource-sdk-php/zipball/0f190744932cf0f374837381a9df70bc0a3560af",
+                "reference": "0f190744932cf0f374837381a9df70bc0a3560af",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-openssl": "*",
+                "ext-soap": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "lib/conf/"
+            ],
+            "license": [
+                "Proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "CyberSource",
+                    "homepage": "https://github.com/CyberSource"
+                }
+            ],
+            "description": "CyberSource PHP SOAP client",
+            "homepage": "https://github.com/CyberSource/cybersource-sdk-php",
+            "keywords": [
+                "api",
+                "cybersource",
+                "payments"
+            ],
+            "time": "2015-09-23T04:37:11+00:00"
         },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
@@ -288,6 +340,7 @@
             "keywords": [
                 "laravel"
             ],
+            "abandoned": true,
             "time": "2019-12-30T22:50:51+00:00"
         },
         {
@@ -1856,6 +1909,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -1902,6 +1956,7 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
@@ -3743,6 +3798,83 @@
                 "uuid"
             ],
             "time": "2020-02-21T04:36:14+00:00"
+        },
+        {
+            "name": "rinvex/countries",
+            "version": "v7.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rinvex/countries.git",
+                "reference": "c6f08bdb66e37a01007213c5e88f6a7a1fa33933"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rinvex/countries/zipball/c6f08bdb66e37a01007213c5e88f6a7a1fa33933",
+                "reference": "c6f08bdb66e37a01007213c5e88f6a7a1fa33933",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4.0"
+            },
+            "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.27.0",
+                "phpunit/phpunit": "^9.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rinvex\\Country\\Providers\\CountryServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Rinvex\\Country\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rinvex LLC",
+                    "email": "help@rinvex.com",
+                    "homepage": "https://rinvex.com"
+                },
+                {
+                    "name": "Abdelrahman Omran",
+                    "email": "me@omranic.com",
+                    "homepage": "https://omranic.com",
+                    "role": "Project Lead"
+                },
+                {
+                    "name": "The Generous PHP Community",
+                    "homepage": "https://github.com/rinvex/countries/contributors"
+                }
+            ],
+            "description": "Rinvex Countries is a simple and lightweight package for retrieving country details with flexibility. A whole bunch of data including name, demonym, capital, iso codes, dialling codes, geo data, currencies, flags, emoji, and other attributes for all 250 countries worldwide at your fingertips.",
+            "homepage": "https://rinvex.com",
+            "keywords": [
+                "Flexible",
+                "Simple",
+                "countries",
+                "country",
+                "currencies",
+                "demonym",
+                "dialling",
+                "emoji",
+                "flags",
+                "geographic",
+                "languages",
+                "rinvex",
+                "svg"
+            ],
+            "time": "2020-07-17T16:37:00+00:00"
         },
         {
             "name": "rize/uri-template",
@@ -7014,6 +7146,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
@@ -7811,5 +7944,6 @@
     "platform": {
         "php": "^7.1.3"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
