@@ -1876,6 +1876,9 @@ body.wt-login .wt-userlogedin{display: block;}
 	width: 100%;
 	text-align: center;
 }
+.wt-innerbannerblog{
+	height: 350px !important;
+}
 .wt-title{
 	float: left;
 	width: 100%;
