@@ -1918,7 +1918,7 @@ if (document.getElementById("user_profile")) {
                 var self = this;
                 var profile_data = document.getElementById('freelancer_profile');
                 let form_data = new FormData(profile_data);
-                axios.post(APP_URL + '/professional/store-profile-settings', form_data)
+                axios.post(APP_URL + '/freelancer/store-profile-settings', form_data)
                     .then(function (response) {
                         if (response.data.type == 'success') {
                             self.showInfo(Vue.prototype.trans('lang.saving_profile'));
