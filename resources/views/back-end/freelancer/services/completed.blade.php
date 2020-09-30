@@ -87,7 +87,7 @@
 											<td data-th="Action">
 												<span class="bt-content">
 													<div class="wt-actionbtn">
-														<a href="{{{url('professional/service/'.$service->pivot_id.'/completed')}}}" class="wt-viewinfo wt-btnhistory">{{ trans('lang.show_history') }}</a>
+														<a href="{{{url('freelancer/service/'.$service->pivot_id.'/completed')}}}" class="wt-viewinfo wt-btnhistory">{{ trans('lang.show_history') }}</a>
 													</div>
 												</span>
 											</td>

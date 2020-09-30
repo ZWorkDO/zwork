@@ -263,9 +263,9 @@
                                     <span>{{ trans('lang.all_projects') }}</span>
                                 </a>
                                 <ul class="sub-menu">
-                                    <li><hr><a href="{{{ url('professional/jobs/completed') }}}">{{ trans('lang.completed_projects') }}</a></li>
-                                    <li><hr><a href="{{{ url('professional/jobs/cancelled') }}}">{{ trans('lang.cancelled_projects') }}</a></li>
-                                    <li><hr><a href="{{{ url('professional/jobs/hired') }}}">{{ trans('lang.ongoing_projects') }}</a></li>
+                                    <li><hr><a href="{{{ url('freelancer/jobs/completed') }}}">{{ trans('lang.completed_projects') }}</a></li>
+                                    <li><hr><a href="{{{ url('freelancer/jobs/cancelled') }}}">{{ trans('lang.cancelled_projects') }}</a></li>
+                                    <li><hr><a href="{{{ url('freelancer/jobs/hired') }}}">{{ trans('lang.ongoing_projects') }}</a></li>
                                 </ul>
                             </li>
                             @if (Helper::getAccessType() == 'both' || Helper::getAccessType() == 'services')
@@ -303,7 +303,7 @@
                                         <span>{{ trans('lang.invoices') }}</span>
                                     </a>
                                     <ul class="sub-menu">
-                                        <li><hr><a href="{{{ url('professional/package/invoice') }}}">{{ trans('lang.pkg_inv') }}</a></li>
+                                        <li><hr><a href="{{{ url('freelancer/package/invoice') }}}">{{ trans('lang.pkg_inv') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>

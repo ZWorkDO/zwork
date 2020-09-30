@@ -79,7 +79,7 @@
 														<a href="{{{route('serviceDetail',$service->slug)}}}" class="wt-viewinfo">
 															<i class="lnr lnr-eye"></i>
 														</a>
-														<a href="{{{url('professional/service/'.$order->id.'/'.$order->status)}}}" class="wt-addinfo wt-skillsaddinfo">
+														<a href="{{{url('freelancer/service/'.$order->id.'/'.$order->status)}}}" class="wt-addinfo wt-skillsaddinfo">
 															<i class="lnr lnr-history"></i>
 														</a>
 														@if ($order->status == 'cancelled' && Helper::getOrderPayout($order->id)->count() == 0)
