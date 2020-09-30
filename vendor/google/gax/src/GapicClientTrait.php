@@ -428,8 +428,8 @@ trait GapicClientTrait
      *     @type array $headers [optional] key-value array containing headers
      *     @type int $timeoutMillis [optional] the timeout in milliseconds for the call
      *     @type array $transportOptions [optional] transport-specific call options
-     *     @type RetrySettings $retrySettings [optional] A retry settings override
-     *           For the call.
+     *     @type RetrySettings|array $retrySettings [optional] A retry settings
+     *           override for the call.
      * }
      * @param Message $request
      * @param int $callType
@@ -486,12 +486,19 @@ trait GapicClientTrait
      */
     private function createCallStack(array $callConstructionOptions)
     {
+        $quotaProject = $this->credentialsWrapper->getQuotaProject();
+        $fixedHeaders = $this->agentHeader;
+        if ($quotaProject) {
+            $fixedHeaders += [
+                'X-Goog-User-Project' => [$quotaProject]
+            ];
+        }
         $callStack = function (Call $call, array $options) {
             $startCallMethod = $this->transportCallMethods[$call->getCallType()];
             return $this->transport->$startCallMethod($call, $options);
         };
         $callStack = new CredentialsWrapperMiddleware($callStack, $this->credentialsWrapper);
-        $callStack = new FixedHeaderMiddleware($callStack, $this->agentHeader, true);
+        $callStack = new FixedHeaderMiddleware($callStack, $fixedHeaders, true);
         $callStack = new RetryMiddleware($callStack, $callConstructionOptions['retrySettings']);
         $callStack = new OptionsFilterMiddleware($callStack, [
             'headers',
@@ -508,8 +515,8 @@ trait GapicClientTrait
      * @param array $optionalArgs {
      *     Optional arguments
      *
-     *     @type RetrySettings $retrySettings [optional] A retry settings override
-     *           For the call.
+     *     @type RetrySettings|array $retrySettings [optional] A retry settings
+     *           override for the call.
      * }
      *
      * @return array
@@ -519,9 +526,13 @@ trait GapicClientTrait
         $retrySettings = $this->retrySettings[$methodName];
         // Allow for retry settings to be changed at call time
         if (isset($optionalArgs['retrySettings'])) {
-            $retrySettings = $retrySettings->with(
-                $optionalArgs['retrySettings']
-            );
+            if ($optionalArgs['retrySettings'] instanceof RetrySettings) {
+                $retrySettings = $optionalArgs['retrySettings'];
+            } else {
+                $retrySettings = $retrySettings->with(
+                    $optionalArgs['retrySettings']
+                );
+            }
         }
         return [
             'retrySettings' => $retrySettings,

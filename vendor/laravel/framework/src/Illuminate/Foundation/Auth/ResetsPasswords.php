@@ -106,9 +106,6 @@ trait ResetsPasswords
 
         $user->setRememberToken(Str::random(60));
 
-        $user->verification_code = null;
-        $user->user_verified = 1;
-
         $user->save();
 
         event(new PasswordReset($user));

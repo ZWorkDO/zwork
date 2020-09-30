@@ -14,7 +14,7 @@ namespace App;
 
 use DB;
 use Illuminate\Database\Eloquent\Model;
-//use Elasticquent\ElasticquentTrait;
+use Elasticquent\ElasticquentTrait;
 
 /**
  * Class Profession
@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profession extends Model
 {
     /* ElasticSearch */
-    //use ElasticquentTrait;
+    use ElasticquentTrait;
     protected $mappingProperties = array(
         'title' => [
             'type' => 'text',

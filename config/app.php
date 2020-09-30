@@ -201,7 +201,7 @@ return [
         /*
          * ElasticSearch
          */
-        //Elasticquent\ElasticquentServiceProvider::class, 
+        Elasticquent\ElasticquentServiceProvider::class, 
 
     ],
 
@@ -260,6 +260,6 @@ return [
         'Helper' => App\Helper::class,
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        //'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
+        'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
     ],
 ];
