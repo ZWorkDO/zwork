@@ -382,7 +382,7 @@ class EmployerController extends Controller
             $response['type'] = 'error';
             $response['message'] = $server->getData()->message;
             return $response;
-        }
+        } 
         $json = array();
         $this->validate(
             $request,
@@ -453,6 +453,16 @@ class EmployerController extends Controller
             return $json;
         }
     }
+
+    /*Show Welcome Dashboard*/
+    public function welcomeDashboard(){
+        if (file_exists(resource_path('views\back-end\employer\dashboard-welcome.blade.php'))) {
+            return view(
+                'back-end.employer.dashboard-welcome');
+            }else{
+                return 'Error';
+            }
+        }
 
     /**
      * Show Employer Dashboard.

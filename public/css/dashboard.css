@@ -3,6 +3,21 @@ body{background: #f7f7f7;}
 	background: #f7f7f7;
 	padding: 20px 40px 20px 310px;
 }
+
+.wt-textwelcome{
+	text-align: center;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+.wt-welcomebackground{
+	background-repeat: no-repeat;
+    background-position: bottom;
+    max-width: 80%;
+    padding-left: 20%;
+    padding-right: 0%;
+}
+
 .wt-header{background: #fff;}
 .wt-dbsectionspace{padding: 20px 0;}
 .wt-dashboardnav{

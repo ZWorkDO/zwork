@@ -940,6 +940,15 @@ class FreelancerController extends Controller
             );
         }
     }
+    /*Show Welcome Dashboard*/
+    public function welcomeDashboard(){
+        if (file_exists(resource_path('views\back-end\employer\dashboard-welcome.blade.php'))) {
+            return view(
+                'back-end.employer.dashboard-welcome');
+            }else{
+                return 'Error';
+            }
+        }
 
     /**
      * Show freelancer dashboard.

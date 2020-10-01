@@ -315,7 +315,7 @@ return [
     'change_pass' => 'Reset Password',
     'pass_changed' => 'Password changed successfully',
     'post_job' => 'Post a Job',
-    'post_service' => 'Post a Service',
+    'post_service' => 'Publicar Servicio',
     'view_profile' => 'View Profile',
     'update_service' => 'Update a Service',
     'manage_email_notifications' => 'Email Notifications',
