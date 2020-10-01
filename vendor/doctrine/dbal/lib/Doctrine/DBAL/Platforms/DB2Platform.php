@@ -716,6 +716,7 @@ class DB2Platform extends AbstractPlatform
                 if ($remIndex->getColumns() !== $addIndex->getColumns()) {
                     continue;
                 }
+<<<<<<< HEAD
 
                 if ($remIndex->isPrimary()) {
                     $sql[] = 'ALTER TABLE ' . $table . ' DROP PRIMARY KEY';
@@ -729,6 +730,21 @@ class DB2Platform extends AbstractPlatform
 
                 unset($diff->removedIndexes[$remKey], $diff->addedIndexes[$addKey]);
 
+=======
+
+                if ($remIndex->isPrimary()) {
+                    $sql[] = 'ALTER TABLE ' . $table . ' DROP PRIMARY KEY';
+                } elseif ($remIndex->isUnique()) {
+                    $sql[] = 'ALTER TABLE ' . $table . ' DROP UNIQUE ' . $remIndex->getQuotedName($this);
+                } else {
+                    $sql[] = $this->getDropIndexSQL($remIndex, $table);
+                }
+
+                $sql[] = $this->getCreateIndexSQL($addIndex, $table);
+
+                unset($diff->removedIndexes[$remKey], $diff->addedIndexes[$addKey]);
+
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 break;
             }
         }

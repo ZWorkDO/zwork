@@ -409,7 +409,11 @@ abstract class AbstractPlatform
      *
      * @return void
      *
+<<<<<<< HEAD
      * @throws Exception If the type is not found.
+=======
+     * @throws DBALException If the type is not found.
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public function registerDoctrineTypeMapping($dbType, $doctrineType)
     {
@@ -451,7 +455,11 @@ abstract class AbstractPlatform
         $dbType = strtolower($dbType);
 
         if (! isset($this->doctrineTypeMapping[$dbType])) {
+<<<<<<< HEAD
             throw new Exception(
+=======
+            throw new DBALException(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 'Unknown database type ' . $dbType . ' requested, ' . static::class . ' may not support it.'
             );
         }

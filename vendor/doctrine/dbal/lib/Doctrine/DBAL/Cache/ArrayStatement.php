@@ -53,6 +53,7 @@ class ArrayStatement implements IteratorAggregate, ResultStatement, Result
      */
     public function closeCursor()
     {
+<<<<<<< HEAD
         $this->free();
 
         return true;
@@ -64,6 +65,11 @@ class ArrayStatement implements IteratorAggregate, ResultStatement, Result
     public function rowCount()
     {
         return count($this->data);
+=======
+        unset($this->data);
+
+        return true;
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     }
 
     /**

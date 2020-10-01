@@ -23,25 +23,38 @@ use function spl_object_hash;
 use function sprintf;
 
 /**
+<<<<<<< HEAD
  * @deprecated Use {@link Exception} instead
  *
  * @psalm-immutable
  */
 class DBALException extends \Exception
+=======
+ * @psalm-immutable
+ */
+class DBALException extends Exception
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 {
     /**
      * @param string $method
      *
+<<<<<<< HEAD
      * @return Exception
+=======
+     * @return DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function notSupported($method)
     {
         return new Exception(sprintf("Operation '%s' is not supported by platform.", $method));
     }
 
+<<<<<<< HEAD
     /**
      * @deprecated Use {@link invalidPlatformType()} instead.
      */
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     public static function invalidPlatformSpecified(): self
     {
         return new Exception(
@@ -94,9 +107,13 @@ class DBALException extends \Exception
     }
 
     /**
+<<<<<<< HEAD
      * @deprecated Passing a PDO instance in connection parameters is deprecated.
      *
      * @return Exception
+=======
+     * @return DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function invalidPdoInstance()
     {
@@ -109,7 +126,11 @@ class DBALException extends \Exception
     /**
      * @param string|null $url The URL that was provided in the connection parameters (if any).
      *
+<<<<<<< HEAD
      * @return Exception
+=======
+     * @return DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function driverRequired($url = null)
     {
@@ -131,7 +152,11 @@ class DBALException extends \Exception
      * @param string   $unknownDriverName
      * @param string[] $knownDrivers
      *
+<<<<<<< HEAD
      * @return Exception
+=======
+     * @return DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function unknownDriver($unknownDriverName, array $knownDrivers)
     {
@@ -178,7 +203,11 @@ class DBALException extends \Exception
             return $driverEx;
         }
 
+<<<<<<< HEAD
         if ($driver instanceof ExceptionConverterDriver && $driverEx instanceof DeprecatedDriverException) {
+=======
+        if ($driver instanceof ExceptionConverterDriver && $driverEx instanceof DriverExceptionInterface) {
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             return $driver->convertException($msg, $driverEx);
         }
 
@@ -214,7 +243,11 @@ class DBALException extends \Exception
     /**
      * @param string $wrapperClass
      *
+<<<<<<< HEAD
      * @return Exception
+=======
+     * @return DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function invalidWrapperClass($wrapperClass)
     {
@@ -225,11 +258,19 @@ class DBALException extends \Exception
     /**
      * @param string $driverClass
      *
+<<<<<<< HEAD
      * @return Exception
      */
     public static function invalidDriverClass($driverClass)
     {
         return new Exception(
+=======
+     * @return DBALException
+     */
+    public static function invalidDriverClass($driverClass)
+    {
+        return new self(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             "The given 'driverClass' " . $driverClass . ' has to implement the ' . Driver::class . ' interface.'
         );
     }
@@ -237,7 +278,11 @@ class DBALException extends \Exception
     /**
      * @param string $tableName
      *
+<<<<<<< HEAD
      * @return Exception
+=======
+     * @return DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function invalidTableName($tableName)
     {
@@ -247,7 +292,11 @@ class DBALException extends \Exception
     /**
      * @param string $tableName
      *
+<<<<<<< HEAD
      * @return Exception
+=======
+     * @return DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function noColumnsSpecifiedForTable($tableName)
     {
@@ -255,7 +304,11 @@ class DBALException extends \Exception
     }
 
     /**
+<<<<<<< HEAD
      * @return Exception
+=======
+     * @return DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function limitOffsetInvalid()
     {
@@ -265,7 +318,11 @@ class DBALException extends \Exception
     /**
      * @param string $name
      *
+<<<<<<< HEAD
      * @return Exception
+=======
+     * @return DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function typeExists($name)
     {
@@ -275,7 +332,11 @@ class DBALException extends \Exception
     /**
      * @param string $name
      *
+<<<<<<< HEAD
      * @return Exception
+=======
+     * @return DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function unknownColumnType($name)
     {
@@ -291,7 +352,11 @@ class DBALException extends \Exception
     /**
      * @param string $name
      *
+<<<<<<< HEAD
      * @return Exception
+=======
+     * @return DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function typeNotFound($name)
     {
@@ -300,7 +365,11 @@ class DBALException extends \Exception
 
     public static function typeNotRegistered(Type $type): self
     {
+<<<<<<< HEAD
         return new Exception(
+=======
+        return new self(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             sprintf('Type of the class %s@%s is not registered.', get_class($type), spl_object_hash($type))
         );
     }

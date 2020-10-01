@@ -8,7 +8,10 @@ use Doctrine\DBAL\ParameterType;
 use Doctrine\DBAL\Query\Expression\CompositeExpression;
 use Doctrine\DBAL\Query\Expression\ExpressionBuilder;
 
+<<<<<<< HEAD
 use function array_filter;
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 use function array_key_exists;
 use function array_keys;
 use function array_unshift;
@@ -197,6 +200,12 @@ class QueryBuilder
     /**
      * Executes this query using the bound parameters and their types.
      *
+<<<<<<< HEAD
+=======
+     * Uses {@see Connection::executeQuery} for select statements and {@see Connection::executeUpdate}
+     * for insert, update and delete statements.
+     *
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      * @return ResultStatement|int
      */
     public function execute()

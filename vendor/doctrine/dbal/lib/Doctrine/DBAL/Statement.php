@@ -10,7 +10,10 @@ use Doctrine\DBAL\Types\Type;
 use IteratorAggregate;
 use PDO;
 use Throwable;
+<<<<<<< HEAD
 use Traversable;
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 use function is_array;
 use function is_string;
@@ -163,7 +166,16 @@ class Statement implements IteratorAggregate, DriverStatement, Result
                 $logger->stopQuery();
             }
 
+<<<<<<< HEAD
             $this->conn->handleExceptionDuringQuery($ex, $this->sql, $this->params, $this->types);
+=======
+            throw DBALException::driverExceptionDuringQuery(
+                $this->conn->getDriver(),
+                $ex,
+                $this->sql,
+                $this->conn->resolveParams($this->params, $this->types)
+            );
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
 
         if ($logger) {
@@ -264,6 +276,7 @@ class Statement implements IteratorAggregate, DriverStatement, Result
      */
     public function fetchAll($fetchMode = null, $fetchArgument = null, $ctorArgs = null)
     {
+<<<<<<< HEAD
         if ($ctorArgs !== null) {
             return $this->stmt->fetchAll($fetchMode, $fetchArgument, $ctorArgs);
         }
@@ -273,6 +286,9 @@ class Statement implements IteratorAggregate, DriverStatement, Result
         }
 
         return $this->stmt->fetchAll($fetchMode);
+=======
+        return $this->stmt->fetchAll($fetchMode, $fetchArgument, $ctorArgs);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     }
 
     /**

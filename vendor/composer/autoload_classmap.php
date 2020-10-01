@@ -392,7 +392,11 @@ return array(
     'Doctrine\\DBAL\\Driver\\AbstractPostgreSQLDriver' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractPostgreSQLDriver.php',
     'Doctrine\\DBAL\\Driver\\AbstractSQLAnywhereDriver' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractSQLAnywhereDriver.php',
     'Doctrine\\DBAL\\Driver\\AbstractSQLServerDriver' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractSQLServerDriver.php',
+<<<<<<< HEAD
     'Doctrine\\DBAL\\Driver\\AbstractSQLServerDriver\\Exception\\PortWithoutHost' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractSQLServerDriver/Exception/PortWithoutHost.php',
+=======
+    'Doctrine\\DBAL\\Driver\\AbstractSQLServerDriver\\PortWithoutHost' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractSQLServerDriver/PortWithoutHost.php',
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     'Doctrine\\DBAL\\Driver\\AbstractSQLiteDriver' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractSQLiteDriver.php',
     'Doctrine\\DBAL\\Driver\\Connection' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/Connection.php',
     'Doctrine\\DBAL\\Driver\\DriverException' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/DriverException.php',
@@ -407,6 +411,7 @@ return array(
     'Doctrine\\DBAL\\Driver\\IBMDB2\\DB2Exception' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DB2Exception.php',
     'Doctrine\\DBAL\\Driver\\IBMDB2\\DB2Statement' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DB2Statement.php',
     'Doctrine\\DBAL\\Driver\\IBMDB2\\DataSourceName' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/DataSourceName.php',
+<<<<<<< HEAD
     'Doctrine\\DBAL\\Driver\\IBMDB2\\Driver' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/Driver.php',
     'Doctrine\\DBAL\\Driver\\IBMDB2\\Exception\\CannotCopyStreamToStream' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/Exception/CannotCopyStreamToStream.php',
     'Doctrine\\DBAL\\Driver\\IBMDB2\\Exception\\CannotCreateTemporaryFile' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/Exception/CannotCreateTemporaryFile.php',
@@ -417,6 +422,8 @@ return array(
     'Doctrine\\DBAL\\Driver\\IBMDB2\\Exception\\StatementError' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/Exception/StatementError.php',
     'Doctrine\\DBAL\\Driver\\IBMDB2\\Statement' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/IBMDB2/Statement.php',
     'Doctrine\\DBAL\\Driver\\Mysqli\\Connection' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/Mysqli/Connection.php',
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     'Doctrine\\DBAL\\Driver\\Mysqli\\Driver' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/Mysqli/Driver.php',
     'Doctrine\\DBAL\\Driver\\Mysqli\\Exception\\ConnectionError' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/Mysqli/Exception/ConnectionError.php',
     'Doctrine\\DBAL\\Driver\\Mysqli\\Exception\\ConnectionFailed' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Driver/Mysqli/Exception/ConnectionFailed.php',

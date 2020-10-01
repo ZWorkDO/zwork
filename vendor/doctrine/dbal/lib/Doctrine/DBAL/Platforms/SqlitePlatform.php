@@ -697,7 +697,11 @@ class SqlitePlatform extends AbstractPlatform
     protected function getPreAlterTableIndexForeignKeySQL(TableDiff $diff)
     {
         if (! $diff->fromTable instanceof Table) {
+<<<<<<< HEAD
             throw new Exception(
+=======
+            throw new DBALException(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 'Sqlite platform requires for alter table the table diff with reference to original table schema'
             );
         }
@@ -720,7 +724,11 @@ class SqlitePlatform extends AbstractPlatform
     protected function getPostAlterTableIndexForeignKeySQL(TableDiff $diff)
     {
         if (! $diff->fromTable instanceof Table) {
+<<<<<<< HEAD
             throw new Exception(
+=======
+            throw new DBALException(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 'Sqlite platform requires for alter table the table diff with reference to original table schema'
             );
         }
@@ -864,7 +872,11 @@ class SqlitePlatform extends AbstractPlatform
 
         $fromTable = $diff->fromTable;
         if (! $fromTable instanceof Table) {
+<<<<<<< HEAD
             throw new Exception(
+=======
+            throw new DBALException(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 'Sqlite platform requires for alter table the table diff with reference to original table schema'
             );
         }

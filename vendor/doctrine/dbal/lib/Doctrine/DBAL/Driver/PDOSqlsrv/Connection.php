@@ -2,8 +2,13 @@
 
 namespace Doctrine\DBAL\Driver\PDOSqlsrv;
 
+<<<<<<< HEAD
 use Doctrine\DBAL\Driver\PDO;
 use Doctrine\DBAL\Driver\Result;
+=======
+use Doctrine\DBAL\Driver\PDOConnection;
+use PDO;
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 /**
  * Sqlsrv Connection implementation.
@@ -35,10 +40,13 @@ class Connection extends PDO\Connection
         $stmt = $this->prepare('SELECT CONVERT(VARCHAR(MAX), current_value) FROM sys.sequences WHERE name = ?');
         $stmt->execute([$name]);
 
+<<<<<<< HEAD
         if ($stmt instanceof Result) {
             return $stmt->fetchOne();
         }
 
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         return $stmt->fetchColumn();
     }
 }

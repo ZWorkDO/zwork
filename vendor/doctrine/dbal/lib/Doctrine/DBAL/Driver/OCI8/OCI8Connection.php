@@ -111,7 +111,11 @@ class OCI8Connection implements ConnectionInterface, ServerInfoAwareConnection
      */
     public function prepare($sql)
     {
+<<<<<<< HEAD
         return new Statement($this->dbh, $sql, $this);
+=======
+        return new OCI8Statement($this->dbh, $sql, $this);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     }
 
     /**

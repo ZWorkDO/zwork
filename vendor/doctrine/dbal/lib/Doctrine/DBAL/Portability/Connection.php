@@ -53,10 +53,32 @@ class Connection extends BaseConnection
         if ($ret) {
             $params = $this->getParams();
             if (isset($params['portability'])) {
+<<<<<<< HEAD
                 $this->portability = $params['portability'] = (new OptimizeFlags())(
                     $this->getDatabasePlatform(),
                     $params['portability']
                 );
+=======
+                if ($this->getDatabasePlatform()->getName() === 'oracle') {
+                    $params['portability'] &= self::PORTABILITY_ORACLE;
+                } elseif ($this->getDatabasePlatform()->getName() === 'postgresql') {
+                    $params['portability'] &= self::PORTABILITY_POSTGRESQL;
+                } elseif ($this->getDatabasePlatform()->getName() === 'sqlite') {
+                    $params['portability'] &= self::PORTABILITY_SQLITE;
+                } elseif ($this->getDatabasePlatform()->getName() === 'drizzle') {
+                    $params['portability'] &= self::PORTABILITY_DRIZZLE;
+                } elseif ($this->getDatabasePlatform()->getName() === 'sqlanywhere') {
+                    $params['portability'] &= self::PORTABILITY_SQLANYWHERE;
+                } elseif ($this->getDatabasePlatform()->getName() === 'db2') {
+                    $params['portability'] &= self::PORTABILITY_DB2;
+                } elseif ($this->getDatabasePlatform()->getName() === 'mssql') {
+                    $params['portability'] &= self::PORTABILITY_SQLSRV;
+                } else {
+                    $params['portability'] &= self::PORTABILITY_OTHERVENDORS;
+                }
+
+                $this->portability = $params['portability'];
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             }
 
             if (isset($params['fetch_case']) && $this->portability & self::PORTABILITY_FIX_CASE) {

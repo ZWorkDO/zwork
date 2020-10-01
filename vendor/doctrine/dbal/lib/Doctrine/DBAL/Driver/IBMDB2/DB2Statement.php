@@ -56,10 +56,14 @@ use const DB2_LONG;
 use const DB2_PARAM_FILE;
 use const DB2_PARAM_IN;
 
+<<<<<<< HEAD
 /**
  * @deprecated Use {@link Statement} instead
  */
 class DB2Statement implements IteratorAggregate, StatementInterface, Result
+=======
+class DB2Statement implements IteratorAggregate, Statement
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 {
     /** @var resource */
     private $stmt;

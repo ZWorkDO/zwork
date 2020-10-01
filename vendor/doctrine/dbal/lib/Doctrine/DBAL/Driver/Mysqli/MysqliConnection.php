@@ -11,6 +11,10 @@ use Doctrine\DBAL\Driver\ServerInfoAwareConnection;
 use Doctrine\DBAL\ParameterType;
 use mysqli;
 
+<<<<<<< HEAD
+=======
+use function defined;
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 use function floor;
 use function func_get_args;
 use function in_array;
@@ -27,15 +31,22 @@ use function stripos;
 use const MYSQLI_INIT_COMMAND;
 use const MYSQLI_OPT_CONNECT_TIMEOUT;
 use const MYSQLI_OPT_LOCAL_INFILE;
+<<<<<<< HEAD
 use const MYSQLI_OPT_READ_TIMEOUT;
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 use const MYSQLI_READ_DEFAULT_FILE;
 use const MYSQLI_READ_DEFAULT_GROUP;
 use const MYSQLI_SERVER_PUBLIC_KEY;
 
+<<<<<<< HEAD
 /**
  * @deprecated Use {@link Connection} instead
  */
 class MysqliConnection implements ConnectionInterface, PingableConnection, ServerInfoAwareConnection
+=======
+class MysqliConnection implements Connection, PingableConnection, ServerInfoAwareConnection
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 {
     /**
      * Name of the option to set connection flags
@@ -78,7 +89,15 @@ class MysqliConnection implements ConnectionInterface, PingableConnection, Serve
         });
         try {
             if (! $this->conn->real_connect($params['host'], $username, $password, $dbname, $port, $socket, $flags)) {
+<<<<<<< HEAD
                 throw ConnectionFailed::new($this->conn);
+=======
+                throw new MysqliException(
+                    $this->conn->connect_error,
+                    $this->conn->sqlstate ?? 'HY000',
+                    $this->conn->connect_errno
+                );
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             }
         } finally {
             restore_error_handler();
@@ -138,7 +157,11 @@ class MysqliConnection implements ConnectionInterface, PingableConnection, Serve
      */
     public function prepare($sql)
     {
+<<<<<<< HEAD
         return new Statement($this->conn, $sql);
+=======
+        return new MysqliStatement($this->conn, $sql);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     }
 
     /**
@@ -168,7 +191,11 @@ class MysqliConnection implements ConnectionInterface, PingableConnection, Serve
     public function exec($sql)
     {
         if ($this->conn->query($sql) === false) {
+<<<<<<< HEAD
             throw ConnectionError::new($this->conn);
+=======
+            throw new MysqliException($this->conn->error, $this->conn->sqlstate, $this->conn->errno);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
 
         return $this->conn->affected_rows;
@@ -211,8 +238,11 @@ class MysqliConnection implements ConnectionInterface, PingableConnection, Serve
     /**
      * {@inheritdoc}
      *
+<<<<<<< HEAD
      * @deprecated The error information is available via exceptions.
      *
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      * @return int
      */
     public function errorCode()
@@ -223,8 +253,11 @@ class MysqliConnection implements ConnectionInterface, PingableConnection, Serve
     /**
      * {@inheritdoc}
      *
+<<<<<<< HEAD
      * @deprecated The error information is available via exceptions.
      *
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      * @return string
      */
     public function errorInfo()

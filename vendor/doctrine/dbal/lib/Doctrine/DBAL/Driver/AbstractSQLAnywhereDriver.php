@@ -47,16 +47,25 @@ abstract class AbstractSQLAnywhereDriver implements Driver, ExceptionConverterDr
             case '-306':
             case '-307':
             case '-684':
+<<<<<<< HEAD
                 return new DeadlockException($message, $exception);
+=======
+                return new Exception\DeadlockException($message, $exception);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
             case '-210':
             case '-1175':
             case '-1281':
+<<<<<<< HEAD
                 return new LockWaitTimeoutException($message, $exception);
+=======
+                return new Exception\LockWaitTimeoutException($message, $exception);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
             case '-100':
             case '-103':
             case '-832':
+<<<<<<< HEAD
                 return new ConnectionException($message, $exception);
 
             case '-143':
@@ -82,6 +91,33 @@ abstract class AbstractSQLAnywhereDriver implements Driver, ExceptionConverterDr
 
             case '-110':
                 return new TableExistsException($message, $exception);
+=======
+                return new Exception\ConnectionException($message, $exception);
+
+            case '-143':
+                return new Exception\InvalidFieldNameException($message, $exception);
+
+            case '-193':
+            case '-196':
+                return new Exception\UniqueConstraintViolationException($message, $exception);
+
+            case '-194':
+            case '-198':
+                return new Exception\ForeignKeyConstraintViolationException($message, $exception);
+
+            case '-144':
+                return new Exception\NonUniqueFieldNameException($message, $exception);
+
+            case '-184':
+            case '-195':
+                return new Exception\NotNullConstraintViolationException($message, $exception);
+
+            case '-131':
+                return new Exception\SyntaxErrorException($message, $exception);
+
+            case '-110':
+                return new Exception\TableExistsException($message, $exception);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
             case '-141':
             case '-1041':
@@ -103,7 +139,11 @@ abstract class AbstractSQLAnywhereDriver implements Driver, ExceptionConverterDr
                 $versionParts
             )
         ) {
+<<<<<<< HEAD
             throw Exception::invalidPlatformVersionSpecified(
+=======
+            throw DBALException::invalidPlatformVersionSpecified(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 $version,
                 '<major_version>.<minor_version>.<patch_version>.<build_version>'
             );

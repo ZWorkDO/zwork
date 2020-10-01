@@ -7,6 +7,7 @@ use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Driver;
 use InvalidArgumentException;
 
+<<<<<<< HEAD
 use function sprintf;
 use function trigger_error;
 
@@ -14,6 +15,64 @@ use const E_USER_DEPRECATED;
 
 /**
  * @deprecated Use PrimaryReadReplicaConnection instead
+=======
+use function array_rand;
+use function assert;
+use function count;
+use function func_get_args;
+
+/**
+ * Master-Slave Connection
+ *
+ * Connection can be used with master-slave setups.
+ *
+ * Important for the understanding of this connection should be how and when
+ * it picks the slave or master.
+ *
+ * 1. Slave if master was never picked before and ONLY if 'getWrappedConnection'
+ *    or 'executeQuery' is used.
+ * 2. Master picked when 'exec', 'executeUpdate', 'insert', 'delete', 'update', 'createSavepoint',
+ *    'releaseSavepoint', 'beginTransaction', 'rollback', 'commit', 'query' or
+ *    'prepare' is called.
+ * 3. If master was picked once during the lifetime of the connection it will always get picked afterwards.
+ * 4. One slave connection is randomly picked ONCE during a request.
+ *
+ * ATTENTION: You can write to the slave with this connection if you execute a write query without
+ * opening up a transaction. For example:
+ *
+ *      $conn = DriverManager::getConnection(...);
+ *      $conn->executeQuery("DELETE FROM table");
+ *
+ * Be aware that Connection#executeQuery is a method specifically for READ
+ * operations only.
+ *
+ * This connection is limited to slave operations using the
+ * Connection#executeQuery operation only, because it wouldn't be compatible
+ * with the ORM or SchemaManager code otherwise. Both use all the other
+ * operations in a context where writes could happen to a slave, which makes
+ * this restricted approach necessary.
+ *
+ * You can manually connect to the master at any time by calling:
+ *
+ *      $conn->connect('master');
+ *
+ * Instantiation through the DriverManager looks like:
+ *
+ * @example
+ *
+ * $conn = DriverManager::getConnection(array(
+ *    'wrapperClass' => 'Doctrine\DBAL\Connections\MasterSlaveConnection',
+ *    'driver' => 'pdo_mysql',
+ *    'master' => array('user' => '', 'password' => '', 'host' => '', 'dbname' => ''),
+ *    'slaves' => array(
+ *        array('user' => 'slave1', 'password', 'host' => '', 'dbname' => ''),
+ *        array('user' => 'slave2', 'password', 'host' => '', 'dbname' => ''),
+ *    )
+ * ));
+ *
+ * You can also pass 'driverOptions' and any other documented option to each of this drivers
+ * to pass additional information.
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
  */
 class MasterSlaveConnection extends PrimaryReadReplicaConnection
 {
@@ -32,7 +91,58 @@ class MasterSlaveConnection extends PrimaryReadReplicaConnection
         ?Configuration $config = null,
         ?EventManager $eventManager = null
     ) {
+<<<<<<< HEAD
         $this->deprecated(self::class, PrimaryReadReplicaConnection::class);
+=======
+        if (! isset($params['slaves'], $params['master'])) {
+            throw new InvalidArgumentException('master or slaves configuration missing');
+        }
+
+        if (count($params['slaves']) === 0) {
+            throw new InvalidArgumentException('You have to configure at least one slaves.');
+        }
+
+        $params['master']['driver'] = $params['driver'];
+        foreach ($params['slaves'] as $slaveKey => $slave) {
+            $params['slaves'][$slaveKey]['driver'] = $params['driver'];
+        }
+
+        $this->keepSlave = (bool) ($params['keepSlave'] ?? false);
+
+        parent::__construct($params, $driver, $config, $eventManager);
+    }
+
+    /**
+     * Checks if the connection is currently towards the master or not.
+     *
+     * @return bool
+     */
+    public function isConnectedToMaster()
+    {
+        return $this->_conn !== null && $this->_conn === $this->connections['master'];
+    }
+
+    /**
+     * @param string|null $connectionName
+     *
+     * @return bool
+     */
+    public function connect($connectionName = null)
+    {
+        $requestedConnectionChange = ($connectionName !== null);
+        $connectionName            = $connectionName ?: 'slave';
+
+        if ($connectionName !== 'slave' && $connectionName !== 'master') {
+            throw new InvalidArgumentException('Invalid option to connect(), only master or slave allowed.');
+        }
+
+        // If we have a connection open, and this is not an explicit connection
+        // change request, then abort right here, because we are already done.
+        // This prevents writes to the slave in case of "keepSlave" option enabled.
+        if ($this->_conn !== null && ! $requestedConnectionChange) {
+            return false;
+        }
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
         if (isset($params['master'])) {
             $this->deprecated('Params key "master"', '"primary"');
@@ -81,15 +191,166 @@ class MasterSlaveConnection extends PrimaryReadReplicaConnection
             $this->deprecated('connect("master")', 'ensureConnectedToPrimary()');
         }
 
+<<<<<<< HEAD
         if ($connectionName === 'slave') {
             $connectionName = 'replica';
 
             $this->deprecated('connect("slave")', 'ensureConnectedToReplica()');
+=======
+        return $config;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function executeUpdate($sql, array $params = [], array $types = [])
+    {
+        $this->connect('master');
+
+        return parent::executeUpdate($sql, $params, $types);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function beginTransaction()
+    {
+        $this->connect('master');
+
+        return parent::beginTransaction();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function commit()
+    {
+        $this->connect('master');
+
+        return parent::commit();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function rollBack()
+    {
+        $this->connect('master');
+
+        return parent::rollBack();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function delete($table, array $identifier, array $types = [])
+    {
+        $this->connect('master');
+
+        return parent::delete($table, $identifier, $types);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function close()
+    {
+        unset($this->connections['master'], $this->connections['slave']);
+
+        parent::close();
+
+        $this->_conn       = null;
+        $this->connections = ['master' => null, 'slave' => null];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function update($table, array $data, array $identifier, array $types = [])
+    {
+        $this->connect('master');
+
+        return parent::update($table, $data, $identifier, $types);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function insert($table, array $data, array $types = [])
+    {
+        $this->connect('master');
+
+        return parent::insert($table, $data, $types);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function exec($sql)
+    {
+        $this->connect('master');
+
+        return parent::exec($sql);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function createSavepoint($savepoint)
+    {
+        $this->connect('master');
+
+        parent::createSavepoint($savepoint);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function releaseSavepoint($savepoint)
+    {
+        $this->connect('master');
+
+        parent::releaseSavepoint($savepoint);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function rollbackSavepoint($savepoint)
+    {
+        $this->connect('master');
+
+        parent::rollbackSavepoint($savepoint);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function query()
+    {
+        $this->connect('master');
+        assert($this->_conn instanceof DriverConnection);
+
+        $args = func_get_args();
+
+        $logger = $this->getConfiguration()->getSQLLogger();
+        if ($logger) {
+            $logger->startQuery($args[0]);
+        }
+
+        $statement = $this->_conn->query(...$args);
+
+        $statement->setFetchMode($this->defaultFetchMode);
+
+        if ($logger) {
+            $logger->stopQuery();
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
 
         return $this->performConnect($connectionName);
     }
 
+<<<<<<< HEAD
     private function deprecated(string $thing, string $instead): void
     {
         @trigger_error(
@@ -100,5 +361,15 @@ class MasterSlaveConnection extends PrimaryReadReplicaConnection
             ),
             E_USER_DEPRECATED
         );
+=======
+    /**
+     * {@inheritDoc}
+     */
+    public function prepare($sql)
+    {
+        $this->connect('master');
+
+        return parent::prepare($sql);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     }
 }

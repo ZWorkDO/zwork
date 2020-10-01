@@ -3,6 +3,7 @@
 namespace Doctrine\DBAL;
 
 use Doctrine\Common\EventManager;
+<<<<<<< HEAD
 use Doctrine\DBAL\Driver\DrizzlePDOMySql;
 use Doctrine\DBAL\Driver\IBMDB2;
 use Doctrine\DBAL\Driver\Mysqli;
@@ -10,6 +11,20 @@ use Doctrine\DBAL\Driver\OCI8;
 use Doctrine\DBAL\Driver\PDO;
 use Doctrine\DBAL\Driver\SQLAnywhere;
 use Doctrine\DBAL\Driver\SQLSrv;
+=======
+use Doctrine\DBAL\Driver\DrizzlePDOMySql\Driver as DrizzlePDOMySQLDriver;
+use Doctrine\DBAL\Driver\IBMDB2\DB2Driver;
+use Doctrine\DBAL\Driver\Mysqli\Driver as MySQLiDriver;
+use Doctrine\DBAL\Driver\OCI8\Driver as OCI8Driver;
+use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySQLDriver;
+use Doctrine\DBAL\Driver\PDOOracle\Driver as PDOOCIDriver;
+use Doctrine\DBAL\Driver\PDOPgSql\Driver as PDOPgSQLDriver;
+use Doctrine\DBAL\Driver\PDOSqlite\Driver as PDOSQLiteDriver;
+use Doctrine\DBAL\Driver\PDOSqlsrv\Driver as PDOSQLSrvDriver;
+use Doctrine\DBAL\Driver\SQLAnywhere\Driver as SQLAnywhereDriver;
+use Doctrine\DBAL\Driver\SQLSrv\Driver as SQLSrvDriver;
+use PDO;
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 use function array_keys;
 use function array_map;
@@ -117,7 +132,11 @@ final class DriverManager
      * @param Configuration|null                    $config       The configuration to use.
      * @param EventManager|null                     $eventManager The event manager to use.
      *
+<<<<<<< HEAD
      * @throws Exception
+=======
+     * @throws DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      *
      * @phpstan-param mixed[] $params
      * @psalm-return ($params is array{wrapperClass:mixed} ? T : Connection)
@@ -238,7 +257,11 @@ final class DriverManager
             isset($params['driverClass'])
             && ! in_array(Driver::class, class_implements($params['driverClass'], true))
         ) {
+<<<<<<< HEAD
             throw Exception::invalidDriverClass($params['driverClass']);
+=======
+            throw DBALException::invalidDriverClass($params['driverClass']);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
     }
 

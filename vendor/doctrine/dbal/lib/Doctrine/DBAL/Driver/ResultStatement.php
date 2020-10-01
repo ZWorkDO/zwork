@@ -31,8 +31,11 @@ interface ResultStatement extends Traversable
     /**
      * Sets the fetch mode to use while iterating this statement.
      *
+<<<<<<< HEAD
      * @deprecated Use one of the fetch- or iterate-related methods.
      *
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      * @param int   $fetchMode The fetch mode must be one of the {@link FetchMode} constants.
      * @param mixed $arg2
      * @param mixed $arg3

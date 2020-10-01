@@ -42,7 +42,11 @@
         "jetbrains/phpstorm-stubs": "^2019.1",
         "nikic/php-parser": "^4.4",
         "phpstan/phpstan": "^0.12.40",
+<<<<<<< HEAD
         "phpunit/phpunit": "^9.3",
+=======
+        "phpunit/phpunit": "^8.5.5",
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         "psalm/plugin-phpunit": "^0.10.0",
         "symfony/console": "^2.0.5|^3.0|^4.0|^5.0",
         "vimeo/psalm": "^3.14.2"
@@ -54,7 +58,11 @@
     "config": {
         "sort-packages": true,
         "platform": {
+<<<<<<< HEAD
             "php": "7.3.0"
+=======
+            "php": "7.2.0"
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
     },
     "autoload": {

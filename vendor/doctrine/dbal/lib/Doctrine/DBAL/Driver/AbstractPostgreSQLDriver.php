@@ -49,7 +49,11 @@ abstract class AbstractPostgreSQLDriver implements Driver, ExceptionConverterDri
         switch ($sqlState) {
             case '40001':
             case '40P01':
+<<<<<<< HEAD
                 return new DeadlockException($message, $exception);
+=======
+                return new Exception\DeadlockException($message, $exception);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
             case '0A000':
                 // Foreign key constraint violations during a TRUNCATE operation
@@ -83,6 +87,9 @@ abstract class AbstractPostgreSQLDriver implements Driver, ExceptionConverterDri
 
             case '42P07':
                 return new TableExistsException($message, $exception);
+
+            case '08006':
+                return new Exception\ConnectionException($message, $exception);
 
             case '08006':
                 return new Exception\ConnectionException($message, $exception);

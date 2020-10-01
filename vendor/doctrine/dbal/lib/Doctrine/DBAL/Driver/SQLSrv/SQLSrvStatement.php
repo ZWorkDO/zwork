@@ -34,7 +34,10 @@ use function SQLSRV_SQLTYPE_VARBINARY;
 use function stripos;
 
 use const SQLSRV_ENC_BINARY;
+<<<<<<< HEAD
 use const SQLSRV_ENC_CHAR;
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 use const SQLSRV_ERR_ERRORS;
 use const SQLSRV_FETCH_ASSOC;
 use const SQLSRV_FETCH_BOTH;

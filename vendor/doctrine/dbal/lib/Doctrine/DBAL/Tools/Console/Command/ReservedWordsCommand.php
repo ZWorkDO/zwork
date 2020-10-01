@@ -147,7 +147,12 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+<<<<<<< HEAD
         $conn = $this->getConnection($input);
+=======
+        $conn = $this->getHelper('db')->getConnection();
+        assert($conn instanceof Connection);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
         $keywordLists = (array) $input->getOption('list');
         if (! $keywordLists) {

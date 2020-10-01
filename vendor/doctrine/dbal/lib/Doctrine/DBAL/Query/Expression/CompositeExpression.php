@@ -4,7 +4,10 @@ namespace Doctrine\DBAL\Query\Expression;
 
 use Countable;
 
+<<<<<<< HEAD
 use function array_merge;
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 use function count;
 use function implode;
 

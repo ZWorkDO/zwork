@@ -74,11 +74,15 @@ class TableGenerator
             throw new Exception('Cannot use TableGenerator with SQLite.');
         }
 
+<<<<<<< HEAD
         $this->conn = DriverManager::getConnection(
             $conn->getParams(),
             $conn->getConfiguration(),
             $conn->getEventManager()
         );
+=======
+        $this->conn = DriverManager::getConnection($params, $conn->getConfiguration(), $conn->getEventManager());
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
         $this->generatorTableName = $generatorTableName;
     }
@@ -111,7 +115,12 @@ class TableGenerator
             $sql      = 'SELECT sequence_value, sequence_increment_by'
                 . ' FROM ' . $platform->appendLockHint($this->generatorTableName, LockMode::PESSIMISTIC_WRITE)
                 . ' WHERE sequence_name = ? ' . $platform->getWriteLockSQL();
+<<<<<<< HEAD
             $row      = $this->conn->fetchAssociative($sql, [$sequence]);
+=======
+            $stmt     = $this->conn->executeQuery($sql, [$sequence]);
+            $row      = $stmt->fetch(FetchMode::ASSOCIATIVE);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
             if ($row !== false) {
                 $row = array_change_key_case($row, CASE_LOWER);
@@ -131,7 +140,11 @@ class TableGenerator
                 $sql  = 'UPDATE ' . $this->generatorTableName . ' ' .
                        'SET sequence_value = sequence_value + sequence_increment_by ' .
                        'WHERE sequence_name = ? AND sequence_value = ?';
+<<<<<<< HEAD
                 $rows = $this->conn->executeStatement($sql, [$sequence, $row['sequence_value']]);
+=======
+                $rows = $this->conn->executeUpdate($sql, [$sequence, $row['sequence_value']]);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
                 if ($rows !== 1) {
                     throw new Exception('Race-condition detected while updating sequence. Aborting generation');
@@ -148,7 +161,11 @@ class TableGenerator
         } catch (Throwable $e) {
             $this->conn->rollBack();
 
+<<<<<<< HEAD
             throw new Exception(
+=======
+            throw new DBALException(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 'Error occurred while generating ID with TableGenerator, aborted generation: ' . $e->getMessage(),
                 0,
                 $e

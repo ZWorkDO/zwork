@@ -35,7 +35,11 @@ abstract class AbstractSQLServerDriver implements Driver, VersionAwarePlatformDr
                 $versionParts
             )
         ) {
+<<<<<<< HEAD
             throw Exception::invalidPlatformVersionSpecified(
+=======
+            throw DBALException::invalidPlatformVersionSpecified(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 $version,
                 '<major_version>.<minor_version>.<patch_version>.<build_version>'
             );

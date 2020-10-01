@@ -39,8 +39,11 @@ abstract class AbstractMySQLDriver implements Driver, ExceptionConverterDriver, 
     /**
      * {@inheritdoc}
      *
+<<<<<<< HEAD
      * @deprecated
      *
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      * @link https://dev.mysql.com/doc/refman/8.0/en/client-error-reference.html
      * @link https://dev.mysql.com/doc/refman/8.0/en/server-error-reference.html
      */
@@ -48,10 +51,17 @@ abstract class AbstractMySQLDriver implements Driver, ExceptionConverterDriver, 
     {
         switch ($exception->getErrorCode()) {
             case '1213':
+<<<<<<< HEAD
                 return new DeadlockException($message, $exception);
 
             case '1205':
                 return new LockWaitTimeoutException($message, $exception);
+=======
+                return new Exception\DeadlockException($message, $exception);
+
+            case '1205':
+                return new Exception\LockWaitTimeoutException($message, $exception);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
             case '1050':
                 return new TableExistsException($message, $exception);
@@ -171,7 +181,11 @@ abstract class AbstractMySQLDriver implements Driver, ExceptionConverterDriver, 
                 $versionParts
             )
         ) {
+<<<<<<< HEAD
             throw Exception::invalidPlatformVersionSpecified(
+=======
+            throw DBALException::invalidPlatformVersionSpecified(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 $versionString,
                 '<major_version>.<minor_version>.<patch_version>'
             );
@@ -205,7 +219,11 @@ abstract class AbstractMySQLDriver implements Driver, ExceptionConverterDriver, 
                 $versionParts
             )
         ) {
+<<<<<<< HEAD
             throw Exception::invalidPlatformVersionSpecified(
+=======
+            throw DBALException::invalidPlatformVersionSpecified(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 $versionString,
                 '^(?:5\.5\.5-)?(mariadb-)?<major_version>.<minor_version>.<patch_version>'
             );

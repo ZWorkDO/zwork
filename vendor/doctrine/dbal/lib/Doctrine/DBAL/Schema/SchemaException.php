@@ -2,7 +2,11 @@
 
 namespace Doctrine\DBAL\Schema;
 
+<<<<<<< HEAD
 use Doctrine\DBAL\Exception;
+=======
+use Doctrine\DBAL\DBALException;
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 use function implode;
 use function sprintf;
@@ -10,7 +14,11 @@ use function sprintf;
 /**
  * @psalm-immutable
  */
+<<<<<<< HEAD
 class SchemaException extends Exception
+=======
+class SchemaException extends DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 {
     public const TABLE_DOESNT_EXIST       = 10;
     public const TABLE_ALREADY_EXISTS     = 20;

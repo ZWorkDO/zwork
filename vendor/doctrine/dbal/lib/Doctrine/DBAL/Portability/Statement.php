@@ -150,11 +150,16 @@ class Statement implements IteratorAggregate, DriverStatement, Result
 
         $row = $this->stmt->fetch($fetchMode);
 
+<<<<<<< HEAD
         $iterateRow = (
             $this->portability & (Connection::PORTABILITY_EMPTY_TO_NULL | Connection::PORTABILITY_RTRIM)
         ) !== 0;
 
         $fixCase = $this->case !== null
+=======
+        $iterateRow = $this->portability & (Connection::PORTABILITY_EMPTY_TO_NULL | Connection::PORTABILITY_RTRIM);
+        $fixCase    = $this->case !== null
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             && ($fetchMode === FetchMode::ASSOCIATIVE || $fetchMode === FetchMode::MIXED)
             && ($this->portability & Connection::PORTABILITY_FIX_CASE);
 
@@ -178,7 +183,12 @@ class Statement implements IteratorAggregate, DriverStatement, Result
             $rows = $this->stmt->fetchAll($fetchMode);
         }
 
+<<<<<<< HEAD
         $fixCase = $this->case !== null
+=======
+        $iterateRow = $this->portability & (Connection::PORTABILITY_EMPTY_TO_NULL | Connection::PORTABILITY_RTRIM);
+        $fixCase    = $this->case !== null
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             && ($fetchMode === FetchMode::ASSOCIATIVE || $fetchMode === FetchMode::MIXED)
             && ($this->portability & Connection::PORTABILITY_FIX_CASE);
 

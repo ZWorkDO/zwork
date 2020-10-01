@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<<<<<<< HEAD
          xsi:noNamespaceSchemaLocation="../../vendor/phpunit/phpunit/schema/9.3.xsd"
+=======
+         xsi:noNamespaceSchemaLocation="../../vendor/phpunit/phpunit/phpunit.xsd"
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
          colors="true"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTodoAnnotatedTests="true"
@@ -28,9 +32,23 @@
         </testsuite>
     </testsuites>
 
+<<<<<<< HEAD
     <coverage>
         <include>
             <directory suffix=".php">../../lib/Doctrine</directory>
         </include>
     </coverage>
+=======
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../../lib</directory>
+        </whitelist>
+    </filter>
+
+    <groups>
+        <exclude>
+            <group>performance</group>
+        </exclude>
+    </groups>
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 </phpunit>

@@ -3,7 +3,10 @@
 namespace Doctrine\DBAL\Driver\SQLAnywhere;
 
 use Doctrine\DBAL\Driver\AbstractSQLAnywhereDriver;
+<<<<<<< HEAD
 use Doctrine\DBAL\Exception;
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 use function array_keys;
 use function array_map;

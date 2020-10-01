@@ -14,7 +14,10 @@ use InvalidArgumentException;
 use IteratorAggregate;
 use PDO;
 
+<<<<<<< HEAD
 use function array_map;
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 use function array_merge;
 use function array_values;
 use function assert;
@@ -79,7 +82,24 @@ class ResultCacheStatement implements IteratorAggregate, ResultStatement, Result
      */
     public function closeCursor()
     {
+<<<<<<< HEAD
         $this->free();
+=======
+        $this->statement->closeCursor();
+        if (! $this->emptied || $this->data === null) {
+            return true;
+        }
+
+        $data = $this->resultCache->fetch($this->cacheKey);
+        if (! $data) {
+            $data = [];
+        }
+
+        $data[$this->realKey] = $this->data;
+
+        $this->resultCache->save($this->cacheKey, $data, $this->lifetime);
+        unset($this->data);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
         return true;
     }

@@ -7,7 +7,10 @@ use Doctrine\DBAL\Driver\Statement as StatementInterface;
 use Doctrine\DBAL\FetchMode;
 use Doctrine\DBAL\ParameterType;
 use PDO;
+<<<<<<< HEAD
 use PDOException;
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 use function array_slice;
 use function assert;
@@ -111,8 +114,13 @@ class PDOStatement extends \PDOStatement implements StatementInterface, Result
 
         try {
             return parent::bindParam($param, $variable, $type, ...array_slice(func_get_args(), 3));
+<<<<<<< HEAD
         } catch (PDOException $exception) {
             throw Exception::new($exception);
+=======
+        } catch (\PDOException $exception) {
+            throw new PDOException($exception);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
     }
 

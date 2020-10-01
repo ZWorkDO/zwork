@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace Doctrine\DBAL\Types;
 
+<<<<<<< HEAD
 use Doctrine\DBAL\Exception;
+=======
+use Doctrine\DBAL\DBALException;
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 use function array_search;
 use function in_array;

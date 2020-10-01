@@ -40,7 +40,11 @@ class OraclePlatform extends AbstractPlatform
      *
      * @return void
      *
+<<<<<<< HEAD
      * @throws Exception
+=======
+     * @throws DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function assertValidIdentifier($identifier)
     {

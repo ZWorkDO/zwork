@@ -61,13 +61,6 @@
       'Breadcrumbs' => 'DaveJamesMiller\\Breadcrumbs\\Facades\\Breadcrumbs',
     ),
   ),
-  'fideloper/proxy' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    ),
-  ),
   'intervention/image' => 
   array (
     'providers' => 
@@ -133,13 +126,6 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
-  'rachidlaasri/laravel-installer' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider',
-    ),
-  ),
   'simplesoftwareio/simple-qrcode' => 
   array (
     'providers' => 
@@ -165,15 +151,18 @@
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
+<<<<<<< HEAD
   'srmklive/paypal' => 
+=======
+  'chumper/zipper' => 
   array (
     'providers' => 
     array (
-      0 => 'Srmklive\\PayPal\\Providers\\PayPalServiceProvider',
+      0 => 'Chumper\\Zipper\\ZipperServiceProvider',
     ),
     'aliases' => 
     array (
-      'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
+      'Zipper' => 'Chumper\\Zipper\\Zipper',
     ),
   ),
   'tanmuhittin/laravel-google-translate' => 
@@ -190,4 +179,66 @@
       0 => 'Themsaid\\Langman\\LangmanServiceProvider',
     ),
   ),
+  'ben182/laravel-auto-translate' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Ben182\\AutoTranslate\\AutoTranslateServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'AutoTranslate' => 'Ben182\\AutoTranslate\\AutoTranslateFacade',
+    ),
+  ),
+  'barryvdh/laravel-dompdf' => 
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PDF' => 'Barryvdh\\DomPDF\\Facade',
+    ),
+  ),
+<<<<<<< HEAD
+  'tanmuhittin/laravel-google-translate' => 
+=======
+  'fideloper/proxy' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+    ),
+  ),
+  'mariuzzo/laravel-js-localization' => 
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
+  array (
+    'providers' => 
+    array (
+      0 => 'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider',
+    ),
+  ),
+  'rachidlaasri/laravel-installer' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider',
+    ),
+  ),
+<<<<<<< HEAD
+=======
+  'srmklive/paypal' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Srmklive\\PayPal\\Providers\\PayPalServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
+    ),
+  ),
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 );

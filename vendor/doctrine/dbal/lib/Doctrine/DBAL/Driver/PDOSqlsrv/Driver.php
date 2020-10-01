@@ -3,8 +3,12 @@
 namespace Doctrine\DBAL\Driver\PDOSqlsrv;
 
 use Doctrine\DBAL\Driver\AbstractSQLServerDriver;
+<<<<<<< HEAD
 use Doctrine\DBAL\Driver\AbstractSQLServerDriver\Exception\PortWithoutHost;
 use Doctrine\DBAL\Driver\PDO;
+=======
+use Doctrine\DBAL\Driver\AbstractSQLServerDriver\PortWithoutHost;
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 use function is_int;
 use function sprintf;

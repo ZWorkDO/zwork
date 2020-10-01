@@ -463,7 +463,11 @@ class SqliteSchemaManager extends AbstractSchemaManager
             $tableDetails = $this->tryMethod('listTableDetails', $table);
 
             if ($tableDetails === false) {
+<<<<<<< HEAD
                 throw new Exception(
+=======
+                throw new DBALException(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                     sprintf('Sqlite schema manager requires to modify foreign keys table definition "%s".', $table)
                 );
             }

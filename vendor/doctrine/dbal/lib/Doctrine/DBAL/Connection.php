@@ -13,7 +13,10 @@ use Doctrine\DBAL\Driver\Connection as DriverConnection;
 use Doctrine\DBAL\Driver\PingableConnection;
 use Doctrine\DBAL\Driver\ResultStatement;
 use Doctrine\DBAL\Driver\ServerInfoAwareConnection;
+<<<<<<< HEAD
 use Doctrine\DBAL\Exception\ConnectionLost;
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 use Doctrine\DBAL\Exception\InvalidArgumentException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Query\Expression\ExpressionBuilder;
@@ -21,7 +24,10 @@ use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\DBAL\Schema\AbstractSchemaManager;
 use Doctrine\DBAL\Types\Type;
 use Throwable;
+<<<<<<< HEAD
 use Traversable;
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 use function array_key_exists;
 use function assert;
@@ -541,8 +547,11 @@ class Connection implements DriverConnection
      * Prepares and executes an SQL query and returns the first row of the result
      * as an associative array.
      *
+<<<<<<< HEAD
      * @deprecated Use fetchAssociative()
      *
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      * @param string         $sql    The query SQL
      * @param mixed[]        $params The query parameters
      * @param int[]|string[] $types  The query parameter types
@@ -560,8 +569,11 @@ class Connection implements DriverConnection
      * Prepares and executes an SQL query and returns the first row of the result
      * as a numerically indexed array.
      *
+<<<<<<< HEAD
      * @deprecated Use fetchNumeric()
      *
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      * @param string         $sql    The query SQL
      * @param mixed[]        $params The query parameters
      * @param int[]|string[] $types  The query parameter types
@@ -569,6 +581,7 @@ class Connection implements DriverConnection
      * @return mixed[]|false False is returned if no rows are found.
      */
     public function fetchArray($sql, array $params = [], array $types = [])
+<<<<<<< HEAD
     {
         return $this->executeQuery($sql, $params, $types)->fetch(FetchMode::NUMERIC);
     }
@@ -645,20 +658,32 @@ class Connection implements DriverConnection
         } catch (Throwable $e) {
             $this->handleExceptionDuringQuery($e, $query, $params, $types);
         }
+=======
+    {
+        return $this->executeQuery($sql, $params, $types)->fetch(FetchMode::NUMERIC);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     }
 
     /**
      * Prepares and executes an SQL query and returns the value of a single column
      * of the first row of the result.
      *
+<<<<<<< HEAD
      * @param string                                           $query  The SQL query to be executed.
      * @param array<int, mixed>|array<string, mixed>           $params The prepared statement params.
      * @param array<int, int|string>|array<string, int|string> $types  The query parameter types.
+=======
+     * @param string         $sql    The query SQL
+     * @param mixed[]        $params The query parameters
+     * @param int            $column The 0-indexed column number to retrieve
+     * @param int[]|string[] $types  The query parameter types
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      *
      * @return mixed|false False is returned if no rows are found.
      *
      * @throws Exception
      */
+<<<<<<< HEAD
     public function fetchOne(string $query, array $params = [], array $types = [])
     {
         try {
@@ -672,6 +697,11 @@ class Connection implements DriverConnection
         } catch (Throwable $e) {
             $this->handleExceptionDuringQuery($e, $query, $params, $types);
         }
+=======
+    public function fetchColumn($sql, array $params = [], $column = 0, array $types = [])
+    {
+        return $this->executeQuery($sql, $params, $types)->fetchColumn($column);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     }
 
     /**
@@ -747,7 +777,11 @@ class Connection implements DriverConnection
 
         $this->addIdentifierCondition($identifier, $columns, $values, $conditions);
 
+<<<<<<< HEAD
         return $this->executeStatement(
+=======
+        return $this->executeUpdate(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             'DELETE FROM ' . $table . ' WHERE ' . implode(' AND ', $conditions),
             $values,
             is_string(key($types)) ? $this->extractTypeValues($columns, $types) : $types
@@ -844,7 +878,11 @@ class Connection implements DriverConnection
     public function insert($table, array $data, array $types = [])
     {
         if (empty($data)) {
+<<<<<<< HEAD
             return $this->executeStatement('INSERT INTO ' . $table . ' () VALUES ()');
+=======
+            return $this->executeUpdate('INSERT INTO ' . $table . ' () VALUES ()');
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
 
         $columns = [];
@@ -857,7 +895,11 @@ class Connection implements DriverConnection
             $set[]     = '?';
         }
 
+<<<<<<< HEAD
         return $this->executeStatement(
+=======
+        return $this->executeUpdate(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             'INSERT INTO ' . $table . ' (' . implode(', ', $columns) . ')' .
             ' VALUES (' . implode(', ', $set) . ')',
             $values,
@@ -1107,8 +1149,13 @@ class Connection implements DriverConnection
     {
         try {
             $stmt = new Statement($sql, $this);
+<<<<<<< HEAD
         } catch (Throwable $e) {
             $this->handleExceptionDuringQuery($e, $sql);
+=======
+        } catch (Throwable $ex) {
+            throw DBALException::driverExceptionDuringQuery($this->_driver, $ex, $sql);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
 
         $stmt->setFetchMode($this->defaultFetchMode);
@@ -1158,12 +1205,21 @@ class Connection implements DriverConnection
             } else {
                 $stmt = $connection->query($sql);
             }
+<<<<<<< HEAD
         } catch (Throwable $e) {
             $this->handleExceptionDuringQuery(
                 $e,
                 $sql,
                 $params,
                 $types
+=======
+        } catch (Throwable $ex) {
+            throw DBALException::driverExceptionDuringQuery(
+                $this->_driver,
+                $ex,
+                $sql,
+                $this->resolveParams($params, $types)
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             );
         }
 
@@ -1232,8 +1288,11 @@ class Connection implements DriverConnection
      * Executes an, optionally parametrized, SQL query and returns the result,
      * applying a given projection/transformation function on each row of the result.
      *
+<<<<<<< HEAD
      * @deprecated
      *
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      * @param string  $sql      The SQL query to execute.
      * @param mixed[] $params   The parameters, if any.
      * @param Closure $function The transformation function that is applied on each row.
@@ -1297,6 +1356,7 @@ class Connection implements DriverConnection
      *
      * This method supports PDO binding types as well as DBAL mapping types.
      *
+<<<<<<< HEAD
      * @deprecated Use {@link executeStatement()} instead.
      *
      * @param string                 $sql    The SQL query.
@@ -1327,12 +1387,21 @@ class Connection implements DriverConnection
      * @param string                 $sql    The statement SQL
      * @param array<mixed>           $params The query parameters
      * @param array<int|string|null> $types  The parameter types
+=======
+     * @param string                 $sql    The SQL query.
+     * @param array<mixed>           $params The query parameters.
+     * @param array<int|string|null> $types  The parameter types.
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      *
      * @return int The number of affected rows.
      *
      * @throws Exception
      */
+<<<<<<< HEAD
     public function executeStatement($sql, array $params = [], array $types = [])
+=======
+    public function executeUpdate($sql, array $params = [], array $types = [])
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     {
         $connection = $this->getWrappedConnection();
 
@@ -1358,12 +1427,21 @@ class Connection implements DriverConnection
             } else {
                 $result = $connection->exec($sql);
             }
+<<<<<<< HEAD
         } catch (Throwable $e) {
             $this->handleExceptionDuringQuery(
                 $e,
                 $sql,
                 $params,
                 $types
+=======
+        } catch (Throwable $ex) {
+            throw DBALException::driverExceptionDuringQuery(
+                $this->_driver,
+                $ex,
+                $sql,
+                $this->resolveParams($params, $types)
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             );
         }
 
@@ -1377,8 +1455,11 @@ class Connection implements DriverConnection
     /**
      * Executes an SQL statement and return the number of affected rows.
      *
+<<<<<<< HEAD
      * @deprecated Use {@link executeStatement()} instead.
      *
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      * @param string $sql
      *
      * @return int The number of affected rows.
@@ -1396,8 +1477,13 @@ class Connection implements DriverConnection
 
         try {
             $result = $connection->exec($sql);
+<<<<<<< HEAD
         } catch (Throwable $e) {
             $this->handleExceptionDuringQuery($e, $sql);
+=======
+        } catch (Throwable $ex) {
+            throw DBALException::driverExceptionDuringQuery($this->_driver, $ex, $sql);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
 
         if ($logger) {
@@ -1478,6 +1564,13 @@ class Connection implements DriverConnection
             $this->commit();
 
             return $res;
+<<<<<<< HEAD
+=======
+        } catch (Exception $e) {
+            $this->rollBack();
+
+            throw $e;
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         } catch (Throwable $e) {
             $this->rollBack();
 

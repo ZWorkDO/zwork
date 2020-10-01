@@ -28,6 +28,7 @@ use const E_USER_DEPRECATED;
  */
 class RunSqlCommand extends Command
 {
+<<<<<<< HEAD
     /** @var ConnectionProvider|null */
     private $connectionProvider;
 
@@ -45,6 +46,8 @@ class RunSqlCommand extends Command
         );
     }
 
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     /** @return void */
     protected function configure()
     {

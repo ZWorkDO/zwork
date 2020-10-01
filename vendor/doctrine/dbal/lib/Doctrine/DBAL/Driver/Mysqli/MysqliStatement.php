@@ -499,8 +499,11 @@ class MysqliStatement implements IteratorAggregate, StatementInterface, Result
     /**
      * {@inheritdoc}
      *
+<<<<<<< HEAD
      * @deprecated The error information is available via exceptions.
      *
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      * @return string
      */
     public function errorInfo()
