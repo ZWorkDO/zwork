@@ -17,8 +17,8 @@ elif [[ "$1" == "update_prod" ]]; then    # used only on server
     cp public/index_prod.php public/index.php
     echo "Copying public/.htaccess_prod to public/.htaccess"
     cp public/.htaccess_prod public/.htaccess
-    echo "Copying all public/* to ../public_html/"
-    cp -a public/* ../public_html/
+    echo "Copying all public/* to ../html/"
+    cp -a public/* ../html/
     echo "Pull completed"
 
 else
