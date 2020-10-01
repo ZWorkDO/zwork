@@ -32,7 +32,7 @@ class DB2SchemaManager extends AbstractSchemaManager
         $sql  = $this->_platform->getListTablesSQL();
         $sql .= ' AND CREATOR = UPPER(' . $this->_conn->quote($this->_conn->getUsername()) . ')';
 
-        $tables = $this->_conn->fetchAllAssociative($sql);
+        $tables = $this->_conn->fetchAll($sql);
 
         return $this->filterAssetNames($this->_getPortableTablesList($tables));
     }
@@ -229,15 +229,9 @@ class DB2SchemaManager extends AbstractSchemaManager
         $platform = $this->_platform;
         assert($platform instanceof DB2Platform);
         $sql = $platform->getListTableCommentsSQL($name);
-<<<<<<< HEAD
-
-        $tableOptions = $this->_conn->fetchAssociative($sql);
-
-=======
 
         $tableOptions = $this->_conn->fetchAssoc($sql);
 
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         if ($tableOptions !== false) {
             $table->addOption('comment', $tableOptions['REMARKS']);
         }

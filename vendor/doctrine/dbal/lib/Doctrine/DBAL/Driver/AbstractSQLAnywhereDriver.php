@@ -3,21 +3,9 @@
 namespace Doctrine\DBAL\Driver;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver;
-use Doctrine\DBAL\Driver\DriverException as DeprecatedDriverException;
 use Doctrine\DBAL\Exception;
-use Doctrine\DBAL\Exception\ConnectionException;
-use Doctrine\DBAL\Exception\DeadlockException;
-use Doctrine\DBAL\Exception\DriverException;
-use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
-use Doctrine\DBAL\Exception\InvalidFieldNameException;
-use Doctrine\DBAL\Exception\LockWaitTimeoutException;
-use Doctrine\DBAL\Exception\NonUniqueFieldNameException;
-use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
-use Doctrine\DBAL\Exception\SyntaxErrorException;
-use Doctrine\DBAL\Exception\TableExistsException;
-use Doctrine\DBAL\Exception\TableNotFoundException;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\DBAL\Platforms\SQLAnywhere11Platform;
 use Doctrine\DBAL\Platforms\SQLAnywhere12Platform;
 use Doctrine\DBAL\Platforms\SQLAnywhere16Platform;
@@ -37,61 +25,24 @@ abstract class AbstractSQLAnywhereDriver implements Driver, ExceptionConverterDr
     /**
      * {@inheritdoc}
      *
-     * @deprecated
-     *
      * @link http://dcx.sybase.com/index.html#sa160/en/saerrors/sqlerror.html
      */
-    public function convertException($message, DeprecatedDriverException $exception)
+    public function convertException($message, DriverException $exception)
     {
         switch ($exception->getErrorCode()) {
             case '-306':
             case '-307':
             case '-684':
-<<<<<<< HEAD
-                return new DeadlockException($message, $exception);
-=======
                 return new Exception\DeadlockException($message, $exception);
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
             case '-210':
             case '-1175':
             case '-1281':
-<<<<<<< HEAD
-                return new LockWaitTimeoutException($message, $exception);
-=======
                 return new Exception\LockWaitTimeoutException($message, $exception);
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
             case '-100':
             case '-103':
             case '-832':
-<<<<<<< HEAD
-                return new ConnectionException($message, $exception);
-
-            case '-143':
-                return new InvalidFieldNameException($message, $exception);
-
-            case '-193':
-            case '-196':
-                return new UniqueConstraintViolationException($message, $exception);
-
-            case '-194':
-            case '-198':
-                return new ForeignKeyConstraintViolationException($message, $exception);
-
-            case '-144':
-                return new NonUniqueFieldNameException($message, $exception);
-
-            case '-184':
-            case '-195':
-                return new NotNullConstraintViolationException($message, $exception);
-
-            case '-131':
-                return new SyntaxErrorException($message, $exception);
-
-            case '-110':
-                return new TableExistsException($message, $exception);
-=======
                 return new Exception\ConnectionException($message, $exception);
 
             case '-143':
@@ -117,14 +68,13 @@ abstract class AbstractSQLAnywhereDriver implements Driver, ExceptionConverterDr
 
             case '-110':
                 return new Exception\TableExistsException($message, $exception);
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
             case '-141':
             case '-1041':
-                return new TableNotFoundException($message, $exception);
+                return new Exception\TableNotFoundException($message, $exception);
         }
 
-        return new DriverException($message, $exception);
+        return new Exception\DriverException($message, $exception);
     }
 
     /**
@@ -139,11 +89,7 @@ abstract class AbstractSQLAnywhereDriver implements Driver, ExceptionConverterDr
                 $versionParts
             )
         ) {
-<<<<<<< HEAD
-            throw Exception::invalidPlatformVersionSpecified(
-=======
             throw DBALException::invalidPlatformVersionSpecified(
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 $version,
                 '<major_version>.<minor_version>.<patch_version>.<build_version>'
             );
@@ -172,8 +118,6 @@ abstract class AbstractSQLAnywhereDriver implements Driver, ExceptionConverterDr
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use Connection::getDatabase() instead.
      */
     public function getDatabase(Connection $conn)
     {

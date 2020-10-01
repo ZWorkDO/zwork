@@ -1,13 +1,30 @@
 <?php return array (
-  'barryvdh/laravel-dompdf' => 
+  'nesbot/carbon' => 
   array (
     'providers' => 
     array (
-      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
+      0 => 'Carbon\\Laravel\\ServiceProvider',
     ),
-    'aliases' => 
+  ),
+  'laravel/slack-notification-channel' => 
+  array (
+    'providers' => 
     array (
-      'PDF' => 'Barryvdh\\DomPDF\\Facade',
+      0 => 'Illuminate\\Notifications\\SlackChannelServiceProvider',
+    ),
+  ),
+  'laravel/nexmo-notification-channel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Illuminate\\Notifications\\NexmoChannelServiceProvider',
+    ),
+  ),
+  'themsaid/laravel-langman' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Themsaid\\Langman\\LangmanServiceProvider',
     ),
   ),
   'ben182/laravel-auto-translate' => 
@@ -19,24 +36,6 @@
     'aliases' => 
     array (
       'AutoTranslate' => 'Ben182\\AutoTranslate\\AutoTranslateFacade',
-    ),
-  ),
-  'beyondcode/laravel-dump-server' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'BeyondCode\\DumpServer\\DumpServerServiceProvider',
-    ),
-  ),
-  'cartalyst/stripe-laravel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Cartalyst\\Stripe\\Laravel\\StripeServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Stripe' => 'Cartalyst\\Stripe\\Laravel\\Facades\\Stripe',
     ),
   ),
   'chumper/zipper' => 
@@ -61,6 +60,13 @@
       'Breadcrumbs' => 'DaveJamesMiller\\Breadcrumbs\\Facades\\Breadcrumbs',
     ),
   ),
+  'fideloper/proxy' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+    ),
+  ),
   'intervention/image' => 
   array (
     'providers' => 
@@ -72,18 +78,54 @@
       'Image' => 'Intervention\\Image\\Facades\\Image',
     ),
   ),
-  'laravel/nexmo-notification-channel' => 
+  'spatie/laravel-json-api-paginate' => 
   array (
     'providers' => 
     array (
-      0 => 'Illuminate\\Notifications\\NexmoChannelServiceProvider',
+      0 => 'Spatie\\JsonApiPaginate\\JsonApiPaginateServiceProvider',
     ),
   ),
-  'laravel/slack-notification-channel' => 
+  'beyondcode/laravel-dump-server' => 
   array (
     'providers' => 
     array (
-      0 => 'Illuminate\\Notifications\\SlackChannelServiceProvider',
+      0 => 'BeyondCode\\DumpServer\\DumpServerServiceProvider',
+    ),
+  ),
+  'cartalyst/stripe-laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Cartalyst\\Stripe\\Laravel\\StripeServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Stripe' => 'Cartalyst\\Stripe\\Laravel\\Facades\\Stripe',
+    ),
+  ),
+  'nunomaduro/collision' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    ),
+  ),
+  'tanmuhittin/laravel-google-translate' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Tanmuhittin\\LaravelGoogleTranslate\\LaravelGoogleTranslateServiceProvider',
+    ),
+  ),
+  'barryvdh/laravel-dompdf' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PDF' => 'Barryvdh\\DomPDF\\Facade',
     ),
   ),
   'laravel/tinker' => 
@@ -112,18 +154,11 @@
       0 => 'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider',
     ),
   ),
-  'nesbot/carbon' => 
+  'rachidlaasri/laravel-installer' => 
   array (
     'providers' => 
     array (
-      0 => 'Carbon\\Laravel\\ServiceProvider',
-    ),
-  ),
-  'nunomaduro/collision' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+      0 => 'RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider',
     ),
   ),
   'simplesoftwareio/simple-qrcode' => 
@@ -137,13 +172,6 @@
       'QrCode' => 'SimpleSoftwareIO\\QrCode\\Facades\\QrCode',
     ),
   ),
-  'spatie/laravel-json-api-paginate' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Spatie\\JsonApiPaginate\\JsonApiPaginateServiceProvider',
-    ),
-  ),
   'spatie/laravel-permission' => 
   array (
     'providers' => 
@@ -151,84 +179,6 @@
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
-<<<<<<< HEAD
-  'srmklive/paypal' => 
-=======
-  'chumper/zipper' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Chumper\\Zipper\\ZipperServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Zipper' => 'Chumper\\Zipper\\Zipper',
-    ),
-  ),
-  'tanmuhittin/laravel-google-translate' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Tanmuhittin\\LaravelGoogleTranslate\\LaravelGoogleTranslateServiceProvider',
-    ),
-  ),
-  'themsaid/laravel-langman' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Themsaid\\Langman\\LangmanServiceProvider',
-    ),
-  ),
-  'ben182/laravel-auto-translate' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Ben182\\AutoTranslate\\AutoTranslateServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'AutoTranslate' => 'Ben182\\AutoTranslate\\AutoTranslateFacade',
-    ),
-  ),
-  'barryvdh/laravel-dompdf' => 
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
-  array (
-    'providers' => 
-    array (
-      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'PDF' => 'Barryvdh\\DomPDF\\Facade',
-    ),
-  ),
-<<<<<<< HEAD
-  'tanmuhittin/laravel-google-translate' => 
-=======
-  'fideloper/proxy' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    ),
-  ),
-  'mariuzzo/laravel-js-localization' => 
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
-  array (
-    'providers' => 
-    array (
-      0 => 'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider',
-    ),
-  ),
-  'rachidlaasri/laravel-installer' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider',
-    ),
-  ),
-<<<<<<< HEAD
-=======
   'srmklive/paypal' => 
   array (
     'providers' => 
@@ -240,5 +190,4 @@
       'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
     ),
   ),
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 );

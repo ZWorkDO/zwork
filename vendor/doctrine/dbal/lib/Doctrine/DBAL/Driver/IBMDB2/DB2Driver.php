@@ -6,8 +6,6 @@ use Doctrine\DBAL\Driver\AbstractDB2Driver;
 
 /**
  * IBM DB2 Driver.
- *
- * @deprecated Use {@link Driver} instead
  */
 class DB2Driver extends AbstractDB2Driver
 {
@@ -20,11 +18,7 @@ class DB2Driver extends AbstractDB2Driver
         $params['password'] = $password;
         $params['dbname']   = DataSourceName::fromConnectionParameters($params)->toString();
 
-<<<<<<< HEAD
-        return new Connection(
-=======
         return new DB2Connection(
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
             $params,
             (string) $username,
             (string) $password,

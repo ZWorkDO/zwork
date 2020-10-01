@@ -2,7 +2,7 @@
 
 namespace Doctrine\DBAL\Platforms;
 
-use Doctrine\DBAL\Exception;
+use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Schema\ForeignKeyConstraint;
 use Doctrine\DBAL\Schema\Identifier;
 use Doctrine\DBAL\Schema\Index;
@@ -40,16 +40,12 @@ class OraclePlatform extends AbstractPlatform
      *
      * @return void
      *
-<<<<<<< HEAD
-     * @throws Exception
-=======
      * @throws DBALException
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      */
     public static function assertValidIdentifier($identifier)
     {
         if (! preg_match('(^(([a-zA-Z]{1}[a-zA-Z0-9_$#]{0,})|("[^"]+"))$)', $identifier)) {
-            throw new Exception('Invalid Oracle identifier');
+            throw new DBALException('Invalid Oracle identifier');
         }
     }
 
@@ -972,8 +968,6 @@ SQL
 
     /**
      * {@inheritDoc}
-     *
-     * @deprecated
      */
     public function prefersSequences()
     {
@@ -1061,8 +1055,6 @@ SQL
      * {@inheritDoc}
      *
      * Oracle returns all column names in SQL result sets in uppercase.
-     *
-     * @deprecated
      */
     public function getSQLResultCasing($column)
     {
@@ -1103,8 +1095,6 @@ SQL
 
     /**
      * {@inheritDoc}
-     *
-     * @deprecated
      */
     public function fixSchemaElementName($schemaElementName)
     {
@@ -1134,8 +1124,6 @@ SQL
 
     /**
      * {@inheritDoc}
-     *
-     * @deprecated
      */
     public function supportsForeignKeyOnUpdate()
     {

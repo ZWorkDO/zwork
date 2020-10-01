@@ -2,7 +2,7 @@
 
 namespace Doctrine\DBAL\Schema;
 
-use Doctrine\DBAL\Exception;
+use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Schema\Visitor\Visitor;
 use Doctrine\DBAL\Types\Type;
 
@@ -51,7 +51,7 @@ class Table extends AbstractAsset
      * @param int                    $idGeneratorType
      * @param mixed[]                $options
      *
-     * @throws Exception
+     * @throws DBALException
      */
     public function __construct(
         $name,
@@ -62,11 +62,7 @@ class Table extends AbstractAsset
         array $options = []
     ) {
         if (strlen($name) === 0) {
-<<<<<<< HEAD
-            throw Exception::invalidTableName($name);
-=======
             throw DBALException::invalidTableName($name);
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
 
         $this->_setName($name);
@@ -317,19 +313,14 @@ class Table extends AbstractAsset
      *
      * @param string $oldName
      * @param string $name
-<<<<<<< HEAD
-=======
-     *
-     * @return void
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      *
      * @return void
      *
-     * @throws Exception
+     * @throws DBALException
      */
     public function renameColumn($oldName, $name)
     {
-        throw new Exception('Table#renameColumn() was removed, because it drops and recreates ' .
+        throw new DBALException('Table#renameColumn() was removed, because it drops and recreates ' .
             'the column instead. There is no fix available, because a schema diff cannot reliably detect if a ' .
             'column was renamed or one column was created and another one dropped.');
     }
@@ -563,21 +554,11 @@ class Table extends AbstractAsset
 
         $this->_fkConstraints[$name] = $constraint;
 
-<<<<<<< HEAD
-        /* Add an implicit index (defined by the DBAL) on the foreign key
-           columns. If there is already a user-defined index that fulfills these
-           requirements drop the request. In the case of __construct() calling
-           this method during hydration from schema-details, all the explicitly
-           added indexes lead to duplicates. This creates computation overhead in
-           this case, however no duplicate indexes are ever added (based on
-           columns). */
-=======
         // Add an explicit index on the foreign key columns.
         // If there is already an index that fulfils this requirements drop the request.
         // In the case of __construct calling this method during hydration from schema-details
         // all the explicitly added indexes lead to duplicates. This creates computation overhead in this case,
         // however no duplicate indexes are ever added (based on columns).
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         $indexName = $this->_generateIdentifierName(
             array_merge([$this->getName()], $constraint->getColumns()),
             'idx',
@@ -746,14 +727,14 @@ class Table extends AbstractAsset
      *
      * @return string[]
      *
-     * @throws Exception
+     * @throws DBALException
      */
     public function getPrimaryKeyColumns()
     {
         $primaryKey = $this->getPrimaryKey();
 
         if ($primaryKey === null) {
-            throw new Exception('Table ' . $this->getName() . ' has no primary key.');
+            throw new DBALException('Table ' . $this->getName() . ' has no primary key.');
         }
 
         return $primaryKey->getColumns();

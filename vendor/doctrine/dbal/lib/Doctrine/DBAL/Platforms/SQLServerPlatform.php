@@ -39,8 +39,6 @@ use function substr_count;
 /**
  * The SQLServerPlatform provides the behavior, features and SQL dialect of the
  * Microsoft SQL Server database platform.
- *
- * @deprecated Use SQL Server 2012 or newer
  */
 class SQLServerPlatform extends AbstractPlatform
 {
@@ -1189,20 +1187,6 @@ SQL
     public function getGuidTypeDeclarationSQL(array $column)
     {
         return 'UNIQUEIDENTIFIER';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getAsciiStringTypeDeclarationSQL(array $column): string
-    {
-        $length = $column['length'] ?? null;
-
-        if (! isset($column['fixed'])) {
-            return sprintf('VARCHAR(%d)', $length);
-        }
-
-        return sprintf('CHAR(%d)', $length);
     }
 
     /**

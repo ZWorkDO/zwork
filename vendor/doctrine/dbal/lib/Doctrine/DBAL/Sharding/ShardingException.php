@@ -2,19 +2,14 @@
 
 namespace Doctrine\DBAL\Sharding;
 
-use Doctrine\DBAL\Exception;
+use Doctrine\DBAL\DBALException;
 
 /**
  * Sharding related Exceptions
  *
-<<<<<<< HEAD
- * @deprecated
- *
-=======
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
  * @psalm-immutable
  */
-class ShardingException extends Exception
+class ShardingException extends DBALException
 {
     /**
      * @return ShardingException

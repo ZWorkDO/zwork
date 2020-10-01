@@ -2,7 +2,7 @@
 
 namespace Doctrine\DBAL\Platforms;
 
-use Doctrine\DBAL\Exception;
+use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Schema\ColumnDiff;
 use Doctrine\DBAL\Schema\Identifier;
 use Doctrine\DBAL\Schema\Index;
@@ -481,7 +481,7 @@ class DB2Platform extends AbstractPlatform
     public function getIndexDeclarationSQL($name, Index $index)
     {
         // Index declaration in statements like CREATE TABLE is not supported.
-        throw Exception::notSupported(__METHOD__);
+        throw DBALException::notSupported(__METHOD__);
     }
 
     /**
@@ -716,7 +716,6 @@ class DB2Platform extends AbstractPlatform
                 if ($remIndex->getColumns() !== $addIndex->getColumns()) {
                     continue;
                 }
-<<<<<<< HEAD
 
                 if ($remIndex->isPrimary()) {
                     $sql[] = 'ALTER TABLE ' . $table . ' DROP PRIMARY KEY';
@@ -730,21 +729,6 @@ class DB2Platform extends AbstractPlatform
 
                 unset($diff->removedIndexes[$remKey], $diff->addedIndexes[$addKey]);
 
-=======
-
-                if ($remIndex->isPrimary()) {
-                    $sql[] = 'ALTER TABLE ' . $table . ' DROP PRIMARY KEY';
-                } elseif ($remIndex->isUnique()) {
-                    $sql[] = 'ALTER TABLE ' . $table . ' DROP UNIQUE ' . $remIndex->getQuotedName($this);
-                } else {
-                    $sql[] = $this->getDropIndexSQL($remIndex, $table);
-                }
-
-                $sql[] = $this->getCreateIndexSQL($addIndex, $table);
-
-                unset($diff->removedIndexes[$remKey], $diff->addedIndexes[$addKey]);
-
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 break;
             }
         }
@@ -880,8 +864,6 @@ class DB2Platform extends AbstractPlatform
      * {@inheritDoc}
      *
      * DB2 returns all column names in SQL result sets in uppercase.
-     *
-     * @deprecated
      */
     public function getSQLResultCasing($column)
     {

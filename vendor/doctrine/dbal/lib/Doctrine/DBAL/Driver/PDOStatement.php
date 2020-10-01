@@ -2,15 +2,9 @@
 
 namespace Doctrine\DBAL\Driver;
 
-use Doctrine\DBAL\Driver\PDO\Exception;
-use Doctrine\DBAL\Driver\Statement as StatementInterface;
 use Doctrine\DBAL\FetchMode;
 use Doctrine\DBAL\ParameterType;
 use PDO;
-<<<<<<< HEAD
-use PDOException;
-=======
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 use function array_slice;
 use function assert;
@@ -24,16 +18,13 @@ use const E_USER_DEPRECATED;
 /**
  * The PDO implementation of the Statement interface.
  * Used by all PDO-based drivers.
- *
- * @deprecated Use {@link Statement} instead
  */
-class PDOStatement extends \PDOStatement implements StatementInterface, Result
+class PDOStatement extends \PDOStatement implements Statement
 {
     private const PARAM_TYPE_MAP = [
         ParameterType::NULL         => PDO::PARAM_NULL,
         ParameterType::INTEGER      => PDO::PARAM_INT,
         ParameterType::STRING       => PDO::PARAM_STR,
-        ParameterType::ASCII        => PDO::PARAM_STR,
         ParameterType::BINARY       => PDO::PARAM_LOB,
         ParameterType::LARGE_OBJECT => PDO::PARAM_LOB,
         ParameterType::BOOLEAN      => PDO::PARAM_BOOL,
@@ -50,8 +41,6 @@ class PDOStatement extends \PDOStatement implements StatementInterface, Result
 
     /**
      * Protected constructor.
-     *
-     * @internal The statement can be only instantiated by its driver connection.
      */
     protected function __construct()
     {
@@ -59,8 +48,6 @@ class PDOStatement extends \PDOStatement implements StatementInterface, Result
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use one of the fetch- or iterate-related methods.
      */
     public function setFetchMode($fetchMode, $arg2 = null, $arg3 = null)
     {
@@ -80,8 +67,8 @@ class PDOStatement extends \PDOStatement implements StatementInterface, Result
             }
 
             return parent::setFetchMode($fetchMode, $arg2, $arg3);
-        } catch (PDOException $exception) {
-            throw Exception::new($exception);
+        } catch (\PDOException $exception) {
+            throw new PDOException($exception);
         }
     }
 
@@ -94,8 +81,8 @@ class PDOStatement extends \PDOStatement implements StatementInterface, Result
 
         try {
             return parent::bindValue($param, $value, $type);
-        } catch (PDOException $exception) {
-            throw Exception::new($exception);
+        } catch (\PDOException $exception) {
+            throw new PDOException($exception);
         }
     }
 
@@ -114,26 +101,19 @@ class PDOStatement extends \PDOStatement implements StatementInterface, Result
 
         try {
             return parent::bindParam($param, $variable, $type, ...array_slice(func_get_args(), 3));
-<<<<<<< HEAD
-        } catch (PDOException $exception) {
-            throw Exception::new($exception);
-=======
         } catch (\PDOException $exception) {
             throw new PDOException($exception);
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
     }
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use free() instead.
      */
     public function closeCursor()
     {
         try {
             return parent::closeCursor();
-        } catch (PDOException $exception) {
+        } catch (\PDOException $exception) {
             // Exceptions not allowed by the interface.
             // In case driver implementations do not adhere to the interface, silence exceptions here.
             return true;
@@ -147,15 +127,13 @@ class PDOStatement extends \PDOStatement implements StatementInterface, Result
     {
         try {
             return parent::execute($params);
-        } catch (PDOException $exception) {
-            throw Exception::new($exception);
+        } catch (\PDOException $exception) {
+            throw new PDOException($exception);
         }
     }
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use fetchNumeric(), fetchAssociative() or fetchOne() instead.
      */
     public function fetch($fetchMode = null, $cursorOrientation = PDO::FETCH_ORI_NEXT, $cursorOffset = 0)
     {
@@ -167,15 +145,13 @@ class PDOStatement extends \PDOStatement implements StatementInterface, Result
 
         try {
             return parent::fetch(...$args);
-        } catch (PDOException $exception) {
-            throw Exception::new($exception);
+        } catch (\PDOException $exception) {
+            throw new PDOException($exception);
         }
     }
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use fetchAllNumeric(), fetchAllAssociative() or fetchFirstColumn() instead.
      */
     public function fetchAll($fetchMode = null, $fetchArgument = null, $ctorArgs = null)
     {
@@ -200,76 +176,21 @@ class PDOStatement extends \PDOStatement implements StatementInterface, Result
             assert(is_array($data));
 
             return $data;
-        } catch (PDOException $exception) {
-            throw Exception::new($exception);
+        } catch (\PDOException $exception) {
+            throw new PDOException($exception);
         }
     }
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use fetchOne() instead.
      */
     public function fetchColumn($columnIndex = 0)
     {
         try {
             return parent::fetchColumn($columnIndex);
-        } catch (PDOException $exception) {
-            throw Exception::new($exception);
+        } catch (\PDOException $exception) {
+            throw new PDOException($exception);
         }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchNumeric()
-    {
-        return $this->fetch(PDO::FETCH_NUM);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchAssociative()
-    {
-        return $this->fetch(PDO::FETCH_ASSOC);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchOne()
-    {
-        return $this->fetch(PDO::FETCH_COLUMN);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchAllNumeric(): array
-    {
-        return $this->fetchAll(PDO::FETCH_NUM);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchAllAssociative(): array
-    {
-        return $this->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchFirstColumn(): array
-    {
-        return $this->fetchAll(PDO::FETCH_COLUMN);
-    }
-
-    public function free(): void
-    {
-        parent::closeCursor();
     }
 
     /**

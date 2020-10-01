@@ -4,9 +4,6 @@ namespace Doctrine\DBAL\Cache;
 
 use ArrayIterator;
 use Doctrine\Common\Cache\Cache;
-use Doctrine\DBAL\Driver\Exception;
-use Doctrine\DBAL\Driver\FetchUtils;
-use Doctrine\DBAL\Driver\Result;
 use Doctrine\DBAL\Driver\ResultStatement;
 use Doctrine\DBAL\Driver\Statement;
 use Doctrine\DBAL\FetchMode;
@@ -14,10 +11,6 @@ use InvalidArgumentException;
 use IteratorAggregate;
 use PDO;
 
-<<<<<<< HEAD
-use function array_map;
-=======
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 use function array_merge;
 use function array_values;
 use function assert;
@@ -35,10 +28,8 @@ use function reset;
  *
  * Also you have to realize that the cache will load the whole result into memory at once to ensure 2.
  * This means that the memory usage for cached results might increase by using this feature.
- *
- * @deprecated
  */
-class ResultCacheStatement implements IteratorAggregate, ResultStatement, Result
+class ResultCacheStatement implements IteratorAggregate, ResultStatement
 {
     /** @var Cache */
     private $resultCache;
@@ -55,7 +46,14 @@ class ResultCacheStatement implements IteratorAggregate, ResultStatement, Result
     /** @var ResultStatement */
     private $statement;
 
-    /** @var array<int,array<string,mixed>>|null */
+    /**
+     * Did we reach the end of the statement?
+     *
+     * @var bool
+     */
+    private $emptied = false;
+
+    /** @var mixed[] */
     private $data;
 
     /** @var int */
@@ -77,14 +75,9 @@ class ResultCacheStatement implements IteratorAggregate, ResultStatement, Result
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use free() instead.
      */
     public function closeCursor()
     {
-<<<<<<< HEAD
-        $this->free();
-=======
         $this->statement->closeCursor();
         if (! $this->emptied || $this->data === null) {
             return true;
@@ -99,7 +92,6 @@ class ResultCacheStatement implements IteratorAggregate, ResultStatement, Result
 
         $this->resultCache->save($this->cacheKey, $data, $this->lifetime);
         unset($this->data);
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
         return true;
     }
@@ -114,8 +106,6 @@ class ResultCacheStatement implements IteratorAggregate, ResultStatement, Result
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use one of the fetch- or iterate-related methods.
      */
     public function setFetchMode($fetchMode, $arg2 = null, $arg3 = null)
     {
@@ -126,8 +116,6 @@ class ResultCacheStatement implements IteratorAggregate, ResultStatement, Result
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use iterateNumeric(), iterateAssociative() or iterateColumn() instead.
      */
     public function getIterator()
     {
@@ -138,8 +126,6 @@ class ResultCacheStatement implements IteratorAggregate, ResultStatement, Result
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use fetchNumeric(), fetchAssociative() or fetchOne() instead.
      */
     public function fetch($fetchMode = null, $cursorOrientation = PDO::FETCH_ORI_NEXT, $cursorOffset = 0)
     {
@@ -173,45 +159,32 @@ class ResultCacheStatement implements IteratorAggregate, ResultStatement, Result
             throw new InvalidArgumentException('Invalid fetch-style given for caching result.');
         }
 
-        $this->saveToCache();
+        $this->emptied = true;
 
         return false;
     }
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use fetchAllNumeric(), fetchAllAssociative() or fetchFirstColumn() instead.
      */
     public function fetchAll($fetchMode = null, $fetchArgument = null, $ctorArgs = null)
     {
-        $data = $this->statement->fetchAll(FetchMode::ASSOCIATIVE, $fetchArgument, $ctorArgs);
+        $data = $this->statement->fetchAll($fetchMode, $fetchArgument, $ctorArgs);
 
-        $this->data = $data;
-
-        $this->saveToCache();
-
-        if ($fetchMode === FetchMode::NUMERIC) {
-            foreach ($data as $i => $row) {
-                $data[$i] = array_values($row);
-            }
-        } elseif ($fetchMode === FetchMode::MIXED) {
-            foreach ($data as $i => $row) {
-                $data[$i] = array_merge($row, array_values($row));
-            }
-        } elseif ($fetchMode === FetchMode::COLUMN) {
-            foreach ($data as $i => $row) {
-                $data[$i] = reset($row);
+        if ($fetchMode === FetchMode::COLUMN) {
+            foreach ($data as $key => $value) {
+                $data[$key] = [$value];
             }
         }
 
-        return $data;
+        $this->data    = $data;
+        $this->emptied = true;
+
+        return $this->data;
     }
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use fetchOne() instead.
      */
     public function fetchColumn($columnIndex = 0)
     {
@@ -219,76 +192,6 @@ class ResultCacheStatement implements IteratorAggregate, ResultStatement, Result
 
         // TODO: verify that return false is the correct behavior
         return $row[$columnIndex] ?? false;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchNumeric()
-    {
-        $row = $this->doFetch();
-
-        if ($row === false) {
-            return false;
-        }
-
-        return array_values($row);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchAssociative()
-    {
-        return $this->doFetch();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchOne()
-    {
-        return FetchUtils::fetchOne($this);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchAllNumeric(): array
-    {
-        if ($this->statement instanceof Result) {
-            $data = $this->statement->fetchAllAssociative();
-        } else {
-            $data = $this->statement->fetchAll(FetchMode::ASSOCIATIVE);
-        }
-
-        $this->store($data);
-
-        return array_map('array_values', $this->data);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchAllAssociative(): array
-    {
-        if ($this->statement instanceof Result) {
-            $data = $this->statement->fetchAllAssociative();
-        } else {
-            $data = $this->statement->fetchAll(FetchMode::ASSOCIATIVE);
-        }
-
-        $this->store($data);
-
-        return $data;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchFirstColumn(): array
-    {
-        return FetchUtils::fetchFirstColumn($this);
     }
 
     /**
@@ -307,62 +210,5 @@ class ResultCacheStatement implements IteratorAggregate, ResultStatement, Result
         assert($this->statement instanceof Statement);
 
         return $this->statement->rowCount();
-    }
-
-    public function free(): void
-    {
-        $this->data = null;
-    }
-
-    /**
-     * @return array<string,mixed>|false
-     *
-     * @throws Exception
-     */
-    private function doFetch()
-    {
-        if ($this->data === null) {
-            $this->data = [];
-        }
-
-        if ($this->statement instanceof Result) {
-            $row = $this->statement->fetchAssociative();
-        } else {
-            $row = $this->statement->fetch(FetchMode::ASSOCIATIVE);
-        }
-
-        if ($row !== false) {
-            $this->data[] = $row;
-
-            return $row;
-        }
-
-        $this->saveToCache();
-
-        return false;
-    }
-
-    /**
-     * @param array<int,array<string,mixed>> $data
-     */
-    private function store(array $data): void
-    {
-        $this->data = $data;
-    }
-
-    private function saveToCache(): void
-    {
-        if ($this->data === null) {
-            return;
-        }
-
-        $data = $this->resultCache->fetch($this->cacheKey);
-        if (! $data) {
-            $data = [];
-        }
-
-        $data[$this->realKey] = $this->data;
-
-        $this->resultCache->save($this->cacheKey, $data, $this->lifetime);
     }
 }

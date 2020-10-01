@@ -2,16 +2,12 @@
 
 namespace Doctrine\DBAL\Cache;
 
-use Doctrine\DBAL\Exception;
+use Doctrine\DBAL\DBALException;
 
 /**
  * @psalm-immutable
  */
-<<<<<<< HEAD
-class CacheException extends Exception
-=======
 class CacheException extends DBALException
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 {
     /**
      * @return CacheException

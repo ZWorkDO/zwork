@@ -2,13 +2,7 @@
 
 namespace Doctrine\DBAL\Driver\IBMDB2;
 
-use Doctrine\DBAL\Driver\FetchUtils;
-use Doctrine\DBAL\Driver\IBMDB2\Exception\CannotCopyStreamToStream;
-use Doctrine\DBAL\Driver\IBMDB2\Exception\CannotCreateTemporaryFile;
-use Doctrine\DBAL\Driver\IBMDB2\Exception\CannotWriteToTemporaryFile;
-use Doctrine\DBAL\Driver\IBMDB2\Exception\StatementError;
-use Doctrine\DBAL\Driver\Result;
-use Doctrine\DBAL\Driver\Statement as StatementInterface;
+use Doctrine\DBAL\Driver\Statement;
 use Doctrine\DBAL\Driver\StatementIterator;
 use Doctrine\DBAL\FetchMode;
 use Doctrine\DBAL\ParameterType;
@@ -56,14 +50,7 @@ use const DB2_LONG;
 use const DB2_PARAM_FILE;
 use const DB2_PARAM_IN;
 
-<<<<<<< HEAD
-/**
- * @deprecated Use {@link Statement} instead
- */
-class DB2Statement implements IteratorAggregate, StatementInterface, Result
-=======
 class DB2Statement implements IteratorAggregate, Statement
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 {
     /** @var resource */
     private $stmt;
@@ -96,8 +83,6 @@ class DB2Statement implements IteratorAggregate, Statement
     private $result = false;
 
     /**
-     * @internal The statement can be only instantiated by its driver connection.
-     *
      * @param resource $stmt
      */
     public function __construct($stmt)
@@ -160,14 +145,12 @@ class DB2Statement implements IteratorAggregate, Statement
         $this->bindParam[$position] =& $variable;
 
         if (! db2_bind_param($this->stmt, $position, 'variable', $parameterType, $dataType)) {
-            throw StatementError::new($this->stmt);
+            throw new DB2Exception(db2_stmt_errormsg());
         }
     }
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use free() instead.
      */
     public function closeCursor()
     {
@@ -192,8 +175,6 @@ class DB2Statement implements IteratorAggregate, Statement
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated The error information is available via exceptions.
      */
     public function errorCode()
     {
@@ -202,8 +183,6 @@ class DB2Statement implements IteratorAggregate, Statement
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated The error information is available via exceptions.
      */
     public function errorInfo()
     {
@@ -247,7 +226,7 @@ class DB2Statement implements IteratorAggregate, Statement
         $this->lobs = [];
 
         if ($retval === false) {
-            throw StatementError::new($this->stmt);
+            throw new DB2Exception(db2_stmt_errormsg());
         }
 
         $this->result = true;
@@ -257,8 +236,6 @@ class DB2Statement implements IteratorAggregate, Statement
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use one of the fetch- or iterate-related methods.
      */
     public function setFetchMode($fetchMode, $arg2 = null, $arg3 = null)
     {
@@ -271,8 +248,6 @@ class DB2Statement implements IteratorAggregate, Statement
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use iterateNumeric(), iterateAssociative() or iterateColumn() instead.
      */
     public function getIterator()
     {
@@ -281,8 +256,6 @@ class DB2Statement implements IteratorAggregate, Statement
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use fetchNumeric(), fetchAssociative() or fetchOne() instead.
      */
     public function fetch($fetchMode = null, $cursorOrientation = PDO::FETCH_ORI_NEXT, $cursorOffset = 0)
     {
@@ -334,8 +307,6 @@ class DB2Statement implements IteratorAggregate, Statement
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use fetchAllNumeric(), fetchAllAssociative() or fetchFirstColumn() instead.
      */
     public function fetchAll($fetchMode = null, $fetchArgument = null, $ctorArgs = null)
     {
@@ -367,8 +338,6 @@ class DB2Statement implements IteratorAggregate, Statement
 
     /**
      * {@inheritdoc}
-     *
-     * @deprecated Use fetchOne() instead.
      */
     public function fetchColumn($columnIndex = 0)
     {
@@ -382,78 +351,11 @@ class DB2Statement implements IteratorAggregate, Statement
     }
 
     /**
-     * {@inheritDoc}
-     */
-    public function fetchNumeric()
-    {
-        if (! $this->result) {
-            return false;
-        }
-
-        return db2_fetch_array($this->stmt);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchAssociative()
-    {
-        // do not try fetching from the statement if it's not expected to contain the result
-        // in order to prevent exceptional situation
-        if (! $this->result) {
-            return false;
-        }
-
-        return db2_fetch_assoc($this->stmt);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchOne()
-    {
-        return FetchUtils::fetchOne($this);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchAllNumeric(): array
-    {
-        return FetchUtils::fetchAllNumeric($this);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchAllAssociative(): array
-    {
-        return FetchUtils::fetchAllAssociative($this);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchFirstColumn(): array
-    {
-        return FetchUtils::fetchFirstColumn($this);
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function rowCount()
     {
         return @db2_num_rows($this->stmt) ? : 0;
-    }
-
-    public function free(): void
-    {
-        $this->bindParam = [];
-
-        db2_free_result($this->stmt);
-
-        $this->result = false;
     }
 
     /**
@@ -531,7 +433,7 @@ class DB2Statement implements IteratorAggregate, Statement
         $handle = @tmpfile();
 
         if ($handle === false) {
-            throw CannotCreateTemporaryFile::new(error_get_last()['message']);
+            throw new DB2Exception('Could not create temporary file: ' . error_get_last()['message']);
         }
 
         return $handle;
@@ -546,7 +448,7 @@ class DB2Statement implements IteratorAggregate, Statement
     private function copyStreamToStream($source, $target): void
     {
         if (@stream_copy_to_stream($source, $target) === false) {
-            throw CannotCopyStreamToStream::new(error_get_last()['message']);
+            throw new DB2Exception('Could not copy source stream to temporary file: ' . error_get_last()['message']);
         }
     }
 
@@ -558,7 +460,7 @@ class DB2Statement implements IteratorAggregate, Statement
     private function writeStringToStream(string $string, $target): void
     {
         if (@fwrite($target, $string) === false) {
-            throw CannotWriteToTemporaryFile::new(error_get_last()['message']);
+            throw new DB2Exception('Could not write string to temporary file: ' . error_get_last()['message']);
         }
     }
 }

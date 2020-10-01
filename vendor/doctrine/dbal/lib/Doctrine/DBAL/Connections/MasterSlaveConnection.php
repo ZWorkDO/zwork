@@ -4,18 +4,13 @@ namespace Doctrine\DBAL\Connections;
 
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Configuration;
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Driver;
+use Doctrine\DBAL\Driver\Connection as DriverConnection;
+use Doctrine\DBAL\Event\ConnectionEventArgs;
+use Doctrine\DBAL\Events;
 use InvalidArgumentException;
 
-<<<<<<< HEAD
-use function sprintf;
-use function trigger_error;
-
-use const E_USER_DEPRECATED;
-
-/**
- * @deprecated Use PrimaryReadReplicaConnection instead
-=======
 use function array_rand;
 use function assert;
 use function count;
@@ -72,14 +67,26 @@ use function func_get_args;
  *
  * You can also pass 'driverOptions' and any other documented option to each of this drivers
  * to pass additional information.
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
  */
-class MasterSlaveConnection extends PrimaryReadReplicaConnection
+class MasterSlaveConnection extends Connection
 {
     /**
-     * Creates Primary Replica Connection.
+     * Master and slave connection (one of the randomly picked slaves).
      *
-     * @internal The connection can be only instantiated by the driver manager.
+     * @var DriverConnection[]|null[]
+     */
+    protected $connections = ['master' => null, 'slave' => null];
+
+    /**
+     * You can keep the slave connection and then switch back to it
+     * during the request if you know what you are doing.
+     *
+     * @var bool
+     */
+    protected $keepSlave = false;
+
+    /**
+     * Creates Master Slave Connection.
      *
      * @param mixed[] $params
      *
@@ -91,9 +98,6 @@ class MasterSlaveConnection extends PrimaryReadReplicaConnection
         ?Configuration $config = null,
         ?EventManager $eventManager = null
     ) {
-<<<<<<< HEAD
-        $this->deprecated(self::class, PrimaryReadReplicaConnection::class);
-=======
         if (! isset($params['slaves'], $params['master'])) {
             throw new InvalidArgumentException('master or slaves configuration missing');
         }
@@ -142,61 +146,82 @@ class MasterSlaveConnection extends PrimaryReadReplicaConnection
         if ($this->_conn !== null && ! $requestedConnectionChange) {
             return false;
         }
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
-        if (isset($params['master'])) {
-            $this->deprecated('Params key "master"', '"primary"');
+        $forceMasterAsSlave = false;
 
-            $params['primary'] = $params['master'];
-            unset($params['master']);
+        if ($this->getTransactionNestingLevel() > 0) {
+            $connectionName     = 'master';
+            $forceMasterAsSlave = true;
         }
 
-        if (isset($params['slaves'])) {
-            $this->deprecated('Params key "slaves"', '"replica"');
+        if (isset($this->connections[$connectionName])) {
+            $this->_conn = $this->connections[$connectionName];
 
-            $params['replica'] = $params['slaves'];
-            unset($params['slaves']);
+            if ($forceMasterAsSlave && ! $this->keepSlave) {
+                $this->connections['slave'] = $this->_conn;
+            }
+
+            return false;
         }
 
-        if (isset($params['keepSlave'])) {
-            $this->deprecated('Params key "keepSlave"', '"keepReplica"');
+        if ($connectionName === 'master') {
+            $this->connections['master'] = $this->_conn = $this->connectTo($connectionName);
 
-            $params['keepReplica'] = $params['keepSlave'];
-            unset($params['keepSlave']);
+            // Set slave connection to master to avoid invalid reads
+            if (! $this->keepSlave) {
+                $this->connections['slave'] = $this->connections['master'];
+            }
+        } else {
+            $this->connections['slave'] = $this->_conn = $this->connectTo($connectionName);
         }
 
-        parent::__construct($params, $driver, $config, $eventManager);
+        if ($this->_eventManager->hasListeners(Events::postConnect)) {
+            $eventArgs = new ConnectionEventArgs($this);
+            $this->_eventManager->dispatchEvent(Events::postConnect, $eventArgs);
+        }
+
+        return true;
     }
 
     /**
-     * Checks if the connection is currently towards the primary or not.
-     */
-    public function isConnectedToMaster(): bool
-    {
-        $this->deprecated('isConnectedtoMaster()', 'isConnectedToPrimary()');
-
-        return $this->isConnectedToPrimary();
-    }
-
-    /**
-     * @param string|null $connectionName
+     * Connects to a specific connection.
      *
-     * @return bool
+     * @param string $connectionName
+     *
+     * @return DriverConnection
      */
-    public function connect($connectionName = null)
+    protected function connectTo($connectionName)
+    {
+        $params = $this->getParams();
+
+        $driverOptions = $params['driverOptions'] ?? [];
+
+        $connectionParams = $this->chooseConnectionConfiguration($connectionName, $params);
+
+        $user     = $connectionParams['user'] ?? null;
+        $password = $connectionParams['password'] ?? null;
+
+        return $this->_driver->connect($connectionParams, $user, $password, $driverOptions);
+    }
+
+    /**
+     * @param string  $connectionName
+     * @param mixed[] $params
+     *
+     * @return mixed
+     */
+    protected function chooseConnectionConfiguration($connectionName, $params)
     {
         if ($connectionName === 'master') {
-            $connectionName = 'primary';
-
-            $this->deprecated('connect("master")', 'ensureConnectedToPrimary()');
+            return $params['master'];
         }
 
-<<<<<<< HEAD
-        if ($connectionName === 'slave') {
-            $connectionName = 'replica';
+        $config = $params['slaves'][array_rand($params['slaves'])];
 
-            $this->deprecated('connect("slave")', 'ensureConnectedToReplica()');
-=======
+        if (! isset($config['charset']) && isset($params['master']['charset'])) {
+            $config['charset'] = $params['master']['charset'];
+        }
+
         return $config;
     }
 
@@ -344,24 +369,11 @@ class MasterSlaveConnection extends PrimaryReadReplicaConnection
 
         if ($logger) {
             $logger->stopQuery();
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
 
-        return $this->performConnect($connectionName);
+        return $statement;
     }
 
-<<<<<<< HEAD
-    private function deprecated(string $thing, string $instead): void
-    {
-        @trigger_error(
-            sprintf(
-                '%s is deprecated since doctrine/dbal 2.11 and will be removed in 3.0, use %s instead.',
-                $thing,
-                $instead
-            ),
-            E_USER_DEPRECATED
-        );
-=======
     /**
      * {@inheritDoc}
      */
@@ -370,6 +382,5 @@ class MasterSlaveConnection extends PrimaryReadReplicaConnection
         $this->connect('master');
 
         return parent::prepare($sql);
->>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
     }
 }
