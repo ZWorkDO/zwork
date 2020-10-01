@@ -25,7 +25,8 @@
         "spatie/laravel-json-api-paginate": "^1.4.3",
         "spatie/laravel-permission": "^2.35",
         "srmklive/paypal": "~1.0",
-        "elasticquent/elasticquent": "dev-master"
+        "elasticquent/elasticquent": "dev-master",
+        "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
