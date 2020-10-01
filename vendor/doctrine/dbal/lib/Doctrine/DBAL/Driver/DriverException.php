@@ -2,18 +2,21 @@
 
 namespace Doctrine\DBAL\Driver;
 
-use Throwable;
-
 /**
- * Contract for a driver exception.
+ * @deprecated Use {@link Exception} instead
  *
+<<<<<<< HEAD
+=======
  * Driver exceptions provide the SQLSTATE of the driver
  * and the driver specific error code at the time the error occurred.
  *
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
  * @psalm-immutable
  */
-interface DriverException extends Throwable
+interface DriverException extends Exception
 {
+<<<<<<< HEAD
+=======
     /**
      * Returns the driver specific error code if available.
      *
@@ -32,4 +35,5 @@ interface DriverException extends Throwable
      * @return string|null
      */
     public function getSQLState();
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 }

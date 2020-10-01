@@ -2,55 +2,15 @@
 
 namespace Doctrine\DBAL\Driver;
 
-use Exception;
-
 /**
+<<<<<<< HEAD
+ * @deprecated
+=======
  * Abstract base implementation of the {@link DriverException} interface.
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
  *
  * @psalm-immutable
  */
-abstract class AbstractDriverException extends Exception implements DriverException
+class AbstractDriverException extends AbstractException
 {
-    /**
-     * The driver specific error code.
-     *
-     * @var int|string|null
-     */
-    private $errorCode;
-
-    /**
-     * The SQLSTATE of the driver.
-     *
-     * @var string|null
-     */
-    private $sqlState;
-
-    /**
-     * @param string          $message   The driver error message.
-     * @param string|null     $sqlState  The SQLSTATE the driver is in at the time the error occurred, if any.
-     * @param int|string|null $errorCode The driver specific error code if any.
-     */
-    public function __construct($message, $sqlState = null, $errorCode = null)
-    {
-        parent::__construct($message);
-
-        $this->errorCode = $errorCode;
-        $this->sqlState  = $sqlState;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getErrorCode()
-    {
-        return $this->errorCode;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSQLState()
-    {
-        return $this->sqlState;
-    }
 }

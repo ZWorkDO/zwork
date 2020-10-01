@@ -13,6 +13,8 @@ interface ResultStatement extends Traversable
     /**
      * Closes the cursor, enabling the statement to be executed again.
      *
+     * @deprecated Use Result::free() instead.
+     *
      * @return bool TRUE on success or FALSE on failure.
      */
     public function closeCursor();
@@ -29,6 +31,11 @@ interface ResultStatement extends Traversable
     /**
      * Sets the fetch mode to use while iterating this statement.
      *
+<<<<<<< HEAD
+     * @deprecated Use one of the fetch- or iterate-related methods.
+     *
+=======
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      * @param int   $fetchMode The fetch mode must be one of the {@link FetchMode} constants.
      * @param mixed $arg2
      * @param mixed $arg3
@@ -39,6 +46,8 @@ interface ResultStatement extends Traversable
 
     /**
      * Returns the next row of a result set.
+     *
+     * @deprecated Use fetchNumeric(), fetchAssociative() or fetchOne() instead.
      *
      * @param int|null $fetchMode         Controls how the next row will be returned to the caller.
      *                                    The value must be one of the {@link FetchMode} constants,
@@ -67,6 +76,8 @@ interface ResultStatement extends Traversable
     /**
      * Returns an array containing all of the result set rows.
      *
+     * @deprecated Use fetchAllNumeric(), fetchAllAssociative() or fetchFirstColumn() instead.
+     *
      * @param int|null     $fetchMode     Controls how the next row will be returned to the caller.
      *                                    The value must be one of the {@link FetchMode} constants,
      *                                    defaulting to {@link FetchMode::MIXED}.
@@ -90,6 +101,8 @@ interface ResultStatement extends Traversable
 
     /**
      * Returns a single column from the next row of a result set or FALSE if there are no more rows.
+     *
+     * @deprecated Use fetchOne() instead.
      *
      * @param int $columnIndex 0-indexed number of the column you wish to retrieve from the row.
      *                         If no value is supplied, fetches the first column.

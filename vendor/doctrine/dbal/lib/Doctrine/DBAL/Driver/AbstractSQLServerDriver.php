@@ -3,8 +3,10 @@
 namespace Doctrine\DBAL\Driver;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Driver;
+use Doctrine\DBAL\Driver\DriverException as TheDriverException;
+use Doctrine\DBAL\Exception;
+use Doctrine\DBAL\Exception\DriverException;
 use Doctrine\DBAL\Platforms\SQLServer2005Platform;
 use Doctrine\DBAL\Platforms\SQLServer2008Platform;
 use Doctrine\DBAL\Platforms\SQLServer2012Platform;
@@ -33,7 +35,11 @@ abstract class AbstractSQLServerDriver implements Driver, VersionAwarePlatformDr
                 $versionParts
             )
         ) {
+<<<<<<< HEAD
+            throw Exception::invalidPlatformVersionSpecified(
+=======
             throw DBALException::invalidPlatformVersionSpecified(
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
                 $version,
                 '<major_version>.<minor_version>.<patch_version>.<build_version>'
             );
@@ -59,6 +65,8 @@ abstract class AbstractSQLServerDriver implements Driver, VersionAwarePlatformDr
 
     /**
      * {@inheritdoc}
+     *
+     * @deprecated Use Connection::getDatabase() instead.
      */
     public function getDatabase(Connection $conn)
     {
@@ -89,5 +97,15 @@ abstract class AbstractSQLServerDriver implements Driver, VersionAwarePlatformDr
     public function getSchemaManager(Connection $conn)
     {
         return new SQLServerSchemaManager($conn);
+    }
+
+    /**
+     * @param string $message
+     *
+     * @return DriverException
+     */
+    public function convertException($message, TheDriverException $exception)
+    {
+        return new DriverException($message, $exception);
     }
 }

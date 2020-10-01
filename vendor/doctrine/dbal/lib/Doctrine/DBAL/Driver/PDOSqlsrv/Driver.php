@@ -3,13 +3,20 @@
 namespace Doctrine\DBAL\Driver\PDOSqlsrv;
 
 use Doctrine\DBAL\Driver\AbstractSQLServerDriver;
+<<<<<<< HEAD
+use Doctrine\DBAL\Driver\AbstractSQLServerDriver\Exception\PortWithoutHost;
+use Doctrine\DBAL\Driver\PDO;
+=======
 use Doctrine\DBAL\Driver\AbstractSQLServerDriver\PortWithoutHost;
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 use function is_int;
 use function sprintf;
 
 /**
  * The PDO-based Sqlsrv driver.
+ *
+ * @deprecated Use {@link PDO\SQLSrv\Driver} instead.
  */
 class Driver extends AbstractSQLServerDriver
 {
@@ -28,7 +35,7 @@ class Driver extends AbstractSQLServerDriver
             }
         }
 
-        return new Connection(
+        return new PDO\SQLSrv\Connection(
             $this->_constructPdoDsn($params, $dsnOptions),
             $username,
             $password,

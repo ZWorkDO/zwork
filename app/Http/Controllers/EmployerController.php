@@ -41,6 +41,7 @@ use App\SiteManagement;
 use App\Service;
 use App\Review;
 use App\Payout;
+use Error;
 
 /**
  * Class EmployerController
@@ -63,7 +64,7 @@ class EmployerController extends Controller
      *
      * @return void
      */
-    public function __construct(Profile $employer)
+    public function __construct(Profile $employer) 
     {
         $this->employer = $employer;
     }
@@ -357,6 +358,16 @@ class EmployerController extends Controller
             $json['type'] = 'success';
             $json['process'] = trans('lang.saving_profile');
             return $json;
+        }
+    }
+
+    /*Show Img BackGround*/
+
+    public function welcomeDashboard(){
+        if (file_exists(resource_path('views\back-end\employer\dashboard-welcome.blade.php'))) {
+            return view('back-end.employer.dashboard-welcome');
+        }else{
+            return 'Error';
         }
     }
 

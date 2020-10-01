@@ -3,6 +3,15 @@
 namespace Doctrine\DBAL;
 
 use Doctrine\Common\EventManager;
+<<<<<<< HEAD
+use Doctrine\DBAL\Driver\DrizzlePDOMySql;
+use Doctrine\DBAL\Driver\IBMDB2;
+use Doctrine\DBAL\Driver\Mysqli;
+use Doctrine\DBAL\Driver\OCI8;
+use Doctrine\DBAL\Driver\PDO;
+use Doctrine\DBAL\Driver\SQLAnywhere;
+use Doctrine\DBAL\Driver\SQLSrv;
+=======
 use Doctrine\DBAL\Driver\DrizzlePDOMySql\Driver as DrizzlePDOMySQLDriver;
 use Doctrine\DBAL\Driver\IBMDB2\DB2Driver;
 use Doctrine\DBAL\Driver\Mysqli\Driver as MySQLiDriver;
@@ -15,6 +24,7 @@ use Doctrine\DBAL\Driver\PDOSqlsrv\Driver as PDOSQLSrvDriver;
 use Doctrine\DBAL\Driver\SQLAnywhere\Driver as SQLAnywhereDriver;
 use Doctrine\DBAL\Driver\SQLSrv\Driver as SQLSrvDriver;
 use PDO;
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 
 use function array_keys;
 use function array_map;
@@ -45,17 +55,17 @@ final class DriverManager
      * @var string[]
      */
     private static $_driverMap = [
-        'pdo_mysql'          => PDOMySQLDriver::class,
-        'pdo_sqlite'         => PDOSQLiteDriver::class,
-        'pdo_pgsql'          => PDOPgSQLDriver::class,
-        'pdo_oci'            => PDOOCIDriver::class,
-        'oci8'               => OCI8Driver::class,
-        'ibm_db2'            => DB2Driver::class,
-        'pdo_sqlsrv'         => PDOSQLSrvDriver::class,
-        'mysqli'             => MySQLiDriver::class,
-        'drizzle_pdo_mysql'  => DrizzlePDOMySQLDriver::class,
-        'sqlanywhere'        => SQLAnywhereDriver::class,
-        'sqlsrv'             => SQLSrvDriver::class,
+        'pdo_mysql'          => PDO\MySQL\Driver::class,
+        'pdo_sqlite'         => PDO\SQLite\Driver::class,
+        'pdo_pgsql'          => PDO\PgSQL\Driver::class,
+        'pdo_oci'            => PDO\OCI\Driver::class,
+        'oci8'               => OCI8\Driver::class,
+        'ibm_db2'            => IBMDB2\Driver::class,
+        'pdo_sqlsrv'         => PDO\SQLSrv\Driver::class,
+        'mysqli'             => Mysqli\Driver::class,
+        'drizzle_pdo_mysql'  => DrizzlePDOMySql\Driver::class,
+        'sqlanywhere'        => SQLAnywhere\Driver::class,
+        'sqlsrv'             => SQLSrv\Driver::class,
     ];
 
     /**
@@ -122,7 +132,11 @@ final class DriverManager
      * @param Configuration|null                    $config       The configuration to use.
      * @param EventManager|null                     $eventManager The event manager to use.
      *
+<<<<<<< HEAD
+     * @throws Exception
+=======
      * @throws DBALException
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
      *
      * @phpstan-param mixed[] $params
      * @psalm-return ($params is array{wrapperClass:mixed} ? T : Connection)
@@ -144,14 +158,26 @@ final class DriverManager
 
         $params = self::parseDatabaseUrl($params);
 
-        // URL support for MasterSlaveConnection
+        // @todo: deprecated, notice thrown by connection constructor
         if (isset($params['master'])) {
             $params['master'] = self::parseDatabaseUrl($params['master']);
         }
 
+        // @todo: deprecated, notice thrown by connection constructor
         if (isset($params['slaves'])) {
             foreach ($params['slaves'] as $key => $slaveParams) {
                 $params['slaves'][$key] = self::parseDatabaseUrl($slaveParams);
+            }
+        }
+
+        // URL support for PrimaryReplicaConnection
+        if (isset($params['primary'])) {
+            $params['primary'] = self::parseDatabaseUrl($params['primary']);
+        }
+
+        if (isset($params['replica'])) {
+            foreach ($params['replica'] as $key => $replicaParams) {
+                $params['replica'][$key] = self::parseDatabaseUrl($replicaParams);
             }
         }
 
@@ -167,13 +193,13 @@ final class DriverManager
         }
 
         // check for existing pdo object
-        if (isset($params['pdo']) && ! $params['pdo'] instanceof PDO) {
-            throw DBALException::invalidPdoInstance();
+        if (isset($params['pdo']) && ! $params['pdo'] instanceof \PDO) {
+            throw Exception::invalidPdoInstance();
         }
 
         if (isset($params['pdo'])) {
-            $params['pdo']->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $params['driver'] = 'pdo_' . $params['pdo']->getAttribute(PDO::ATTR_DRIVER_NAME);
+            $params['pdo']->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $params['driver'] = 'pdo_' . $params['pdo']->getAttribute(\PDO::ATTR_DRIVER_NAME);
         } else {
             self::_checkParams($params);
         }
@@ -185,7 +211,7 @@ final class DriverManager
         $wrapperClass = Connection::class;
         if (isset($params['wrapperClass'])) {
             if (! is_subclass_of($params['wrapperClass'], $wrapperClass)) {
-                throw DBALException::invalidWrapperClass($params['wrapperClass']);
+                throw Exception::invalidWrapperClass($params['wrapperClass']);
             }
 
             $wrapperClass = $params['wrapperClass'];
@@ -209,7 +235,7 @@ final class DriverManager
      *
      * @param mixed[] $params The list of parameters.
      *
-     * @throws DBALException
+     * @throws Exception
      */
     private static function _checkParams(array $params): void
     {
@@ -217,21 +243,25 @@ final class DriverManager
 
         // driver
         if (! isset($params['driver']) && ! isset($params['driverClass'])) {
-            throw DBALException::driverRequired();
+            throw Exception::driverRequired();
         }
 
         // check validity of parameters
 
         // driver
         if (isset($params['driver']) && ! isset(self::$_driverMap[$params['driver']])) {
-            throw DBALException::unknownDriver($params['driver'], array_keys(self::$_driverMap));
+            throw Exception::unknownDriver($params['driver'], array_keys(self::$_driverMap));
         }
 
         if (
             isset($params['driverClass'])
             && ! in_array(Driver::class, class_implements($params['driverClass'], true))
         ) {
+<<<<<<< HEAD
+            throw Exception::invalidDriverClass($params['driverClass']);
+=======
             throw DBALException::invalidDriverClass($params['driverClass']);
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
         }
     }
 
@@ -255,7 +285,7 @@ final class DriverManager
      * @return mixed[] A modified list of parameters with info from a database
      *                 URL extracted into indidivual parameter parts.
      *
-     * @throws DBALException
+     * @throws Exception
      */
     private static function parseDatabaseUrl(array $params): array
     {
@@ -270,7 +300,7 @@ final class DriverManager
         $url = parse_url($url);
 
         if ($url === false) {
-            throw new DBALException('Malformed parameter "url".');
+            throw new Exception('Malformed parameter "url".');
         }
 
         $url = array_map('rawurldecode', $url);
@@ -410,7 +440,7 @@ final class DriverManager
      *
      * @return mixed[] The resolved connection parameters.
      *
-     * @throws DBALException If parsing failed or resolution is not possible.
+     * @throws Exception If parsing failed or resolution is not possible.
      */
     private static function parseDatabaseUrlScheme(array $url, array $params): array
     {
@@ -435,7 +465,7 @@ final class DriverManager
         // If a schemeless connection URL is given, we require a default driver or default custom driver
         // as connection parameter.
         if (! isset($params['driverClass']) && ! isset($params['driver'])) {
-            throw DBALException::driverRequired($params['url']);
+            throw Exception::driverRequired($params['url']);
         }
 
         return $params;

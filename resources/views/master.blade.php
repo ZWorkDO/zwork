@@ -84,7 +84,7 @@
 			<div class="loader"></div>
 		</div>
 	</div>
-	<div id="wt-wrapper" class="wt-wrapper wt-haslayout">
+	<div id="wt-wrapper" class="wt-wrapper wt-haslayout wt-openmenu">
 		<div class="wt-contentwrapper">
 			@yield('header')
 			@yield('slider')

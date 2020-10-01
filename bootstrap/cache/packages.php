@@ -1,4 +1,26 @@
 <?php return array (
+  'barryvdh/laravel-dompdf' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PDF' => 'Barryvdh\\DomPDF\\Facade',
+    ),
+  ),
+  'ben182/laravel-auto-translate' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Ben182\\AutoTranslate\\AutoTranslateServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'AutoTranslate' => 'Ben182\\AutoTranslate\\AutoTranslateFacade',
+    ),
+  ),
   'beyondcode/laravel-dump-server' => 
   array (
     'providers' => 
@@ -15,6 +37,17 @@
     'aliases' => 
     array (
       'Stripe' => 'Cartalyst\\Stripe\\Laravel\\Facades\\Stripe',
+    ),
+  ),
+  'chumper/zipper' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Chumper\\Zipper\\ZipperServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Zipper' => 'Chumper\\Zipper\\Zipper',
     ),
   ),
   'davejamesmiller/laravel-breadcrumbs' => 
@@ -72,6 +105,13 @@
       'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
+  'mariuzzo/laravel-js-localization' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
@@ -111,6 +151,9 @@
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
+<<<<<<< HEAD
+  'srmklive/paypal' => 
+=======
   'chumper/zipper' => 
   array (
     'providers' => 
@@ -148,6 +191,7 @@
     ),
   ),
   'barryvdh/laravel-dompdf' => 
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
   array (
     'providers' => 
     array (
@@ -158,6 +202,9 @@
       'PDF' => 'Barryvdh\\DomPDF\\Facade',
     ),
   ),
+<<<<<<< HEAD
+  'tanmuhittin/laravel-google-translate' => 
+=======
   'fideloper/proxy' => 
   array (
     'providers' => 
@@ -166,6 +213,7 @@
     ),
   ),
   'mariuzzo/laravel-js-localization' => 
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
   array (
     'providers' => 
     array (
@@ -179,6 +227,8 @@
       0 => 'RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider',
     ),
   ),
+<<<<<<< HEAD
+=======
   'srmklive/paypal' => 
   array (
     'providers' => 
@@ -190,4 +240,5 @@
       'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
     ),
   ),
+>>>>>>> 002e7d8d0185d58fb9bd541347c9eeaa0d429d94
 );
