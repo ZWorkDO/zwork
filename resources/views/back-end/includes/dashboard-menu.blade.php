@@ -26,7 +26,7 @@
                     <figure><img src="{{{ asset(Helper::getImageWithSize('uploads/users/'.$user->id, $profile->avater, 'listing')) }}}" alt="{{ trans('lang.profile_photo') }}"></figure>
                     <div class="wt-title">
                         <h2>
-                            <a href="{{{ $role != 'admin' ? url($role.'/dashboard') : 'javascript:void()' }}}">
+                            <a href="{{{ $role != 'admin' ? url($role.'/dashboard/welcome') : 'javascript:void()' }}}">
                                 {{{ !empty(Auth::user()) ? Helper::getUserName(Auth::user()->id) : 'No Name' }}}
                             </a>
                         </h2>
@@ -180,6 +180,7 @@
                             <a href="{{{ url($role.'/dashboard') }}}">
                                 <i class="ti-desktop"></i>
                                 <span>{{ trans('lang.dashboard') }}</span>
+                                <i class="ti-star"></i>
                             </a>
                         </li>
                         <li>
