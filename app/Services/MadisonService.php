@@ -13,6 +13,10 @@ class MadisonService {
   public static function createCustomer() {
   }
 
+  public static function createItem() {
+
+  }
+
   public static function createOrder() {
   }
 
@@ -28,15 +32,18 @@ class MadisonService {
                               ]
                             ]);
     return $result->getBody(); 
+    if ($request->hasHeader('X-Foo')) {
+      echo 'It is there';
+    }
 
     $clients = json_decode($result, true);
 
     foreach($clients as $client) {
         Student::updateOrCreate([
-            'registration_no' => $client->Student Code,
-            'full_name' => $client->Full Name,
-            'student_class' => $client->StudentClass,
-            'facademic_term' => $client->AcademicTerm
+            'registration_no' => $client->{'Student Code'},
+            'full_name' => $client->{'Full Name'},
+            'student_class' => $client->{'StudentClass'},
+            'facademic_term' => $client->{'AcademicTerm'}
         ]);
     }              
   }
