@@ -16,7 +16,7 @@
                                             $freelancer_proposal = \App\Proposal::find($proposal->id);
                                             $duration = Helper::getJobDurationList($proposal->job->duration);
                                             $status_btn = $proposal->status == 'cancelled' ? trans('lang.view_reason') : trans('lang.view_detail');
-                                            $detail_link = $proposal->status == 'hired' ? url('freelancer/job/'.$proposal->job->slug) : 'javascript:void(0);';
+                                            $detail_link = $proposal->status == 'hired' ? url('professional/job/'.$proposal->job->slug) : 'javascript:void(0);';
                                             $user_name = Helper::getUserName($proposal->job->employer->id);
                                         @endphp
                                         <div class="wt-userlistinghold wt-featured wt-userlistingvtwo">
@@ -64,7 +64,7 @@
                                                     <div class="wt-hireduserstatus">
                                                         <h4>{{{ Helper::displayProposalStatus($proposal->status) }}}</h4>
                                                         @if ( $proposal->status != 'pending' )
-                                                            <a href="{{{ url('freelancer/job/'.$proposal->job->slug) }}}" class="wt-btn">
+                                                            <a href="{{{ url('professional/job/'.$proposal->job->slug) }}}" class="wt-btn">
                                                                 {{$status_btn}}
                                                             </a>
                                                         @endif
@@ -91,3 +91,4 @@
         </div>
     </div>
 @endsection
+

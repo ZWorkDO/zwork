@@ -1,3 +1,4 @@
+
 <template>
     <div>
         <div class="wt-tabscontenttitle wt-addnew">
@@ -98,7 +99,7 @@ export default{
                     img_ref: 'profile_banner_ref',
                     preview_class:'dropzone-previews',
                     option:{
-                        url: APP_URL+'/freelancer/upload-temp-image',
+                        url: APP_URL+'/professional/upload-temp-image',
                         maxFilesize: 2, // MB
                         maxFiles: 1,
                         previewTemplate: getImageUploadTemplate(),
@@ -130,7 +131,7 @@ export default{
         methods: {
             getProjects(){
                 let self = this;
-                axios.get(APP_URL + '/freelancer/get-freelancer-projects')
+                axios.get(APP_URL + '/professional/get-freelancer-projects')
                 .then(function (response) {
                     if(response.data.type == 'success') {
                         self.stored_projects = response.data.projects;
@@ -182,3 +183,4 @@ export default{
         }
     }
 </script>
+

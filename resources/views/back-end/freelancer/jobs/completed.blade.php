@@ -57,7 +57,7 @@
                                         <div class="wt-rightarea">
                                             <div class="wt-btnarea">
                                                 <span> {{ trans('lang.project_completed') }}</span>
-                                                <a href="{{{ url('freelancer/job/'.$job->slug) }}}" class="wt-btn">{{ trans('lang.view_detail') }}</a>
+                                                <a href="{{{ url('professional/job/'.$job->slug) }}}" class="wt-btn">{{ trans('lang.view_detail') }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -79,3 +79,4 @@
         </div>
     </div>
 @endsection
+

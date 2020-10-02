@@ -1,10 +1,22 @@
 body{background: #f7f7f7;}
-.wt-main{
-	background: #f7f7f7;
-	padding: 20px 40px 20px 310px;
+
+.wt-welcomebackground{ 
+	background-repeat: no-repeat;
+    background-position: bottom;
+    max-width: 90%;
+    padding-left: 150px;
 }
+.wt-textdefault{
+	text-align: center;
+    padding-left: 150px;
+    padding-right: 55px;
+}
+
 .wt-header{background: #fff;}
-.wt-dbsectionspace{padding: 20px 0;}
+.wt-dbsectionspace{
+	padding: 20px 0;
+	
+}
 .wt-dashboardnav{
 	width: 100%;
 	float: left;
@@ -242,7 +254,7 @@ body{background: #f7f7f7;}
 .wt-openmenu .wt-navdashboard-footer{display: none;}
 /* DASHBOARD BOX */
 .wt-dashboardbox{
-	float: left;
+	/*float: left;*/
 	width: 100%;
 	background: #fff;
 	border-radius: 4px;

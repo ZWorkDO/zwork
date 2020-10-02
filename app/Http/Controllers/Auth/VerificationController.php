@@ -94,7 +94,7 @@ class VerificationController extends Controller
         Session::flash("message", "Su cuenta ha sido verificada");
         $user_role = $user_role_type->role_type;
         if ($user_role === 'freelancer') {
-            return redirect('freelancer/dashboard');
+            return redirect('professional/dashboard');
         } elseif ($user_role === 'employer') {
             return  redirect('employer/dashboard');
         } else {

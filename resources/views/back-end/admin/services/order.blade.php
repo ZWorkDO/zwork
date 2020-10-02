@@ -1,3 +1,4 @@
+
 @extends(file_exists(resource_path('views/extend/back-end/master.blade.php')) ? 'extend.back-end.master' : 'back-end.master')
 @section('content')
 	<div class="wt-haslayout wt-dbsectionspace la-manage-jobs-holder">
@@ -79,7 +80,7 @@
 														<a href="{{{route('serviceDetail',$service->slug)}}}" class="wt-viewinfo">
 															<i class="lnr lnr-eye"></i>
 														</a>
-														<a href="{{{url('freelancer/service/'.$order->id.'/'.$order->status)}}}" class="wt-addinfo wt-skillsaddinfo">
+														<a href="{{{url('professional/service/'.$order->id.'/'.$order->status)}}}" class="wt-addinfo wt-skillsaddinfo">
 															<i class="lnr lnr-history"></i>
 														</a>
 														@if ($order->status == 'cancelled' && Helper::getOrderPayout($order->id)->count() == 0)
@@ -135,3 +136,4 @@
 		</div>
 	</div>
 @endsection
+

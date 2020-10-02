@@ -1,3 +1,4 @@
+
 <template>
     <div>
         <div class="wt-accordioninnertitle">
@@ -102,7 +103,7 @@ export default {
             img_previews_container:'.'+this.img_hidden_id,
             img_uploder: this.getImageuploader(),
             dropzoneOptions: {
-                url: APP_URL+'/freelancer/load-temp-image',
+                url: APP_URL+'/professional/upload-temp-image',
                 maxFilesize: 1, // MB
                 maxFiles: 1,
                 previewTemplate: getImageUploadTemplate(),
@@ -176,3 +177,4 @@ export default {
     created: function() {}
 }
 </script>
+

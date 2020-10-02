@@ -1,3 +1,4 @@
+
 /**
  * Load all the javascript by using Vue.js and write all your JS code
  * in this file.
@@ -1892,7 +1893,7 @@ if (document.getElementById("user_profile")) {
                 var self = this;
                 var profile_form = document.getElementById('profile_form');
                 let form_data = new FormData(profile_form);
-                axios.post(APP_URL + '/freelancer/profile-settings', form_data)
+                axios.post(APP_URL + '/professional/profile-settings', form_data)
                     .then(function (response) {
                         if (response.data.type == 'success') {
                             self.next();
@@ -1918,7 +1919,7 @@ if (document.getElementById("user_profile")) {
                 var self = this;
                 var profile_data = document.getElementById('freelancer_profile');
                 let form_data = new FormData(profile_data);
-                axios.post(APP_URL + '/freelancer/store-profile-settings', form_data)
+                axios.post(APP_URL + '/professional/store-profile-settings', form_data)
                     .then(function (response) {
                         if (response.data.type == 'success') {
                             self.showInfo(Vue.prototype.trans('lang.saving_profile'));
@@ -1951,7 +1952,7 @@ if (document.getElementById("user_profile")) {
               var self = this;
               var profile_data = document.getElementById('freelancer_profile');
               let form_data = new FormData(profile_data);
-              axios.post(APP_URL + '/freelancer/store-personal-info', form_data)
+              axios.post(APP_URL + '/professional/store-personal-info', form_data)
                   .then(function (response) {
                       if (response.data.type == 'success') {
                           self.showInfo(Vue.prototype.trans('lang.saving_profile'));
@@ -2008,7 +2009,7 @@ if (document.getElementById("user_profile")) {
                 var self = this;
                 var exp_edu_data = document.getElementById('experience_form');
                 let form_data = new FormData(exp_edu_data);
-                axios.post(APP_URL + '/freelancer/store-experience-settings', form_data)
+                axios.post(APP_URL + '/professional/store-experience-settings', form_data)
                     .then(function (response) {
                         if (response.data.type == 'success') {
                             self.showInfo(response.data.message);
@@ -2026,12 +2027,12 @@ if (document.getElementById("user_profile")) {
                 var self = this;
                 var payment = document.getElementById('payment_settings');
                 let form_data = new FormData(payment);
-                axios.post(APP_URL + '/freelancer/store-payment-settings', form_data)
+                axios.post(APP_URL + '/professional/store-payment-settings', form_data)
                     .then(function (response) {
                         if (response.data.type == 'success') {
                             self.showInfo(response.data.processing);
                             setTimeout(function () {
-                                window.location.replace(APP_URL + '/freelancer/dashboard');
+                                window.location.replace(APP_URL + '/professional/dashboard');
                             }, 4000);
                         } else {
                             self.showError(response.data.message);
@@ -2047,7 +2048,7 @@ if (document.getElementById("user_profile")) {
                 var self = this;
                 var awards_projects = document.getElementById('awards_projects');
                 let form_data = new FormData(awards_projects);
-                axios.post(APP_URL + '/freelancer/store-project-award-settings', form_data)
+                axios.post(APP_URL + '/professional/store-project-award-settings', form_data)
                     .then(function (response) {
                         if (response.data.type == 'success') {
                             self.showInfo(response.data.message);
@@ -3733,7 +3734,7 @@ if (document.getElementById("jobs")) {
                             self.loading = false;
                             self.showCompleted(response.data.message);
                             setTimeout(function () {
-                                window.location.replace(APP_URL + '/freelancer/proposals');
+                                window.location.replace(APP_URL + '/professional/proposals');
                             }, 1050);
                         } else {
                             self.loading = false;
@@ -3948,7 +3949,7 @@ if (document.getElementById("jobs")) {
                 let form_data = new FormData(dispute_form);
                 form_data.append('proposal_id', id);
                 var self = this;
-                axios.post(APP_URL + '/freelancer/store-dispute', form_data)
+                axios.post(APP_URL + '/professional/store-dispute', form_data)
                     .then(function (response) {
                         console.log(response.data);
                         if (response.data.type == 'success') {
@@ -3956,7 +3957,7 @@ if (document.getElementById("jobs")) {
                             var message = response.data.message;
                             self.showMessage(message);
                             setTimeout(function () {
-                                window.location.replace(APP_URL + '/freelancer/dashboard');
+                                window.location.replace(APP_URL + '/professional/dashboard');
                             }, 2000);
                         } if (response.data.type == 'error') {
                             self.loading = false;
@@ -4683,7 +4684,7 @@ if (document.getElementById("services")) {
                             document.addEventListener('iziToast-closing', function (data) {
                                 if (data.detail.id == 'info_notify') {
                                     self.showCompleted(response.data.message);
-                                    window.location.replace(APP_URL + '/freelancer/services/posted');
+                                    window.location.replace(APP_URL + '/professional/services/posted');
                                 }
                             });
                         } else {
@@ -4745,7 +4746,7 @@ if (document.getElementById("services")) {
                 var segment_str = window.location.pathname;
                 var segment_array = segment_str.split('/');
                 var id = segment_array[segment_array.length - 1];
-                if (segment_str == '/freelancer/dashboard/edit-service/' + id) {
+                if (segment_str == '/professional/dashboard/edit-service/' + id) {
                     axios.post(APP_URL + '/service/get-service-settings', {
                         id: id
                     })
@@ -4782,7 +4783,7 @@ if (document.getElementById("services")) {
                                 if (data.detail.id == 'info_notify') {
                                     self.showCompleted(response.data.message);
                                     if (response.data.role == 'freelancer') {
-                                        window.location.replace(APP_URL + '/freelancer/services/posted');
+                                        window.location.replace(APP_URL + '/professional/services/posted');
                                     } else if (response.data.role == 'admin') {
                                         //window.location.replace(APP_URL+'/admin/jobs');
                                     }

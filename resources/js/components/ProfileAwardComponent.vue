@@ -1,3 +1,4 @@
+
 <template>
     <div :server_error_message="server_errors">
         <div class="wt-tabscontenttitle wt-addnew">
@@ -99,7 +100,7 @@ export default{
                     img_ref: 'award_img_ref',
                     preview_class:'dropzone-award-previews',
                     option:{
-                        url: APP_URL+'/freelancer/upload-temp-image',
+                        url: APP_URL+'/professional/upload-temp-image',
                         maxFilesize: 2, // MB
                         maxFiles: 1,
                         previewTemplate: getImageUploadTemplate(),
@@ -130,7 +131,7 @@ export default{
         methods: {
             getAwards(){
                 let self = this;
-                axios.get(APP_URL + '/freelancer/get-freelancer-awards')
+                axios.get(APP_URL + '/professional/get-freelancer-awards')
                 .then(function (response) {
                     if(response.data.type == 'success') {
                         self.stored_awards = response.data.awards;
@@ -174,4 +175,5 @@ export default{
             this.getAwards();
         } 
     }
+
 </script>

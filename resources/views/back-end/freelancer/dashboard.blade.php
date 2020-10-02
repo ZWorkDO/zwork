@@ -1,3 +1,4 @@
+
 @extends(file_exists(resource_path('views/extend/back-end/master.blade.php')) ? 'extend.back-end.master' : 'back-end.master')
 @section('content')
     <section class="wt-haslayout wt-dbsectionspace wt-insightuser" id="dashboard">
@@ -62,7 +63,7 @@
                                 <div class="wt-insightdetails">
                                     <div class="wt-title">
                                         <h3>{{ trans('lang.view_saved_items') }}</h3>
-                                        <a href="{{url('freelancer/saved-items')}}">{{ trans('lang.click_view') }}</a>
+                                        <a href="{{url('professional/saved-items')}}">{{ trans('lang.click_view') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +78,7 @@
                                         <div class="wt-title">
                                             <h3>{{{ Helper::getTotalProposalsByStatus($freelancer_id, 'cancelled') }}}</h3>
                                             <h3>{{ trans('lang.total_cancelled_projects') }}</h3>
-                                            <a href="{{{ url('freelancer/jobs/cancelled') }}}">{{ trans('lang.click_view') }}</a>
+                                            <a href="{{{ url('professional/jobs/cancelled') }}}">{{ trans('lang.click_view') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +92,7 @@
                                         <div class="wt-title">
                                             <h3>{{{ Helper::getTotalProposalsByStatus($freelancer_id, 'hired') }}}</h3>
                                             <h3>{{ trans('lang.total_ongoing_projects') }}</h3>
-                                            <a href="{{{ url('freelancer/jobs/hired') }}}">{{ trans('lang.click_view') }}</a>
+                                            <a href="{{{ url('professional/jobs/hired') }}}">{{ trans('lang.click_view') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +106,7 @@
                                         <div class="wt-title">
                                             <h3>{{{ Helper::getTotalProposalsByStatus($freelancer_id, 'completed') }}}</h3>
                                             <h3>{{ trans('lang.total_completed_jobs') }}</h3>
-                                            <a href="{{{ url('freelancer/jobs/completed') }}}">{{ trans('lang.click_view') }}</a>
+                                            <a href="{{{ url('professional/jobs/completed') }}}">{{ trans('lang.click_view') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +148,7 @@
                                         <div class="wt-title">
                                             <h3>{{{ Helper::getTotalFreelancerServices('hired', Auth::user()->id)->count() }}}</h3>
                                             <h3>{{ trans('lang.total_ongoing_services') }}</h3>
-                                            <a href="{{{ url('freelancer/services/hired') }}}">{{ trans('lang.click_view') }}</a>
+                                            <a href="{{{ url('professional/services/hired') }}}">{{ trans('lang.click_view') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +162,7 @@
                                         <div class="wt-title">
                                             <h3>{{{ Helper::getTotalFreelancerServices('completed', Auth::user()->id)->count() }}}</h3>
                                             <h3>{{ trans('lang.total_completed_services') }}</h3>
-                                            <a href="{{{ url('freelancer/services/completed') }}}">{{ trans('lang.click_view') }}</a>
+                                            <a href="{{{ url('professional/services/completed') }}}">{{ trans('lang.click_view') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -175,7 +176,7 @@
                                         <div class="wt-title">
                                             <h3>{{{ Helper::getTotalFreelancerServices('cancelled', Auth::user()->id)->count() }}}</h3>
                                             <h3>{{ trans('lang.total_cancelled_services') }}</h3>
-                                            <a href="{{{ url('freelancer/services/cancelled') }}}">{{ trans('lang.click_view') }}</a>
+                                            <a href="{{{ url('professional/services/cancelled') }}}">{{ trans('lang.click_view') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +190,7 @@
                                         <div class="wt-title">
                                             <h3>{{{ Helper::getTotalFreelancerServices('published', Auth::user()->id)->count() }}}</h3>
                                             <h3>{{ trans('lang.total_published_services') }}</h3>
-                                            <a href="{{{ url('freelancer/services/posted') }}}">{{ trans('lang.click_view') }}</a>
+                                            <a href="{{{ url('professional/services/posted') }}}">{{ trans('lang.click_view') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -225,14 +226,14 @@
                                                 $user_name = Helper::getUsername($project->job->user_id);
                                             @endphp
                                             <tr>
-                                                <td data-th="Project title"><span class="bt-content"><a target="_blank" href="{{{ url('freelancer/job/'.$project->job->slug) }}}">{{{ str_limit($project->job->title, 40) }}}</a></span></td>
+                                                <td data-th="Project title"><span class="bt-content"><a target="_blank" href="{{{ url('professional/job/'.$project->job->slug) }}}">{{{ str_limit($project->job->title, 40) }}}</a></span></td>
                                                 <td data-th="Hired freelancer">
                                                     <span class="bt-content"><a href="{{{url('profile-professional/'.$user->slug)}}}">@if ($user->user_verified)<i class="fa fa-check-circle"></i>&nbsp;@endif{{{$user_name}}}</a>
                                                     </span>
                                                 </td>
                                                 <td data-th="Project cost"><span class="bt-content">{{ !empty($symbol['symbol']) ? $symbol['symbol'] : '$' }}{{$projects->amount}}</span></td>
                                                 <td data-th="Actions">
-                                                    <span class="bt-content"><div class="wt-btnarea"><a href="{{{ url('freelancer/job/'.$project->job->slug) }}}" class="wt-btn">{{ trans('lang.view_detail') }}</a></div></span>
+                                                    <span class="bt-content"><div class="wt-btnarea"><a href="{{{ url('professional/job/'.$project->job->slug) }}}" class="wt-btn">{{ trans('lang.view_detail') }}</a></div></span>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -248,7 +249,7 @@
                                             <tr>
                                                 <td data-th="Project title">
                                                     <span class="bt-content">
-                                                        <a target="_blank" href="{{{ url('freelancer/service/'.$service->pivot_id.'/hired') }}}">
+                                                        <a target="_blank" href="{{{ url('professional/service/'.$service->pivot_id.'/hired') }}}">
                                                             {{{ str_limit($service->title, 40) }}}
                                                         </a>
                                                     </span>
@@ -269,7 +270,7 @@
                                                 <td data-th="Actions">
                                                     <span class="bt-content">
                                                         <div class="wt-btnarea">
-                                                            <a href="{{{ url('freelancer/service/'.$service->pivot_id.'/hired') }}}" class="wt-btn">
+                                                            <a href="{{{ url('professional/service/'.$service->pivot_id.'/hired') }}}" class="wt-btn">
                                                                 {{ trans('lang.view_detail') }}
                                                             </a>
                                                         </div>
@@ -359,3 +360,4 @@
         </div>
     </section>
 @endsection
+
