@@ -1,15 +1,4 @@
 <?php return array (
-  'barryvdh/laravel-dompdf' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'PDF' => 'Barryvdh\\DomPDF\\Facade',
-    ),
-  ),
   'ben182/laravel-auto-translate' => 
   array (
     'providers' => 
@@ -61,13 +50,6 @@
       'Breadcrumbs' => 'DaveJamesMiller\\Breadcrumbs\\Facades\\Breadcrumbs',
     ),
   ),
-  'fideloper/proxy' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    ),
-  ),
   'intervention/image' => 
   array (
     'providers' => 
@@ -112,13 +94,6 @@
       'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
-  'mariuzzo/laravel-js-localization' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider',
-    ),
-  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
@@ -131,20 +106,6 @@
     'providers' => 
     array (
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    ),
-  ),
-  'rachidlaasri/laravel-installer' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider',
-    ),
-  ),
-  'rinvex/countries' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Rinvex\\Country\\Providers\\CountryServiceProvider',
     ),
   ),
   'simplesoftwareio/simple-qrcode' => 
@@ -172,17 +133,6 @@
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
-  'srmklive/paypal' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Srmklive\\PayPal\\Providers\\PayPalServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
-    ),
-  ),
   'tanmuhittin/laravel-google-translate' => 
   array (
     'providers' => 
@@ -195,6 +145,49 @@
     'providers' => 
     array (
       0 => 'Themsaid\\Langman\\LangmanServiceProvider',
+    ),
+  ),
+  'barryvdh/laravel-dompdf' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PDF' => 'Barryvdh\\DomPDF\\Facade',
+    ),
+  ),
+  'fideloper/proxy' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+    ),
+  ),
+  'mariuzzo/laravel-js-localization' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider',
+    ),
+  ),
+  'rachidlaasri/laravel-installer' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider',
+    ),
+  ),
+  'srmklive/paypal' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Srmklive\\PayPal\\Providers\\PayPalServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
     ),
   ),
 );
