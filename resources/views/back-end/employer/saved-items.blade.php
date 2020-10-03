@@ -37,7 +37,7 @@
                                                         @if (!empty($user_name) || !empty($job->title))
                                                             <div class="wt-title">
                                                                 @if (!empty($user_name))
-                                                                    <a href="{{{ url('profile/'.$job->employer->slug) }}}">
+                                                                    <a href="{{{ url('profile-project/'.$job->employer->slug) }}}">
                                                                         @if($job->employer->user_verified === 1)<i class="fa fa-check-circle"></i>&nbsp;{{{ $user_name }}} @endif
                                                                     </a>
                                                                 @endif
@@ -54,7 +54,7 @@
                                                                 <li><span><img src="{{{asset(Helper::getLocationFlag($job->location->flag))}}}" alt="{{ trans('lang.img') }}"> {{{ $job->location->title }}}</span></li>
                                                             @endif
                                                             @if (!empty($job->project_type))
-                                                                <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-folder"></i>   {{{ $project_type }}}</a></li>
+                                                                <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-calendar"></i>   {{{ $project_type }}}</a></li>
                                                             @endif
                                                             @if (!empty($job->duration))
                                                                 <li><span class="wt-dashboradclock"><i class="far fa-clock"></i> {{ trans('lang.duration') }} {{{ $duration }}}</span></li>
@@ -100,15 +100,15 @@
                                                     <div class="wt-userlistingcontent">
                                                         <div class="wt-contenthead wt-followcomhead">
                                                             <div class="wt-title">
-                                                                    <a href="{{{ url('profile/'.$user->slug) }}}">
+                                                                    <a href="{{{ url('profile-project/'.$user->slug) }}}">
                                                                         @if($user->user_verified === 1)
                                                                             <i class="fa fa-check-circle"></i> {{ trans('lang.verified_company') }}</a>
                                                                         @endif
-                                                                <h3><a href="{{{ url('profile/'.$user->slug) }}}">{{{ $user_name }}}</a></h3>
+                                                                <h3><a href="{{{ url('profile-project/'.$user->slug) }}}">{{{ $user_name }}}</a></h3>
                                                             </div>
                                                             <ul class="wt-followcompomy-breadcrumb wt-userlisting-breadcrumb">
-                                                                <li><a href="{{{ url('profile/'.$user->slug) }}}"> {{ trans('lang.open_jobs') }}  </a></li>
-                                                                <li><a href="{{ url('profile/'.$user->slug) }}"> {{ trans('lang.full_profile') }}</a></li>
+                                                                <li><a href="{{{ url('profile-project/'.$user->slug) }}}"> {{ trans('lang.open_jobs') }}  </a></li>
+                                                                <li><a href="{{ url('profile-project/'.$user->slug) }}"> {{ trans('lang.full_profile') }}</a></li>
                                                                 <li><a href="javascript:void(0);" class="wt-savefollow"> {{ trans('lang.following') }}</a></li>
                                                             </ul>
                                                         </div>
@@ -157,13 +157,13 @@
                                                 <div class="wt-userlistingcontent">
                                                     <div class="wt-contenthead">
                                                         <div class="wt-title">
-                                                            <a href="{{{ url('profile/'.$user->slug) }}}">
+                                                            <a href="{{{ url('profile-project/'.$user->slug) }}}">
                                                                 @if ($user->user_verified === 1)
                                                                     <i class="fa fa-check-circle"></i>
                                                                 @endif
                                                                 {{{ $user_name }}}
                                                             </a>
-                                                            <h2><a href="{{ url('profile/'.$user->slug) }}">{{{ $profile->tagline }}}</a></h2>
+                                                            <h2><a href="{{ url('profile-project/'.$user->slug) }}">{{{ $profile->tagline }}}</a></h2>
                                                         </div>
                                                         <ul class="wt-userlisting-breadcrumb">
                                                             @if (!empty($profile->hourly_rate))

@@ -292,7 +292,7 @@ class PublicController extends Controller
                             $template_data = EmailTemplate::getEmailTemplateByID($admin_template->id);
                             $email_params['name'] = Helper::getUserName($id);
                             $email_params['email'] = $email;
-                            $email_params['link'] = url('profile/' . $user->slug);
+                            $email_params['link'] = url('profile-project/' . $user->slug);
                             Mail::to(config('mail.username'))
                                 ->send(
                                     new AdminEmailMailable(
@@ -348,6 +348,7 @@ class PublicController extends Controller
         }
     }
 
+
     /**
      * Show user profile.
      *
@@ -355,8 +356,11 @@ class PublicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showUserProfile($slug)
+    public function showUserProfile($slug, $role)
+    // public function showUserProfile($slug)
     {
+        // dd($slug);
+        // $role = 'freelancer';
         $user = User::select('id')->where('slug', $slug)->first();
         if (!empty($user)) {
             $user = User::find($user->id);
@@ -368,13 +372,15 @@ class PublicController extends Controller
             $profile = Profile::all()->where('user_id', $user->id)->first();
             $reasons = Helper::getReportReasons();
             $avatar = !empty($profile->avater) ? '/uploads/users/' . $profile->user_id . '/' . $profile->avater : '/images/user.jpg';
-            $banner = !empty($profile->banner) ? '/uploads/users/' . $profile->user_id . '/' . $profile->banner : Helper::getUserProfileBanner($user->id);
             $auth_user = Auth::user() ? true : false;
             $user_name = Helper::getUserName($profile->user_id);
             $current_date = Carbon::now()->format('M d, Y');
             $tagline = !empty($profile) ? $profile->tagline : '';
             $desc = !empty($profile) ? $profile->description : '';
-            if ($user->getRoleNames()->first() === 'freelancer') {
+            $temp = $user->getRoleNames()->first();
+            // dd($temp);
+            if ($role === 'freelancer') {
+                $banner = !empty($profile->banner) ? '/uploads/users/' . $profile->user_id . '/' . $profile->banner : Helper::getUserProfileProfessionalBanner($user->id);
                 $services = array();
                 if (Schema::hasTable('services') && Schema::hasTable('service_user')) {
                     $services = $user->services;
@@ -485,7 +491,10 @@ class PublicController extends Controller
                         )
                     );
                 }
-            } elseif ($user->getRoleNames()->first() === 'employer') {
+            // } elseif ($user->getRoleNames()->first() === 'employer') {
+            } elseif ($role === 'employer') {
+                $banner = !empty($profile->banner) ? '/uploads/users/' . $profile->user_id . '/' . $profile->banner : Helper::getUserProfileProjectBanner($user->id);
+                // dd($banner);
                 $jobs = Job::where('user_id', $profile->user_id)->latest()->paginate(7);
                 $followers = DB::table('followers')->where('following', $profile->user_id)->get();
                 $save_employer = !empty(auth()->user()->profile->saved_employers) ? unserialize(auth()->user()->profile->saved_employers) : array();
@@ -547,6 +556,25 @@ class PublicController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    /**
+     * Get filtered list.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showUserProfileProfessional($slug){
+        return $this->showUserProfile($slug,'freelancer');
+    }
+
+    /**
+     * Get filtered list.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showUserProfileProject($slug){
+        // dd($slug);
+        return $this->showUserProfile($slug,'employer');
     }
 
     /**
@@ -1014,7 +1042,7 @@ class PublicController extends Controller
             return $json;
         } else {
             $json['auth'] = false;
-            $json['message'] = trans('lang.not_authorize');
+            $json['message'] = trans('lang.please_change_freelancer');
             return $json;
         }
     }
@@ -1034,7 +1062,7 @@ class PublicController extends Controller
             return $json;
         } else {
             $json['auth'] = false;
-            $json['message'] = trans('lang.not_authorize');
+            $json['message'] = trans('lang.please_change_employer');
             return $json;
         }
     }

@@ -6,31 +6,18 @@
 @endpush
 {{-- @section('title'){{ $f_list_meta_title }} @stop
 @section('description', $f_list_meta_desc) --}}
-@section('content')    
-    @if ($show_article_banner == 'true')
-        <div class="wt-haslayout wt-innerbannerholder" style="background-image:url({{{ asset(Helper::getBannerImage('uploads/settings/general/'.$article_inner_banner)) }}})">
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-8 push-lg-3">
-                        <div class="wt-innerbannercontent">
-                            <div class="wt-title">
-                                <h2>{{ trans('lang.article_detail') }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-    <div class="wt-haslayout wt-main-section">
+@section('content')   
+    <div class="wt-haslayout wt-innerbannerholder wt-innerbannerblog" style="background-image:url({{{ asset(Helper::getImage('uploads/articles', $article->banner, 'large-', 'large-default-article.png')) }}})">
+    </div>
+    <div class="wt-haslayout">
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 float-left">
                     <div class="wt-articlesingle-holder wt-bgwhite">
                         <div class="wt-articlesingle-content">
-                            <figure class="wt-singleimg-one">
+                            <!-- <figure class="wt-singleimg-one">
                                 <img src="{{{asset(Helper::getImage('uploads/articles', $article->banner, 'large-', 'large-default-article.png'))}}}" alt="{{{ $article->title }}}">
-                            </figure>
+                            </figure> -->
                             <div class="wt-title">
                                 <h2>{{$article->title}}</h2>
                             </div>

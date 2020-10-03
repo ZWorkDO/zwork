@@ -16,7 +16,7 @@
                         <div :class="'wt-freelancers-info ' +service_item.no_attachments">
                             <div :class="'wt-freelancers ' +service_item.enable_slider" v-if="service_item.attachments && service_item.seller.length > 0">
                                 <figure class="item" v-for="(attachment, attachmentIndex) in service_item.attachments" :key="attachmentIndex">
-                                    <a :href="baseUrl+'/profile/'+service_item.seller[0].slug" v-if="service_item.seller[0].slug"><img :src="attachment" alt="img description" class="item"></a>
+                                    <a :href="baseUrl+'/profile-professional/'+service_item.seller[0].slug" v-if="service_item.seller[0].slug"><img :src="attachment" alt="img description" class="item"></a>
                                 </figure>
                             </div>
                             <span class="wt-featuredtagvtwo" v-if="service_item.is_featured = 'true'">{{ trans('lang.featured') }}</span>
@@ -26,7 +26,7 @@
                                 </figure>
                                 <div class="wt-freelancers-content">
                                     <div class="dc-title">
-                                        <a :href="baseUrl+'/profile/'+service_item.seller[0].slug" v-if="service_item.seller_count > 0">
+                                        <a :href="baseUrl+'/profile-professional/'+service_item.seller[0].slug" v-if="service_item.seller_count > 0">
                                             <i class="fa fa-check-circle"></i> {{service_item.seller_name}}
                                         </a>
                                         <a :href="baseUrl+'/service/'+service_item.slug"><h3>{{service_item.title}}</h3></a>

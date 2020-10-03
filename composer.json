@@ -25,7 +25,8 @@
         "simplesoftwareio/simple-qrcode": "~2",
         "spatie/laravel-json-api-paginate": "^1.4.3",
         "spatie/laravel-permission": "^2.35",
-        "srmklive/paypal": "~1.0"
+        "srmklive/paypal": "~1.0",
+        "elasticquent/elasticquent": "dev-master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
