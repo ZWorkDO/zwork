@@ -10,6 +10,10 @@ body{background: #f7f7f7;}
 	padding-right: 100px;
 }
 
+.wt-welcomemargin{
+	margin-top: 8%;
+}
+
 .wt-welcomebackground{
 	background-repeat: no-repeat;
     background-position: bottom;
