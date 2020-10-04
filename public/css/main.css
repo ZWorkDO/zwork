@@ -1703,7 +1703,10 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-categoryslidup a i{font-size: 12px;}
 /* Join Company Style */
-.wt-companyinfohold{position: relative;}
+.wt-companyinfohold{
+	position: relative;
+	background-size: cover;
+}
 .wt-companyinfohold:before{
 	top: 0;
     right: 0;

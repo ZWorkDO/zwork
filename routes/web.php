@@ -325,7 +325,7 @@ Route::group(
         Route::get('employer/dashboard/manage-jobs', 'JobController@index')->name('employerManageJobs');
         Route::get('employer/jobs/{status}', 'EmployerController@showEmployerJobs');
         Route::get('employer/dashboard/job/{slug}/proposals', 'ProposalController@getJobProposals')->name('getProposals');
-        Route::get('employer/dashboard/welcome', 'EmployerController@welcomeDashboard')->name('welcomeDashboard');
+        Route::get('employer/welcome', 'EmployerController@welcomeDashboard')->name('welcomeDashboard');
         Route::get('employer/dashboard', 'EmployerController@employerDashboard')->name('employerDashboard');
         Route::get('employer/profile', 'EmployerController@index')->name('employerPersonalDetail');
         Route::get('employer/billing_address', 'EmployerController@billingAddress')->name('employerBillingAddress');
@@ -368,7 +368,7 @@ Route::group(
         Route::get('freelancer/jobs/{status}', 'FreelancerController@showFreelancerJobs');
         Route::get('freelancer/job/{slug}', 'FreelancerController@showOnGoingJobDetail')->name('showOnGoingJobDetail');
         Route::get('freelancer/proposals', 'FreelancerController@showFreelancerProposals')->name('showFreelancerProposals');
-        Route::get('freelancer/dashboard/welcome', 'FreelancerController@welcomeDashboard')->name('welcomeDashboard');
+        Route::get('freelancer/welcome', 'FreelancerController@welcomeDashboard')->name('welcomeDashboard');
         Route::get('freelancer/dashboard', 'FreelancerController@freelancerDashboard')->name('freelancerDashboard');
         Route::get('freelancer/profile', 'FreelancerController@index')->name('personalDetail');
         Route::get('freelancer/billing_address', 'FreelancerController@billingAddress')->name('billingAddress');
