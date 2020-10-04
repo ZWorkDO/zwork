@@ -344,7 +344,7 @@ class FreelancerController extends Controller
       if (Auth::user()) {
           Auth::user()->switchToRole("employer");    
 
-          return Redirect::to('employer/dashboard');
+          return Redirect::to('employer/welcome');
       }
     }
 
