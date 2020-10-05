@@ -1587,8 +1587,8 @@ class Helper extends Model
             }
         } elseif ($user->role_type == 'freelancer') {
             if (!empty($size)) {
-                if (file_exists('images/' . $size . '-frbanner-1920x400.jpg')) {
-                    return 'images/' . $size . '-frbanner-1920x400.jpg';
+                if (file_exists('images/banner-default-profesional-350x172.jpg')) {
+                    return 'images/banner-default-profesional-350x172.jpg';
                 } else {
                     return 'images/frbanner-1920x400.jpg';
                 }
@@ -1597,13 +1597,13 @@ class Helper extends Model
             }
         } elseif ($user->role_type == 'employer') {
             if (!empty($size)) {
-                if (file_exists('images/' . $size . '-e-1110x300.jpg')) {
-                    return 'images/' . $size . '-e-1110x300.jpg';
+                if (file_exists('images/banner-default-profesional-350x172.jpg')) {
+                    return 'images/banner-default-profesional-350x172.jpg';
                 } else {
-                    return 'images/e-1110x300.jpg';
+                    return 'banner-default-profesional-350x172.jpg';
                 }
             } else {
-                return 'images/e-1110x300.jpg';
+                return 'banner-default-profesional-350x172.jpg';
             }
         }
     }
