@@ -4,7 +4,7 @@
 @section('title'){{ $user_name }} | {{ $tagline }} @stop
 @section('description', "$desc")
 @section('content')
-    @php $breadcrumbs = Breadcrumbs::generate('showUserProfile', $user->slug); @endphp
+    @php $breadcrumbs = Breadcrumbs::generate('showUserProfileProject', $user->slug); @endphp
     <div class="wt-haslayout wt-innerbannerholder">
         <div class="container">
             <div class="row justify-content-md-center">
@@ -38,7 +38,7 @@
                 <div id="wt-twocolumns" class="wt-twocolumns wt-haslayout">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-left">
                         <div class="wt-comsingleimg">
-                            <figure><img src="{{{ asset(Helper::getUserProfileBanner($user->id)) }}}" alt="{{{ trans('lang.company_banner') }}}"></figure>
+                            <figure><img src="{{{ asset(Helper::getUserProfileProjectBanner($user->id)) }}}" alt="{{{ trans('lang.company_banner') }}}"></figure>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-4 float-left">
@@ -48,14 +48,14 @@
                                     <figure><img src="{{{ asset($avatar) }}}" alt="{{ trans('lang.img') }}"></figure>
                                     <div class="wt-title">
                                         @if ($user->user_verified === 1)
-                                            <a href="{{{ url('profile/'.$user->slug) }}}"><i class="fa fa-check-circle"></i> {{ trans('lang.verified_company') }}</a>
+                                            <a href="{{{ url('profile-project/'.$user->slug) }}}"><i class="fa fa-check-circle"></i> {{ trans('lang.verified_company') }}</a>
                                         @endif
                                         <h2>{{{ $user_name }}}</h2>
                                     </div>
                                 </div>
                                 <div class="tg-authorcodescan">
                                     <figure class="tg-qrcodeimg">
-                                        {!! QrCode::size(100)->generate(Request::url('profile/'.$user->slug)); !!}
+                                        {!! QrCode::size(100)->generate(Request::url('profile-project/'.$user->slug)); !!}
                                     </figure>
                                     <div class="tg-qrcodedetail">
                                         <span class="lnr lnr-laptop-phone"></span>
@@ -97,7 +97,7 @@
                                                 @endphp
                                                 @if (Helper::getRoleName($role_id) !== 'admin' && $follower->follower <> $user->id)
                                                     <li>
-                                                        <a href="{{{url('profile/'.$profile->user->slug)}}}">
+                                                        <a href="{{{url('profile-project/'.$profile->user->slug)}}}">
                                                             <span><img src="{{{asset(Helper::getProfileImage($follower->follower))}}}" alt="Follower"></span>
                                                             <span>{{{Helper::getUserName($follower->follower)}}}</span>
                                                         </a>
@@ -185,7 +185,7 @@
                                         <div class="wt-userlistingcontent">
                                             <div class="wt-contenthead">
                                                 <div class="wt-title">
-                                                    <a href="{{{ url('profile/'.$job->employer->slug) }}}">
+                                                    <a href="{{{ url('profile-project/'.$job->employer->slug) }}}">
                                                         @if ($job->employer->user_verified === 1)
                                                             <i class="fa fa-check-circle"></i>
                                                         @endif
@@ -208,7 +208,7 @@
                                                     @if (!empty($job->location->title))
                                                         <li><span><img src="{{{asset(App\Helper::getLocationFlag($job->location->flag))}}}" alt="{{{ trans('lang.location') }}}"> {{{ $job->location->title }}}</span></li>
                                                     @endif
-                                                    <li><span><i class="far fa-folder wt-viewjobfolder"></i>  {{{$project_type}}}</span></li>
+                                                    <li><span><i class="far fa-calendar wt-viewjobfolder"></i>  {{{$project_type}}}</span></li>
                                                     <li><span><i class="far fa-clock wt-viewjobclock"></i>{{{ Helper::getJobDurationList($job->duration) }}}</span></li>
                                                     <li><span><i class="fa fa-tag wt-viewjobtag"></i>{{{ trans('lang.job_id') }}} {{{$job->code}}}</span></li>
 

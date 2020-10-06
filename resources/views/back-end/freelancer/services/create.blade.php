@@ -91,7 +91,7 @@
                                     {!! Form::textarea('description', null, ['class' => 'wt-tinymceeditor', 'id' => 'wt-tinymceeditor', 'placeholder' => trans('lang.service_desc_note')]) !!}
                                 </div>
                             </div>
-                            <div class="wt-joblocation wt-tabsinfo">
+                            <div class="wt-joblocation wt-tabsinfo wt-displaynone">
                                 <div class="wt-tabscontenttitle">
                                     <h2>{{ trans('lang.your_loc') }}</h2>
                                 </div>
