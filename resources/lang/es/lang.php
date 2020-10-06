@@ -1217,7 +1217,7 @@ return [
         'gplus' => 'Google Mas',
         'linkedin' => 'LinkedIn',
     ],
-    'join_to_a_project' => 'Únete a un projecto',
+    'join_to_a_project' => 'Únete a un proyecto',
     'connect_to_a_freelancer' => 'Conecta con un profesional',
     'home_slider' => [
       '1' => [
