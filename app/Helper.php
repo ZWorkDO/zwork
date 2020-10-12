@@ -920,16 +920,11 @@ class Helper extends Model
     public static function getHourlyRate($key = "")
     {
         $list = array(
-            '0-5' => trans('lang.freelancer_hourly_rate.0_5'),
-            '5-10' => trans('lang.freelancer_hourly_rate.5_10'),
-            '10-20' => trans('lang.freelancer_hourly_rate.10_20'),
-            '20-30' => trans('lang.freelancer_hourly_rate.20_30'),
-            '30-40' => trans('lang.freelancer_hourly_rate.30_40'),
-            '40-50' => trans('lang.freelancer_hourly_rate.40_50'),
-            '50-60' => trans('lang.freelancer_hourly_rate.50_60'),
-            '60-70' => trans('lang.freelancer_hourly_rate.60_70'),
-            '70-80' => trans('lang.freelancer_hourly_rate.70_80'),
-            '90-0' => trans('lang.freelancer_hourly_rate.90_0'),
+            '0-10' => trans('lang.freelancer_hourly_rate.0_10'),
+            '10-100' => trans('lang.freelancer_hourly_rate.10-100'),
+            '100-500' => trans('lang.freelancer_hourly_rate.100-500'),
+            '500-1000' => trans('lang.freelancer_hourly_rate.500-1000'),
+            '1000-0' => trans('lang.freelancer_hourly_rate.1000-0'),
         );
         if (!empty($key) && array_key_exists($key, $list)) {
             return $list[$key];
