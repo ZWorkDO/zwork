@@ -55,7 +55,7 @@ export default {
             .get(APP_URL + "/get-articles")
             .then(function(response) {
                 if (response.data.type == "success") {
-                    self.articleList =response.data.articles
+                    self.articleList =response.data.articles.slice(0,3)
                 }
             })
             .catch(function(error) {  });
