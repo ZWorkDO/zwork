@@ -921,10 +921,10 @@ class Helper extends Model
     {
         $list = array(
             '0-10' => trans('lang.freelancer_hourly_rate.0_10'),
-            '10-100' => trans('lang.freelancer_hourly_rate.10-100'),
-            '100-500' => trans('lang.freelancer_hourly_rate.100-500'),
-            '500-1000' => trans('lang.freelancer_hourly_rate.500-1000'),
-            '1000-0' => trans('lang.freelancer_hourly_rate.1000-0'),
+            '10-100' => trans('lang.freelancer_hourly_rate.10_100'),
+            '100-500' => trans('lang.freelancer_hourly_rate.100_500'),
+            '500-1000' => trans('lang.freelancer_hourly_rate.500_1000'),
+            '1000-0' => trans('lang.freelancer_hourly_rate.1000_0'),
         );
         if (!empty($key) && array_key_exists($key, $list)) {
             return $list[$key];
