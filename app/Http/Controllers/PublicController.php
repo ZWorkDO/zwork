@@ -962,7 +962,6 @@ class PublicController extends Controller
      */
     public function resetPasswordView($verification_code)
     {
-        dd($verification_code);
         if (!empty($verification_code)) {
             session()->put(['verification_code' => $verification_code]);
             if (file_exists(resource_path('views/extend/front-end/reset-password.blade.php'))) {

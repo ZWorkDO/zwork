@@ -1545,7 +1545,7 @@ class RestAPIController extends Controller
             if (!empty($template->id)) {
                 $template_data = EmailTemplate::getEmailTemplateByID($template->id);
                 $email_params['email'] = $request['email'];
-                $email_params['link'] = url('user/password/reset/' . $verification_code);
+                $email_params['link'] = url('/user/password/reset/' . $verification_code);
                 $email_params['name'] = Helper::getUserName($user->id);
                 Mail::to($request['email'])
                     ->send(
