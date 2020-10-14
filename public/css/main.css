@@ -1724,7 +1724,8 @@ body.wt-login .wt-userlogedin{display: block;}
 	z-index: 2;
 }
 .wt-companycontent{
-	width: 50%;
+	width: 48%;
+	margin: 1% 1%;
 	float: left;
 	padding: 30px 40px;
 	min-height: 353px;
@@ -1750,15 +1751,6 @@ body.wt-login .wt-userlogedin{display: block;}
     align-items: center;
     -webkit-align-content: center;
     -ms-flex-line-pack: center;
-}
-.wt-companydetails .wt-companycontent + .wt-companycontent:before{
-	top: 0;
-	left: -5px;
-	width: 10px;
-	height: 100%;
-	content: '';
-	background: #fff;
-	position: absolute;
 }
 .wt-companyinfotitle{
 	float: left;
