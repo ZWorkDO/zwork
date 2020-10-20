@@ -231,6 +231,7 @@
                 autoplay:true,
                 center: true,
                 responsiveClass:true,
+                navText:["<img src='images/prettyPhoto/dark_rounded/owlPrev.jpeg'>","<img src='images/prettyPhoto/dark_rounded/owlNext.jpeg'>"],
                 responsive:{
                     0:{items:1,},
                     481:{items:2,},
