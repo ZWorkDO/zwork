@@ -17,8 +17,7 @@
                 <div class="form-group">
                     <tinymce-editor 
                         v-model="content.description"                         
-                        :init="{
-                          plugins: 'paste link code advlist autolink lists link image charmap print', relative_urls: false, convert_urls: false, file_picker_types: 'image', toolbar1: 'undo redo code | bold italic underline strikethrough | fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | image', menubar:false, statusbar: false,paste_data_images: true, images_upload_handler: upload_handler,extended_valid_elements:'span[style],i[class]'}">
+                        :init="initObj" toolbar="comment">
                     </tinymce-editor>
                 </div>
             </div>
@@ -32,7 +31,18 @@ export default {
     props:['parent_index', 'element_id', 'content_section'],
     data() {
         return {
-            content:{}
+            content:{},
+            initObj:{
+                setup: function (editor){
+                    editor.addButton('comment',{
+                        text: 'Comentario',
+                        icon: true,
+                        onclick: function (){
+                            editor.insertContent('<div style="text-align: center; padding-left: 5%; padding-right: 5%;"><h3 style="color: #03aeef !important; padding-left: 15%; padding-right: 15%">&ldquo;Eficientizamos el teletrabajo, utilizando tecnolog&iacute;a de la informaci&oacute;n con procesos optimizados y resultados medibles, creando oportunidades que transforman ideas en realidad.&rdquo;</h3></div> <div style="text-align: center; color: #03aeef;"><h3 style="color: #03aeef !important; margin: 0% 0% 10% 0%">El Equipo Z|&nbsp;</h3></div>')
+                        }
+                    })
+                }
+            }
         }
     },
     components: {

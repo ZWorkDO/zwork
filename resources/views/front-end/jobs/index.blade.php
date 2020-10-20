@@ -226,9 +226,9 @@
                 item: 6,
                 rtl:direction,
                 loop:true,
-                nav:false,
+                nav:true,
                 margin: 0,
-                autoplay:false,
+                autoplay:true,
                 center: true,
                 responsiveClass:true,
                 responsive:{
