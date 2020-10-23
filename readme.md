@@ -1,8 +1,8 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center"><img src="https://zwork.do/uploads/settings/general/1590019348-Picture3.png"></p>
 
 ## About Z|Work
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+Z | Work is a digital platform with unlimited access to specialized professionals who make projects a reality on a daily basis, of which we are proud.
 
 ## How to deploy
 
