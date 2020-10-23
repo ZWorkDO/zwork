@@ -944,6 +944,56 @@ li.wt-rss a { background:#ff6600; }
 	width:100%;
 	float:left;
 }
+.wt-commentcomilla1{
+	color: #03aeef !important; 
+	padding-right: 66%;
+	padding-left: 17%; 
+	text-align: center;
+	font-size: 200pt;
+	position: relative;
+	top: 76px;
+}
+.wt-commentcomilla2{
+	color: #03aeef !important; 
+	padding-left: 32%;
+	text-align: center;
+	font-size: 200pt;
+	position: relative;
+	top: 42px;
+}
+.wt-commenth3{
+	color: #03aeef !important; 
+	text-align: center;
+	padding-right: 29%;
+	padding-left: 29%;
+	line-height: 1.5;
+}
+.wt-commetzwork{
+	color: #03aeef !important;
+	text-align: center;
+	margin: 0 0 40px;
+}
+
+@media (max-width: 640px){
+	.wt-commentcomilla1{
+		color: #03aeef !important; 
+		padding-right: 66%;
+		padding-left: 0%; 
+		text-align: center;
+		font-size: 200pt;
+		position: relative;
+		top: 76px;
+	}
+	.wt-commentcomilla2{
+		color: #03aeef !important; 
+		padding-left: 58%;
+		text-align: center;
+		font-size: 200pt;
+		position: relative;
+		top: 42px;
+	}
+		
+}
 .wt-sectionhead{position: relative;margin: 0;}
 .wt-textcenter{text-align: center;}
 .wt-sectionhead.wt-textcenter{text-align: center;}
