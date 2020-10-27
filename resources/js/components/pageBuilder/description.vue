@@ -16,8 +16,9 @@
             <div class="wt-sliderbox__form">
                 <div class="form-group">
                     <tinymce-editor 
-                        v-model="content.description"                         
-                        :init="initObj" toolbar="comment">
+                        v-model="content.description"                        
+                        :init="initObj"
+                        toolbar="comment">
                     </tinymce-editor>
                 </div>
             </div>
@@ -33,12 +34,14 @@ export default {
         return {
             content:{},
             initObj:{
+                toolbar1: 'comment',
                 setup: function (editor){
                     editor.addButton('comment',{
                         text: 'Comentario',
+                        tooltip:"comment",
                         icon: true,
                         onclick: function (){
-                            editor.insertContent('<div style="text-align: center; padding-left: 5%; padding-right: 5%;"><h3 style="color: #03aeef !important; padding-left: 15%; padding-right: 15%">&ldquo;Eficientizamos el teletrabajo, utilizando tecnolog&iacute;a de la informaci&oacute;n con procesos optimizados y resultados medibles, creando oportunidades que transforman ideas en realidad.&rdquo;</h3></div> <div style="text-align: center; color: #03aeef;"><h3 style="color: #03aeef !important; margin: 0% 0% 10% 0%">El Equipo Z|&nbsp;</h3></div>')
+                            editor.insertContent('<div class="wt-commentcomilla1">&ldquo;</div><h3 class="wt-commenth3"><strong>Eficientizamos el teletrabajo, utilizando tecnología de la información con procesos optimizados y resultados medibles, creando oportunidades que transforman ideas en realidad.</strong></h3><div class="wt-commentcomilla2">&rdquo;</div><br><h3 class="wt-commetzwork"><em>El Equipo Z|</em></h3>')
                         }
                     })
                 }

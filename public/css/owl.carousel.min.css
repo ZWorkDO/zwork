@@ -8,3 +8,9 @@
     margin-left: 96%;
     min-width: max-content;
 }
+@media (max-width: 640px){
+    .owl-next{
+        margin-left: 92%;
+        min-width: max-content;
+    }
+}
