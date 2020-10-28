@@ -16,6 +16,7 @@ namespace App\Http\Controllers;
 
 use App\EmailTemplate;
 use App\Helper;
+use App\CyberSourceHelper;
 use App\Invoice;
 use App\Job;
 use App\Language;
@@ -55,6 +56,8 @@ use App\Service;
 use App\Order;
 use App\Mail\EmployerEmailMailable;
 use Illuminate\Support\Facades\Schema;
+use App\BillingAddress;
+
 
 /**
  * Class UserController
@@ -728,9 +731,9 @@ class UserController extends Controller
                     $freelancer = User::find($request['receiver_id']);
                     $email_params = array();
                     $email_params['name'] = Helper::getUserName($freelancer->id);
-                    $email_params['link'] = url('profile-professional/' . $freelancer->slug);
+                    $email_params['link'] = url('profile/' . $freelancer->slug);
                     $email_params['employer'] = Helper::getUserName($user_id);
-                    $email_params['employer_profile'] = url('profile-project/' . Auth::user()->slug);
+                    $email_params['employer_profile'] = url('profile/' . Auth::user()->slug);
                     $email_params['ratings'] = $submit_review['rating'];
                     $email_params['review'] = $request['feedback'];
                     if ($project_type == 'job') {
@@ -883,7 +886,7 @@ class UserController extends Controller
                                 $template_data = EmailTemplate::getEmailTemplateByID($report_project_template->id);
                                 $email_params['reported_project'] = $job->title;
                                 $email_params['link'] = url('job/' . $job->slug);
-                                $email_params['report_by_link'] = url('profile-professional/' . $user->slug);
+                                $email_params['report_by_link'] = url('profile/' . $user->slug);
                                 $email_params['reported_by'] = Helper::getUserName(Auth::user()->id);
                                 $email_params['message'] = $request['description'];
                                 Mail::to(config('mail.username'))
@@ -901,8 +904,8 @@ class UserController extends Controller
                                 $template_data = EmailTemplate::getEmailTemplateByID($report_employer_template->id);
                                 $employer = User::find($request['id']);
                                 $email_params['reported_employer'] = Helper::getUserName($request['id']);
-                                $email_params['link'] = url('profile-project/' . $employer->slug);;
-                                $email_params['report_by_link'] = url('profile-professional/' . $user->slug);
+                                $email_params['link'] = url('profile/' . $employer->slug);;
+                                $email_params['report_by_link'] = url('profile/' . $user->slug);
                                 $email_params['reported_by'] = Helper::getUserName(Auth::user()->id);
                                 $email_params['message'] = $request['description'];
                                 Mail::to(config('mail.username'))
@@ -920,8 +923,8 @@ class UserController extends Controller
                                 $freelancer = User::find($request['id']);
                                 $template_data = EmailTemplate::getEmailTemplateByID($report_freelancer_template->id);
                                 $email_params['reported_freelancer'] = Helper::getUserName($request['id']);
-                                $email_params['link'] = url('profile-professional/' . $freelancer->slug);
-                                $email_params['report_by_link'] = url('profile-project/' . $user->slug);
+                                $email_params['link'] = url('profile/' . $freelancer->slug);
+                                $email_params['report_by_link'] = url('profile/' . $user->slug);
                                 $email_params['reported_by'] = Helper::getUserName(Auth::user()->id);
                                 $email_params['message'] = $request['description'];
                                 Mail::to(config('mail.username'))
@@ -947,8 +950,8 @@ class UserController extends Controller
                             $email_params['project_title'] = $job->title;
                             $email_params['cancelled_project_link'] = url('job/' . $job->slug);
                             $email_params['name'] = Helper::getUserName($proposal->freelancer_id);
-                            $email_params['link'] = url('profile-professional/' . $freelancer->slug);
-                            $email_params['employer_profile'] = url('profile-project/' . Auth::user()->slug);
+                            $email_params['link'] = url('profile/' . $freelancer->slug);
+                            $email_params['employer_profile'] = url('profile/' . Auth::user()->slug);
                             $email_params['emp_name'] = Helper::getUserName(Auth::user()->id);
                             $email_params['msg'] = $request['description'];
                             Mail::to($freelancer->email)
@@ -986,8 +989,8 @@ class UserController extends Controller
                             $email_params['project_title'] = $service->title;
                             $email_params['cancelled_project_link'] = url('service/' . $service->slug);
                             $email_params['name'] = Helper::getUserName($freelancer->id);
-                            $email_params['link'] = url('profile-professional/' . $freelancer->slug);
-                            $email_params['employer_profile'] = url('profile-project/' . Auth::user()->slug);
+                            $email_params['link'] = url('profile/' . $freelancer->slug);
+                            $email_params['employer_profile'] = url('profile/' . Auth::user()->slug);
                             $email_params['emp_name'] = Helper::getUserName(Auth::user()->id);
                             $email_params['msg'] = $request['description'];
                             Mail::to($freelancer->email)
@@ -1218,10 +1221,20 @@ class UserController extends Controller
             $payment_gateway = !empty($payout_settings) && !empty($payout_settings[0]['payment_method']) ? $payout_settings[0]['payment_method'] : array();
             $symbol = !empty($payout_settings) && !empty($payout_settings[0]['currency']) ? Helper::currencyList($payout_settings[0]['currency']) : array();
             $mode = !empty($payout_settings) && !empty($payout_settings[0]['payment_mode']) ? $payout_settings[0]['payment_mode'] : 'true';
+            
+            $product_info = array();
+            $product_info["product_id"] = $package->id;
+            $product_info["product_name"] = $package->title;
+            $product_info["product_type"] = "package";
+            $product_info["project_type"] = "";
+            $product_info["service_seller"] = 0;
+            $product_info["cost"] = $package->cost;
+            $payment_info = CyberSourceHelper::buildRequestParams($product_info);            
+
             if (file_exists(resource_path('views/extend/back-end/package/checkout.blade.php'))) {
-                return view::make('extend.back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'symbol', 'mode'));
+                return view::make('extend.back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'payment_info', 'symbol', 'mode'));
             } else {
-                return view::make('back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'symbol', 'mode'));
+                return view::make('back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'payment_info', 'symbol', 'mode'));
             }
         }
     }
@@ -1477,8 +1490,8 @@ class UserController extends Controller
                                 $email_params['project_title'] = $job->title;
                                 $email_params['hired_project_link'] = url('job/' . $job->slug);
                                 $email_params['name'] = Helper::getUserName($freelancer->id);
-                                $email_params['link'] = url('profile-professional/' . $freelancer->slug);
-                                $email_params['employer_profile'] = url('profile-project/' . $employer->slug);
+                                $email_params['link'] = url('profile/' . $freelancer->slug);
+                                $email_params['employer_profile'] = url('profile/' . $employer->slug);
                                 $email_params['emp_name'] = Helper::getUserName($employer->id);
                                 Mail::to($freelancer->email)
                                     ->send(
@@ -1518,7 +1531,7 @@ class UserController extends Controller
                         $email_params['service_link'] = url('service/' . $service->slug);
                         $email_params['amount'] = $service->price;
                         $email_params['freelancer_name'] = Helper::getUserName($service->seller[0]->id);
-                        $email_params['employer_profile'] = url('profile-project/' . $user->slug);
+                        $email_params['employer_profile'] = url('profile/' . $user->slug);
                         $email_params['employer_name'] = Helper::getUserName($user->id);
                         $freelancer_data = User::find(intval($service->seller[0]->id));
                         Mail::to($freelancer_data->email)
@@ -1599,7 +1612,7 @@ class UserController extends Controller
                                 if (!empty($template->id)) {
                                     $template_data = EmailTemplate::getEmailTemplateByID($template->id);
                                     $email_params['employer'] = Helper::getUserName($user->id);
-                                    $email_params['employer_profile'] = url('profile-project/' . $user->slug);
+                                    $email_params['employer_profile'] = url('profile/' . $user->slug);
                                     $email_params['name'] = $package->title;
                                     $email_params['price'] = $package->cost;
                                     $email_params['expiry_date'] = !empty($expiry_date) ? Carbon::parse($expiry_date)->format('M d, Y') : '';
@@ -1620,7 +1633,7 @@ class UserController extends Controller
                                 if (!empty($template->id)) {
                                     $template_data = EmailTemplate::getEmailTemplateByID($template->id);
                                     $email_params['freelancer'] = Helper::getUserName($user->id);
-                                    $email_params['freelancer_profile'] = url('profile-professional/' . $user->slug);
+                                    $email_params['freelancer_profile'] = url('profile/' . $user->slug);
                                     $email_params['name'] = $package->title;
                                     $email_params['price'] = $package->cost;
                                     $email_params['expiry_date'] = !empty($expiry_date) ? Carbon::parse($expiry_date)->format('M d, Y') : '';
@@ -1953,10 +1966,10 @@ class UserController extends Controller
                         if (!empty($send_freelancer_offer->id)) {
                             $job = Job::where('id', $request['projects'])->first();
                             $freelancer = User::find($request['freelancer_id']);
-                            $f_link = url('profile-professional/' . $freelancer->slug);
+                            $f_link = url('profile/' . $freelancer->slug);
                             $f_name = Helper::getUserName($freelancer->id);
                             $e_name = Helper::getUserName(Auth::user()->id);
-                            $e_link = url('profile-project/' . $user->slug);
+                            $e_link = url('profile/' . $user->slug);
                             $p_link = url('job/' . $job->slug);
                             $p_title = $job->title;
                             $msg = $request['desc'];
@@ -1991,7 +2004,7 @@ class UserController extends Controller
                 }
             } else {
                 $json['type'] = 'error';
-                $json['message'] = trans('lang.please_change_employer');
+                $json['message'] = trans('lang.not_authorize');
                 return $json;
             }
         } else {
@@ -2069,7 +2082,7 @@ class UserController extends Controller
                     $template_data = EmailTemplate::getEmailTemplateByID($dispute_raised_template->id);
                     $email_params['project_title'] = $job->title;
                     $email_params['project_link'] = url('job/' . $job->slug);
-                    $email_params['sender_link'] = url('profile-project/' . $user->slug);
+                    $email_params['sender_link'] = url('profile/' . $user->slug);
                     $email_params['name'] = Helper::getUserName(Auth::user()->id);
                     $email_params['msg'] = $request['description'];
                     $email_params['reason'] = $request['reason'];

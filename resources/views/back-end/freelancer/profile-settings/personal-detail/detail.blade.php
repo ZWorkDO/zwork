@@ -24,5 +24,4 @@
             {!! Form::textarea( 'description', e($description), ['class' =>'form-control', 'placeholder' => trans('lang.ph_desc')] ) !!}
         </div>
     </fieldset>
-
 </div>

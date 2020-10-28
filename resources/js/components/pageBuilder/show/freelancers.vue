@@ -22,7 +22,7 @@
                                     </figure>
                                     <div class="wt-contenthead">
                                         <div class="wt-title">
-                                            <a :href="baseURL+'/profile-professional/'+freelancer.slug"><i class="fa fa-check-circle"></i> {{freelancer.name}}</a>
+                                            <a :href="baseURL+'/profile/'+freelancer.slug"><i class="fa fa-check-circle"></i> {{freelancer.name}}</a>
                                             <h2>{{freelancer.tagline}}</h2>
                                         </div>
                                     </div>

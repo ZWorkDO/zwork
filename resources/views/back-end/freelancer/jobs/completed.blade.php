@@ -26,7 +26,7 @@
                                             @if (!empty($user_name) || !empty($job->title) )
                                                 <div class="wt-title">
                                                     @if (!empty($user_name))
-                                                    <a href="{{{ url('profile-project/'.$job->employer->slug) }}}">@if($verified_user === 1)<i class="fa fa-check-circle"></i>@endif&nbsp;{{{ $user_name }}}</a>
+                                                    <a href="{{{ url('profile/'.$job->employer->slug) }}}">@if($verified_user === 1)<i class="fa fa-check-circle"></i>@endif&nbsp;{{{ $user_name }}}</a>
                                                     @endif
                                                     @if (!empty($job->title))
                                                         <h2>{{{ $job->title }}}</h2>
@@ -46,7 +46,7 @@
                                                         <li><span><img src="{{{asset(App\Helper::getLocationFlag($job->location->flag))}}}" alt="{{{ trans('lang.locations') }}}"> {{{ $job->location->title }}}</span></li>
                                                     @endif
                                                     @if (!empty($job->project_type))
-                                                        <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-calendar"></i>   {{{ $project_type }}}</a></li>
+                                                        <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-folder"></i>   {{{ $project_type }}}</a></li>
                                                     @endif
                                                     @if (!empty($job->duration))
                                                         <li><span class="wt-dashboradclock"><i class="far fa-clock"></i> {{ trans('lang.duration') }} {{{ $duration }}}</span></li>
@@ -57,7 +57,7 @@
                                         <div class="wt-rightarea">
                                             <div class="wt-btnarea">
                                                 <span> {{ trans('lang.project_completed') }}</span>
-                                                <a href="{{{ url('professional/job/'.$job->slug) }}}" class="wt-btn">{{ trans('lang.view_detail') }}</a>
+                                                <a href="{{{ url('freelancer/job/'.$job->slug) }}}" class="wt-btn">{{ trans('lang.view_detail') }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -79,4 +79,3 @@
         </div>
     </div>
 @endsection
-

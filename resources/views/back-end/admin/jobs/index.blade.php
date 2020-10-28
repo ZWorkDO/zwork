@@ -47,7 +47,7 @@
                                                     @if (!empty($user_name) || !empty($job->title) )
                                                         <div class="wt-title">
                                                             @if (!empty($user_name))
-                                                                <a href="{{{ url('profile-project/'.$job->employer->slug) }}}">
+                                                                <a href="{{{ url('profile/'.$job->employer->slug) }}}">
                                                                 @if ($verified_user === 1)
                                                                     <i class="fa fa-check-circle"></i>
                                                                 @endif
@@ -67,7 +67,7 @@
                                                                 <li><span><img src="{{{asset(App\Helper::getLocationFlag($job->location->flag))}}}" alt="{{{ trans('lang.locations') }}}"> {{{ $job->location->title }}}</span></li>
                                                             @endif
                                                             @if (!empty($job->project_type))
-                                                                <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-calendar"></i>   {{{ $project_type }}}</a></li>
+                                                                <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-folder"></i>   {{{ $project_type }}}</a></li>
                                                             @endif
                                                             @if (!empty($job->duration))
                                                                 <li><span class="wt-dashboradclock"><i class="far fa-clock"></i> {{ trans('lang.duration') }} {{{ $duration }}}</span></li>

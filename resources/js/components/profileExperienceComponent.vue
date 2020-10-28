@@ -1,4 +1,3 @@
-
 <template>
   <div :server_error_message="server_errors">
     <div class="wt-tabscontenttitle wt-addnew">
@@ -225,7 +224,7 @@ export default {
     getExperiences() {
       let self = this;
       axios
-        .get(APP_URL + "/professional/get-freelancer-experiences")
+        .get(APP_URL + "/freelancer/get-freelancer-experiences")
         .then(function(response) {
           self.stored_experiences = response.data.experiences;
         });
@@ -261,4 +260,3 @@ export default {
   }
 };
 </script>
-

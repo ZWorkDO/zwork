@@ -303,10 +303,8 @@ class Helper extends Model
             $banner =  'images/frbanner-1920x400.jpg';
         } elseif (empty($image) && isset($_GET['type']) && $_GET['type'] == 'employer') {
             $banner =  'images/e-1110x300.jpg';
-        } elseif (empty($image) && isset($_GET['type']) && $_GET['type'] == 'job') {
-            $banner =  'images/frbanner-1920x400.jpg';
-        } elseif (empty($image) && isset($_GET['type']) && $_GET['type'] == 'service') {
-            $banner =  'images/e-1110x300.jpg';
+        } elseif (empty($image) && isset($_GET['type']) && ($_GET['type'] == 'job' || $_GET['type'] == 'service')) {
+            $banner =  'images/bannerimg/img-02.jpg';
         } elseif (empty($image) && Request::segment(1) == 'articles') {
             $banner =  'images/bannerimg/img-02.jpg';
         } else {
@@ -1567,7 +1565,6 @@ class Helper extends Model
         }
     }
 
-
     /**
      * Get user profile image
      *
@@ -1578,7 +1575,7 @@ class Helper extends Model
      *
      * @return array
      */
-    public static function getUserProfileBanner($user_id, $size = '', $role = '')
+    public static function getUserProfileBanner($user_id, $size = '')
     {
         $user = User::getUserRoleType($user_id);
         $profile_banner = User::find($user_id)->profile->banner;
@@ -1586,10 +1583,9 @@ class Helper extends Model
             if (!empty($size)) {
                 return '/uploads/users/' . $user_id . '/' . $size . '-' . $profile_banner;
             } else {
-                // dd('/uploads/users/' . $user_id . '/' . $profile_banner);
                 return '/uploads/users/' . $user_id . '/' . $profile_banner;
             }
-        } elseif ($role == 'freelancer') {
+        } elseif ($user->role_type == 'freelancer') {
             if (!empty($size)) {
                 if (file_exists('images/' . $size . '-frbanner-1920x400.jpg')) {
                     return 'images/' . $size . '-frbanner-1920x400.jpg';
@@ -1599,7 +1595,7 @@ class Helper extends Model
             } else {
                 return 'images/frbanner-1920x400.jpg';
             }
-        } elseif ($role == 'employer') {
+        } elseif ($user->role_type == 'employer') {
             if (!empty($size)) {
                 if (file_exists('images/' . $size . '-e-1110x300.jpg')) {
                     return 'images/' . $size . '-e-1110x300.jpg';
@@ -1612,14 +1608,6 @@ class Helper extends Model
         }
     }
 
-    
-    public static function getUserProfileProfessionalBanner($user_id, $size = '') {
-        return Helper::getUserProfileBanner($user_id, $size, 'freelancer');
-    }
-    
-    public static function getUserProfileProjectBanner($user_id, $size = '') {
-        return Helper::getUserProfileBanner($user_id, $size, 'employer');
-    }
 
     /**
      * Get user profile image
@@ -1890,8 +1878,16 @@ class Helper extends Model
     public static function currencyList($code = "")
     {
         $currency_array = array(
-            'USD' => array(
+            'DOP' => array(
                 'numeric_code'  => 840,
+                'code'          => 'DOP',
+                'name'          => 'Peso Dominicano',
+                'symbol'        => 'RD$',
+                'fraction_name' => 'Centavo',
+                'decimals'      => 2
+            ),
+            'USD' => array(
+                'numeric_code'  => 214,
                 'code'          => 'USD',
                 'name'          => 'United States dollar',
                 'symbol'        => '$',
@@ -2169,12 +2165,38 @@ class Helper extends Model
                 'title' => trans('lang.payment_methods.stripe'),
                 'value' => 'stripe',
             ),
+            'cybsrc' => array(
+                'title' => trans('lang.payment_methods.cybsrc'),
+                'value' => 'cybsrc',
+            ),
         );
         if (!empty($key) && array_key_exists($key, $list)) {
             return $list[$key];
         } else {
             return $list;
         }
+    }
+
+
+    /**
+     * Get country list
+     *
+     * @param string $key key
+     *
+     * @access public
+     *
+     * @return array
+     */
+    public static function getCountries()
+    {
+        return collect(countries())->keyBy('iso_3166_1_alpha2')->map(function ($country,$key) {
+            $translations = country($key)->getTranslations();
+            if(array_key_exists("spa", $translations)){
+                return country($key)->getTranslations()["spa"]["common"];
+            }else {
+                return $country["name"];
+            }
+        });
     }
 
     /**

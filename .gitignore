@@ -11,5 +11,3 @@ public/uploads/*
 node_modules/*
 public/.htaccess
 # vendor/*
-node_modules
-node_modules

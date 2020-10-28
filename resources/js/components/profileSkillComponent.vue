@@ -1,4 +1,3 @@
-
 <template>
     <div>
         <div class="wt-formtheme wt-skillsform">
@@ -108,7 +107,7 @@
             },
             getUserSkills(){
                 let self = this;
-                axios.get(APP_URL + '/professional/get-freelancer-skills')
+                axios.get(APP_URL + '/freelancer/get-freelancer-skills')
                 .then(function (response) {
                     self.freelancer_skills = response.data.freelancer_skills;
                 });
@@ -218,5 +217,4 @@
             this.getUserSkills();
         } 
     }
-
 </script>

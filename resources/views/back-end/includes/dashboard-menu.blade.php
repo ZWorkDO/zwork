@@ -20,13 +20,13 @@
         <div id="wt-verticalscrollbar" class="wt-verticalscrollbar">
             <div class="wt-companysdetails wt-usersidebar">
                 <figure class="wt-companysimg">
-                    <img src="{{{ asset(Helper::getUserProfileProjectBanner($user->id, 'small')) }}}" alt="{{{ trans('lang.profile_banner') }}}">
+                    <img src="{{{ asset(Helper::getUserProfileBanner($user->id, 'small')) }}}" alt="{{{ trans('lang.profile_banner') }}}">
                 </figure>
                 <div class="wt-companysinfo">
                     <figure><img src="{{{ asset(Helper::getImageWithSize('uploads/users/'.$user->id, $profile->avater, 'listing')) }}}" alt="{{ trans('lang.profile_photo') }}"></figure>
                     <div class="wt-title">
                         <h2>
-                            <a href="{{{ $role != 'admin' ? url($role.'/dashboard/welcome') : 'javascript:void()' }}}">
+                            <a href="{{{ $role != 'admin' ? url($role.'/dashboard') : 'javascript:void()' }}}">
                                 {{{ !empty(Auth::user()) ? Helper::getUserName(Auth::user()->id) : 'No Name' }}}
                             </a>
                         </h2>
@@ -36,13 +36,13 @@
                     @if (Helper::getAccessType() == 'both' || Helper::getAccessType() == 'jobs')
                         <div class="wt-btnarea"><a href="{{{ url(route('employerPostJob')) }}}" class="wt-btn">{{{ trans('lang.post_job') }}}</a></div>
                     @else
-                        <div class="wt-btnarea"><a href="{{{ url(route('showUserProfileProject', ['slug' => Auth::user()->slug])) }}}" class="wt-btn">{{{ trans('lang.view_profile') }}}</a></div>
+                        <div class="wt-btnarea"><a href="{{{ url(route('showUserProfile', ['slug' => Auth::user()->slug])) }}}" class="wt-btn">{{{ trans('lang.view_profile') }}}</a></div>
                     @endif
                     @elseif ($role === 'freelancer')
                         @if (Helper::getAccessType() == 'both' || Helper::getAccessType() == 'services')
                             <div class="wt-btnarea"><a href="{{{ url(route('freelancerPostService')) }}}" class="wt-btn">{{{ trans('lang.post_service') }}}</a></div>
                         @else
-                            <div class="wt-btnarea"><a href="{{{ url(route('showUserProfileProfessional', ['slug' => Auth::user()->slug])) }}}" class="wt-btn">{{{ trans('lang.view_profile') }}}</a></div>
+                            <div class="wt-btnarea"><a href="{{{ url(route('showUserProfile', ['slug' => Auth::user()->slug])) }}}" class="wt-btn">{{{ trans('lang.view_profile') }}}</a></div>
                         @endif
                     @endif
                 </div>
@@ -180,7 +180,6 @@
                             <a href="{{{ url($role.'/dashboard') }}}">
                                 <i class="ti-desktop"></i>
                                 <span>{{ trans('lang.dashboard') }}</span>
-                                <i class="ti-star"></i>
                             </a>
                         </li>
                         <li>
@@ -264,9 +263,9 @@
                                     <span>{{ trans('lang.all_projects') }}</span>
                                 </a>
                                 <ul class="sub-menu">
-                                    <li><hr><a href="{{{ url('professional/jobs/completed') }}}">{{ trans('lang.completed_projects') }}</a></li>
-                                    <li><hr><a href="{{{ url('professional/jobs/cancelled') }}}">{{ trans('lang.cancelled_projects') }}</a></li>
-                                    <li><hr><a href="{{{ url('professional/jobs/hired') }}}">{{ trans('lang.ongoing_projects') }}</a></li>
+                                    <li><hr><a href="{{{ url('freelancer/jobs/completed') }}}">{{ trans('lang.completed_projects') }}</a></li>
+                                    <li><hr><a href="{{{ url('freelancer/jobs/cancelled') }}}">{{ trans('lang.cancelled_projects') }}</a></li>
+                                    <li><hr><a href="{{{ url('freelancer/jobs/hired') }}}">{{ trans('lang.ongoing_projects') }}</a></li>
                                 </ul>
                             </li>
                             @if (Helper::getAccessType() == 'both' || Helper::getAccessType() == 'services')
@@ -304,7 +303,7 @@
                                         <span>{{ trans('lang.invoices') }}</span>
                                     </a>
                                     <ul class="sub-menu">
-                                        <li><hr><a href="{{{ url('professional/package/invoice') }}}">{{ trans('lang.pkg_inv') }}</a></li>
+                                        <li><hr><a href="{{{ url('freelancer/package/invoice') }}}">{{ trans('lang.pkg_inv') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -339,4 +338,3 @@
         </div>
     </div>
 @endauth
-

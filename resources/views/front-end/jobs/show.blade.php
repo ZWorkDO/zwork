@@ -5,7 +5,7 @@
 @section('description', "$job->description")
 @section('content')
     @php $breadcrumbs = Breadcrumbs::generate('jobDetail',$job->slug); @endphp
-    <div class="wt-haslayout wt-innerbannerholder"  style="background-image:url({{{ asset(Helper::getBannerImage('images/frbanner-1920x400.jpg')) }}})"> 
+    <div class="wt-haslayout wt-innerbannerholder">
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-8 push-lg-3">
@@ -69,7 +69,7 @@
                                                       </span></li>
                                                     @endif                                                    
                                                     @if (!empty($job->project_type))
-                                                        <li><span class="wt-clicksavefolder"><i class="far fa-calendar wt-viewjobfolder"></i>   {{{$project_type}}}</span></li>
+                                                        <li><span class="wt-clicksavefolder"><i class="far fa-folder wt-viewjobfolder"></i>   {{{$project_type}}}</span></li>
                                                     @endif
                                                     @if (!empty($job->duration))
                                                         <li><span class="wt-dashboradclock"><i class="far fa-clock wt-viewjobclock"></i> {{ trans('lang.duration') }} {{{ Helper::getJobDurationList($job->duration) }}}</span></li>

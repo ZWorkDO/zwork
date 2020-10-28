@@ -81,16 +81,9 @@ Breadcrumbs::for(
 );
 
 Breadcrumbs::for(
-    'showUserProfileProfessional', function ($trail, $slug) {
+    'showUserProfile', function ($trail, $slug) {
         $trail->parent('home');
-        $trail->push(trans('lang.profile'), route('showUserProfileProfessional', ['slug' => $slug]));
-    }
-);
-
-Breadcrumbs::for(
-    'showUserProfileProject', function ($trail, $slug) {
-        $trail->parent('home');
-        $trail->push(trans('lang.profile'), route('showUserProfileProject', ['slug' => $slug]));
+        $trail->push(trans('lang.profile'), route('showUserProfile', ['slug' => $slug]));
     }
 );
 

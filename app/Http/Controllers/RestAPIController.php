@@ -211,7 +211,7 @@ class RestAPIController extends Controller
                     $amount = Payout::where('user_id', $user_object->id)->select('amount')->pluck('amout')->first();
                     $json[$key]['favorit'] = in_array($user['id'], $save_freelancer) ? 'yes' : '';
                     $json[$key]['name'] = Helper::getUserName($user['id']);
-                    $json[$key]['freelancer_link'] = url('profile-professional/' . $user_object->slug);
+                    $json[$key]['freelancer_link'] = url('profile/' . $user_object->slug);
                     $json[$key]['total_earnings'] = !empty($user_obj) ? $amount : '';
                     $json[$key]['user_id'] = "" . $user['id'] . "";
                     $json[$key]['profile_id'] = $user_object->profile->id;
@@ -576,9 +576,9 @@ class RestAPIController extends Controller
                                 $template_message_data = EmailTemplate::getEmailTemplateByID($proposal_message_template->id);
                                 $template_submit_proposal = EmailTemplate::getEmailTemplateByID($proposal_submitted_template->id);
                                 $email_params['employer'] = Helper::getUserName($job->employer->id);
-                                $email_params['employer_profile'] = url('profile-project/' . $job->employer->slug);
+                                $email_params['employer_profile'] = url('profile/' . $job->employer->slug);
                                 $email_params['freelancer'] = Helper::getUserName($user_id);
-                                $email_params['freelancer_profile'] = url('profile-professional/' . $user->slug);
+                                $email_params['freelancer_profile'] = url('profile/' . $user->slug);
                                 $email_params['title'] = $job->title;
                                 $email_params['link'] = url('job/' . $job->slug);
                                 $email_params['amount'] = $amount;
@@ -723,14 +723,14 @@ class RestAPIController extends Controller
                 $json[$key]['name'] = Helper::getUserName($user['id']);
                 $json[$key]['user_id'] = !empty("" . $user['id'] . "") ? "" . $user['id'] . "" : '';
                 $user_object = User::find($user['id']);
-                $json[$key]['company_link'] = !empty($user_object) ? url('profile-project/' . $user_object->slug) : '';
+                $json[$key]['company_link'] = !empty($user_object) ? url('profile/' . $user_object->slug) : '';
                 $json[$key]['employ_id'] = !empty($user_object->profile->id) ? "" . $user_object->profile->user_id . "" : '';
                 $json[$key]['profile_id'] = !empty($user_object->profile->id) ? $user_object->profile->id : '';
                 $json[$key]['profile_img'] = !empty($user_object->profile->avater) ? url(Helper::getProfileImage($user_object->id)) : '';
                 $json[$key]['User_profileID'] = $user_object->profile->id;
                 $json[$key]['employer_des'] = !empty($user_object->profile->description) ? $user_object->profile->description : '';
                 $json[$key]['banner_img'] = !empty($user_object->profile->banner) ? url(Helper::getProfileBanner($user_object->id)) : '';
-                $json[$key]['link'] = !empty($user_object->id) ? url('/profile-project/' . $user['slug'] . '') : '';
+                $json[$key]['link'] = !empty($user_object->id) ? url('/profile/' . $user['slug'] . '') : '';
                 $json[$key]['_longitude'] = !empty($user_object->profile->longitude) ? $user_object->profile->longitude : '';
                 $json[$key]['_latitude'] = !empty($user_object->profile->latitude) ? $user_object->profile->latitude : '';
                 $json[$key]['_address'] = !empty($user_object->profile->address) ? $user_object->profile->address : '';
@@ -1237,7 +1237,7 @@ class RestAPIController extends Controller
                             $template_data = EmailTemplate::getEmailTemplateByID($report_project_template->id);
                             $email_params['reported_project'] = $job->title;
                             $email_params['link'] = url('job/' . $job->slug);
-                            $email_params['report_by_link'] = url('profile-project/' . $user->slug);
+                            $email_params['report_by_link'] = url('profile/' . $user->slug);
                             $email_params['reported_by'] = Helper::getUserName($user->id);
                             $email_params['message'] = $request['description'];
                             Mail::to(config('mail.username'))
@@ -1488,9 +1488,9 @@ class RestAPIController extends Controller
                         $message->save();
                         $email_params['project_title'] = $job->title;
                         $email_params['project_link'] = url('job/' . $job->slug);
-                        $email_params['employer_profile'] = url('profile-project/' . $user->slug);
+                        $email_params['employer_profile'] = url('profile/' . $user->slug);
                         $email_params['emp_name'] = Helper::getUserName($request['user_id']);
-                        $email_params['link'] = url('profile-professional/' . $freelancer->slug);
+                        $email_params['link'] = url('profile/' . $freelancer->slug);
                         $email_params['name'] = Helper::getUserName($freelancer->id);
                         $email_params['msg'] = $request['desc'];
                         Mail::to($freelancer->email)
@@ -1733,7 +1733,7 @@ class RestAPIController extends Controller
                         $email_params['job_title'] = $job->title;
                         $email_params['posted_job_link'] = url('/job/' . $job->slug);
                         $email_params['name'] = Helper::getUserName($current_user);
-                        $email_params['link'] = url('profile-project/' . $user->slug);
+                        $email_params['link'] = url('profile/' . $user->slug);
                         $admin_mail = User::role('admin')->select('email')->pluck('email')->first();
                         Mail::to(config('mail.username'))
                             ->send(
@@ -1876,7 +1876,7 @@ class RestAPIController extends Controller
                 $json[$key]['featured'] = $service->is_featured == 'true' ? trans('lang.featured') : '';
                 $json[$key]['profile_image'] = $service->seller->count() > 0 ? asset(Helper::getProfileImage($service->seller[0]->id)) : '';
                 $json[$key]['user_name'] = $service->seller->count() > 0 ? Helper::getUserName($service->seller[0]->id) : '';
-                $json[$key]['profile_link'] = $service->seller->count() > 0 ? url('profile-professional/'.$service->seller[0]->slug) : '';
+                $json[$key]['profile_link'] = $service->seller->count() > 0 ? url('profile/'.$service->seller[0]->slug) : '';
                 $json[$key]['link'] = url('service/'.$service->slug);
                 $json[$key]['title'] = $service->title;
                 $json[$key]['id'] = $service->id;
@@ -1940,9 +1940,9 @@ class RestAPIController extends Controller
             $json['sales_text'] = trans('lang.sales');
             $json['response_time'] = $response_time->title;
             $json['response_time_text'] = trans('lang.response_time');
-            $json['profile_banner'] = !empty($seller) ? asset(Helper::getUserProfileProfessionalBanner($seller->id, 'small')) : '';
+            $json['profile_banner'] = !empty($seller) ? asset(Helper::getUserProfileBanner($seller->id, 'small')) : '';
             $json['profile_image'] = !empty($seller) ? asset(Helper::getProfileImage($seller->id)) : '';
-            $json['seller_link'] = !empty($seller) ? url('profile-professional/'.$seller->slug) : '';
+            $json['seller_link'] = !empty($seller) ? url('profile/'.$seller->slug) : '';
             $json['seller_name'] = !empty($seller) ? Helper::getUserName($seller->id) : '';
             $json['member_since'] = !empty($seller) ? Carbon::parse($seller->created_at)->format('Y-m-d') : '';
             $json['member_since_text'] = trans('lang.member_since');
@@ -2178,7 +2178,7 @@ class RestAPIController extends Controller
                         $email_params['service_title'] = $service->title;
                         $email_params['posted_service_link'] = url('/service/' . $service->slug);
                         $email_params['name'] = Helper::getUserName($current_user);
-                        $email_params['link'] = url('profile-professional/' . $user->slug);
+                        $email_params['link'] = url('profile/' . $user->slug);
                         $template_data = Helper::getAdminServicePostedEmailContent();
                         Mail::to(config('mail.username'))
                             ->send(
@@ -2219,7 +2219,7 @@ class RestAPIController extends Controller
                     $email_params['service_title'] = $service->title;
                     $email_params['posted_service_link'] = url('/service/' . $service->slug);
                     $email_params['name'] = Helper::getUserName($current_user);
-                    $email_params['link'] = url('profile-professional/' . $user->slug);
+                    $email_params['link'] = url('profile/' . $user->slug);
                     $template_data = Helper::getAdminServicePostedEmailContent();
                     Mail::to(config('mail.username'))
                         ->send(

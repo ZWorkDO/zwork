@@ -13,6 +13,7 @@
 namespace App\Http\Controllers;
 
 use App\Freelancer;
+use App\BillingAddress;
 use Illuminate\Http\Request;
 use App\Helper;
 use App\Location;
@@ -38,7 +39,6 @@ use App\Payout;
 use App\SiteManagement;
 use App\Service;
 use App\Review;
-
 
 /**
  * Class FreelancerController
@@ -199,6 +199,53 @@ class FreelancerController extends Controller
     }
 
     /**
+     * Show the form for update billing address 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function billingAddress()
+    {
+        $billing_address = BillingAddress::where('user_id', Auth::user()->id)
+        ->get()->first();
+        $first_name = !empty($billing_address->first_name) ? $billing_address->first_name : Auth::user()->first_name;
+        $last_name = !empty($billing_address->birthdate) ? $billing_address->last_name : Auth::user()->last_name;
+        $address_line1 = !empty($billing_address->address_line1) ? $billing_address->address_line1 : '';
+        $address_line2 = !empty($billing_address->address_line2) ? $billing_address->address_line2 : '';
+        $city = !empty($billing_address->city) ? $billing_address->city : '';
+        $state = !empty($billing_address->state) ? $billing_address->state : '';
+        $country = !empty($billing_address->country) ? $billing_address->country : '';
+
+        if (file_exists(resource_path('views/extend/back-end/freelancer/profile-settings/billing-address/index.blade.php'))) {
+            return view(
+                'extend.back-end.freelancer.profile-settings.billing-address.index',
+                  compact(
+                    'first_name',
+                    'last_name',
+                    'address_line1',
+                    'address_line2',
+                    'city',
+                    'state',
+                    'country',
+                )
+              );
+        } else {
+            return view(
+                'back-end.freelancer.profile-settings.billing-address.index',
+                compact(
+                    'first_name',
+                    'last_name',
+                    'address_line1',
+                    'address_line2',
+                    'city',
+                    'state',
+                    'country',
+              )
+            );
+        }
+    }
+    
+
+    /**
      * Store personal info
      *
      * @param \Illuminate\Http\Request $request request attributes
@@ -243,6 +290,50 @@ class FreelancerController extends Controller
         if (!empty($request)) {
             $user_id = Auth::user()->id;
             $this->freelancer->storePersonalInfo($request, $user_id);
+            $json['type'] = 'success';
+            $json['process'] = trans('lang.saving_profile');
+            return $json;
+        }
+    }
+
+     /**
+     * Store billing address
+     *
+     * @param \Illuminate\Http\Request $request request attributes
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storeBillingAddress(Request $request)
+    {
+        $server = Helper::worketicIsDemoSiteAjax();
+        if (!empty($server)) {
+            $response['type'] = 'error';
+            $response['message'] = $server->getData()->message;
+            return $response;
+        }
+
+        $this->validate(
+            $request,
+            [
+                'first_name'   => 'required',
+                'last_name'   => 'required',
+                'address_line1'   => 'required|max:60',
+                'address_line2'   => 'max:60',
+                'city'   => 'required',
+                'state'   => 'required',
+                'country'   => 'required',
+            ]
+        );
+
+        $json = array();
+
+        if (!empty($request)) {
+            $billing_address = BillingAddress::where('user_id', Auth::user()->id)
+            ->get()->first();
+            if (empty($billing_address->id)) {
+                $billing_address = new BillingAddress();
+            }
+            $billing_address->storeBillingAddress($request, Auth::user()->id); 
             $json['type'] = 'success';
             $json['process'] = trans('lang.saving_profile');
             return $json;
@@ -849,16 +940,15 @@ class FreelancerController extends Controller
             );
         }
     }
-
-    /*Show Img BackGround*/
-
+    /*Show Welcome Dashboard*/
     public function welcomeDashboard(){
         if (file_exists(resource_path('views\back-end\employer\dashboard-welcome.blade.php'))) {
-            return view('back-end.employer.dashboard-welcome');
-        }else{
-            return 'Error';
+            return view(
+                'back-end.employer.dashboard-welcome');
+            }else{
+                return 'Error';
+            }
         }
-    }
 
     /**
      * Show freelancer dashboard.

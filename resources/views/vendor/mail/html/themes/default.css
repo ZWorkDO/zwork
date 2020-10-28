@@ -220,12 +220,11 @@ img {
 
 .button-blue,
 .button-primary {
-    color: #FFF;
-    background-color: #ff6b57;
-    border-top: 10px solid #ff6b57;
-    border-right: 18px solid #ff6b57;
-    border-bottom: 10px solid #ff6b57;
-    border-left: 18px solid #ff6b57;
+    background-color: #3097D1;
+    border-top: 10px solid #3097D1;
+    border-right: 18px solid #3097D1;
+    border-bottom: 10px solid #3097D1;
+    border-left: 18px solid #3097D1;
 }
 
 .button-green,

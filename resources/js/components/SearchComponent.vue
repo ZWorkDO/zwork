@@ -228,7 +228,7 @@
                         window.location.replace(APP_URL+'/service/'+slug);
                     } 
                     else {
-                        window.location.replace(APP_URL+'/profile-professional/'+slug);
+                        window.location.replace(APP_URL+'/profile/'+slug);
                     }
                 } else {
                     window.location.replace(APP_URL+'/search-results?type='+type);

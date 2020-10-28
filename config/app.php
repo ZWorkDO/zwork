@@ -198,11 +198,6 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
         Spatie\JsonApiPaginate\JsonApiPaginateServiceProvider::class,
-        /*
-         * ElasticSearch
-         */
-        Elasticquent\ElasticquentServiceProvider::class, 
-
     ],
 
     /*
@@ -258,8 +253,8 @@ return [
         'Zipper' => Chumper\Zipper\Zipper::class,
         'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
         'Helper' => App\Helper::class,
+        'CyberSourceHelper' => App\CyberSourceHelper::class,
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
     ],
 ];

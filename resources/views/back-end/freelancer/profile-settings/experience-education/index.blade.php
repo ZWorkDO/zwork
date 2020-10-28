@@ -31,7 +31,7 @@
                         @endif
                         <div class="wt-tabscontent tab-content">
                             <div class="wt-educationholder" id="wt-education">
-                                {!! Form::open(['url' => url('professional/store-experience-settings'), 'class' =>'wt-formtheme wt-userform', 'id' => 'experience_form', '@submit.prevent'=>'submitExperienceEduction']) !!}
+                                {!! Form::open(['url' => url('freelancer/store-experience-settings'), 'class' =>'wt-formtheme wt-userform', 'id' => 'experience_form', '@submit.prevent'=>'submitExperienceEduction']) !!}
                                     <div class="wt-userexperience wt-tabsinfo">
                                         @if (file_exists(resource_path('views/extend/back-end/freelancer/profile-settings/experience-education/experience.blade.php'))) 
                                             @include('extend.back-end.freelancer.profile-settings.experience-education.experience')
@@ -63,4 +63,3 @@
 @section('bootstrap_script')
     <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
 @stop
-

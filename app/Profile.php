@@ -24,6 +24,7 @@ use App\User;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
+use Elasticquent\ElasticquentTrait;
 
 /**
  * Class Profile

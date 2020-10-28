@@ -60,7 +60,7 @@
 														<div class="wt-userlistingcontent">
 															<div class="wt-contenthead wt-followcomhead">
 															<div class="wt-title">
-																<a href="{{{url('profile-professional/'.$freelancer->slug)}}}">
+																<a href="{{{url('profile/'.$freelancer->slug)}}}">
 																	@if ($freelancer->user_verified)
 																		<i class="fa fa-check-circle"></i> {{{Helper::getUserName($freelancer->id)}}}
 																	@endif
@@ -75,7 +75,7 @@
 											<td data-th="Action">
 												<span class="bt-content">
 													<div class="wt-actionbtn">
-														<a href="{{{url('professional/service/'.$service->pivot_id.'/hired')}}}" class="wt-viewinfo wt-btnhistory">{{ trans('lang.view') }}</a>
+														<a href="{{{url('freelancer/service/'.$service->pivot_id.'/hired')}}}" class="wt-viewinfo wt-btnhistory">{{ trans('lang.view') }}</a>
 													</div>
 												</span>
 											</td>
@@ -96,4 +96,3 @@
 		</div>
 	</div>
 @endsection
-

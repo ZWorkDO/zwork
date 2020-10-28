@@ -16,7 +16,7 @@
                                             $freelancer_proposal = \App\Proposal::find($proposal->id);
                                             $duration = Helper::getJobDurationList($proposal->job->duration);
                                             $status_btn = $proposal->status == 'cancelled' ? trans('lang.view_reason') : trans('lang.view_detail');
-                                            $detail_link = $proposal->status == 'hired' ? url('professional/job/'.$proposal->job->slug) : 'javascript:void(0);';
+                                            $detail_link = $proposal->status == 'hired' ? url('freelancer/job/'.$proposal->job->slug) : 'javascript:void(0);';
                                             $user_name = Helper::getUserName($proposal->job->employer->id);
                                         @endphp
                                         <div class="wt-userlistinghold wt-featured wt-userlistingvtwo">
@@ -28,7 +28,7 @@
                                                     @if (!empty($user_name) || !empty($proposal->job->title) )
                                                         <div class="wt-title">
                                                             @if (!empty($user_name))
-                                                            <a href="{{{ url('profile-project/'.$proposal->job->employer->slug) }}}">
+                                                            <a href="{{{ url('profile/'.$proposal->job->employer->slug) }}}">
                                                                 @if ($proposal->job->employer->user_verified === 1)
                                                                     <i class="fa fa-check-circle"></i>
                                                                 @endif
@@ -52,7 +52,7 @@
                                                                 <li><span><img src="{{{asset(Helper::getLocationFlag($proposal->job->location->flag))}}}" alt="{{{ trans('lang.locations') }}}"> {{{ $proposal->job->location->title }}}</span></li>
                                                             @endif
                                                             @if (!empty($proposal->job->project_type))
-                                                                <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-calendar"></i> {{ trans('lang.type') }} {{{ $proposal->job->project_type }}}</a></li>
+                                                                <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-folder"></i> {{ trans('lang.type') }} {{{ $proposal->job->project_type }}}</a></li>
                                                             @endif
                                                             @if (!empty($proposal->job->duration))
                                                                 <li><span class="wt-dashboradclock"><i class="far fa-clock"></i> {{ trans('lang.duration') }} {{{ $duration }}}</span></li>
@@ -64,7 +64,7 @@
                                                     <div class="wt-hireduserstatus">
                                                         <h4>{{{ Helper::displayProposalStatus($proposal->status) }}}</h4>
                                                         @if ( $proposal->status != 'pending' )
-                                                            <a href="{{{ url('professional/job/'.$proposal->job->slug) }}}" class="wt-btn">
+                                                            <a href="{{{ url('freelancer/job/'.$proposal->job->slug) }}}" class="wt-btn">
                                                                 {{$status_btn}}
                                                             </a>
                                                         @endif
@@ -91,4 +91,3 @@
         </div>
     </div>
 @endsection
-

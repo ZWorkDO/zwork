@@ -46,9 +46,9 @@
                                     <div class="form-group">
                                         <span class="wt-select">
                                         @if ($role === 'admin')
-                                            <select name="status" class="select" >
+                                            <select name="status" class="select" data-placeholder = "{{trans('lang.select_cats')}}">
                                         @else
-                                            <select name="status" class="select" disabled>
+                                            <select name="status" class="select" data-placeholder = "{{trans('lang.select_cats')}}" disabled>
                                         @endif
                                                 @foreach ($article_status as $key => $article_stat)
                                                 <option value="{{$key}}">{{$article_stat}}</option>

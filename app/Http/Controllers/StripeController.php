@@ -221,7 +221,7 @@ class StripeController extends Controller
                                             if (!empty($template->id)) {
                                                 $template_data = EmailTemplate::getEmailTemplateByID($template->id);
                                                 $email_params['employer'] = Helper::getUserName(Auth::user()->id);
-                                                $email_params['employer_profile'] = url('profile-project/' . Auth::user()->slug);
+                                                $email_params['employer_profile'] = url('profile/' . Auth::user()->slug);
                                                 $email_params['name'] = $package->title;
                                                 $email_params['price'] = $package->cost;
                                                 $email_params['expiry_date'] = !empty($expiry_date) ? Carbon::parse($expiry_date)->format('M d, Y') : '';
@@ -242,7 +242,7 @@ class StripeController extends Controller
                                             if (!empty($template->id)) {
                                                 $template_data = EmailTemplate::getEmailTemplateByID($template->id);
                                                 $email_params['freelancer'] = Helper::getUserName(Auth::user()->id);
-                                                $email_params['freelancer_profile'] = url('profile-professional/' . Auth::user()->slug);
+                                                $email_params['freelancer_profile'] = url('profile/' . Auth::user()->slug);
                                                 $email_params['name'] = $package->title;
                                                 $email_params['price'] = $package->cost;
                                                 $email_params['expiry_date'] = !empty($expiry_date) ? Carbon::parse($expiry_date)->format('M d, Y') : '';
@@ -284,7 +284,7 @@ class StripeController extends Controller
                                         $email_params['service_link'] = url('service/' . $service->slug);
                                         $email_params['amount'] = $service->price;
                                         $email_params['freelancer_name'] = Helper::getUserName($freelancer);
-                                        $email_params['employer_profile'] = url('profile-project/' . $user->slug);
+                                        $email_params['employer_profile'] = url('profile/' . $user->slug);
                                         $email_params['employer_name'] = Helper::getUserName($user->id);
                                         $freelancer_data = User::find(intval($freelancer));
                                         Mail::to($freelancer_data->email)
@@ -327,8 +327,8 @@ class StripeController extends Controller
                                             $email_params['project_title'] = $job->title;
                                             $email_params['hired_project_link'] = url('job/' . $job->slug);
                                             $email_params['name'] = Helper::getUserName($freelancer->id);
-                                            $email_params['link'] = url('profile-professional/' . $freelancer->slug);
-                                            $email_params['employer_profile'] = url('profile-project/' . $employer->slug);
+                                            $email_params['link'] = url('profile/' . $freelancer->slug);
+                                            $email_params['employer_profile'] = url('profile/' . $employer->slug);
                                             $email_params['emp_name'] = Helper::getUserName($employer->id);
                                             Mail::to($freelancer->email)
                                                 ->send(
