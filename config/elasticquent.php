@@ -14,7 +14,7 @@ return array(
     */
 
     'config' => [
-        'hosts'     => ['localhost:9200'],
+        'hosts'     => ['10.118.0.2:9200'],
         'retries'   => 1,
     ],
 
@@ -27,6 +27,6 @@ return array(
     | Elastiquent models.
     */
 
-    'default_index' => 'my_custom_index_name',
+    'default_index' => 'zwork_index',
 
 );
