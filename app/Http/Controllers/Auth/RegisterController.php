@@ -64,7 +64,6 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
     /**
      * Validate user input.
      *
@@ -97,9 +96,6 @@ class RegisterController extends Controller
             return $json;
         }
     }
-
-
-    
     /**
      * Validate user input.
      *
@@ -146,7 +142,6 @@ class RegisterController extends Controller
             ]
         );
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
