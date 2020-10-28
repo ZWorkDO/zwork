@@ -32,6 +32,7 @@ use Elasticquent\ElasticquentTrait;
  */
 class Profile extends Model
 {
+    use ElasticquentTrait;
 
     /**
      * The attributes that are mass assignable.
