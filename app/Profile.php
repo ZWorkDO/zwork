@@ -24,6 +24,7 @@ use App\User;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
+use Elasticquent\ElasticquentTrait;
 
 /**
  * Class Profile
@@ -31,6 +32,7 @@ use Illuminate\Support\Facades\Schema;
  */
 class Profile extends Model
 {
+    use ElasticquentTrait;
 
     /**
      * The attributes that are mass assignable.
