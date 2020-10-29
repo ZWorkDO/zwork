@@ -72,6 +72,26 @@ class Profile extends Model
             'type' => 'string',
             "analyzer" => "standard",
         ],
+        'gender' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'tagline' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'description' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'rnc' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'main_activity' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
 
     );
 
