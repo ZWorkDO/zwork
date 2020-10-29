@@ -32,7 +32,48 @@ use Elasticquent\ElasticquentTrait;
  */
 class Profile extends Model
 {
+    /* ElasticSearch Model */
     use ElasticquentTrait;
+
+    protected $mappingProperties = array(
+        'user_id' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'department_id' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'freelancer_type' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'english_level' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'hourly_rate' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'experience' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'education' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'awards' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+        'projects' => [
+            'type' => 'string',
+            "analyzer" => "standard",
+        ],
+
+    );
 
     /**
      * The attributes that are mass assignable.
