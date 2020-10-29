@@ -38,59 +38,59 @@ class Profile extends Model
     protected $mappingProperties = array(
         'user_id' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'department_id' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'freelancer_type' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'english_level' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'hourly_rate' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'experience' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'education' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'awards' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'projects' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'gender' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'tagline' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'description' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'rnc' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
         'main_activity' => [
             'type' => 'string',
-            "analyzer" => "standard",
+            'analyzer' => 'standard',
         ],
 
     );
