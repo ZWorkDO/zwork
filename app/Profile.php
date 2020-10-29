@@ -32,68 +32,6 @@ use Elasticquent\ElasticquentTrait;
  */
 class Profile extends Model
 {
-    /* ElasticSearch Model */
-    use ElasticquentTrait;
-
-    protected $mappingProperties = array(
-        'user_id' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'department_id' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'freelancer_type' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'english_level' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'hourly_rate' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'experience' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'education' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'awards' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'projects' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'gender' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'tagline' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'description' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'rnc' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-        'main_activity' => array(
-            'type' => 'string',
-            'analyzer' => 'standard',
-        ),
-    );
-
     /**
      * The attributes that are mass assignable.
      *
@@ -110,6 +48,62 @@ class Profile extends Model
         'nr', 'main_activity', 'nationality', 'birthdate', 'marital_status', 'id_type', 
         'id_number', 'profession_id', 'grade_id',
     ];  
+
+    /* ElasticSearch Model */
+    use ElasticquentTrait;
+
+    protected $mappingProperties = array(
+        'user_id' => array(
+            'type' => 'integer',
+            "analyzer" => "standard",
+        ),
+        'department_id' => array(
+            'type' => 'integer',
+            "analyzer" => "standard",
+        ),
+        'freelancer_type' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'english_level' => array(
+            'type' => 'enum',
+            "analyzer" => "standard",
+        ),
+        'hourly_rate' => array(
+            'type' => 'integer',
+            "analyzer" => "standard",
+        ),
+        'experience' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        ),
+        'education' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        ),
+        'awards' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        ),
+        'projects' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        ),
+        'gender' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'tagline' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'description' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        )
+    );
+
+    
 
     /**
      * Get the department that owns the employer.
