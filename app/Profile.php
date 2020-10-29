@@ -36,63 +36,62 @@ class Profile extends Model
     use ElasticquentTrait;
 
     protected $mappingProperties = array(
-        'user_id' => [
+        'user_id' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'department_id' => [
+        ),
+        'department_id' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'freelancer_type' => [
+        ),
+        'freelancer_type' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'english_level' => [
+        ),
+        'english_level' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'hourly_rate' => [
+        ),
+        'hourly_rate' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'experience' => [
+        ),
+        'experience' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'education' => [
+        ),
+        'education' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'awards' => [
+        ),
+        'awards' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'projects' => [
+        ),
+        'projects' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'gender' => [
+        ),
+        'gender' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'tagline' => [
+        ),
+        'tagline' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'description' => [
+        ),
+        'description' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'rnc' => [
+        ),
+        'rnc' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-        'main_activity' => [
+        ),
+        'main_activity' => array(
             'type' => 'string',
             'analyzer' => 'standard',
-        ],
-
+        ),
     );
 
     /**
