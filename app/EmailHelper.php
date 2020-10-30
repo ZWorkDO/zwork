@@ -39,9 +39,9 @@ class EmailHelper extends Model
                 <a style="float: left; color: #55acee; text-decoration: none;" href="#"><?php echo Self::getSiteTitle(); ?></a>
             </strong>
             </div>
-            <div id="tg-banner" class="tg-banner" style="width: 100%; float: left; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;">
+            <!-- <div id="tg-banner" class="tg-banner" style="width: 100%; float: left; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;">
                 <img style="width: 100%; height: auto; display: block;" src="<?php echo $email_banner; ?>" alt="<?php echo Self::getSiteTitle(); ?>">
-		    </div>
+		    </div> -->
 		<div style="width: 100%; float: left; padding: 30px 30px 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;">
 			<div style="width: 100%; float: left; padding: 0 0 60px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;">
                 <div style="width: 100%; float: left;">
@@ -99,7 +99,7 @@ class EmailHelper extends Model
     public static function getEmailFrom()
     {
         $setting = SiteManagement::getMetaValue('email_data');
-        $email = !empty($setting) && !empty($setting[0]['from_email']) ? $setting[0]['from_email'] : 'info@amentotech.com';
+        $email = !empty($setting) && !empty($setting[0]['from_email']) ? $setting[0]['from_email'] : 'info@zwork.do';
         return $email;
     }
 
@@ -113,7 +113,7 @@ class EmailHelper extends Model
     public static function getEmailID()
     {
         $setting = SiteManagement::getMetaValue('email_data');
-        $email_id = !empty($setting) && !empty($setting[0]['from_email_id']) ? $setting[0]['from_email_id'] : 'info@amentotech.com';
+        $email_id = !empty($setting) && !empty($setting[0]['from_email_id']) ? $setting[0]['from_email_id'] : 'info@zwork.do';
         return $email_id;
     }
 

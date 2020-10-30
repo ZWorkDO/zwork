@@ -1039,6 +1039,7 @@ return [
     'ph_search_en_level' => 'Search English Level',
     'ph_job_dtl' => 'Add Job Detail Here',
     'ph_award_title' => 'Award Title Here',
+    'ph_award_date' => 'Select Award Date',
     'ph_rate_skills' => 'Rate Your Skill (0% to 100%)',
     'ph_search_templates' => 'Search Email Templates',
     'ph_select_gender' => 'Select Gender',

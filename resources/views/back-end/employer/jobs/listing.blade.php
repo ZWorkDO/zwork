@@ -49,7 +49,7 @@
                                         <div class="wt-userlistingcontent">
                                             <div class="wt-contenthead">
                                                 <div class="wt-title">
-                                                    <a href="{{{ url('profile/'.$job->employer->slug) }}}">@if($verified_user === 1)<i class="fa fa-check-circle"></i>@endif {{{$job->employer->first_name.' '.$job->employer->last_name}}}</a>
+                                                    <a href="{{{ url('profile-project/'.$job->employer->slug) }}}">@if($verified_user === 1)<i class="fa fa-check-circle"></i>@endif {{{$job->employer->first_name.' '.$job->employer->last_name}}}</a>
                                                     <h2>{{{$job->title}}}</h2>
                                                 </div>
                                                 <div class="wt-description">
@@ -67,7 +67,7 @@
                                                     @if (!empty($job->location->title))
                                                         <li><span><img src="{{{asset(App\Helper::getLocationFlag($job->location->flag))}}}" alt="{{{ trans('lang.location') }}}"> {{{ $job->location->title }}}</span></li>
                                                     @endif
-                                                    <li><span><i class="far fa-folder wt-viewjobfolder"></i>  {{{$project_type}}}</span></li>
+                                                    <li><span><i class="far fa-calendar wt-viewjobfolder"></i>  {{{$project_type}}}</span></li>
                                                     <li><span><i class="far fa-clock wt-viewjobclock"></i>{{{ trans('lang.duration') }}} {{{ \App\Helper::getJobDurationList($job->duration)}}}</span></li>
                                                     <li><span><i class="fa fa-tag wt-viewjobtag"></i>{{{ trans('lang.job_id') }}} {{{$job->code}}}</span></li>
                                                     <li>

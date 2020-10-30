@@ -40,7 +40,7 @@
                                             @if (!empty($employer_name) || !empty($job->title) )
                                                 <div class="wt-title">
                                                     @if (!empty($employer_name))
-                                                        <a href="{{{ url('profile/'.$job->employer->slug) }}}">@if ($verified_user === 1)<i class="fa fa-check-circle"></i>@endif&nbsp;{{{ $employer_name }}}</a>
+                                                        <a href="{{{ url('profile-project/'.$job->employer->slug) }}}">@if ($verified_user === 1)<i class="fa fa-check-circle"></i>@endif&nbsp;{{{ $employer_name }}}</a>
                                                     @endif
                                                     @if (!empty($job->title))
                                                         <h2>{{{ $job->title }}}</h2>
@@ -57,7 +57,7 @@
                                                         <li><span><img src="{{{asset(App\Helper::getLocationFlag($job->location->flag))}}}" alt="{{ trans('lang.img') }}"> {{{ $job->location->title }}}</span></li>
                                                     @endif
                                                     @if (!empty($job->project_type))
-                                                        <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-folder"></i>   {{{ $project_type }}}</a></li>
+                                                        <li><a href="javascript:void(0);" class="wt-clicksavefolder"><i class="far fa-calendar"></i>   {{{ $project_type }}}</a></li>
                                                     @endif
                                                     @if (!empty($job->duration))
                                                         <li><span class="wt-dashboradclock"><i class="far fa-clock"></i> {{ trans('lang.duration') }} {{{ $duration }}}</span></li>
@@ -110,7 +110,7 @@
                                             @if (!empty($freelancer_name))
                                                 <div class="wt-contenthead">
                                                     <div class="wt-title">
-                                                        <a href="{{ url('profile/'.$user_slug) }}">{{{ $freelancer_name }}}</a>
+                                                        <a href="{{ url('profile-professional/'.$user_slug) }}">{{{ $freelancer_name }}}</a>
                                                     </div>
                                                 </div>
                                             @endif

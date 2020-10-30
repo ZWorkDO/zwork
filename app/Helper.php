@@ -303,8 +303,10 @@ class Helper extends Model
             $banner =  'images/frbanner-1920x400.jpg';
         } elseif (empty($image) && isset($_GET['type']) && $_GET['type'] == 'employer') {
             $banner =  'images/e-1110x300.jpg';
-        } elseif (empty($image) && isset($_GET['type']) && ($_GET['type'] == 'job' || $_GET['type'] == 'service')) {
-            $banner =  'images/bannerimg/img-02.jpg';
+        } elseif (empty($image) && isset($_GET['type']) && $_GET['type'] == 'job') {
+            $banner =  'images/frbanner-1920x400.jpg';
+        } elseif (empty($image) && isset($_GET['type']) && $_GET['type'] == 'service') {
+            $banner =  'images/e-1110x300.jpg';
         } elseif (empty($image) && Request::segment(1) == 'articles') {
             $banner =  'images/bannerimg/img-02.jpg';
         } else {
@@ -918,16 +920,11 @@ class Helper extends Model
     public static function getHourlyRate($key = "")
     {
         $list = array(
-            '0-5' => trans('lang.freelancer_hourly_rate.0_5'),
-            '5-10' => trans('lang.freelancer_hourly_rate.5_10'),
-            '10-20' => trans('lang.freelancer_hourly_rate.10_20'),
-            '20-30' => trans('lang.freelancer_hourly_rate.20_30'),
-            '30-40' => trans('lang.freelancer_hourly_rate.30_40'),
-            '40-50' => trans('lang.freelancer_hourly_rate.40_50'),
-            '50-60' => trans('lang.freelancer_hourly_rate.50_60'),
-            '60-70' => trans('lang.freelancer_hourly_rate.60_70'),
-            '70-80' => trans('lang.freelancer_hourly_rate.70_80'),
-            '90-0' => trans('lang.freelancer_hourly_rate.90_0'),
+            '0-10' => trans('lang.freelancer_hourly_rate.0_10'),
+            '10-100' => trans('lang.freelancer_hourly_rate.10_100'),
+            '100-500' => trans('lang.freelancer_hourly_rate.100_500'),
+            '500-1000' => trans('lang.freelancer_hourly_rate.500_1000'),
+            '1000-0' => trans('lang.freelancer_hourly_rate.1000_0'),
         );
         if (!empty($key) && array_key_exists($key, $list)) {
             return $list[$key];
@@ -1565,6 +1562,7 @@ class Helper extends Model
         }
     }
 
+
     /**
      * Get user profile image
      *
@@ -1575,7 +1573,7 @@ class Helper extends Model
      *
      * @return array
      */
-    public static function getUserProfileBanner($user_id, $size = '')
+    public static function getUserProfileBanner($user_id, $size = '', $role = '')
     {
         $user = User::getUserRoleType($user_id);
         $profile_banner = User::find($user_id)->profile->banner;
@@ -1583,9 +1581,10 @@ class Helper extends Model
             if (!empty($size)) {
                 return '/uploads/users/' . $user_id . '/' . $size . '-' . $profile_banner;
             } else {
+                // dd('/uploads/users/' . $user_id . '/' . $profile_banner);
                 return '/uploads/users/' . $user_id . '/' . $profile_banner;
             }
-        } elseif ($user->role_type == 'freelancer') {
+        } elseif ($role == 'freelancer') {
             if (!empty($size)) {
                 if (file_exists('images/banner-default-profesional-350x172.jpg')) {
                     return 'images/banner-default-profesional-350x172.jpg';
@@ -1595,7 +1594,7 @@ class Helper extends Model
             } else {
                 return 'images/frbanner-1920x400.jpg';
             }
-        } elseif ($user->role_type == 'employer') {
+        } elseif ($role == 'employer') {
             if (!empty($size)) {
                 if (file_exists('images/banner-default-profesional-350x172.jpg')) {
                     return 'images/banner-default-profesional-350x172.jpg';
@@ -1608,6 +1607,14 @@ class Helper extends Model
         }
     }
 
+    
+    public static function getUserProfileProfessionalBanner($user_id, $size = '') {
+        return Helper::getUserProfileBanner($user_id, $size, 'freelancer');
+    }
+    
+    public static function getUserProfileProjectBanner($user_id, $size = '') {
+        return Helper::getUserProfileBanner($user_id, $size, 'employer');
+    }
 
     /**
      * Get user profile image

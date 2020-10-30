@@ -55,7 +55,7 @@
                                                 @if (!empty($purchaser) || !empty($service->title) )
                                                     <div class="wt-title">
                                                         @if (!empty($purchaser))
-                                                            <a href="{{{ url('profile/'.$purchaser->slug) }}}">
+                                                            <a href="{{{ url('profile-professional/'.$purchaser->slug) }}}">
                                                                 @if($purchaser->user_verified === 1)
                                                                     <i class="fa fa-check-circle"></i>&nbsp;
                                                                 @endif
@@ -107,7 +107,7 @@
                                                 <div class="wt-proposaldetails">
                                                     <div class="wt-contenthead">
                                                         <div class="wt-title">
-                                                            <a href="{{{url('profile/'.$freelancer->slug)}}}"> {{{Helper::getUserName($freelancer->id)}}}</a>
+                                                            <a href="{{{url('profile-professional/'.$freelancer->slug)}}}"> {{{Helper::getUserName($freelancer->id)}}}</a>
                                                         </div>
                                                     </div>
                                                     <div class="wt-proposalfeedback">

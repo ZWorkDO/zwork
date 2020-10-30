@@ -62,7 +62,7 @@
 														<div class="wt-userlistingcontent">
 															<div class="wt-contenthead wt-followcomhead">
 															<div class="wt-title">
-																<a href="{{{url('profile/'.$freelancer->slug)}}}">
+																<a href="{{{url('profile-professional/'.$freelancer->slug)}}}">
 																	@if ($freelancer->user_verified)
 																		<i class="fa fa-check-circle"></i> {{{Helper::getUserName($freelancer->id)}}}
 																	@endif
