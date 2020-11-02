@@ -39,6 +39,8 @@
         "uws": "^100.0.1",
         "v-outer-html": "^1.0.2",
         "verte": "0.0.10",
+        "cropperjs": "^1.5.9",
+        "vue-cropperjs": "^4.1.0",
         "vue-bootstrap-datetimepicker": "^5.0.1",
         "vue-bootstrap-typeahead": "^0.2.6",
         "vue-credit-card-validation": "^0.1.9",
