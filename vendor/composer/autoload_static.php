@@ -1193,6 +1193,7 @@ class ComposerStaticInit4d7be38c62d71c7b93a82a7774ba8d5e
         'App\\ReviewOptions' => __DIR__ . '/../..' . '/app/ReviewOptions.php',
         'App\\Rte' => __DIR__ . '/../..' . '/app/Rte.php',
         'App\\Service' => __DIR__ . '/../..' . '/app/Service.php',
+        'App\\Services\\ElasticService' => __DIR__ . '/../..' . '/app/Services/ElasticService.php',
         'App\\Services\\MadisonService' => __DIR__ . '/../..' . '/app/Services/MadisonService.php',
         'App\\SiteManagement' => __DIR__ . '/../..' . '/app/SiteManagement.php',
         'App\\Skill' => __DIR__ . '/../..' . '/app/Skill.php',
