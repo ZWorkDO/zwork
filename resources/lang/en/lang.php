@@ -991,6 +991,7 @@ return [
     'job_updating' => 'Job is updating',
     'in' => 'In:',
     'drop_files' => 'Drop files here to upload',
+    'confirm_crop' => 'Confirm',
     'select_files' => 'Select Files',
     'add_your_awards' => 'Add Your award',
     'add_awards' => '+ Add award',

@@ -973,6 +973,7 @@ return [
     'confirmation' => 'La confirmación de la contraseña no coincide.',
     'del_select_rec' => 'Eliminar registros seleccionados',
     'drop_files' => 'Arrastra los archivos aquí para subirlos',
+    'confirm_crop' => 'Confirmar',
     'select_files' => 'Selecciona archivos',
     'add_your_awards' => 'Añade tu Reconocimiento',
     'add_awards' => '+ Añadir reconocimiento',
