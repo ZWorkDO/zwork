@@ -44,6 +44,7 @@ body {
 	background: #fff;
 	overflow-x: hidden;
 	font:300 14px/23px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 body h1,
 body h2,
@@ -58,12 +59,14 @@ body h6 {
 	text-transform:none;
 	font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
+
 h1, .h1 { font-size: 48px; font-weight: 700;}
 h2, .h2 { font-size: 36px; font-weight: 700;}
 h3, .h3 { font-size: 24px; font-weight: lighter;}
 h4, .h4 { font-size: 18px; font-weight: 600;}
 h5, .h5 { font-size: 16px; font-weight: lighter;}
 h6, .h6 { font-size: 14px; font-weight: 600;}
+
 h1 a,
 h2 a,
 h3 a,
@@ -427,6 +430,7 @@ address { font-style: italic; }
 	vertical-align: middle;
 	text-transform: uppercase;
 	font:500 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 input[type=submit],
 .wt-btn[type=submit]{border: 0 !important;}
@@ -908,6 +912,7 @@ li.wt-rss a { background:#ff6600; }
 	vertical-align:middle;
 	text-transform: capitalize;
 	font:300 18px/18px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-breadcrumb li {
 	width: auto;
@@ -943,6 +948,56 @@ li.wt-rss a { background:#ff6600; }
 .wt-sectiontitle{
 	width:100%;
 	float:left;
+}
+.wt-commentcomilla1{
+	color: #03aeef !important; 
+	padding-right: 66%;
+	padding-left: 17%; 
+	text-align: center;
+	font-size: 200pt;
+	position: relative;
+	top: 76px;
+}
+.wt-commentcomilla2{
+	color: #03aeef !important; 
+	padding-left: 32%;
+	text-align: center;
+	font-size: 200pt;
+	position: relative;
+	top: 42px;
+}
+.wt-commenth3{
+	color: #03aeef !important; 
+	text-align: center;
+	padding-right: 29%;
+	padding-left: 29%;
+	line-height: 1.5;
+}
+.wt-commetzwork{
+	color: #03aeef !important;
+	text-align: center;
+	margin: 0 0 40px;
+}
+
+@media (max-width: 640px){
+	.wt-commentcomilla1{
+		color: #03aeef !important; 
+		padding-right: 66%;
+		padding-left: 0%; 
+		text-align: center;
+		font-size: 200pt;
+		position: relative;
+		top: 76px;
+	}
+	.wt-commentcomilla2{
+		color: #03aeef !important; 
+		padding-left: 58%;
+		text-align: center;
+		font-size: 200pt;
+		position: relative;
+		top: 42px;
+	}
+		
 }
 .wt-sectionhead{position: relative;margin: 0;}
 .wt-textcenter{text-align: center;}
@@ -991,6 +1046,7 @@ li.wt-rss a { background:#ff6600; }
 	float: left;
 	text-transform: capitalize;
 	font:300 16px/16px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-navigation{
 	padding: 0;
@@ -1697,7 +1753,10 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-categoryslidup a i{font-size: 12px;}
 /* Join Company Style */
-.wt-companyinfohold{position: relative;}
+.wt-companyinfohold{
+	position: relative;
+	background-size: cover;
+}
 .wt-companyinfohold:before{
 	top: 0;
     right: 0;
@@ -1711,10 +1770,12 @@ body.wt-login .wt-userlogedin{display: block;}
 	float: left;
 	width: 100%;
 	position: relative;
+	margin: 50px 0;
 	z-index: 2;
 }
 .wt-companycontent{
-	width: 50%;
+	width: 48%;
+	margin: 1% 1%;
 	float: left;
 	padding: 30px 40px;
 	min-height: 353px;
@@ -1740,15 +1801,6 @@ body.wt-login .wt-userlogedin{display: block;}
     align-items: center;
     -webkit-align-content: center;
     -ms-flex-line-pack: center;
-}
-.wt-companydetails .wt-companycontent + .wt-companycontent:before{
-	top: 0;
-	left: -5px;
-	width: 10px;
-	height: 100%;
-	content: '';
-	background: #fff;
-	position: absolute;
 }
 .wt-companyinfotitle{
 	float: left;
@@ -1869,6 +1921,9 @@ body.wt-login .wt-userlogedin{display: block;}
 	float: left;
 	width: 100%;
 	text-align: center;
+}
+.wt-innerbannerblog{
+	height: 350px !important;
 }
 .wt-title{
 	float: left;
@@ -2848,6 +2903,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	border-radius: 50px;
 	border:2px solid #ddd;
 	font: 500 13px/38px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-joinsteps li.wt-done-next a{
 	color: #fff;
@@ -3324,6 +3380,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-userlistingtitle span{
 	display: block;
 	font:300 16px/18px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-userlistingtitle span em{color: #323232;font-style: normal;}
 .wt-filterholder{
@@ -3429,6 +3486,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	color:#323232;
 	margin: 0 0 9px;
 	font:300 14px/16px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-contenthead .wt-title h2{
 	margin: 0;
@@ -3751,7 +3809,7 @@ body.wt-login .wt-userlogedin{display: block;}
 }
 .wt-proposalsicon{
 	float: left;
-	color: #ffdf4c;
+	color: #039ce3;
 	font-size: 40px;
 	line-height: 36px;
 	padding-right:25px;
@@ -3837,6 +3895,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .tg-qrcodefeat h3 span {
 	display: block;
 	font-weight: 500;
+
 	font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .wt-clicksavearea{
@@ -3860,6 +3919,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	display: inline-block;
 	vertical-align: middle;
 	font:400 13px/48px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-clicksavearea .wt-clicksavebtn{
 	min-width: 225px;
@@ -3894,6 +3954,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	color: #323232;
 	margin: 0 0 9px;
 	font: 300 14px/16px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-companysinfo .wt-title a i {color: #b1d131;}
 .wt-companysinfo .wt-title h2 {
@@ -4416,14 +4477,14 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-profilecounter{
 	width: auto;
 	float: right;
-	max-width: 270px;
+	/* max-width: 270px; */
 	min-height: 481px;
 	margin: -30px 0 -55px;
 	text-align: center;
 	border-left: 1px solid #f2f2f2;
 }
 .wt-profilecounter .wt-statisticcontent{
-	width: 50%;
+	width: 33%;
 	padding: 10px;
 	min-height: 144px;
 	display: -webkit-box;
@@ -4446,8 +4507,8 @@ body.wt-login .wt-userlogedin{display: block;}
     -webkit-align-content: center;
     -ms-flex-line-pack: center;
 }
-.wt-profilecounter .wt-statisticcontent:first-child,
-.wt-profilecounter .wt-statisticcontent:nth-child(4){background: #f5f5f5;}
+/* .wt-profilecounter .wt-statisticcontent:first-child, */
+.wt-profilecounter .wt-statisticcontent:nth-child(2){background: #f5f5f5;}
 .wt-profilecounter .wt-statisticcontent em,
 .wt-profilecounter .wt-statisticcontent h3{font-size: 24px;font-weight: 500;}
 .wt-profilecounter .wt-statisticcontent h4{
@@ -4737,6 +4798,7 @@ body.wt-login .wt-userlogedin{display: block;}
 	text-align: center;
 	border-radius: 0 4px 4px 0;
 	font:500 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-btnsearch:hover,
 .wt-btnsearch:focus{color: #fff;}
@@ -4931,6 +4993,7 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-companyinfo span a{
 	color: #55acee;
 	font:500 22px/22px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-fbtnarea{float: right;}
 .wt-footerbottom{
@@ -6074,6 +6137,7 @@ select.is-invalid {border-color: #dc3545;}
 	background: #fff;
 	border-color: #ddd;
 	font: 300 18px/20px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-forgotpassword-holder .card{
 	border-radius: 4px;
@@ -6705,6 +6769,7 @@ select.is-invalid {border-color: #dc3545;}
     margin: 0;
     color: #323232;
     font: 400 20px/22px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .swal2-popup #swal2-content{
 	margin: 0;
@@ -6822,6 +6887,7 @@ select.is-invalid {border-color: #dc3545;}
     font-size: 12px;
     text-align: center;
     font-weight: 300;
+
     font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 }
 .la-jobalerts-holder .wt-jobalerts{margin: 0;}
@@ -7080,7 +7146,7 @@ span.wt-stars span:after{
 	overflow: hidden;
 }
 .wt-userdetails{max-width: 525px;}
-.wt-profilecounter{max-width: 285px;}
+/* .wt-profilecounter{max-width: 285px;} */
 .wt-dashboardboxcontent .wt-completejobholder .wt-emptydata-holder{padding: 0;}
 /* languages Styling*/
 body.lang-de .wt-profilecounter .wt-statisticcontent h4{word-break: break-all;}
@@ -7193,11 +7259,13 @@ body.lang-fr .wt-dashboardsave .wt-proposalsr .wt-proposalsrcontent .wt-title{wi
 	float: right;
 	text-transform: uppercase;
 	font: 500 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-search-remove:hover{color: #999;}
 .wt-header.wt-search-have.show-sform .wt-navigationarea .wt-formbannervtwo .wt-searchbtn span{
 	text-transform: uppercase;
 	font: 500 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-respsonsive-search{
 	float: right;
@@ -7588,6 +7656,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	color: #fff;
 	margin: 27px 0 0;
 	font: 500 13px/50px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-user-service .wt-userprofile .wt-title span a{font-family: 'GothamPro', Arial, Helvetica, sans-serif;margin:4px 0 0;}
 .wt-user-service .wt-userprofile .wt-title h3{margin: 0 0 9px;}
@@ -7760,6 +7829,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	color: #323232;
 	margin: 0 0 6px;
 	font: 300 14px/14px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-freelancers-content .dc-title a i{color: #b1d131;}
 .wt-freelancers-content .dc-title{float: left;width: 100%;}
@@ -8412,6 +8482,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 .wt-bannerholdervtwo .wt-formoptions > .wt-searchbtn{
 	text-transform: uppercase;
 	font:500 13px/60px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-bannerholdervtwo .wt-formoptions .wt-radioholder{width: 255px;}
 .wt-bannerholdervtwo .wt-formbanner fieldset .form-group .form-control{padding-right:175px; }
@@ -8510,6 +8581,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	color: #323232;
 	margin: 0 0 6px;
 	font: 300 14px/14px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-freelancers-content .dc-title a i{color: #b1d131;}
 .wt-freelancers-content .dc-title{float: left;width: 100%;}
@@ -8709,6 +8781,7 @@ a:focus{text-decoration: none !important;}
 	vertical-align: middle;
 	text-transform: uppercase;
 	font: 500 13px/36px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 /* Articles Style*/
 .wt-articlesholder{
@@ -8817,6 +8890,7 @@ a:focus{text-decoration: none !important;}
 	vertical-align: middle;
     text-overflow: ellipsis;
 	font: 300 14px/20px 'GothamPro', Arial, Helvetica, sans-serif;
+
 }
 .wt-articles:hover .wt-articlesdocinfo span{width: auto;}
 .wt-moreoptions{

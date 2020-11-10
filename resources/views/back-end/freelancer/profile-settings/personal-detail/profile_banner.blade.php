@@ -12,6 +12,7 @@
                         :img_ref="'banner_ref'" 
                         :url="'{{url('freelancer/upload-temp-image')}}'"
                         :name="'hidden_banner_image'"
+                        :aspect_ratio="3.5625"
                         >
                     </upload-image>
                 </div>
@@ -31,6 +32,7 @@
                     :img_ref="'banner_ref'" 
                     :url="'{{url('freelancer/upload-temp-image')}}'"
                     :name="'hidden_banner_image'"
+                    :aspect_ratio="3.5625"
                     >
                 </upload-image>
                 <input type="hidden" name="hidden_banner_image" id="hidden_banner"> 

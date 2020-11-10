@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp;
 use GuzzleHttp\Client;
@@ -134,6 +135,7 @@ class MadisonService {
 
   public static function createInvoice() {
   }
+
 
   public function get_pdf_order() {
     $this->auth();

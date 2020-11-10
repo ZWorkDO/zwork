@@ -344,7 +344,7 @@ class FreelancerController extends Controller
       if (Auth::user()) {
           Auth::user()->switchToRole("employer");    
 
-          return Redirect::to('employer/dashboard');
+          return Redirect::to('employer/welcome');
       }
     }
 
@@ -942,7 +942,7 @@ class FreelancerController extends Controller
     }
     /*Show Welcome Dashboard*/
     public function welcomeDashboard(){
-        if (file_exists(resource_path('views\back-end\employer\dashboard-welcome.blade.php'))) {
+        if (file_exists(resource_path('views/back-end/employer/dashboard-welcome.blade.php'))) {
             return view(
                 'back-end.employer.dashboard-welcome');
             }else{

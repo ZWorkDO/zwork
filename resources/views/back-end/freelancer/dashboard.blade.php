@@ -227,7 +227,7 @@
                                             <tr>
                                                 <td data-th="Project title"><span class="bt-content"><a target="_blank" href="{{{ url('freelancer/job/'.$project->job->slug) }}}">{{{ str_limit($project->job->title, 40) }}}</a></span></td>
                                                 <td data-th="Hired freelancer">
-                                                    <span class="bt-content"><a href="{{{url('profile/'.$user->slug)}}}">@if ($user->user_verified)<i class="fa fa-check-circle"></i>&nbsp;@endif{{{$user_name}}}</a>
+                                                    <span class="bt-content"><a href="{{{url('profile-professional/'.$user->slug)}}}">@if ($user->user_verified)<i class="fa fa-check-circle"></i>&nbsp;@endif{{{$user_name}}}</a>
                                                     </span>
                                                 </td>
                                                 <td data-th="Project cost"><span class="bt-content">{{ !empty($symbol['symbol']) ? $symbol['symbol'] : '$' }}{{$projects->amount}}</span></td>
@@ -255,7 +255,7 @@
                                                 </td>
                                                 <td data-th="Hired freelancer">
                                                     <span class="bt-content">
-                                                        <a href="{{{url('profile/'.$employer->slug)}}}">
+                                                        <a href="{{{url('profile-project/'.$employer->slug)}}}">
                                                             @if ($employer->user_verified)
                                                                 <i class="fa fa-check-circle"></i>&nbsp;
                                                             @endif

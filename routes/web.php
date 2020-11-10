@@ -57,7 +57,9 @@ Route::get(
 
 Route::get('articles/{category?}', 'ArticleController@articlesList')->name('articlesList');
 Route::get('article/{slug}', 'ArticleController@showArticle')->name('showArticle');
-Route::get('profile/{slug}', 'PublicController@showUserProfile')->name('showUserProfile');
+Route::get('profile-professional/{slug}', 'PublicController@showUserProfileProfessional')->name('showUserProfileProfessional');
+Route::get('profile-project/{slug}', 'PublicController@showUserProfileProject')->name('showUserProfileProject');
+// Route::get('profile/{slug}', 'PublicController@showUserProfile')->name('showUserProfile');
 Route::get('categories', 'CategoryController@categoriesList')->name('categoriesList');
 Route::get('page/{slug}', 'PageController@show')->name('showPage');
 Route::post('store/project-offer', 'UserController@storeProjectOffers');
@@ -323,7 +325,7 @@ Route::group(
         Route::get('employer/dashboard/manage-jobs', 'JobController@index')->name('employerManageJobs');
         Route::get('employer/jobs/{status}', 'EmployerController@showEmployerJobs');
         Route::get('employer/dashboard/job/{slug}/proposals', 'ProposalController@getJobProposals')->name('getProposals');
-        Route::get('employer/dashboard/welcome', 'EmployerController@welcomeDashboard')->name('welcomeDashboard');
+        Route::get('employer/welcome', 'EmployerController@welcomeDashboard')->name('welcomeDashboard');
         Route::get('employer/dashboard', 'EmployerController@employerDashboard')->name('employerDashboard');
         Route::get('employer/profile', 'EmployerController@index')->name('employerPersonalDetail');
         Route::get('employer/billing_address', 'EmployerController@billingAddress')->name('employerBillingAddress');
@@ -366,7 +368,7 @@ Route::group(
         Route::get('freelancer/jobs/{status}', 'FreelancerController@showFreelancerJobs');
         Route::get('freelancer/job/{slug}', 'FreelancerController@showOnGoingJobDetail')->name('showOnGoingJobDetail');
         Route::get('freelancer/proposals', 'FreelancerController@showFreelancerProposals')->name('showFreelancerProposals');
-        Route::get('freelancer/dashboard/welcome', 'FreelancerController@welcomeDashboard')->name('welcomeDashboard');
+        Route::get('freelancer/welcome', 'FreelancerController@welcomeDashboard')->name('welcomeDashboard');
         Route::get('freelancer/dashboard', 'FreelancerController@freelancerDashboard')->name('freelancerDashboard');
         Route::get('freelancer/profile', 'FreelancerController@index')->name('personalDetail');
         Route::get('freelancer/billing_address', 'FreelancerController@billingAddress')->name('billingAddress');

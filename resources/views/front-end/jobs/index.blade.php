@@ -103,7 +103,7 @@
                                                         <div class="wt-contenthead">
                                                             <div class="wt-title">
                                                                 @if (!empty($job->employer->slug))
-                                                                    <a href="{{ url('profile/'.$job->employer->slug) }}"><i class="fa fa-check-circle"></i> {{{ Helper::getUserName($job->employer->id) }}}</a>
+                                                                    <a href="{{ url('profile-project/'.$job->employer->slug) }}"><i class="fa fa-check-circle"></i> {{{ Helper::getUserName($job->employer->id) }}}</a>
                                                                 @endif
                                                                 <h2><a href="{{ url('job/'.$job->slug) }}">{{{$job->title}}}</a></h2>
                                                             </div>
@@ -123,7 +123,7 @@
                                                                   {!! html_entity_decode(str_repeat('<i class="fa fa-dollar-sign wt-viewjobdollar"></i>', Helper::getProjectLevelCode($job->project_level) + 1)) !!}
                                                                   </span></li>
                                                                 @endif                                                                
-                                                                <li><span><i class="far fa-folder wt-viewjobfolder"></i>  {{{$project_type}}}</span></li>
+                                                                <li><span><i class="far fa-calendar wt-viewjobfolder"></i>  {{{$project_type}}}</span></li>
                                                                 <li><span><i class="far fa-clock wt-viewjobclock"></i>{{{ Helper::getJobDurationList($job->duration)}}}</span></li>
                                                                 <li><span><i class="fa fa-tag wt-viewjobtag"></i>{{{ trans('lang.job_id') }}} {{{$job->code}}}</span></li>
                                                                 @if (!empty($user->profile->saved_jobs) && in_array($job->id, unserialize($user->profile->saved_jobs)))
@@ -157,7 +157,7 @@
                                                 <div class="wt-userlistingcontent">
                                                     <div class="wt-contenthead">
                                                         <div class="wt-title">
-                                                            <a href="{{ url('profile/'.$job->employer->slug) }}"><i class="fa fa-check-circle"></i> {{{ Helper::getUserName($job->employer->id) }}}</a>
+                                                            <a href="{{ url('profile-project/'.$job->employer->slug) }}"><i class="fa fa-check-circle"></i> {{{ Helper::getUserName($job->employer->id) }}}</a>
                                                             <h2><a href="{{ url('job/'.$job->slug) }}">{{{$job->title}}}</a></h2>
                                                         </div>
                                                         <div class="wt-description">
@@ -176,7 +176,7 @@
                                                                 {!! html_entity_decode(str_repeat('<i class="fa fa-dollar-sign wt-viewjobdollar"></i>', Helper::getProjectLevelCode($job->project_level) + 1)) !!}
                                                                 </span></li>
                                                             @endif                                                            
-                                                            <li><span><i class="far fa-folder wt-viewjobfolder"></i>  {{{$project_type}}}</span></li>
+                                                            <li><span><i class="far fa-calendar wt-viewjobfolder"></i>  {{{$project_type}}}</span></li>
                                                             <li><span><i class="far fa-clock wt-viewjobclock"></i>{{{ Helper::getJobDurationList($job->duration)}}}</span></li>
                                                             <li><span><i class="fa fa-tag wt-viewjobtag"></i>{{{ trans('lang.job_id') }}} {{{$job->code}}}</span></li>
                                                             @if (!empty($user->profile->saved_jobs) && in_array($job->id, unserialize($user->profile->saved_jobs)))
@@ -226,11 +226,12 @@
                 item: 6,
                 rtl:direction,
                 loop:true,
-                nav:false,
+                nav:true,
                 margin: 0,
-                autoplay:false,
+                autoplay:true,
                 center: true,
                 responsiveClass:true,
+                navText:["<img src='images/prettyPhoto/dark_rounded/owlPrev.png'>","<img src='images/prettyPhoto/dark_rounded/owlNext.png'>"],
                 responsive:{
                     0:{items:1,},
                     481:{items:2,},

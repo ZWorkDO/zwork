@@ -115,7 +115,7 @@
                                                     <li>
                                                         <a href="javascript:void(0);">
                                                             <i class="lnr lnr-clock"></i>
-                                                            <span>{{ \Carbon\Carbon::parse($article->updated_at)->format('M d, Y')}}</span>
+                                                            <span>{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y')}}</span>
                                                         </a>
                                                     </li>
                                                     <li>

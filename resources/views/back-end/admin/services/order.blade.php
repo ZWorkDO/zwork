@@ -61,7 +61,7 @@
 																	@if ($employer->user_verified == 1)
 																		<span class="wt-featuredtagvtwo">{{ trans('lang.featured') }}</span>
 																	@endif
-																	<a href="{{{url('profile/'.$employer->slug)}}}"><h3>{{{Helper::getUserName($employer->id)}}}</h3></a>
+																	<a href="{{{url('profile-project/'.$employer->slug)}}}"><h3>{{{Helper::getUserName($employer->id)}}}</h3></a>
 																</div>
 															</div>
 														</div>

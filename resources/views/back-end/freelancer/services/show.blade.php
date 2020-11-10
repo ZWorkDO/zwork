@@ -50,7 +50,7 @@
                                     <div class="wt-proposaldetails">
                                         <div class="wt-contenthead">
                                             <div class="wt-title">
-                                                <a href="{{{url('profile/'.$freelancer->slug)}}}"> {{{Helper::getUserName($freelancer->id)}}}</a>
+                                                <a href="{{{url('profile-professional/'.$freelancer->slug)}}}"> {{{Helper::getUserName($freelancer->id)}}}</a>
                                             </div>
                                         </div>
                                         <div class="wt-proposalfeedback">

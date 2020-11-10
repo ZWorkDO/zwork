@@ -48,12 +48,14 @@
                                             </select>
                                         </span>
                                     </div>
+                                    {{ Form::hidden('status', 'draft') }}
                                     <div class="form-group">
                                         <upload-image
                                             :id="'article_image'"
                                             :img_ref="'article_ref'"
                                             :url="'{{url('admin/articles/upload-temp-image')}}'"
                                             :name="'uploaded_image'"
+                                            :aspect_ratio="4.0714285714"
                                             >
                                         </upload-image>
                                         {!! Form::hidden( 'uploaded_image', '', ['id'=>'hidden_img'] ) !!}
