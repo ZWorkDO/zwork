@@ -10,4 +10,4 @@ public/index.php
 public/uploads/*
 node_modules/*
 public/.htaccess
-# vendor/*
+vendor/*
