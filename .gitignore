@@ -8,6 +8,6 @@ storage/framework/views/*
 storage/installed
 public/index.php
 public/uploads/*
-node_modules/*
+node_modules/
 public/.htaccess
 vendor/*
