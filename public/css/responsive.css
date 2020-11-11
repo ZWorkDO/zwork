@@ -517,7 +517,10 @@
 		width: 100%;
 		height: 10px;
 	}
-	.wt-companycontent{width: 100%;}
+	.wt-companycontent{
+		width: 100%;
+		margin: 10px 0;
+	}
 	.wt-categoryexpl > .float-left:nth-child(n+3){margin-top:30px; }
 	.wt-companyinfotitle h2{
 		font-size: 22px;

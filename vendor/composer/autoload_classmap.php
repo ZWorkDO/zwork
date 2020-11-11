@@ -121,6 +121,7 @@ return array(
     'App\\ReviewOptions' => $baseDir . '/app/ReviewOptions.php',
     'App\\Rte' => $baseDir . '/app/Rte.php',
     'App\\Service' => $baseDir . '/app/Service.php',
+    'App\\Services\\ElasticService' => $baseDir . '/app/Services/ElasticService.php',
     'App\\Services\\MadisonService' => $baseDir . '/app/Services/MadisonService.php',
     'App\\SiteManagement' => $baseDir . '/app/SiteManagement.php',
     'App\\Skill' => $baseDir . '/app/Skill.php',
