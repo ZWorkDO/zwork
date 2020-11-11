@@ -4516,7 +4516,7 @@ body.wt-login .wt-userlogedin{display: block;}
     -ms-flex-line-pack: center;
 }
 /* .wt-profilecounter .wt-statisticcontent:first-child, */
-.wt-profilecounter .wt-statisticcontent:nth-child(2){background: #f5f5f5;}
+.wt-profilecounter .wt-statisticcontent:nth-child(2){background: white;}
 .wt-profilecounter .wt-statisticcontent em,
 .wt-profilecounter .wt-statisticcontent h3{font-size: 24px;font-weight: 500;}
 .wt-profilecounter .wt-statisticcontent h4{
