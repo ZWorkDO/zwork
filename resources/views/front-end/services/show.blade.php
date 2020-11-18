@@ -51,7 +51,7 @@
                                 @if ($service->is_featured == 'true')
                                     <span class="wt-featuredtagvtwo">{{ trans('lang.featured') }}</span>
                                 @endif
-                                {{--  <span class="wt-featuredtagvtwo">Featured</span>  --}}
+                                {{--  <span class="wt-featuredtagvtwo">{{ trans('lang.featured') }}</span>  --}}
                                 <div class="wt-servicesingle-title">
                                     <div class="wt-title">
                                         @if (!empty($service->title))
