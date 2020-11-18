@@ -7732,7 +7732,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
     content: '';
     bottom: -4px;
     position: absolute;
-    border-top: 4px solid #bd423d;
+    border-top: 4px solid var(--color-2);
     border-left: 4px solid transparent;
 }
 .wt-viewjobholder ul li span i{float: left;}
@@ -7809,7 +7809,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	content: '';
 	bottom: -4px;
 	position: absolute;
-	border-top: 4px solid #bd423d;
+	border-top: 4px solid var(--color-2);
 	border-left: 4px solid transparent;
 }
 .wt-freelancers-details{
@@ -7819,7 +7819,6 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	background: #fff;
 	border-radius: 0 0 4px 4px;
 	border: 1px solid #ddd;
-	border-top: 0;
 }
 .wt-freelancers-content .dc-title a{
 	display: block;
@@ -7828,7 +7827,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	font: 300 14px/14px 'GothamPro', Arial, Helvetica, sans-serif;
 
 }
-.wt-freelancers-content .dc-title a i{color: #b1d131;}
+.wt-freelancers-content .dc-title a i{color: #b1d131; font-size: 20px;}
 .wt-freelancers-content .dc-title{float: left;width: 100%;}
 .wt-freelancers-content .dc-title h3{
 	font-size:16px;
@@ -8562,7 +8561,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	content: '';
 	bottom: -4px;
 	position: absolute;
-	border-top: 4px solid #bd423d;
+	border-top: 4px solid var(--color-2);
 	border-left: 4px solid transparent;
 }
 .wt-freelancers-details{

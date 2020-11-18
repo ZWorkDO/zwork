@@ -1171,7 +1171,7 @@ class PublicController extends Controller
     public function getArticles()
     {
         $json = array();
-        $articles = Article::orderBy('created_at','desc')->get()->toArray();
+        $articles = Article::orderBy('created_at','asc')->get()->toArray();
         $aticle_list = array();
         if (!empty($articles)) {
             foreach ($articles as $key => $article) {

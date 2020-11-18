@@ -112,11 +112,7 @@ class FindCommand extends Command
                 $original[$languageKey] =
                     (isset($values[$languageKey])
                         ? $values[$languageKey]
-<<<<<<< HEAD
                         : isset($filesContent[$fileName][$languageKey][$key])) ? $filesContent[$fileName][$languageKey][$key] : '';
-=======
-                        : (isset($filesContent[$fileName][$languageKey][$key]) ? $filesContent[$fileName][$languageKey][$key] : '');
->>>>>>> e73eb5f4e33cced1ba08520b23a606ef55826e5c
             }
 
             // Sort the language values based on language name

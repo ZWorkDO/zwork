@@ -109,7 +109,7 @@
                 @include('errors.404')
             @endif
         @endif
-        @if (!empty($skills)
+        <!-- @if (!empty($skills)
             || !empty($categories)
             || !empty($locations)
             || !empty($languages))
@@ -185,7 +185,7 @@
                     </div>
                 </div>
             </section>
-        @endif
+        @endif -->
     </div>
 @endsection
 @push('scripts')
