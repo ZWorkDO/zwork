@@ -952,7 +952,6 @@ li.wt-rss a { background:#ff6600; }
 .wt-commentcomilla1{
 	color: #03aeef !important; 
 	padding-right: 66%;
-	padding-left: 17%; 
 	text-align: center;
 	font-size: 200pt;
 	position: relative;
@@ -960,42 +959,37 @@ li.wt-rss a { background:#ff6600; }
 }
 .wt-commentcomilla2{
 	color: #03aeef !important; 
-	padding-left: 32%;
+	padding-left: 66%;
 	text-align: center;
 	font-size: 200pt;
 	position: relative;
-	top: 42px;
+	top: 66px;
 }
 .wt-commenth3{
 	color: #03aeef !important; 
 	text-align: center;
-	padding-right: 29%;
-	padding-left: 29%;
+	padding: 0 20%;
 	line-height: 1.5;
 }
 .wt-commetzwork{
 	color: #03aeef !important;
 	text-align: center;
-	margin: 0 0 40px;
+	margin: 0 0 70px;
 }
 
 @media (max-width: 640px){
 	.wt-commentcomilla1{
-		color: #03aeef !important; 
-		padding-right: 66%;
-		padding-left: 0%; 
-		text-align: center;
-		font-size: 200pt;
-		position: relative;
-		top: 76px;
+		padding-right: 76%;
+		font-size: 100pt;
+		top: 52px;
+	}
+	.wt-commenth3{
+		font-size: 20px;
 	}
 	.wt-commentcomilla2{
-		color: #03aeef !important; 
-		padding-left: 58%;
-		text-align: center;
-		font-size: 200pt;
-		position: relative;
-		top: 42px;
+		padding-left: 76%;
+		font-size: 100pt;
+		top: 20px;
 	}
 		
 }
@@ -3230,6 +3224,9 @@ body.wt-login .wt-userlogedin{display: block;}
 .wt-categoriesslider{
 	width: 100%;
 	float: left;
+}
+.wt-categoriesslider .owl-stage-outer{
+	width: 92%;
 }
 .wt-categoryslidercontent{
 	float: left;
@@ -7916,7 +7913,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	float: none !important;
 	display: inline-block;
 	vertical-align: top;
-	margin: 0 -1px;
+	/* margin: 0 -1px; */
 }
 .la-payout-holder .wt-titlewithsearch.wt-titlewithbtn .wt-formsearch{max-width: 350px;}
 .la-payout-holder .wt-titlewithsearch.wt-titlewithbtn .wt-formsearch .wt-select{width: 50%;padding:0 5px;}
@@ -8440,6 +8437,7 @@ body.lang-ja .wt-loginfooterinfo a + a:before {
 	float: left;
 	width: 100%;
 }
+
 .owl-theme .owl-dots, .owl-theme .owl-nav {
   margin: 0 auto;
   left:auto;
