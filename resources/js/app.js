@@ -23,7 +23,7 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import Verte from 'verte';
 import 'verte/dist/verte.css';
 import { Collapse } from 'ant-design-vue';
-//import VueCardFormat from 'vue-credit-card-validation';
+import VueCardFormat from 'vue-credit-card-validation';
 import './mixins/helper.js'
 
 Vue.prototype.trans = (key) => {
@@ -113,7 +113,7 @@ Vue.use(SmoothScrollbar)
 Vue.use(VueSweetalert2);
 Vue.use(Vuebar);
 Vue.use(Collapse);
-//Vue.use(VueCardFormat);
+Vue.use(VueCardFormat);
 
 window.Vue = require('vue');
 window.flashVue = new Vue();

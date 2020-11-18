@@ -2,6 +2,13 @@
 
 namespace App\Services;
 
+<<<<<<< HEAD
+class MadisonService {
+
+  public static function createCustomer() {
+  }
+
+=======
 
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp;
@@ -130,12 +137,18 @@ class MadisonService {
   /*
    * Invoices / Orders
    */
+>>>>>>> fd60654252d8e7e19492e58bc01153fadd49147b
   public static function createOrder() {
   }
 
   public static function createInvoice() {
   }
 
+<<<<<<< HEAD
+  public static function accessMadison() {
+  }
+
+=======
 
   public function get_pdf_order() {
     $this->auth();
@@ -197,4 +210,5 @@ class MadisonService {
       $this->headerClient = $result->getHeader('client')[0];
     }
   }
+>>>>>>> fd60654252d8e7e19492e58bc01153fadd49147b
 }
