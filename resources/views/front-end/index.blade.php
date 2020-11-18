@@ -263,7 +263,7 @@
                     </div>
                 </section>
             @endif
-            @if ($skills->count() > 0
+            <!-- @if ($skills->count() > 0
                 || $categories->count() > 0
                 || $locations->count() > 0
                 || $languages->count() > 0)
@@ -339,7 +339,7 @@
                         </div>
                     </div>
                 </section>
-            @endif
+            @endif -->
         </div>
     @endsection
 @endif
