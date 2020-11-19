@@ -84,7 +84,7 @@ class CyberSourceHelper extends Model
     public static function buildRequestParams($params) {
         extract($params);
 
-        $properties = parse_ini_file('cybs.ini');
+        // $properties = parse_ini_file('cybs.ini');
 
         $user = Auth::user();
         $profile = User::find($user->id)->profile;
@@ -108,8 +108,10 @@ class CyberSourceHelper extends Model
         $reference_number = time()."-".Helper::generateRandomCode(15);
 
         $payment_info = array(
-            "access_key"=>$properties["access_key"], 
-            "profile_id"=>$properties["profile_id"], 
+            // "access_key"=>$properties["access_key"], 
+            // "profile_id"=>$properties["profile_id"], 
+            "access_key"=>env('ACCESS_KEY', ''), 
+            "profile_id"=>env('PROFILE_ID', ''), 
             "transaction_uuid"=> $transaction_uuid,
             "signed_field_names"=> "access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,payment_method,bill_to_forename,bill_to_surname,bill_to_email,bill_to_phone,bill_to_address_line1,bill_to_address_line2,bill_to_address_city,bill_to_address_state,bill_to_address_country,item_0_name,item_0_quantity,item_0_unit_price,line_item_count,override_custom_receipt_page,merchant_defined_data1,merchant_defined_data2,merchant_defined_data3,merchant_defined_data4,merchant_defined_data27,merchant_defined_data29,merchant_defined_data30",
             "unsigned_field_names" => "card_type,card_number,card_expiry_date",
@@ -134,7 +136,8 @@ class CyberSourceHelper extends Model
             "item_0_unit_price" => $cost,
             "line_item_count" => 1,
             "merchant_defined_data1" => "RETAIL",
-            "merchant_defined_data2" => $properties['merchant_id'],
+            // "merchant_defined_data2" => $properties['merchant_id'],
+            "merchant_defined_data2" => env('MERCHANT_ID', ''),
             "merchant_defined_data3" => "Web",
             "merchant_defined_data4" => Auth::user()->id,
             "merchant_defined_data27" => "TOKENIZATION NO",
@@ -142,7 +145,8 @@ class CyberSourceHelper extends Model
             "merchant_defined_data30" => $customer_id,
             "override_custom_receipt_page" => "http://localhost/zwork/public/pay/cybsrc",        
         );
-        $payment_info["signature"] = CyberSourceHelper::sign($payment_info,  $properties['secret_key']);
+        // $payment_info["signature"] = CyberSourceHelper::sign($payment_info,  $properties['secret_key']);
+        $payment_info["signature"] = CyberSourceHelper::sign($payment_info,  env('SECRET_KEY', ''));
 
         $payment_info["reference_fields"] = array(
             "transaction_uuid" => $transaction_uuid,
