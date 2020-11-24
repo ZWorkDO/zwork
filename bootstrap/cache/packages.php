@@ -1,30 +1,13 @@
 <?php return array (
-  'nesbot/carbon' => 
+  'barryvdh/laravel-dompdf' => 
   array (
     'providers' => 
     array (
-      0 => 'Carbon\\Laravel\\ServiceProvider',
+      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
     ),
-  ),
-  'laravel/slack-notification-channel' => 
-  array (
-    'providers' => 
+    'aliases' => 
     array (
-      0 => 'Illuminate\\Notifications\\SlackChannelServiceProvider',
-    ),
-  ),
-  'laravel/nexmo-notification-channel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Illuminate\\Notifications\\NexmoChannelServiceProvider',
-    ),
-  ),
-  'themsaid/laravel-langman' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Themsaid\\Langman\\LangmanServiceProvider',
+      'PDF' => 'Barryvdh\\DomPDF\\Facade',
     ),
   ),
   'ben182/laravel-auto-translate' => 
@@ -36,6 +19,24 @@
     'aliases' => 
     array (
       'AutoTranslate' => 'Ben182\\AutoTranslate\\AutoTranslateFacade',
+    ),
+  ),
+  'beyondcode/laravel-dump-server' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BeyondCode\\DumpServer\\DumpServerServiceProvider',
+    ),
+  ),
+  'cartalyst/stripe-laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Cartalyst\\Stripe\\Laravel\\StripeServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Stripe' => 'Cartalyst\\Stripe\\Laravel\\Facades\\Stripe',
     ),
   ),
   'chumper/zipper' => 
@@ -78,11 +79,18 @@
       'Image' => 'Intervention\\Image\\Facades\\Image',
     ),
   ),
-  'spatie/laravel-json-api-paginate' => 
+  'laravel/nexmo-notification-channel' => 
   array (
     'providers' => 
     array (
-      0 => 'Spatie\\JsonApiPaginate\\JsonApiPaginateServiceProvider',
+      0 => 'Illuminate\\Notifications\\NexmoChannelServiceProvider',
+    ),
+  ),
+  'laravel/slack-notification-channel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Illuminate\\Notifications\\SlackChannelServiceProvider',
     ),
   ),
   'laravel/tinker' => 
@@ -111,11 +119,32 @@
       0 => 'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider',
     ),
   ),
+  'nesbot/carbon' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Carbon\\Laravel\\ServiceProvider',
+    ),
+  ),
+  'nunomaduro/collision' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    ),
+  ),
   'rachidlaasri/laravel-installer' => 
   array (
     'providers' => 
     array (
       0 => 'RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider',
+    ),
+  ),
+  'rinvex/countries' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Rinvex\\Country\\Providers\\CountryServiceProvider',
     ),
   ),
   'simplesoftwareio/simple-qrcode' => 
@@ -127,6 +156,13 @@
     'aliases' => 
     array (
       'QrCode' => 'SimpleSoftwareIO\\QrCode\\Facades\\QrCode',
+    ),
+  ),
+  'spatie/laravel-json-api-paginate' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\JsonApiPaginate\\JsonApiPaginateServiceProvider',
     ),
   ),
   'spatie/laravel-permission' => 
@@ -147,31 +183,6 @@
       'PayPal' => 'Srmklive\\PayPal\\Facades\\PayPal',
     ),
   ),
-  'beyondcode/laravel-dump-server' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'BeyondCode\\DumpServer\\DumpServerServiceProvider',
-    ),
-  ),
-  'cartalyst/stripe-laravel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Cartalyst\\Stripe\\Laravel\\StripeServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Stripe' => 'Cartalyst\\Stripe\\Laravel\\Facades\\Stripe',
-    ),
-  ),
-  'nunomaduro/collision' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    ),
-  ),
   'tanmuhittin/laravel-google-translate' => 
   array (
     'providers' => 
@@ -179,15 +190,11 @@
       0 => 'Tanmuhittin\\LaravelGoogleTranslate\\LaravelGoogleTranslateServiceProvider',
     ),
   ),
-  'barryvdh/laravel-dompdf' => 
+  'themsaid/laravel-langman' => 
   array (
     'providers' => 
     array (
-      0 => 'Barryvdh\\DomPDF\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'PDF' => 'Barryvdh\\DomPDF\\Facade',
+      0 => 'Themsaid\\Langman\\LangmanServiceProvider',
     ),
   ),
 );

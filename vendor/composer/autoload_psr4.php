@@ -47,6 +47,7 @@ return array(
     'Spatie\\Permission\\' => array($vendorDir . '/spatie/laravel-permission/src'),
     'Spatie\\JsonApiPaginate\\' => array($vendorDir . '/spatie/laravel-json-api-paginate/src'),
     'Scn\\DeeplApiConnector\\' => array($vendorDir . '/scn/deepl-api-connector/src'),
+    'Rinvex\\Country\\' => array($vendorDir . '/rinvex/countries/src'),
     'React\\Promise\\' => array($vendorDir . '/react/promise/src'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'RachidLaasri\\LaravelInstaller\\' => array($vendorDir . '/rachidlaasri/laravel-installer/src'),
