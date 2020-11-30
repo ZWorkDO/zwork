@@ -4051,7 +4051,9 @@ body.wt-login .wt-userlogedin {
 
 .wt-accordiontitle.collapsed::after {
     font-family: 'FontAwesome';
-    content: "\f067";
+    content: "\f107";
+    font-size: 20px;
+    color: #0077B5;
     position: absolute;
     text-align: right;
     position: absolute;
@@ -4061,7 +4063,9 @@ body.wt-login .wt-userlogedin {
 
 .wt-accordiontitle::after {
     font-family: 'FontAwesome';
-    content: "\f068";
+    content: "\f106";
+    font-size: 20px;
+    color: #0077B5;
     position: absolute;
     text-align: right;
     position: absolute;
