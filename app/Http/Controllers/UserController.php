@@ -1878,6 +1878,7 @@ class UserController extends Controller
         if (!empty($request)) {
             $user_id = Auth::user()->id;
             $this->profile->storeProfile($request, $user_id);
+            // ElasticSearch->createIndexUser($this->profile);
             $json['type'] = 'success';
             $json['process'] = trans('lang.saving_profile');
             return $json;

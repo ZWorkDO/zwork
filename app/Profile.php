@@ -107,8 +107,6 @@ class Profile extends Model
         return 'profile_index';
     }
 
-    
-
     /**
      * Get the department that owns the employer.
      *
