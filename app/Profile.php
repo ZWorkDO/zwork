@@ -266,7 +266,9 @@ class Profile extends Model
         $profile->position = filter_var($request['position'], FILTER_SANITIZE_STRING);
         $profile->camara_id = filter_var($request['camara_id'], FILTER_SANITIZE_STRING);
         $profile->nr = filter_var($request['nr'], FILTER_SANITIZE_STRING);
-       
+        
+        // reindex ElasticSearch
+        $profile->addToIndex();
         return $profile->save();
     }
 
