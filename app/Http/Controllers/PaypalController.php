@@ -133,8 +133,8 @@ class PaypalController extends Controller
 
         $settings = SiteManagement::getMetaValue('commision');
         $currency = !empty($settings[0]['currency']) ? $settings[0]['currency'] : 'USD';
-        var_dump('Currency: '.$currency);
-        die;
+        // var_dump('Currency: '.$currency);
+        // die;
         if (Auth::user()) {
             //$recurring = ($request->get('mode') === 'recurring') ? true : false;
             $recurring = false;
