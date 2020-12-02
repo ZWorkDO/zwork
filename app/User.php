@@ -33,6 +33,7 @@ use canResetPassword;
 use App\Notifications;
 use Event;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Elasticquent\ElasticquentTrait;
 
 
 /**
@@ -56,6 +57,40 @@ class User extends Authenticatable implements MustVerifyEmail
         'location_id', 'verification_code', 'address',
         'longitude', 'latitude'
     ];
+
+    /* ElasticSearch Model */
+    use ElasticquentTrait;
+
+    protected $mappingProperties = array(
+        'location_id' => array(
+            'type' => 'integer',
+            "analyzer" => "standard",
+        ),
+        'first_name' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'last_name' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'slug' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'tagline' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'description' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        ),
+    );
+
+    function getIndexName() {
+        return 'user_index';
+    }
 
     /**
      * For creating event.
@@ -390,6 +425,9 @@ class User extends Authenticatable implements MustVerifyEmail
             $this->badge_id = null;
             $this->expiry_date = null;
             $this->save();
+
+            // reindex user
+            $this->addToIndex();
 
             $user_id = $this->id;
 
