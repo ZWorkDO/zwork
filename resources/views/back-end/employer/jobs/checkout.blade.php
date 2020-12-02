@@ -72,17 +72,17 @@
                                         @if ($gatway == "paypal")
                                             <a href="{{{url('paypal/ec-checkout')}}}">
                                                 <i class="fa fa-paypal"></i>
-                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} {{ trans('lang.pay_gateway') }}</span>
+                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} </span>
                                             </a>
                                         @elseif ($gatway == "stripe")
                                             <a href="javascrip:void(0);" v-on:click.prevent="getStriprForm">
                                                 <i class="fab fa-stripe-s"></i>
-                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} {{ trans('lang.pay_gateway') }}</span>
+                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} </span>
                                             </a>
                                         @elseif ($gatway == "cybsrc")
                                             <a href="javascrip:void(0);" v-on:click.prevent="getCybSrcForm">
                                                 <i class="fas fa-credit-card"></i>
-                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} {{ trans('lang.pay_gateway') }}</span>
+                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} </span>
                                             </a>
                                         @endif
                                     </li>

@@ -1250,7 +1250,7 @@ return [
     'payment_methods' => [
         'paypal' => 'Paypal',
         'stripe' => 'Stripe',
-        'cybsrc' => 'CyberSource',
+        'cybsrc' => 'Tarjeta',
     ],
     'currency' => [
         'usd' => 'Dólar de los Estados Unidos',
