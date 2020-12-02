@@ -4282,51 +4282,51 @@ if (document.getElementById("packages")) {
                         console.log(error);
                     });
             },
-            submitCybSrcFrom: function (e) {
-                let cybsrc_payment = document.getElementById('cybsrc-payment-form');
-                let fields =  $('#cybsrc-payment-form .reference_fields, #cybsrc-payment-form .validatable_fields');
-                let data = fields.serializeArray().reduce((acc, {name, value}) => ({...acc, [name]: value}),{});
-                var self = this;
+            // submitCybSrcFrom: function (e) {
+            //     let cybsrc_payment = document.getElementById('cybsrc-payment-form');
+            //     let fields =  $('#cybsrc-payment-form .reference_fields, #cybsrc-payment-form .validatable_fields');
+            //     let data = fields.serializeArray().reduce((acc, {name, value}) => ({...acc, [name]: value}),{});
+            //     var self = this;
             
-                self.cybsrc_form.cc_expiry_month_error = '';
-                self.cybsrc_form.is_cc_expiry_month_error = false;
-                self.cybsrc_form.cc_expiry_year_error = '';
-                self.cybsrc_form.is_cc_expiry_year_error = false;
+            //     self.cybsrc_form.cc_expiry_month_error = '';
+            //     self.cybsrc_form.is_cc_expiry_month_error = false;
+            //     self.cybsrc_form.cc_expiry_year_error = '';
+            //     self.cybsrc_form.is_cc_expiry_year_error = false;
 
-                if(!self.validate) {
-                    this.loading = true;
-                    e.preventDefault();
+            //     if(!self.validate) {
+            //         this.loading = true;
+            //         e.preventDefault();
                     
-                    axios.post(APP_URL + '/pre-pay/cybsrc', data)
-                    .then(function (response) {
-                        console.log(response.data);
-                        if (response.data.type == 'success') {
-                            self.loading = false;
-                            self.validate = true;
-                            let cc_input = $('#cybsrc-payment-form [data-card-brand]');
-                            cc_input.val(cc_input.val().replace(/ /g,''));
-                            cybsrc_payment.submit();
-                        } else if (response.data.type == 'error') {
-                            self.loading = false;
-                            self.validate = false;
-                            self.errors = response.data.message;
-                        }
-                    })
-                    .catch(function (error) {
-                        self.loading = false;
-                        self.validate = false;
+            //         axios.post(APP_URL + '/pre-pay/cybsrc', data)
+            //         .then(function (response) {
+            //             console.log(response.data);
+            //             if (response.data.type == 'success') {
+            //                 self.loading = false;
+            //                 self.validate = true;
+            //                 let cc_input = $('#cybsrc-payment-form [data-card-brand]');
+            //                 cc_input.val(cc_input.val().replace(/ /g,''));
+            //                 cybsrc_payment.submit();
+            //             } else if (response.data.type == 'error') {
+            //                 self.loading = false;
+            //                 self.validate = false;
+            //                 self.errors = response.data.message;
+            //             }
+            //         })
+            //         .catch(function (error) {
+            //             self.loading = false;
+            //             self.validate = false;
                     
-                        if (error.response.data.errors.ccExpiryMonth) {
-                            self.cybsrc_form.cc_expiry_month_error = error.response.data.errors.ccExpiryMonth[0];
-                            self.cybsrc_form.is_cc_expiry_month_error = true;
-                        }
-                        if (error.response.data.errors.ccExpiryYear) {
-                            self.cybsrc_form.cc_expiry_year_error = error.response.data.errors.ccExpiryYear[0];
-                            self.cybsrc_form.is_cc_expiry_year_error = true;
-                        }                        
-                    });
-                }           
-            },
+            //             if (error.response.data.errors.ccExpiryMonth) {
+            //                 self.cybsrc_form.cc_expiry_month_error = error.response.data.errors.ccExpiryMonth[0];
+            //                 self.cybsrc_form.is_cc_expiry_month_error = true;
+            //             }
+            //             if (error.response.data.errors.ccExpiryYear) {
+            //                 self.cybsrc_form.cc_expiry_year_error = error.response.data.errors.ccExpiryYear[0];
+            //                 self.cybsrc_form.is_cc_expiry_year_error = true;
+            //             }                        
+            //         });
+            //     }           
+            // },
         }
     });
 }

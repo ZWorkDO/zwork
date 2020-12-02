@@ -1229,10 +1229,14 @@ class UserController extends Controller
             $product_info["project_type"] = "";
             $product_info["service_seller"] = 0;
             $product_info["cost"] = $package->cost;
-            $payment_info = CyberSourceHelper::buildRequestParams($product_info);            
+
+            $payment_info["reference_fields"] = $product_info;
+                
+            // $payment_info = CyberSourceHelper::buildRequestParams($product_info);            
 
             if (file_exists(resource_path('views/extend/back-end/package/checkout.blade.php'))) {
-                return view::make('extend.back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'payment_info', 'symbol', 'mode'));
+                return view::make('extend.back-end.package.checkout', compact('package', 'package_options',
+                 'payment_gateway', 'payment_info', 'symbol', 'mode'));
             } else {
                 return view::make('back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'payment_info', 'symbol', 'mode'));
             }

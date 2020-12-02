@@ -157,7 +157,7 @@
                         </form>
                     </b-modal>
                 </div>
-                <div class="d-block text-center">
+                <!-- <div class="d-block text-center">
                     <b-modal ref="cybSrcModalRef" hide-footer title="Credit Card (CyberSource)" class="la-pay-stripe" :no-close-on-backdrop="true">
                         <form  class="wt-formtheme wt-form-paycard" method="POST" @submit="submitCybSrcFrom" id="cybsrc-payment-form" role="form" action="https://testsecureacceptance.cybersource.com/silent/pay">
                             {{ csrf_field() }}
@@ -205,7 +205,7 @@
                             </fieldset>
                         </form>
                     </b-modal>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
