@@ -658,7 +658,7 @@ class User extends Authenticatable implements MustVerifyEmail
             if ($type = 'freelancer') {
                 $users = $users->orderByRaw('-badge_id DESC')->orderBy('expiry_date', 'DESC');
             } else {
-                $users = $users->orderBy('created_at', 'DESC');
+                $users = $users->orderBy('created_at', 'DESC')->orderBy('id', 'asc');
             }
             $users = $users->paginate(8)->setPath('');
         }
