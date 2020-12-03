@@ -660,7 +660,7 @@ class User extends Authenticatable implements MustVerifyEmail
             } else {
                 $users = $users->orderBy('created_at', 'DESC')->orderBy('id', 'asc');
             }
-            $users = $users->paginate(8)->setPath('');
+            $users = $users->paginate(30)->setPath('');
         }
         foreach ($filters as $key => $filter) {
             $pagination = $users->appends(
