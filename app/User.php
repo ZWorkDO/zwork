@@ -33,6 +33,7 @@ use canResetPassword;
 use App\Notifications;
 use Event;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Elasticquent\ElasticquentTrait;
 
 
 /**
@@ -56,6 +57,40 @@ class User extends Authenticatable implements MustVerifyEmail
         'location_id', 'verification_code', 'address',
         'longitude', 'latitude'
     ];
+
+    /* ElasticSearch Model */
+    use ElasticquentTrait;
+
+    protected $mappingProperties = array(
+        'location_id' => array(
+            'type' => 'integer',
+            "analyzer" => "standard",
+        ),
+        'first_name' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'last_name' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'slug' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'tagline' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'description' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        ),
+    );
+
+    function getIndexName() {
+        return 'user_index';
+    }
 
     /**
      * For creating event.
@@ -391,6 +426,9 @@ class User extends Authenticatable implements MustVerifyEmail
             $this->expiry_date = null;
             $this->save();
 
+            // reindex user
+            $this->addToIndex();
+
             $user_id = $this->id;
 
             $updateBuilder = DB::table('model_has_roles')
@@ -618,9 +656,9 @@ class User extends Authenticatable implements MustVerifyEmail
                 $users->whereIn('id', $user_id);
             }
             if ($type = 'freelancer') {
-                $users = $users->orderByRaw('-badge_id DESC')->orderBy('expiry_date', 'DESC');
+                    $users = $users->orderByRaw('-badge_id DESC')->orderBy('expiry_date', 'DESC')->orderBy('id', 'DESC');
             } else {
-                $users = $users->orderBy('created_at', 'DESC');
+                $users = $users->orderBy('created_at', 'DESC')->orderBy('id', 'DESC');
             }
             $users = $users->paginate(8)->setPath('');
         }

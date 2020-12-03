@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
 use Intervention\Image\Facades\Image;
 use File;
 use Storage;
+use Elasticquent\ElasticquentTrait;
 
 /**
  * Class Category
@@ -34,6 +35,28 @@ class Category extends Model
     protected $fillable = array(
         'title', 'slug', 'abstract'
     );
+
+    /* ElasticSearch */
+    use ElasticquentTrait;
+
+    protected $mappingProperties = array(
+        'title' => [
+            'type' => 'string',
+            'analyzer' => 'standard',
+        ],
+        'slug' => [
+            'type' => 'string',
+            'analyzer' => 'standard',
+        ],
+        'abstract' => [
+            'type' => 'text',
+            'analyzer' => 'standard',
+        ],
+    );
+
+    function getIndexName() {
+        return 'category_index';
+    }
 
     /**
      * Protected Date
@@ -123,6 +146,7 @@ class Category extends Model
             $this->save();
             $json['type'] = 'success';
             $json['message'] = trans('lang.cat_created');
+            $this->addToIndex();
             return $json;
         }
     }

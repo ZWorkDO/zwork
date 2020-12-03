@@ -35,6 +35,10 @@ class Profession extends Model
         ],
     );
 
+    function getIndexName() {
+        return 'profession_index';
+    }
+
     /**
      * Fillables for the database
      *

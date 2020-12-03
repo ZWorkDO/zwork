@@ -382,7 +382,7 @@ class Job extends Model
         if ($display_completed_projects == 'false') {
             $jobs = $jobs->where('status', '!=', 'completed');
         }
-        $jobs = $jobs->orderByRaw("is_featured DESC, updated_at DESC")->paginate(7)->setPath('');
+        $jobs = $jobs->orderByRaw("is_featured DESC, updated_at DESC, id DESC")->paginate(7)->setPath('');
         foreach ($filters as $key => $filter) {
             $pagination = $jobs->appends(
                 array(

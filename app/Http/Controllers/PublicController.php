@@ -693,6 +693,7 @@ class PublicController extends Controller
                     $search_english_levels,
                     $search_languages
                 );
+                $users_total_records = count($search['users']);
                 $users = count($search['users']) > 0 ? $search['users'] : '';
                 $save_freelancer = !empty(auth()->user()->profile->saved_freelancer) ?
                     unserialize(auth()->user()->profile->saved_freelancer) : array();
