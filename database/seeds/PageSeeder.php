@@ -115,7 +115,8 @@ class PageSeeder extends Seeder
                     </div>
                     <ul class="wt-accordionhold accordion">
                     <li>
-                    <div id="headingOne" class="wt-accordiontitle collapsed" data-toggle="collapse" data-target="#collapseOne">Adipisicing elit, sed do eiusmod tempor incididunt?</div>
+                    <div id="headingOne" class="wt-accordiontitle collapsed" data-toggle="collapse" data-target="#collapseOne">
+                    Adipisicing elit, sed do eiusmod tempor incididunt?</div>
                     <div id="collapseOne" class="wt-accordiondetails collapse show" aria-labelledby="headingOne">
                     <div class="wt-title">
                     <h3>Digital Marketing</h3>
