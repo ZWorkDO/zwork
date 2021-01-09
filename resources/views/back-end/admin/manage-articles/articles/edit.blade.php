@@ -46,9 +46,9 @@
                                     <div class="form-group">
                                         <span class="wt-select">
                                         @if ($role === 'admin')
-                                            <select name="status" class="select" data-placeholder = "{{trans('lang.select_cats')}}">
+                                            <select name="status" class="select" >
                                         @else
-                                            <select name="status" class="select" data-placeholder = "{{trans('lang.select_cats')}}" disabled>
+                                            <select name="status" class="select" disabled>
                                         @endif
                                                 @foreach ($article_status as $key => $article_stat)
                                                 <option value="{{$key}}">{{$article_stat}}</option>
@@ -65,6 +65,7 @@
                                                         :img_ref="'article_ref'"
                                                         :url="'{{url('admin/articles/upload-temp-image')}}'"
                                                         :name="'uploaded_image'"
+                                                        :aspect_ratio="4.0714285714"
                                                         >
                                                     </upload-image>
                                                     {!! Form::hidden( 'uploaded_image', '', ['id'=>'hidden_img'] ) !!}
@@ -90,6 +91,7 @@
                                                     :img_ref="'cat_ref'"
                                                     :url="'{{url('admin/articles/upload-temp-image')}}'"
                                                     :name="'uploaded_image'"
+                                                    :aspect_ratio="4.0714285714" 
                                                     >
                                                 </upload-image>
                                                 {!! Form::hidden( 'uploaded_image', '', ['id'=>'hidden_img'] ) !!}

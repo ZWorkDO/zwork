@@ -58,7 +58,7 @@ import Event from '../event.js';
                     e.preventDefault();
                     var self = this;
                     this.socket.emit('chat-message',{ message: this.newmessage, user_id: this.receiver, user: this.name, image: this.image });
-                    this.messages.push({ message: this.newmessage, image: this.image, is_sender: 'yes', id:now});
+                    this.messages.push({ message: this.newmessage, image: this.image, is_sender: 'si', id:now});
                     axios.post(APP_URL + '/message/send-private-message',{
                         author_id : Laravel.user.id,
                         receiver_id: self.receiver,

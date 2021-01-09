@@ -233,9 +233,9 @@ class ProposalController extends Controller
                                         $template_data = EmailTemplate::getEmailTemplateByID($proposal_received_template->id);
                                         $template_submit_proposal = EmailTemplate::getEmailTemplateByID($proposal_submitted_template->id);
                                         $email_params['employer'] = Helper::getUserName($job->employer->id);
-                                        $email_params['employer_profile'] = url('profile/' . $job->employer->slug);
+                                        $email_params['employer_profile'] = url('profile-project/' . $job->employer->slug);
                                         $email_params['freelancer'] = Helper::getUserName(Auth::user()->id);
-                                        $email_params['freelancer_profile'] = url('profile/' . $user->slug);
+                                        $email_params['freelancer_profile'] = url('profile-professional/' . $user->slug);
                                         $email_params['title'] = $job->title;
                                         $email_params['link'] = url('job/' . $job->slug);
                                         $email_params['proposals_link'] = url('employer/dashboard/job/'.$job->slug.'/proposals');
@@ -291,9 +291,9 @@ class ProposalController extends Controller
                                     $template_data = EmailTemplate::getEmailTemplateByID($proposal_received_template->id);
                                     $template_submit_proposal = EmailTemplate::getEmailTemplateByID($proposal_submitted_template->id);
                                     $email_params['employer'] = Helper::getUserName($job->employer->id);
-                                    $email_params['employer_profile'] = url('profile/' . $job->employer->slug);
+                                    $email_params['employer_profile'] = url('profile-project/' . $job->employer->slug);
                                     $email_params['freelancer'] = Helper::getUserName(Auth::user()->id);
-                                    $email_params['freelancer_profile'] = url('profile/' . $user->slug);
+                                    $email_params['freelancer_profile'] = url('profile-professional/' . $user->slug);
                                     $email_params['title'] = $job->title;
                                     $email_params['link'] = url('job/' . $job->slug);
                                     $email_params['amount'] = $request['amount'];

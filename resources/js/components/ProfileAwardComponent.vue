@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group form-group-half">
                                 <date-pick v-model="award.date"></date-pick>
-                                <input type="hidden" v-bind:name="'award['+[award.count]+'][award_date]'" :value="award.date">
+                                <input type="hidden" v-bind:name="'award['+[award.count]+'][award_date]'" class="form-control" :placeholder="ph_award_date" :value="award.date">
                             </div>
                             <div class="form-group award_image_uploaded_placeholder" style="display:none">
                             <ul class="wt-attachfile">
@@ -83,7 +83,7 @@ import Event from '../event.js';
 import DatePick from 'vue-date-pick';
 export default{
     components: {uploadimage, updateaward, DatePick},
-    props: ['widget_title', 'server_error_message', 'server_errors', 'ph_award_title'],
+    props: ['widget_title', 'server_error_message', 'server_errors', 'ph_award_title', 'ph_award_date'],
         data(){
             return {
                 stored_awards:[],
@@ -93,7 +93,7 @@ export default{
                     award_title: this.ph_award_title,
                     award_hidden_image:'',
                     award_url:'Award url here',
-                    date:'Select Award date',
+                    date: this.ph_award_date,
                     count: 0,
                     img_id: 'award_img',
                     img_ref: 'award_img_ref',

@@ -97,19 +97,21 @@
                                             $employer_payment_module = !empty($payment_settings) && !empty($payment_settings[0]['employer_package']) ? $payment_settings[0]['employer_package'] : 'true';
                                         @endphp
                                         <div class="wt-userlogedin">
-                                            <figure class="wt-userimg">
-                                                {{-- <img src="{{{ asset($profile_image) }}}" alt="{{{ trans('lang.user_avatar') }}}"> --}}
-                                                <img src="{{{ asset(Helper::getImage('uploads/users/' . Auth::user()->id, $profile->avater, '' , 'user.jpg')) }}}" alt="{{{ trans('lang.user_avatar') }}}">
-                                            </figure>
-                                            <div class="wt-username">
-                                                <h3>{{{ Helper::getUserName(Auth::user()->id) }}}</h3>
-                                                <span>{{{ !empty(Auth::user()->profile->tagline) ? str_limit(Auth::user()->profile->tagline, 26, '') : Helper::getAuthRoleName() }}}</span>
-                                            </div>
-                                            @if (file_exists(resource_path('views/extend/back-end/includes/profile-menu.blade.php'))) 
-                                                @include('extend.back-end.includes.profile-menu')
-                                            @else 
-                                                @include('back-end.includes.profile-menu')
-                                            @endif
+                                            <a href="{{{ url($role.'/welcome') }}}">
+                                                <figure class="wt-userimg">
+                                                    {{-- <img src="{{{ asset($profile_image) }}}" alt="{{{ trans('lang.user_avatar') }}}"> --}}
+                                                    <img src="{{{ asset(Helper::getImage('uploads/users/' . Auth::user()->id, $profile->avater, '' , 'user.jpg')) }}}" alt="{{{ trans('lang.user_avatar') }}}">
+                                                </figure>
+                                                <div class="wt-username">
+                                                    <h3>{{{ Helper::getUserName(Auth::user()->id) }}}</h3>
+                                                    <span>{{{ !empty(Auth::user()->profile->tagline) ? str_limit(Auth::user()->profile->tagline, 26, '') : Helper::getAuthRoleName() }}}</span>
+                                                </div>
+                                                @if (file_exists(resource_path('views/extend/back-end/includes/profile-menu.blade.php'))) 
+                                                    @include('extend.back-end.includes.profile-menu')
+                                                @else 
+                                                    @include('back-end.includes.profile-menu')
+                                                @endif
+                                            </a>
                                         </div>
                                     @endauth
                                 </div>
@@ -215,19 +217,21 @@
                                             $employer_payment_module = !empty($payment_settings) && !empty($payment_settings[0]['employer_package']) ? $payment_settings[0]['employer_package'] : 'true';
                                         @endphp
                                             <div class="wt-userlogedin">
-                                                <figure class="wt-userimg">
-                                                    {{-- <img src="{{{ asset($profile_image) }}}" alt="{{{ trans('lang.user_avatar') }}}"> --}}
-                                                    <img src="{{{ asset(Helper::getImage('uploads/users/' . Auth::user()->id, $profile->avater, '' , 'user.jpg')) }}}" alt="{{{ trans('lang.user_avatar') }}}">
-                                                </figure>
-                                                <div class="wt-username">
-                                                    <h3>{{{ Helper::getUserName(Auth::user()->id) }}}</h3>
-                                                    <span>{{{ !empty(Auth::user()->profile->tagline) ? str_limit(Auth::user()->profile->tagline, 26, '') : Helper::getAuthRoleName() }}}</span>
-                                                </div>
-                                                @if (file_exists(resource_path('views/extend/back-end/includes/profile-menu.blade.php'))) 
-                                                    @include('extend.back-end.includes.profile-menu')
-                                                @else 
-                                                    @include('back-end.includes.profile-menu')
-                                                @endif
+                                                <a href="{{{ url($role.'/welcome') }}}">
+                                                    <figure class="wt-userimg">
+                                                        {{-- <img src="{{{ asset($profile_image) }}}" alt="{{{ trans('lang.user_avatar') }}}"> --}}
+                                                        <img src="{{{ asset(Helper::getImage('uploads/users/' . Auth::user()->id, $profile->avater, '' , 'user.jpg')) }}}" alt="{{{ trans('lang.user_avatar') }}}">
+                                                    </figure>
+                                                    <div class="wt-username">
+                                                        <h3>{{{ Helper::getUserName(Auth::user()->id) }}}</h3>
+                                                        <span>{{{ !empty(Auth::user()->profile->tagline) ? str_limit(Auth::user()->profile->tagline, 26, '') : Helper::getAuthRoleName() }}}</span>
+                                                    </div>
+                                                    @if (file_exists(resource_path('views/extend/back-end/includes/profile-menu.blade.php'))) 
+                                                        @include('extend.back-end.includes.profile-menu')
+                                                    @else 
+                                                        @include('back-end.includes.profile-menu')
+                                                    @endif
+                                                </a>
                                             </div>
                                     @endauth
                                     @if ($slider['style'] == 'style1')
@@ -342,19 +346,21 @@
                                         $employer_payment_module = !empty($payment_settings) && !empty($payment_settings[0]['employer_package']) ? $payment_settings[0]['employer_package'] : 'true';
                                     @endphp
                                         <div class="wt-userlogedin">
-                                            <figure class="wt-userimg">
-                                                {{-- <img src="{{{ asset($profile_image) }}}" alt="{{{ trans('lang.user_avatar') }}}"> --}}
-                                                <img src="{{{ asset(Helper::getImage('uploads/users/' . Auth::user()->id, $profile->avater, '' , 'user.jpg')) }}}" alt="{{{ trans('lang.user_avatar') }}}">
-                                            </figure>
-                                            <div class="wt-username">
-                                                <h3>{{{ Helper::getUserName(Auth::user()->id) }}}</h3>
-                                                <span>{{{ !empty(Auth::user()->profile->tagline) ? str_limit(Auth::user()->profile->tagline, 26, '') : Helper::getAuthRoleName() }}}</span>
-                                            </div>
-                                            @if (file_exists(resource_path('views/extend/back-end/includes/profile-menu.blade.php'))) 
-                                                @include('extend.back-end.includes.profile-menu')
-                                            @else 
-                                                @include('back-end.includes.profile-menu')
-                                            @endif
+                                            <a href="{{{ url($role.'/welcome') }}}">
+                                                <figure class="wt-userimg">
+                                                    {{-- <img src="{{{ asset($profile_image) }}}" alt="{{{ trans('lang.user_avatar') }}}"> --}}
+                                                    <img src="{{{ asset(Helper::getImage('uploads/users/' . Auth::user()->id, $profile->avater, '' , 'user.jpg')) }}}" alt="{{{ trans('lang.user_avatar') }}}">
+                                                </figure>
+                                                <div class="wt-username">
+                                                    <h3>{{{ Helper::getUserName(Auth::user()->id) }}}</h3>
+                                                    <span>{{{ !empty(Auth::user()->profile->tagline) ? str_limit(Auth::user()->profile->tagline, 26, '') : Helper::getAuthRoleName() }}}</span>
+                                                </div>
+                                                @if (file_exists(resource_path('views/extend/back-end/includes/profile-menu.blade.php'))) 
+                                                    @include('extend.back-end.includes.profile-menu')
+                                                @else 
+                                                    @include('back-end.includes.profile-menu')
+                                                @endif
+                                            </a>
                                         </div>
                                 @endauth
                                 @if (!empty(Route::getCurrentRoute()) && Route::getCurrentRoute()->uri() != '/' && Route::getCurrentRoute()->uri() != 'home')

@@ -11,6 +11,7 @@
             </div>
         </vue-dropzone> 
         <div :class="this.id" v-if="this.dropzoneOptions.maxFiles == 1"></div>
+        <span style="display: none;" id="crop_translation">{{ trans('lang.confirm_crop') }} </span>
     </div>
 </template>
 
@@ -30,9 +31,10 @@
 //     </div>
 // `;
 import vue2Dropzone from 'vue2-dropzone'
+import cropperOpts from './CropperOptions';
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 export default {
-    props: ['id', 'img_ref', 'url', 'name', 'max_images', 'hidden_name', 'hidden_id', 'dynamicHidden'],    
+    props: ['id', 'aspect_ratio','img_ref', 'url', 'name', 'max_images', 'hidden_name', 'hidden_id', 'dynamicHidden'],    
     components: {
         vueDropzone: vue2Dropzone
     },
@@ -48,14 +50,17 @@ export default {
         dropzoneOptions: {
                 url: this.getUrl(),
                 maxFilesize: 2, // MB
+                acceptedFiles: ".png, .jpg, .jpeg",
                 maxFiles: this.getMaxImages(),
                 previewTemplate: this.getImageUploadTemplate(),
                 previewsContainer: '.'+this.getPreviewerClass(),
                 paramName:this.getName(),
-                acceptedFiles:'image/*',
+                aspect_ratio:this.getAspectRatio(),
+                // acceptedFiles:'image/*',
                 headers: {
                     'x-csrf-token': document.querySelectorAll('meta[name=csrf-token]')[0].getAttributeNode('content').value,
                 },
+                transformFile: cropperOpts.transformer,
                 init: function() {
                     var myDropzone = this;
                     // this.on("addedfile", function(file) { 
@@ -109,6 +114,12 @@ export default {
         },
         getName() {
             return this.name;
+        },
+        getAspectRatio() {
+            if (!this.aspect_ratio) {
+                return 0;
+            }
+            return this.aspect_ratio;
         },
         getPreviewerClass() {
             return this.id;

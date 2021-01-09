@@ -27,7 +27,7 @@ class User extends JsonResource
         $user_by_role =  User::role($type)->select('id')->get()->pluck('id')->toArray();
         $users = User::whereIn('id', $user_by_role)->get()->toArray();
         foreach ($users as $key => $user) {
-            $json[$key]['favourite'] = in_array($user['id'], $save_freelancer) ? 'yes' : 'no';
+            $json[$key]['favourite'] = in_array($user['id'], $save_freelancer) ? 'si' : 'no';
             $json[$key]['id'] = $user['id'];
         }
         return $json;

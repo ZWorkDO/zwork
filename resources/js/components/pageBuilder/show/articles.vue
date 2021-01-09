@@ -23,7 +23,7 @@
                                         <a :href="baseURL+'/articles/'+cat.slug" class="wt-articleby" v-for="(cat, catIndex) in articleData.cat" :key="catIndex">{{cat.title}}</a>
                                     </div>
                                     <h3><a :href="baseURL+'/article/'+articleData.slug">{{articleData.title}}</a></h3>
-                                    <span class="wt-datetime"><i class="ti-calendar"></i> {{articleData.published_date}}</span>
+                                    <span class="wt-user"><i class="lnr lnr-user"></i> {{articleData.name}} | <i class="ti-calendar"></i> {{articleData.published_date}}</span> 
                                 </div>
                                 <!-- <ul class="wt-moreoptions">
                                     <li><a href="javascript:void(0);"><i class="ti-comment"></i> Comments</a></li>
@@ -55,7 +55,14 @@ export default {
             .get(APP_URL + "/get-articles")
             .then(function(response) {
                 if (response.data.type == "success") {
-                    self.articleList =response.data.articles
+                    //debugger
+                    self.articleList =response.data.articles.reverse().slice(0,3)
+                    for(let dateBlog of  self.articleList){
+                        let dateArray = dateBlog.published_date.split(' ') 
+                        dateBlog.published_date  = dateArray[0];
+                        let  showDate = dateBlog.published_date;
+                        console.log(showDate)   
+                    }
                 }
             })
             .catch(function(error) {  });

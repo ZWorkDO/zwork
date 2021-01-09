@@ -7,7 +7,7 @@
 @section('title'){{ $user_name }} | {{ $tagline }} @stop
 @section('description', "$desc")
 @section('content')
-    <div class="wt-haslayout wt-innerbannerholder wt-innerbannerholdervtwo" style="background-image: url({{{ asset(Helper::getUserProfileBanner($user->id)) }}});">
+    <div class="wt-haslayout wt-innerbannerholder wt-innerbannerholdervtwo" style="background-image: url({{{ asset(Helper::getUserProfileProfessionalBanner($user->id)) }}});">
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-8 push-lg-3">
@@ -54,7 +54,7 @@
                                                 {{{ trans('lang.member_since') }}}&nbsp;{{{ $joining_date }}}
                                             @endif
                                             <br>
-                                            <a href="{{url('profile/'.$user->slug)}}">{{ '@' }}{{{ $user->slug }}}</a>
+                                            <a href="{{url('profile-professional/'.$user->slug)}}">{{ '@' }}{{{ $user->slug }}}</a>
                                         </span>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                                         <h3 data-from="0" data-to="{{{ Helper::getProposals($user->id, 'completed')->count() }}}" data-speed="8000" data-refresh-interval="100">{{{ Helper::getProposals($user->id, 'completed')->count() }}}</h3>
                                         <h4>{{ trans('lang.completed_projects') }}</h4>
                                     </div>
-                                    <div class="wt-statisticcontent-full wt-countercolor4">
+                                    <div class="wt-statisticcontent wt-countercolor4">
                                         <h3 data-from="0" data-to="{{{ Helper::getProposals($user->id, 'cancelled')->count() }}}" data-speed="800" data-refresh-interval="02">{{{ Helper::getProposals($user->id, 'cancelled')->count() }}}</h3>
                                         <h4>{{ trans('lang.average_delivery_time') }}</h4>
                                     </div>
@@ -149,7 +149,7 @@
                                                         <div class="wt-freelancers {{{$enable_slider}}}">
                                                             @foreach ($attachments as $attachment)
                                                                 <figure class="item">
-                                                                    <a href="{{{ url('profile/'.$user->slug) }}}"><img src="{{{asset(Helper::getImageWithSize('uploads/services/'.$user->id, $attachment, 'medium'))}}}" alt="img description" class="item"></a>
+                                                                    <a href="{{{ url('profile-professional/'.$user->slug) }}}"><img src="{{{asset(Helper::getImageWithSize('uploads/services/'.$user->id, $attachment, 'medium'))}}}" alt="img description" class="item"></a>
                                                                 </figure>
                                                             @endforeach
                                                         </div>
@@ -163,7 +163,7 @@
                                                         </figure>
                                                         <div class="wt-freelancers-content">
                                                             <div class="dc-title">
-                                                                <a href="{{{ url('profile/'.$user->slug) }}}"><i class="fa fa-check-circle"></i> {{{Helper::getUserName($user->id)}}}</a>
+                                                                <a href="{{{ url('profile-professional/'.$user->slug) }}}"><i class="fa fa-check-circle"></i> {{{Helper::getUserName($user->id)}}}</a>
                                                                 <a href="{{{url('service/'.$service->slug)}}}"><h3>{{{$service->title}}}</h3></a>
                                                                 <span><strong>{{ $symbol }}{{{$service->price}}}</strong> {{trans('lang.starting_from')}}</span>
                                                             </div>
@@ -216,7 +216,7 @@
                                                 <div class="wt-userlistingcontent">
                                                     <div class="wt-contenthead">
                                                         <div class="wt-title">
-                                                            <a href="{{{ url('profile/'.$job->employer->slug) }}}">@if ($user->user_verified === 1)<i class="fa fa-check-circle"></i>@endif {{{ Helper::getUserName($review->user_id) }}}</a>
+                                                            <a href="{{{ url('profile-project/'.$job->employer->slug) }}}">@if ($user->user_verified === 1)<i class="fa fa-check-circle"></i>@endif {{{ Helper::getUserName($review->user_id) }}}</a>
                                                             <h3>{{{ $job->title }}}</h3>
                                                         </div>
                                                         <ul class="wt-userlisting-breadcrumb">
@@ -253,7 +253,7 @@
                                                     <div class="wt-userlistingcontent">
                                                         <div class="wt-contenthead">
                                                             <div class="wt-title">
-                                                                <a href="{{{ url('profile/'.$user->slug) }}}">@if ($user->user_verified == 1)<i class="fa fa-check-circle"></i>@endif {{{ Helper::getUserName($review->user_id) }}}</a>
+                                                                <a href="{{{ url('profile-professional/'.$user->slug) }}}">@if ($user->user_verified == 1)<i class="fa fa-check-circle"></i>@endif {{{ Helper::getUserName($review->user_id) }}}</a>
                                                                 <h3>{{{ $service->title }}}</h3>
                                                             </div>
                                                             <ul class="wt-userlisting-breadcrumb">
@@ -391,7 +391,7 @@
                             <div class="wt-proposalsr">
                                 <div class="tg-authorcodescan tg-authorcodescanvtwo">
                                     <figure class="tg-qrcodeimg">
-                                        {!! QrCode::size(100)->generate(Request::url('profile/'.$user->slug)); !!}
+                                        {!! QrCode::size(100)->generate(Request::url('profile-professional/'.$user->slug)); !!}
                                     </figure>
                                     <div class="tg-qrcodedetail">
                                         <span class="lnr lnr-laptop-phone"></span>

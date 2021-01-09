@@ -132,14 +132,14 @@
                                             <div class="wt-userlistingcontent">
                                                 <div class="wt-contenthead">
                                                     <div class="wt-title">
-                                                        <a href="{{{ url('profile/'.$freelancer->slug) }}}">
+                                                        <a href="{{{ url('profile-professional/'.$freelancer->slug) }}}">
                                                             @if ($verified_user == 1)
                                                                 <i class="fa fa-check-circle"></i>
                                                             @endif
                                                             {{{ Helper::getUserName($freelancer->id) }}}
                                                         </a>
                                                         @if (!empty($freelancer->profile->tagline))
-                                                            <h2><a href="{{{ url('profile/'.$freelancer->slug) }}}">{{{ $freelancer->profile->tagline }}}</a></h2>
+                                                            <h2><a href="{{{ url('profile-professional/'.$freelancer->slug) }}}">{{{ $freelancer->profile->tagline }}}</a></h2>
                                                         @endif
                                                     </div>
                                                     <ul class="wt-userlisting-breadcrumb">
@@ -148,9 +148,9 @@
                                                                 {{ (!empty($symbol['symbol'])) ? $symbol['symbol'] : '$' }}{{{ $freelancer->profile->hourly_rate }}} {{ trans('lang.per_hour') }}</span>
                                                             </li>
                                                         @endif
-                                                        @if (!empty($freelancer->location))
+                                                        <!-- @if (!empty($freelancer->location))
                                                             <li><span><img src="{{{ asset($flag)}}}" alt="Flag"> {{{ !empty($freelancer->location->title) ? $freelancer->location->title : '' }}}</span></li>
-                                                        @endif
+                                                        @endif -->
                                                         @if (in_array($freelancer->id, $save_freelancer))
                                                             <li class="wt-btndisbaled">
                                                                 <a href="javascrip:void(0);" class="wt-clicksave wt-clicksave">
@@ -219,11 +219,12 @@
                 item: 6,
                 rtl:direction,
                 loop:true,
-                nav:false,
-                margin: 0,
-                autoplay:false,
+                nav:true,
+                margin: 10,
+                autoplay:true,
                 center: true,
                 responsiveClass:true,
+                navText:["<img src='images/prettyPhoto/dark_rounded/owlPrev.png'>","<img src='images/prettyPhoto/dark_rounded/owlNext.png'>"],
                 responsive:{
                     0:{items:1,},
                     481:{items:2,},

@@ -188,7 +188,7 @@ class RegisterController extends Controller
             $user = User::find($id);
             Auth::login($user);
             $json['email'] = 'not_configured';
-            $json['url'] = url($user->getRoleNames()->first().'/dashboard');
+            $json['url'] = url($user->getRoleNames()->first().'/welcome');
         }
         $json['type'] = 'success';
         return $json;

@@ -31,7 +31,7 @@ export default {
                     showCancelButton: true,
                     customContainerClass:'hire_popup',
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,

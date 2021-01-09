@@ -51,7 +51,7 @@
                                 @if ($service->is_featured == 'true')
                                     <span class="wt-featuredtagvtwo">{{ trans('lang.featured') }}</span>
                                 @endif
-                                {{--  <span class="wt-featuredtagvtwo">Featured</span>  --}}
+                                {{--  <span class="wt-featuredtagvtwo">{{ trans('lang.featured') }}</span>  --}}
                                 <div class="wt-servicesingle-title">
                                     <div class="wt-title">
                                         @if (!empty($service->title))
@@ -120,17 +120,17 @@
                                                 <div class="wt-userlistingcontent">
                                                     <div class="wt-contenthead">
                                                         <div class="wt-title">
-                                                            <a href="{{{ url('profile/'.$user->slug) }}}">@if ($user->user_verified == 1)<i class="fa fa-check-circle"></i>@endif {{{ Helper::getUserName($review->user_id) }}}</a>
+                                                            <a href="{{{ url('profile-professional/'.$user->slug) }}}">@if ($user->user_verified == 1)<i class="fa fa-check-circle"></i>@endif {{{ Helper::getUserName($review->user_id) }}}</a>
                                                             <h3>{{{ $service->title }}}</h3>
                                                         </div>
                                                         <ul class="wt-userlisting-breadcrumb">
-                                                            @if (!empty($service->location))
+                                                            <!-- @if (!empty($service->location))
                                                                 <li>
                                                                     <span>
                                                                         <img src="{{{asset(Helper::getLocationFlag($service->location->flag))}}}" alt="{{{ trans('lang.flag_img') }}}"> {{{ $service->location->title }}}
                                                                     </span>
                                                                 </li>
-                                                            @endif
+                                                            @endif -->
                                                             <li><span><i class="far fa-calendar"></i> {{ Carbon\Carbon::parse($service->created_at)->format('M Y') }} - {{ Carbon\Carbon::parse($service->updated_at)->format('M Y') }}</span></li>
                                                             <li>
                                                                 <span class="wt-stars"><span style="width: {{ $stars }}%;"></span></span>

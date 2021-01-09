@@ -24,6 +24,7 @@ use App\User;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
+use Elasticquent\ElasticquentTrait;
 
 /**
  * Class Profile
@@ -31,7 +32,6 @@ use Illuminate\Support\Facades\Schema;
  */
 class Profile extends Model
 {
-
     /**
      * The attributes that are mass assignable.
      *
@@ -48,6 +48,64 @@ class Profile extends Model
         'nr', 'main_activity', 'nationality', 'birthdate', 'marital_status', 'id_type', 
         'id_number', 'profession_id', 'grade_id',
     ];  
+
+    /* ElasticSearch Model */
+    use ElasticquentTrait;
+
+    protected $mappingProperties = array(
+        'user_id' => array(
+            'type' => 'integer',
+            "analyzer" => "standard",
+        ),
+        'department_id' => array(
+            'type' => 'integer',
+            "analyzer" => "standard",
+        ),
+        'freelancer_type' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'english_level' => array(
+            'type' => 'enum',
+            "analyzer" => "standard",
+        ),
+        'hourly_rate' => array(
+            'type' => 'integer',
+            "analyzer" => "standard",
+        ),
+        'experience' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        ),
+        'education' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        ),
+        'awards' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        ),
+        'projects' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        ),
+        'gender' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'tagline' => array(
+            'type' => 'string',
+            "analyzer" => "standard",
+        ),
+        'description' => array(
+            'type' => 'text',
+            "analyzer" => "standard",
+        )
+    );
+
+    function getIndexName() {
+        return 'profile_index';
+    }
 
     /**
      * Get the department that owns the employer.
@@ -208,7 +266,9 @@ class Profile extends Model
         $profile->position = filter_var($request['position'], FILTER_SANITIZE_STRING);
         $profile->camara_id = filter_var($request['camara_id'], FILTER_SANITIZE_STRING);
         $profile->nr = filter_var($request['nr'], FILTER_SANITIZE_STRING);
-       
+        
+        // reindex ElasticSearch
+        $profile->addToIndex();
         return $profile->save();
     }
 

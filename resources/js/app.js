@@ -335,7 +335,7 @@ jQuery(document).ready(function () {
         plugins: ['code advlist autolink lists link image charmap print preview hr anchor pagebreak'],
         menubar: false,
         statusbar: false,
-        toolbar1: 'undo redo | insert | image | styleselect | bold italic | alignleft aligncenter alignright alignjustify code',
+        toolbar1: 'undo redo | insert | image | styleselect | bold italic | alignleft aligncenter alignright alignjustify code link anchor',
         image_advtab: true,
         inline_styles : true,
         convert_urls: false,
@@ -956,7 +956,7 @@ if (document.getElementById("skill-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1041,7 +1041,7 @@ if (document.getElementById("dpt-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1194,7 +1194,7 @@ if (document.getElementById("pages-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1266,7 +1266,7 @@ if (document.getElementById("reviews")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1338,7 +1338,7 @@ if (document.getElementById("delivery-time")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1410,7 +1410,7 @@ if (document.getElementById("response-time")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1495,7 +1495,7 @@ if (document.getElementById("cat-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1592,7 +1592,7 @@ if (document.getElementById("badge-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1663,7 +1663,7 @@ if (document.getElementById("lang-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1742,7 +1742,7 @@ if (document.getElementById("location")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -2917,7 +2917,7 @@ if (document.getElementById("settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -2939,7 +2939,7 @@ if (document.getElementById("settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -2963,7 +2963,7 @@ if (document.getElementById("settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -2994,7 +2994,7 @@ if (document.getElementById("settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -3024,7 +3024,7 @@ if (document.getElementById("settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -3302,7 +3302,7 @@ if (document.getElementById("profile_settings")) {
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -3345,7 +3345,7 @@ if (document.getElementById("profile_settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -3485,7 +3485,18 @@ if (document.getElementById("post_job")) {
                 this.loading = true;
                 let register_Form = document.getElementById('post_job_form');
                 let form_data = new FormData(register_Form);
-                var description = tinyMCE.get('wt-tinymceeditor').getContent();
+                var description_1 = tinyMCE.get('wt-tinymceeditor-1').getContent();
+                var description_2 = tinyMCE.get('wt-tinymceeditor-2').getContent();
+                var description_3 = tinyMCE.get('wt-tinymceeditor-3').getContent();
+                var description_4 = tinyMCE.get('wt-tinymceeditor-4').getContent();
+                var description_5 = tinyMCE.get('wt-tinymceeditor-5').getContent();
+                var description = 
+                    "<b>"+ Vue.prototype.trans('lang.job_dtl_1') + "</b><br>" + description_1 +
+                    "<b>"+ Vue.prototype.trans('lang.job_dtl_2') + "</b><br>" + description_2 +
+                    "<b>"+ Vue.prototype.trans('lang.job_dtl_3') + "</b><br>" + description_3 +
+                    "<b>"+ Vue.prototype.trans('lang.job_dtl_4') + "</b><br>" + description_4 +
+                    "<b>"+ Vue.prototype.trans('lang.job_dtl_5') + "</b><br>" + description_5;
+
                 form_data.append('description', description);
                 var self = this;
                 axios.post(APP_URL + '/job/post-job', form_data)
@@ -3521,9 +3532,9 @@ if (document.getElementById("post_job")) {
                         if (error.response.data.errors.project_cost) {
                             self.showError(error.response.data.errors.project_cost[0]);
                         }
-                        if (error.response.data.errors.description) {
-                            self.showError(error.response.data.errors.description[0]);
-                        }
+                        // if (error.response.data.errors.description) {
+                        //     self.showError(error.response.data.errors.description[0]);
+                        // }
                         if (error.response.data.errors.latitude) {
                             self.showError(error.response.data.errors.latitude[0]);
                         }
@@ -3816,7 +3827,7 @@ if (document.getElementById("jobs")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -4008,7 +4019,7 @@ if (document.getElementById("jobs")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -5009,7 +5020,7 @@ if (document.getElementById("services")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -5237,7 +5248,7 @@ if (document.getElementById("article-cat")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -5316,7 +5327,7 @@ if (document.getElementById("articles")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,

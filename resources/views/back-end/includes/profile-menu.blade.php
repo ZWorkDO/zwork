@@ -134,7 +134,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{{ url($role.'/dashboard/welcome') }}}">
+                    <a href="{{{ url($role.'/dashboard') }}}">
                         <i class="ti-desktop"></i>
                         <span>{{ trans('lang.dashboard') }}</span>
                     </a>
