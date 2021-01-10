@@ -161,7 +161,7 @@ class MessageController extends Controller
                 }
                 $json['messages'][$key]['is_sender'] = 'no';
                 if ($message->user_id == $user_id) {
-                    $json['messages'][$key]['is_sender'] = 'yes';
+                    $json['messages'][$key]['is_sender'] = 'si';
                 }
                 $json['messages'][$key]['id'] = $message->id;
                 $json['messages'][$key]['user_id'] = $message->user_id;
