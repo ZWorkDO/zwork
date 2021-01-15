@@ -80,7 +80,7 @@
                                                 </figure>
                                                 <div class="wt-particlecontent">
                                                     <h3><a href="{{{ url('article/'.$article->slug) }}}">{{$article->title}}</a></h3>
-                                                    <span><i class="lnr lnr-clock"></i>{{ \Carbon\Carbon::parse($article->updated_at)->format('M d, Y')}}</span>
+                                                    <span><i class="lnr lnr-clock"></i>{{ \Carbon\Carbon::parse($article->updated_at)->format('M, D, Y')}}</span>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -89,6 +89,7 @@
                             @endif
                         </aside>
                     </div>
+
                     <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-8 float-left">
                         <div class="wt-classicaricle-holder">
                             <div class="wt-classicaricle-header">
@@ -115,7 +116,7 @@
                                                     <li>
                                                         <a href="javascript:void(0);">
                                                             <i class="lnr lnr-clock"></i>
-                                                            <span>{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y')}}</span>
+                                                            <span>{{ \Carbon\Carbon::parse($article->updated_at)->format('M , D , Y')}}</span>
                                                         </a>
                                                     </li>
                                                     <li>
@@ -129,6 +130,7 @@
                                         </div>
                                     @endforeach
                                 </div>
+
                                 @if ( method_exists($articles,'links') )
                                     {{ $articles->links('pagination.custom') }}
                                 @endif
