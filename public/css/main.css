@@ -20,6 +20,7 @@ Version: 1.0.0
  08.	Widgets
  09.	Flexslider
  10.	Grid
+ 11.    princing
 */
 
 :root {
@@ -288,6 +289,7 @@ option {
 li {
     line-height: 28px;
     list-style: disc inside none;
+    
 }
 
 ul ul {
@@ -4030,12 +4032,12 @@ body.wt-login .wt-userlogedin {
     list-style-type: none;
 }
 
-.wt-accordionhold li:nth-child(even) .wt-accordiontitle {
+.wt-accordionhold li:nth-child .wt-accordiontitle {
     border-top: 0;
     border-bottom: 0;
 }
 
-.wt-accordionhold li:nth-child(even) .wt-accordiondetails {
+.wt-accordionhold li:nth-child .wt-accordiondetails {
     border-bottom: 0;
     border-top: 1px solid #ddd;
 }
@@ -4056,7 +4058,7 @@ body.wt-login .wt-userlogedin {
     text-align: right;
     position: absolute;
     display: inline;
-    right: 5%;
+    right: 3%;
 }
 
 .wt-accordiontitle::after {
@@ -4066,7 +4068,7 @@ body.wt-login .wt-userlogedin {
     text-align: right;
     position: absolute;
     display: inline;
-    right: 5%;
+    right: 3%;
 }
 
 .wt-accordiontitle:hover {
@@ -13377,4 +13379,85 @@ a:focus {
 .modal.info-modal-carousel .modal-dialog .modal-content .carousel-control-prev,
 .modal.info-modal-carousel .modal-dialog .modal-content .carousel-control-next {
     width: 10%;
+}
+
+/* control icons */
+
+.icon::before{
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+.check::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: bold;
+    content: "\f00c";
+    color:#00cc67;
+}
+
+/*princing page*/
+
+.col-pr {
+    box-sizing: border-box;
+    float: left;
+    width: auto;
+    padding: 10px;
+    font-family: "Nunito", sans-serif;
+}
+
+.pr-tbl {
+  list-style-type: none;
+  border: 1px solid #eee;
+  -webkit-transition: 0.3s;
+  border-collapse: collapse;
+  transition: 0.3s;
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2);
+}
+
+.pr-tbl:hover {
+  -webkit-transform: scale(1.06);
+  -ms-transform: scale(1.06);
+  -o-transform: scale(1.06);
+  transform: scale(1.06)
+}
+.pr-tbl li {
+    padding: 5px;
+    text-align: left;
+    list-style:none;
+    border: hidden;
+    left: 10%;
+  }
+  
+.pr-tbl .header {
+  background-color: #111;
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.pr-tbl .grey {
+  background-color: #111;
+  color: white;
+  font-size: 25px;
+  text-align: center;
+  padding: 10px;
+}
+
+
+.pr-tbl .pr-btn {
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+  
+}
+
+@media only screen and (max-width: 600px) {
+  .columns-princing {
+    width: 100%;
+  }
 }
