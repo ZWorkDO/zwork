@@ -289,7 +289,7 @@ class ArticleController extends Controller
             $articles = $articles->whereIn('user_id', [$search_user]);
         }
 
-        $articles = $articles->whereIn('status', ['published'])->orderByRaw("status ASC, updated_at DESC")->paginate(4);
+        $articles = $articles->whereIn('status', ['published'])->orderByRaw("status ASC, created_at DESC")->paginate(4);
 
         if (file_exists(resource_path('views/extend/front-end/articles/index.blade.php'))) {
             return View::make('extend.front-end.articles.index', compact('cats', 'articles', 'latest_article','article_inner_banner','show_article_banner', 'article_meta_keywords', 'draft_articles'));
