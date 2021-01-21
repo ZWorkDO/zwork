@@ -50,7 +50,9 @@
                         <figure><img src="{{{ asset(Helper::getCategoryImage($cat->image)) }}}" alt="{{{ $cat->title }}}"></figure>
                         <div class="wt-cattitle">
                         <h3><a href="{{{url('search-results?type=job&category%5B%5D='.$cat->slug)}}}" class="{{$active}}">{{{ $cat->title }}}</a></h3>
-                            <span>Items: {{{$category->jobs->count()}}}</span>
+                            <span>Items: {{{$category->jobs->count()}}}
+                            </span>
+
                         </div>
                     </div>
                 @endforeach
@@ -75,6 +77,7 @@
                                 @include('front-end.jobs.filters')
                             @endif
                         </div>
+                        
                         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-8 float-left">
                             <div class="wt-userlistingholder wt-haslayout">
                                 @if (!empty($keyword))
