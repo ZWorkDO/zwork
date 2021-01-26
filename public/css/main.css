@@ -13431,11 +13431,28 @@ a:focus {
   transform: scale(1.06)
 }
 .pr-tbl li {
+    background-color: white;
     padding: 5px;
     text-align: left;
     list-style:none;
     border: hidden;
     left: 10%;
+  }
+
+.pr-tittle{
+  color: rgb(255, 255, 255);
+  font-size: 40px;
+  font-weight: bold;
+  padding: 20px;
+  line-height: 1;
+  text-shadow: 0.05em 0.05em 0.4em black;
+}
+
+.pr-subtittle{
+    color: #1c4f8c;
+    font-size: 25px;
+    text-align: center;
+    padding: 10px;
   }
   
 .pr-tbl .header {
@@ -13448,11 +13465,11 @@ a:focus {
 }
 
 .pr-tbl .grey {
-  background-color: #111;
   color: white;
   font-size: 25px;
   text-align: center;
   padding: 10px;
+  box-shadow: 0px 0px 10px 0px #333 inset;
 }
 
 
