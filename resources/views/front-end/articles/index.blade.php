@@ -60,7 +60,7 @@
                                                 </figure>
                                                 <div class="wt-particlecontent">
                                                     <h3><a href="{{{ url('article/'.$article->slug) }}}">{{$article->title}}</a></h3>
-                                                    <span><i class="lnr lnr-clock"></i>{{ \Carbon\Carbon::parse($article->updated_at)->format('M d, Y')}}</span>
+                                                    <span><i class="lnr lnr-clock"></i>{{ \Carbon\Carbon::parse($article->created_at)->format('M d, Y')}}</span>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -80,7 +80,7 @@
                                                 </figure>
                                                 <div class="wt-particlecontent">
                                                     <h3><a href="{{{ url('article/'.$article->slug) }}}">{{$article->title}}</a></h3>
-                                                    <span><i class="lnr lnr-clock"></i>{{ \Carbon\Carbon::parse($article->updated_at)->format('M, D, Y')}}</span>
+                                                    <span><i class="lnr lnr-clock"></i>{{ \Carbon\Carbon::parse($article->created_at)->format('M, d, Y')}}</span>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -116,7 +116,7 @@
                                                     <li>
                                                         <a href="javascript:void(0);">
                                                             <i class="lnr lnr-clock"></i>
-                                                            <span>{{ \Carbon\Carbon::parse($article->updated_at)->format('M , D , Y')}}</span>
+                                                            <span>{{ \Carbon\Carbon::parse($article->created_at)->format('M , d , Y')}}</span>
                                                         </a>
                                                     </li>
                                                     <li>
