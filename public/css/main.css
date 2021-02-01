@@ -13440,19 +13440,27 @@ a:focus {
   }
 
 .pr-tittle{
-  color: rgb(255, 255, 255);
-  font-size: 40px;
-  font-weight: bold;
+  font-weight: bold; 
+  font-family: 'GothamPro', Arial, Helvetica, sans-serif;
   padding: 20px;
-  line-height: 1;
-  text-shadow: 0.05em 0.05em 0.4em black;
+
+
+  font-style: normal;
+  text-transform: none;
+  margin: 0 0 13px;
+  display: block;
+  color: #323232;
+  font-size: 36px;
+  line-height: 36px;
+  
 }
 
 .pr-subtittle{
     color: #1c4f8c;
-    font-size: 25px;
     text-align: center;
-    padding: 10px;
+    font: 300 14px/23px 'GothamPro', Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 18px;
   }
   
 .pr-tbl .header {
