@@ -37,3 +37,36 @@ WINDOWS
 `> copy public_bak\* public\`
 
 `> copy public_bak\.htaccess_prod public\.htaccess`
+
+
+## How to run the program on Linux Mint
+
+The following are the commands to execute the program using Linux Mint:
+
+**Restart the MySQL sevice**:
+
+1. Stop MySQL service to avoid a process error:
+
+    ```bash
+    service mysql stop
+    ```
+
+2. Stop apache2:
+
+    ```bash
+    sudo /etc/init.d/apache2 stop
+    ```
+
+**Commands for execution**:
+
+3. Start service xampp:
+ 
+    ```bash
+    sudo /opt/lampp/lampp start
+    ```
+
+4. Execute the program:
+
+    ```bash
+    sudo php artisan serve 
+    ```

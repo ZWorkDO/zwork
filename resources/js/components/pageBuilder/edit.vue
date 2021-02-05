@@ -48,8 +48,8 @@
                       :parent_index="index"
                       :content_section="form.meta.content"
                       @removeElement="removeSection(index, 'content')"
-                      v-if="element.section =='content_section'"
-                    ></description>
+                      v-if="element.section =='content_section'">
+                    </description>
                     <map-section
                       :element_id="element.id"
                       :parent_index="index" 

@@ -413,13 +413,14 @@ export default {
           }
           this.form.meta.services.push(service)
         } else if (evt.added.element.section == 'content_section') {
-          var desciption = {
-            description: '',
+          var description = {
+            title: '',
+            subtitle: '',
             sectionColor: '#ffffff',
             id:this.sections[evt.added.newIndex].id,
             parentIndex:''
           }
-          this.form.meta.content.push(desciption)
+          this.form.meta.content.push(description)
         } else if (evt.added.element.section == 'map_section') {
           var lmap = {
             latitude:'',
