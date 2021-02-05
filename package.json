@@ -21,8 +21,7 @@
         "sass": "^1.17.2",
         "sass-loader": "^7.1.0",
         "vue": "^2.6.10",
-        "vue-template-compiler": "^2.6.10",
-        "webpack-cli": "^4.4.0"
+        "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
         "@tinymce/tinymce-vue": "^3.0.1",
@@ -30,7 +29,7 @@
         "bootstrap-vue": "^2.0.0-rc.13",
         "cors": "^2.8.5",
         "cropperjs": "^1.5.9",
-        "express": "^4.17.1",
+        "express": "^4.16.4",
         "fs": "0.0.1-security",
         "lang.js": "^1.1.14",
         "pc-bootstrap4-datetimepicker": "^4.17.50",
@@ -41,7 +40,6 @@
         "uws": "^100.0.1",
         "v-outer-html": "^1.0.2",
         "verte": "0.0.10",
-        "vue-cropperjs": "^4.1.0",
         "vue-bootstrap-datetimepicker": "^5.0.1",
         "vue-bootstrap-typeahead": "^0.2.6",
         "vue-credit-card-validation": "^0.1.9",
