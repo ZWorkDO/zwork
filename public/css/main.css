@@ -13444,12 +13444,19 @@ a:focus {
     color:#00cc67;
 }
 
+/*Logo z|work correo*/
+.min {
+    width:50px; 
+    height:50px;
+    
+}
+
 /*princing page*/
 
 .col-pr {
     box-sizing: border-box;
     float: left;
-    width: auto;
+    width: 25%;
     padding: 10px;
     font-family: "Nunito", sans-serif;
 }
@@ -13470,11 +13477,36 @@ a:focus {
   transform: scale(1.06)
 }
 .pr-tbl li {
+    background-color: white;
     padding: 5px;
     text-align: left;
     list-style:none;
     border: hidden;
     left: 10%;
+  }
+
+.pr-tittle{
+  font-weight: bold; 
+  font-family: 'GothamPro', Arial, Helvetica, sans-serif;
+  padding: 20px;
+
+
+  font-style: normal;
+  text-transform: none;
+  margin: 0 0 13px;
+  display: block;
+  color: #323232;
+  font-size: 36px;
+  line-height: 36px;
+  
+}
+
+.pr-subtittle{
+    color: #1c4f8c;
+    text-align: center;
+    font: 300 14px/23px 'GothamPro', Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 18px;
   }
   
 .pr-tbl .header {
@@ -13487,11 +13519,11 @@ a:focus {
 }
 
 .pr-tbl .grey {
-  background-color: #111;
   color: white;
   font-size: 25px;
   text-align: center;
   padding: 10px;
+  box-shadow: 0px 0px 10px 0px #333 inset;
 }
 
 

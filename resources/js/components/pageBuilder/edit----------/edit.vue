@@ -32,13 +32,16 @@
                 <a-collapse accordion>
                   <a-collapse-panel :header="element.name" :key="element.id" :class="'section-'+element.section">
                     <description 
+                      :parent_index="index"
                       :name="element.name"
                       :section="element.section"
+                      :page_id="pageData.id"
                       :value="element.value"
                       :icon="element.icon"
-                      :parent_index="index" 
+                      :content_data="pageData.sections.content" 
+                      :content="form.meta.content"
                       @removeElement="removeSection(index)" 
-                      v-if="element.section =='content_section'">
+                      v-if="element.section =='content'">
                     </description>
                     <slider 
                       :element_id="element.id"

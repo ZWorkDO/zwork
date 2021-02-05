@@ -13,21 +13,36 @@
                     </verte>
                 </span>
             </div>
-            <div class="wt-sliderbox__form">
-                <div class="form-group">
+
+           <div class="wt-location wt-tabsinfo">
+            <div class="form-group">
+                <div class="form-group form-group-half">
+                    <input placeholder="Title" v-model="content.title" :name="'meta[content'+parent_index+'][title]'" type="text" class="form-control">
+                </div> 
+                <div class="form-group form-group-half">
+                    <input placeholder="Subtitle" v-model="content.subtitle" :name="'meta[content'+parent_index+'][subtitle]'" type="text" class="form-control">
+                </div>
+                
+                    <tinymce-editor 
+                        v-model="content.description" 
+                        :init="{plugins: 'paste link code advlist autolink lists link image charmap print', toolbar1: 'undo redo code | bold italic underline strikethrough | fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist', menubar:false, statusbar: false, extended_valid_elements:'span[style],i[class]'}">
+                    </tinymce-editor>
+                
                     <tinymce-editor 
                         v-model="content.description"                        
                         :init="initObj"
                         toolbar="comment">
                     </tinymce-editor>
-                </div>
             </div>
+          </div>
+
         </div>
     </div>  
 </template>
 <script>
-import Editor from '@tinymce/tinymce-vue'
 
+import Event from '../../event';
+import Editor from '@tinymce/tinymce-vue'
 export default {
     props:['parent_index', 'element_id', 'content_section'],
     data() {
@@ -53,6 +68,7 @@ export default {
     },
     methods:{
         getArrayIndex (array, attr, value) {
+            console.log(array)
             for (var i = 0; i < array.length; i += 1) {
                 if (array[i][attr] == value) {
                 return i
@@ -63,7 +79,7 @@ export default {
         upload_handler: function (blobInfo, success, failure) {
           let data = new FormData();
           let filename = blobInfo.filename();
-
+console.log(array)
           if( typeof(blobInfo.blob().name) !== undefined )
               filename = blobInfo.blob().name;
           
@@ -80,7 +96,9 @@ export default {
             this.$emit("removeElement", 'remove-section');
         }
     },
+
     created: function() {
+        console.log('created')
         var index = this.getArrayIndex(this.content_section, 'id', this.element_id)
         if (this.content_section[index]) {
             this.content = this.content_section[index]
@@ -89,5 +107,8 @@ export default {
         this.content.parentIndex = this.parent_index
         
     },
+    mounted: function() {
+        console.log('mounted')
+    }
 };
 </script>
