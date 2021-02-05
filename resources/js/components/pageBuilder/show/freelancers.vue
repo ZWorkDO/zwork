@@ -1,12 +1,8 @@
 <template>
-    <section class="wt-haslayout wt-main-section wt-latearticles" v-bind:style="{ background: freelancer.sectionColor}">
+    <section class="wt-haslayout wt-latearticles" v-bind:style="{ background: freelancer.sectionColor}">
         <div class="row justify-content-md-center">
-            <div class="col-lg-10">
+            <div class="col-lg-12">
                 <div class="wt-sectionhead wt-textcenter">
-                    <div class="wt-sectiontitle">
-                        <h2>{{freelancer.title}}</h2>
-                        <span>{{freelancer.subtitle}}</span>
-                    </div>
                     <div class="wt-description" v-if="freelancer.description" v-html="freelancer.description"></div>
                 </div>
             </div>
