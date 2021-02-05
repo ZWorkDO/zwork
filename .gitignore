@@ -11,3 +11,5 @@ public/uploads/*
 node_modules/
 public/.htaccess
 vendor/*
+public/js/app.js
+public/css/app.css
