@@ -13,13 +13,15 @@ elif [[ "$1" == "update_prod" ]]; then    # used only on server
 
     cd html
     git pull origin prod
-    # echo "Copying public/index_prod.php to public/index.php"
+    echo "Pull completed"
+    echo "Running npm run prod"
+    npm run prod
     # cp public/index_prod.php public/index.php
     # echo "Copying public/.htaccess_prod to public/.htaccess"
     # cp public/.htaccess_prod public/.htaccess
     # echo "Copying all public/* to ../public_html/"
     # cp -a public/* ../public_html/
-    echo "Pull completed"
+
 
 else
     if [[ "$1" == "beta" ]]; then
