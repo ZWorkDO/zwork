@@ -13442,6 +13442,7 @@ a:focus {
     font-weight: bold;
     content: "\f00c";
     color:#00cc67;
+    margin-left: -14px;
 }
 
 /*Logo z|work correo*/
@@ -13478,11 +13479,11 @@ a:focus {
 }
 .pr-tbl li {
     background-color: white;
-    padding: 5px;
+    padding: 3px;
     text-align: left;
     list-style:none;
     border: hidden;
-    left: 10%;
+    margin-left: 30px;
   }
 
 .pr-tittle{

@@ -23,10 +23,11 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </template>
 <script>
 import Editor from '@tinymce/tinymce-vue'
+
 export default {
     props:['parent_index', 'element_id', 'content_section'],
     data() {
@@ -46,7 +47,7 @@ export default {
             }
             return -1
         },
-        upload_handler: function (blobInfo, success, failure) {
+         upload_handler: function (blobInfo, success, failure) {
           let data = new FormData();
           let filename = blobInfo.filename();
           if( typeof(blobInfo.blob().name) !== undefined )
@@ -76,15 +77,3 @@ export default {
     },
 };
 </script>
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
