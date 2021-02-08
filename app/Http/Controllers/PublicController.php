@@ -1245,7 +1245,7 @@ class PublicController extends Controller
                             $email_params
                 );
                 $mail->replyTo($email, $name);
-                Mail::to(config('mail.username'))
+                Mail::to(config('mail.from.address'))
                     ->send(
                         $mail
                       );

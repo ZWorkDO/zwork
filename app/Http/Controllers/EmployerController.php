@@ -177,7 +177,7 @@ class EmployerController extends Controller
                     'address_line2',
                     'city',
                     'state',
-                    'country',
+                    'country'
                 )
               );
         } else {
@@ -190,7 +190,7 @@ class EmployerController extends Controller
                     'address_line2',
                     'city',
                     'state',
-                    'country',
+                    'country'
               )
             );
         }
@@ -236,7 +236,7 @@ class EmployerController extends Controller
                     'contact_name',
                     'position',
                     'camara_id',
-                    'nr',
+                    'nr'
                 )
               );
         } else {
@@ -255,7 +255,7 @@ class EmployerController extends Controller
                   'contact_name',
                   'position',
                   'camara_id',
-                  'nr',
+                  'nr'
               )
             );
         }
@@ -339,7 +339,7 @@ class EmployerController extends Controller
             'id_type'   => 'required',
             'id_number'   => 'required',
             'profession_id'   => 'required',
-            'grade_id'   => 'required',
+            'grade_id'   => 'required'
           ];
         }
 
@@ -435,7 +435,7 @@ class EmployerController extends Controller
                 'address_line2'   => 'max:60',
                 'city'   => 'required',
                 'state'   => 'required',
-                'country'   => 'required',
+                'country'   => 'required'
             ]
         );
 
@@ -809,7 +809,9 @@ class EmployerController extends Controller
                 $product_info["project_type"] = "";
                 $product_info["service_seller"] = 0;
                 $product_info["cost"] = $proposal->amount;
-                $payment_info = CyberSourceHelper::buildRequestParams($product_info); 
+
+                $payment_info["reference_fields"] = $product_info;
+                //$payment_info = CyberSourceHelper::buildRequestParams($product_info); 
 
                 if (file_exists(resource_path('views/extend/back-end/employer/jobs/checkout.blade.php'))) {
                     return view(

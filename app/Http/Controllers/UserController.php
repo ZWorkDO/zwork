@@ -353,7 +353,7 @@ class UserController extends Controller
                     if (!empty($template->id)) {
                         $template_data = EmailTemplate::getEmailTemplateByID($template->id);
                         $email_params['reason'] = $delete_reason;
-                        Mail::to(config('mail.username'))
+                        Mail::to(config('mail.from.address'))
                             ->send(
                                 new AdminEmailMailable(
                                     'admin_email_delete_account',
@@ -744,7 +744,7 @@ class UserController extends Controller
                         $job_completed_template = DB::table('email_types')->select('id')->where('email_type', 'admin_email_job_completed')->get()->first();
                         if (!empty($job_completed_template->id)) {
                             $template_data = EmailTemplate::getEmailTemplateByID($job_completed_template->id);
-                            Mail::to(config('mail.username'))
+                            Mail::to(config('mail.from.address'))
                                 ->send(
                                     new AdminEmailMailable(
                                         'admin_email_job_completed',
@@ -889,7 +889,7 @@ class UserController extends Controller
                                 $email_params['report_by_link'] = url('profile-professional/' . $user->slug);
                                 $email_params['reported_by'] = Helper::getUserName(Auth::user()->id);
                                 $email_params['message'] = $request['description'];
-                                Mail::to(config('mail.username'))
+                                Mail::to(config('mail.from.address'))
                                     ->send(
                                         new AdminEmailMailable(
                                             'admin_email_report_project',
@@ -908,7 +908,7 @@ class UserController extends Controller
                                 $email_params['report_by_link'] = url('profile-professional/' . $user->slug);
                                 $email_params['reported_by'] = Helper::getUserName(Auth::user()->id);
                                 $email_params['message'] = $request['description'];
-                                Mail::to(config('mail.username'))
+                                Mail::to(config('mail.from.address'))
                                     ->send(
                                         new AdminEmailMailable(
                                             'admin_email_report_employer',
@@ -927,7 +927,7 @@ class UserController extends Controller
                                 $email_params['report_by_link'] = url('profile-project/' . $user->slug);
                                 $email_params['reported_by'] = Helper::getUserName(Auth::user()->id);
                                 $email_params['message'] = $request['description'];
-                                Mail::to(config('mail.username'))
+                                Mail::to(config('mail.from.address'))
                                     ->send(
                                         new AdminEmailMailable(
                                             'admin_email_report_freelancer',
@@ -968,7 +968,7 @@ class UserController extends Controller
                             } else {
                                 $template_data = '';
                             }
-                            Mail::to(config('mail.username'))
+                            Mail::to(config('mail.from.address'))
                                 ->send(
                                     new AdminEmailMailable(
                                         'admin_email_cancel_job',
@@ -1009,7 +1009,7 @@ class UserController extends Controller
                         } else {
                             $template_data = '';
                         }
-                        Mail::to(config('mail.username'))
+                        Mail::to(config('mail.from.address'))
                             ->send(
                                 new AdminEmailMailable(
                                     'admin_email_cancel_job',
@@ -2091,7 +2091,7 @@ class UserController extends Controller
                     $email_params['name'] = Helper::getUserName(Auth::user()->id);
                     $email_params['msg'] = $request['description'];
                     $email_params['reason'] = $request['reason'];
-                    Mail::to(config('mail.username'))
+                    Mail::to(config('mail.from.address'))
                         ->send(
                             new AdminEmailMailable(
                                 'admin_email_dispute_raised',

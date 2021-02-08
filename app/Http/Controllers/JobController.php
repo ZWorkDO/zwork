@@ -352,7 +352,7 @@ class JobController extends Controller
                             $email_params['posted_job_link'] = url('/job/' . $job->slug);
                             $email_params['name'] = Helper::getUserName(Auth::user()->id);
                             $email_params['link'] = url('profile-project/' . $user->slug);
-                            Mail::to(config('mail.username'))
+                            Mail::to(config('mail.from.address'))
                             ->send(
                                 new AdminEmailMailable(
                                     'admin_email_new_job_posted',
@@ -395,7 +395,7 @@ class JobController extends Controller
                         $email_params['posted_job_link'] = url('/job/' . $job->slug);
                         $email_params['name'] = Helper::getUserName(Auth::user()->id);
                         $email_params['link'] = url('profile-project/' . $user->slug);
-                        Mail::to(config('mail.username'))
+                        Mail::to(config('mail.from.name'))
                         ->send(
                             new AdminEmailMailable(
                                 'admin_email_new_job_posted',
