@@ -240,13 +240,7 @@
                                                     <div class="wt-rightarea">
                                                         <div class="wt-btnarea">
                                                             @if (empty($accepted_proposal))
-                                                                @if (!empty($order))
-                                                                   @if ($order->product_id == $proposal->id)     
-                                                                        <h5>{{trans('lang.pending_hiring')}}</h5>
-                                                                   @endif
-                                                                @else
                                                                     <a href="javascript:void(0);"  v-on:click.prevent="hireFreelancer('{{{$proposal->id}}}', '{{$mode}}')" class="wt-btn">{{ trans('lang.hire_now') }}</a>
-                                                                @endif
                                                             @endif
                                                         </div>
                                                         <div class="wt-hireduserstatus">
