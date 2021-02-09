@@ -13555,7 +13555,7 @@ a:focus {
 }
 
 @media only screen and (max-width: 600px) {
-  .columns-princing {
+  .col-pr {
     width: 100%;
   }
 }

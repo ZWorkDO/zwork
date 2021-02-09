@@ -4,39 +4,35 @@
 
 Z | Work is a digital platform with unlimited access to specialized professionals who make projects a reality on a daily basis, of which we are proud.
 
-## How to deploy
+## How to deploy config locally
 
 GNU/LINUX
 
 `$ git clone https://github.com/foster-tech/zwork.git`
 
-`$ cp .env_prod .env`
+`$ cp .env_local .env`
 
-`$ cp public/index_prod.php public/index.php`
+`$ cp public/index_local.php public/index.php`
 
-`$ mv public public_bak`
+`$ composer install`
 
-`$ ln -s ../public_html public`
+`$ npm install`
 
-`$ cp -a public_bak/* public/`
-
-`$ cp public_bak/.htaccess_prod public/.htaccess`
+`$ npm run dev`
 
 WINDOWS
 
 `> git clone https://github.com/foster-tech/zwork.git`
 
-`> copy .env_prod .env`
+`> copy .env_local .env`
 
-`> copy public/index_prod.php public/index.php`
+`> copy public/index_local.php public/index.php`
 
-`> move public public_bak`
+`> composer install`
 
-`> mklink public_html public`
+`> npm install`
 
-`> copy public_bak\* public\`
-
-`> copy public_bak\.htaccess_prod public\.htaccess`
+`> npm run dev`
 
 
 ## How to run the program on Linux Mint
