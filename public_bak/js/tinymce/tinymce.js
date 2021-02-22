@@ -37351,7 +37351,11 @@ define(
             case MessageBox.YES_NO:
             case MessageBox.YES_NO_CANCEL:
               buttons = [
+<<<<<<< HEAD
                 createButton('si', 1, true),
+=======
+                createButton('Yes', 1, true),
+>>>>>>> ab2a901c24310991a2c9e951ae84ccbd2cb484a6
                 createButton('No', 0)
               ];
 
