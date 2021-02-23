@@ -1218,6 +1218,7 @@ return [
     'search_filter_list' => [
         'freelancer' => 'Profesionales',
         'jobs' => 'Proyectos',
+        'services' => 'Servicios',
         'employers' => 'Clientes',
         'freelancer_val' => 'persona de libre dedicación',
         'jobs_val' => 'proyecto',
