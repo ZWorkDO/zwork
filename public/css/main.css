@@ -1678,9 +1678,10 @@ li.wt-rss a {
 }
 
 .wt-header {
+    position: fixed;
     padding: 0;
     z-index: 10;
-    position: relative;
+    background-color:white;
 }
 
 .wt-nav {
@@ -13588,3 +13589,4 @@ a:focus {
 	color:#0f0f0f;
 	text-decoration: none;
 }
+
