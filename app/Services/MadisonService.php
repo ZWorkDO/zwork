@@ -129,7 +129,6 @@ class MadisonService {
   /*
    * Invoices / Orders
    */
->>>>>>> fd60654252d8e7e19492e58bc01153fadd49147b
   public static function createOrder() {
   }
 
