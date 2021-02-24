@@ -13573,17 +13573,13 @@ a:focus {
   }
 
 .li-index{
-	list-style: none;
-	padding: 1em;
+	padding: 0;
 	color: 100;
 	margin: 0;
-	border-bottom-style:solid; 
-	border-bottom-width:1px;
-	border-bottom-color:#cfcbcb;
 }
 
 .li-index a{
-	font-size: 14px;
+	font-size: 15px;
 	font-family: 'GothamPro', Arial, Helvetica, sans-serif;
 	font-weight: 100;
 	color:#0f0f0f;

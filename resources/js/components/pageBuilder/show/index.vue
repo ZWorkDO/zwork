@@ -70,7 +70,7 @@
       </work-video>
        <description  
         :element_id="element.id"
-        :content_section="selectedPage.meta.content_section"
+        :content_section="selectedPage.meta.content"
         :page_id="pageData.id"
         v-if="element.section =='content_section'">
       </description>
