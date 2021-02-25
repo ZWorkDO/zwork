@@ -799,7 +799,7 @@ return [
     'pay_detl' => 'Detalles del pago',
     'transaction' => 'Transacción',
     'purchase_total' => 'Total de compra',
-    'print' => 'Impresión',
+    'print' => 'Imprimir PDF',
     'gross_amnt' => 'Cantidad bruta',
     'pay_rec' => 'Pago recibido',
     'product_name' => 'nombre del producto',
