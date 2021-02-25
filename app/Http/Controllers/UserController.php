@@ -2385,7 +2385,7 @@ class UserController extends Controller
 
         $json = array();
 
-        $to      = 'dmartinezenfocado@gmail.com';
+        $to      = 'a.zapata@zapataaquino.com';
         $subject = 'Solicitud de Factura Zwork';
         $message = "<!DOCTYPE html><html><head><style type='text/css'>body{font-family:Verlag Light;font-size:12.0pt;}a{font-family:Verlag Light;font-size:12.0pt; color:#00BBEC;} .gh{font-family:Verlag Light;font-size:12.0pt; color:#00BBEC;}.ci{font-family:Verlag Light;font-size:13.0pt; color:#00BBEC;}.at{font-family:Verlag Light;font-size:9.0pt; color:#00BBEC;} .hg{font-family:Verlag Light;font-size:12.0pt; color:#0063ab;} h1{font-family:Verlag Light; font-size:12.0pt; color:#0063ab;}.cu{font-family:Verlag Light;font-size:12.0pt;}</style></head><body><p class='cu'>Tiene una nueva Solicitud de Factura.<br><br><strong>Pago recibido Desde: </strong>".$payer_name ." <br><strong>Email: </strong>".$payer_email ." <br><strong>ID de transacción: </strong>".$transaction_id ." <br><strong>Fecha: </strong>".$created_at ." <br><strong>Nombre Del Producto: </strong>".$item_name ." <br><strong>Cantidad: </strong>".$item_qty ." <br><strong>Precio: </strong>".$item_price ." USD <br><strong>Total de compra: </strong>".$item_price ." USD<br><strong>Impuesto de venta: </strong>".$sales_tax ." USD<br><strong>Importe neto: </strong>".$price ." USD<br><strong>ID de factura: </strong>".$invoice_id ."</p><span class='ci'><strong>ZWORK</strong></span><br><span class='hg'>https://www.zwork.do</span><br><span class='at'><strong>Antes de imprimir este mensaje, asegúrese de que es necesario. El medio ambiente está en nuestras manos.</strong></span><br><br></p></body></html>";
 
