@@ -247,6 +247,7 @@ return [
     'name' => 'Nombre',
     'slug' => 'Slug',
     'action' => 'Acción',
+    'askForInvoice' => 'Solicitar Factura',
     'actions' => 'Comportamiento',
     'skill_deleted' => 'Habilidad eliminada',
     'edit_skill' => 'Habilidad de edición',

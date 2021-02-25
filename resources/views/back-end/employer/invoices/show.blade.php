@@ -9,6 +9,7 @@
                 <div class="wt-transactionhold">
                     <div class="wt-borderheading wt-borderheadingvtwo">
                         <h3>{{{trans('lang.transaction_detl')}}}</h3>
+                        <a href="javascript:void(0);"  @click.prevent="askForInvoice('{{$invoice_info->payer_name}}', '{{$invoice_info->created_at}}', '{{$invoice_info->transaction_id}}', '{{$invoice_info->item_name}}', '{{$invoice_info->item_qty}}', '{{$invoice_info->item_qty}}', '{{$invoice_info->sales_tax}}', '{{$invoice_info->price}}', '{{$invoice_info->invoice_id}}', '{{$invoice_info->payer_email}}')" class="wt-btn">{{{ trans('lang.askForInvoice') }}}</a>
                         <a class="print-window" href="javascript:void(0);" @click="print()">
                             <i class="fa fa-print"></i>
                             {{{trans('lang.print')}}}

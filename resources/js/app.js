@@ -4383,6 +4383,42 @@ if (document.getElementById("invoice_list")) {
                     self.loading = false;
                 });
             },
+            askForInvoice: function (payer_name, created_at,transaction_id,item_name,item_qty,item_price,sales_tax,price,invoice_id,payer_email) {
+                this.loading = true;
+                var self = this;
+                console.log('INVOICE payer');
+                console.log(payer_name);
+
+    
+
+                let form_data = new FormData();
+                form_data.append('payer_name', payer_name);
+                form_data.append('created_at', created_at);
+                form_data.append('transaction_id', transaction_id);
+                form_data.append('item_name', item_name);
+                form_data.append('item_qty', item_qty);
+                form_data.append('item_price', item_price);
+                form_data.append('sales_tax', sales_tax);
+                form_data.append('price', price);
+                form_data.append('invoice_id', invoice_id);
+                form_data.append('payer_email', payer_email);
+          
+                axios.post(APP_URL + '/invoice/ask-invoice', form_data)
+                    .then(function (response) {
+                        if (response) {
+                            self.loading = false;
+                            console.log('CORREO ENVIADO');
+                            console.log(response);
+                            self.showMessage(response.data.message);
+                        } 
+                    })
+                    .catch(function (error) {
+                        self.loading = false;
+                        onsole.log('ERROR');
+                        console.log(response);
+                       
+                    });
+             },
             print: function () {
                 const cssText = `
                 .wt-transactionhold{
