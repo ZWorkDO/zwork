@@ -1281,6 +1281,8 @@ return [
     'refund_now' => 'Reembolso ahora',
     'select_delivery_time' => 'Tiempo de entrega',
     'service_price' => 'Precio del Servicio',
+    'hire_service_title' => 'Contratar un Servicio',
+    'hire_service_text' => 'Estás seguro que deseas contratar este servicio?',
     'service_categories' => 'Categoria del Servicio',
     'service_response_time' => 'Tiempo de respuesta del servicio',
     'select_response_time' => 'Tiempo de respuesta',

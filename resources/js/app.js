@@ -4421,12 +4421,8 @@ if (document.getElementById("invoice_list")) {
                     });
              },
              printPDF: function (payer_name, created_at,transaction_id,item_name,item_qty,item_price,sales_tax,price,invoice_id,payer_email) {
-           
                 var doc = new jsPDF();
-
-                doc.fromHTML("<!DOCTYPE html><html><head><meta charset='UTF-8'><style type='text/css'>body{font-family:Verlag Light;font-size:12.0pt;}a{font-family:Verlag Light;font-size:12.0pt; color:#00BBEC;} .gh{font-family:Verlag Light;font-size:12.0pt; color:#00BBEC;}.ci{font-family:Verlag Light;font-size:13.0pt; color:#00BBEC;}.at{font-family:Verlag Light;font-size:9.0pt; color:#00BBEC;} .hg{font-family:Verlag Light;font-size:12.0pt; color:#0063ab;} h1{font-family:Verlag Light; font-size:12.0pt; color:#0063ab;}.cu{font-family:Verlag Light;font-size:12.0pt;}</style></head><body><p class='cu'>Tiene una nueva Solicitud de Factura.</p><span class='ci'><strong>ZWORK</strong></span><br><span class='hg'>https://www.zwork.do</span><br><span class='at'><strong>Antes de imprimir este mensaje, asegúrese de que es necesario. El medio ambiente está en nuestras manos.</strong></span><br><br></p></body></html>");
-        
-            
+                doc.fromHTML("<!DOCTYPE html><html><head><meta charset='UTF-8'><style type='text/css'>body{font-family:Verlag Light;font-size:12.0pt;}a{font-family:Verlag Light;font-size:12.0pt; color:#00BBEC;} .gh{font-family:Verlag Light;font-size:12.0pt; color:#00BBEC;}.ci{font-family:Verlag Light;font-size:13.0pt; color:#00BBEC;}.at{font-family:Verlag Light;font-size:9.0pt; color:#00BBEC;} .hg{font-family:Verlag Light;font-size:12.0pt; color:#0063ab;} h1{font-family:Verlag Light; font-size:12.0pt; color:#0063ab;}.cu{font-family:Verlag Light;font-size:12.0pt;}</style></head><body><p class='cu'>Tiene una nueva Solicitud de Factura.</p><span class='ci'><strong>ZWORK</strong></span><br><span class='hg'>https://www.zwork.do</span><br><span class='at'><strong>Antes de imprimir este mensaje, asegúrese de que es necesario. El medio ambiente está en nuestras manos.</strong></span><br><br></p></body></html>");     
                 // Save the PDF
                 doc.save('Factura.pdf');
              },

@@ -6,11 +6,16 @@
     <div class="wt-haslayout wt-dbsectionspace">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="invoice_list">
+                <div class="preloader-section" v-if="loading" v-cloak>
+					<div class="preloader-holder">
+						<div class="loader"></div>
+					</div>
+				</div>
                 <div class="wt-transactionhold">
                     <div class="wt-borderheading wt-borderheadingvtwo">
                         <h3>{{{trans('lang.transaction_detl')}}}</h3>
                         <a href="javascript:void(0);"  @click.prevent="askForInvoice('{{$invoice_info->payer_name}}', '{{$invoice_info->created_at}}', '{{$invoice_info->transaction_id}}', '{{$invoice_info->item_name}}', '{{$invoice_info->item_qty}}', '{{$invoice_info->item_qty}}', '{{$invoice_info->sales_tax}}', '{{$invoice_info->price}}', '{{$invoice_info->invoice_id}}', '{{$invoice_info->payer_email}}')" class="wt-btn">{{{ trans('lang.askForInvoice') }}}</a>
-                        <a class="print-window" href="javascript:void(0);" @click.prevent="printPDF('{{$invoice_info->payer_name}}', '{{$invoice_info->created_at}}', '{{$invoice_info->transaction_id}}', '{{$invoice_info->item_name}}', '{{$invoice_info->item_qty}}', '{{$invoice_info->item_qty}}', '{{$invoice_info->sales_tax}}', '{{$invoice_info->price}}', '{{$invoice_info->invoice_id}}', '{{$invoice_info->payer_email}}')">
+                        <a class="wt-btn" href="javascript:void(0);" @click.prevent="printPDF('{{$invoice_info->payer_name}}', '{{$invoice_info->created_at}}', '{{$invoice_info->transaction_id}}', '{{$invoice_info->item_name}}', '{{$invoice_info->item_qty}}', '{{$invoice_info->item_qty}}', '{{$invoice_info->sales_tax}}', '{{$invoice_info->price}}', '{{$invoice_info->invoice_id}}', '{{$invoice_info->payer_email}}')">
                             <i class="fa fa-print"></i>
                             {{{trans('lang.print')}}}
                         </a>
