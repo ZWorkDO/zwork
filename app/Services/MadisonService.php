@@ -18,13 +18,13 @@ class MadisonService {
   /*
    * Customers / Providers
    */
-  public static function createCustomer() {
+  public static function createCustomer($userObj) {
     $this->auth();
     $tercero = [];
-    $tercero['thirdparty']['name'] = "PavelP";
-    $tercero['thirdparty']['phone'] = "8098512032";
-    $tercero['thirdparty']['rnc'] = "131125332";
-    $tercero['thirdparty']['email'] = "email2@pruebabarton.com";
+    $tercero['thirdparty']['name'] = $userObj->first_name.' '.$userObj->last_name;
+    $tercero['thirdparty']['phone'] = $userObj->Profile->phone;
+    $tercero['thirdparty']['rnc'] = $userObj->Profile->rnc;
+    $tercero['thirdparty']['email'] = $userObj->email;
     $tercero['thirdparty']['is_client'] = 1;
     $tercero['thirdparty']['is_provider'] = 1;
     $tercero['thirdparty']['is_active'] = 1;
