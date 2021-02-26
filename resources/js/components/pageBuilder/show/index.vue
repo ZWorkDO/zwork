@@ -100,6 +100,7 @@ export default {
       selectedPage: {
         sections: [],
         title: "",
+        slug: "",
         meta: {
           freelancers: [],
           cat: [],

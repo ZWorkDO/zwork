@@ -355,10 +355,11 @@ class Page extends Model
         $old_path = Helper::PublicPath() . '/uploads/pages/temp';
         if (!empty($id) && !empty($request)) {
             $pages = Page::find($id);
-            if ($pages->title != $request->title) {
-                $pages->slug = filter_var($request->title, FILTER_SANITIZE_STRING);
-            }
+            // if ($pages->title != $request->title) {
+            //     $pages->slug = filter_var($request->title, FILTER_SANITIZE_STRING);
+            // }
             $pages->title = filter_var($request->title, FILTER_SANITIZE_STRING);
+            $pages->slug = filter_var($request->slug, FILTER_SANITIZE_STRING);
             $pages->body = !empty($request->body) ? $request->body : 'null';
             if ($request->parent_id == null) {
                 $pages->relation_type = 0;
