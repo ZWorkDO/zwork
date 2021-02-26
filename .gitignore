@@ -11,3 +11,8 @@ public/uploads/*
 node_modules/
 public/.htaccess
 vendor/*
+public/js/app.js
+public/css/app.css
+bootstrap/cache/
+composer.lock
+package-lock.json

@@ -293,7 +293,7 @@ class PublicController extends Controller
                             $email_params['name'] = Helper::getUserName($id);
                             $email_params['email'] = $email;
                             $email_params['link'] = url('profile-project/' . $user->slug);
-                            Mail::to(config('mail.username'))
+                            Mail::to($email)
                                 ->send(
                                     new AdminEmailMailable(
                                         'admin_email_registration',
@@ -1172,7 +1172,7 @@ class PublicController extends Controller
     public function getArticles()
     {
         $json = array();
-        $articles = Article::orderBy('created_at','asc')->get()->toArray();
+        $articles = Article::where('status', 'published')->orderBy('created_at','asc')->get()->toArray();
         $aticle_list = array();
         if (!empty($articles)) {
             foreach ($articles as $key => $article) {
@@ -1245,7 +1245,7 @@ class PublicController extends Controller
                             $email_params
                 );
                 $mail->replyTo($email, $name);
-                Mail::to(config('mail.username'))
+                Mail::to(config('mail.from.address'))
                     ->send(
                         $mail
                       );

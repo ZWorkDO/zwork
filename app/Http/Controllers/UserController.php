@@ -353,7 +353,7 @@ class UserController extends Controller
                     if (!empty($template->id)) {
                         $template_data = EmailTemplate::getEmailTemplateByID($template->id);
                         $email_params['reason'] = $delete_reason;
-                        Mail::to(config('mail.username'))
+                        Mail::to(config('mail.from.address'))
                             ->send(
                                 new AdminEmailMailable(
                                     'admin_email_delete_account',
@@ -744,7 +744,7 @@ class UserController extends Controller
                         $job_completed_template = DB::table('email_types')->select('id')->where('email_type', 'admin_email_job_completed')->get()->first();
                         if (!empty($job_completed_template->id)) {
                             $template_data = EmailTemplate::getEmailTemplateByID($job_completed_template->id);
-                            Mail::to(config('mail.username'))
+                            Mail::to(config('mail.from.address'))
                                 ->send(
                                     new AdminEmailMailable(
                                         'admin_email_job_completed',
@@ -889,7 +889,7 @@ class UserController extends Controller
                                 $email_params['report_by_link'] = url('profile-professional/' . $user->slug);
                                 $email_params['reported_by'] = Helper::getUserName(Auth::user()->id);
                                 $email_params['message'] = $request['description'];
-                                Mail::to(config('mail.username'))
+                                Mail::to(config('mail.from.address'))
                                     ->send(
                                         new AdminEmailMailable(
                                             'admin_email_report_project',
@@ -908,7 +908,7 @@ class UserController extends Controller
                                 $email_params['report_by_link'] = url('profile-professional/' . $user->slug);
                                 $email_params['reported_by'] = Helper::getUserName(Auth::user()->id);
                                 $email_params['message'] = $request['description'];
-                                Mail::to(config('mail.username'))
+                                Mail::to(config('mail.from.address'))
                                     ->send(
                                         new AdminEmailMailable(
                                             'admin_email_report_employer',
@@ -927,7 +927,7 @@ class UserController extends Controller
                                 $email_params['report_by_link'] = url('profile-project/' . $user->slug);
                                 $email_params['reported_by'] = Helper::getUserName(Auth::user()->id);
                                 $email_params['message'] = $request['description'];
-                                Mail::to(config('mail.username'))
+                                Mail::to(config('mail.from.address'))
                                     ->send(
                                         new AdminEmailMailable(
                                             'admin_email_report_freelancer',
@@ -968,7 +968,7 @@ class UserController extends Controller
                             } else {
                                 $template_data = '';
                             }
-                            Mail::to(config('mail.username'))
+                            Mail::to(config('mail.from.address'))
                                 ->send(
                                     new AdminEmailMailable(
                                         'admin_email_cancel_job',
@@ -1009,7 +1009,7 @@ class UserController extends Controller
                         } else {
                             $template_data = '';
                         }
-                        Mail::to(config('mail.username'))
+                        Mail::to(config('mail.from.address'))
                             ->send(
                                 new AdminEmailMailable(
                                     'admin_email_cancel_job',
@@ -1229,10 +1229,14 @@ class UserController extends Controller
             $product_info["project_type"] = "";
             $product_info["service_seller"] = 0;
             $product_info["cost"] = $package->cost;
-            $payment_info = CyberSourceHelper::buildRequestParams($product_info);            
+
+            $payment_info["reference_fields"] = $product_info;
+                
+            // $payment_info = CyberSourceHelper::buildRequestParams($product_info);            
 
             if (file_exists(resource_path('views/extend/back-end/package/checkout.blade.php'))) {
-                return view::make('extend.back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'payment_info', 'symbol', 'mode'));
+                return view::make('extend.back-end.package.checkout', compact('package', 'package_options',
+                 'payment_gateway', 'payment_info', 'symbol', 'mode'));
             } else {
                 return view::make('back-end.package.checkout', compact('package', 'package_options', 'payment_gateway', 'payment_info', 'symbol', 'mode'));
             }
@@ -2087,7 +2091,7 @@ class UserController extends Controller
                     $email_params['name'] = Helper::getUserName(Auth::user()->id);
                     $email_params['msg'] = $request['description'];
                     $email_params['reason'] = $request['reason'];
-                    Mail::to(config('mail.username'))
+                    Mail::to(config('mail.from.address'))
                         ->send(
                             new AdminEmailMailable(
                                 'admin_email_dispute_raised',
@@ -2358,5 +2362,47 @@ class UserController extends Controller
             $json['message'] = trans('lang.verify_code');
             return $json;
         }
+    }
+
+        /**
+     * Ask For Invoice
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function askForInvoice(Request $request)
+    {
+
+        $payer_name = $request['payer_name'];
+        $created_at = $request['created_at'];
+        $transaction_id = $request['transaction_id'];
+        $item_name = $request['item_name'];
+        $item_qty = $request['item_qty'];
+        $item_price = $request['item_price'];
+        $sales_tax = $request['sales_tax'];
+        $price = $request['price'];
+        $invoice_id = $request['invoice_id'];
+        $payer_email = $request['payer_email'];
+
+        $json = array();
+
+        $to      = 'a.zapata@zapataaquino.com';
+        $subject = 'Solicitud de Factura Zwork';
+        $message = "<!DOCTYPE html><html><head><style type='text/css'>body{font-family:Verlag Light;font-size:12.0pt;}a{font-family:Verlag Light;font-size:12.0pt; color:#00BBEC;} .gh{font-family:Verlag Light;font-size:12.0pt; color:#00BBEC;}.ci{font-family:Verlag Light;font-size:13.0pt; color:#00BBEC;}.at{font-family:Verlag Light;font-size:9.0pt; color:#00BBEC;} .hg{font-family:Verlag Light;font-size:12.0pt; color:#0063ab;} h1{font-family:Verlag Light; font-size:12.0pt; color:#0063ab;}.cu{font-family:Verlag Light;font-size:12.0pt;}</style></head><body><p class='cu'>Tiene una nueva Solicitud de Factura.<br><br><strong>Pago recibido Desde: </strong>".$payer_name ." <br><strong>Email: </strong>".$payer_email ." <br><strong>ID de transacción: </strong>".$transaction_id ." <br><strong>Fecha: </strong>".$created_at ." <br><strong>Nombre Del Producto: </strong>".$item_name ." <br><strong>Cantidad: </strong>".$item_qty ." <br><strong>Precio: </strong>".$item_price ." USD <br><strong>Total de compra: </strong>".$item_price ." USD<br><strong>Impuesto de venta: </strong>".$sales_tax ." USD<br><strong>Importe neto: </strong>".$price ." USD<br><strong>ID de factura: </strong>".$invoice_id ."</p><span class='ci'><strong>ZWORK</strong></span><br><span class='hg'>https://www.zwork.do</span><br><span class='at'><strong>Antes de imprimir este mensaje, asegúrese de que es necesario. El medio ambiente está en nuestras manos.</strong></span><br><br></p></body></html>";
+
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        // More headers
+        //$headers .= 'From: <test@enfoco.com.do>' . "\r\n";
+        $headers .= 'From: test@enfoco.com.do' . "\r\n" .
+            'Reply-To: test@enfoco.com.do' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+        mail($to, $subject, $message, $headers);
+
+        $json['message'] = 'FACTURA SOLICITADA';
+
+        return $json;
     }
 }

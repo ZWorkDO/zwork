@@ -209,7 +209,7 @@ class RestAPIController extends Controller
                     $save_freelancer = !empty($login_user->profile->saved_freelancer) ?
                         unserialize($login_user->profile->saved_freelancer) : array();
                     $amount = Payout::where('user_id', $user_object->id)->select('amount')->pluck('amout')->first();
-                    $json[$key]['favorit'] = in_array($user['id'], $save_freelancer) ? 'yes' : '';
+                    $json[$key]['favorit'] = in_array($user['id'], $save_freelancer) ? 'si' : '';
                     $json[$key]['name'] = Helper::getUserName($user['id']);
                     $json[$key]['freelancer_link'] = url('profile-professional/' . $user_object->slug);
                     $json[$key]['total_earnings'] = !empty($user_obj) ? $amount : '';
@@ -279,7 +279,7 @@ class RestAPIController extends Controller
                     $json[$key]['_address'] = !empty($user_object->profile->address) ? $user_object->profile->address : '';
                     $json[$key]['_tag_line'] = !empty($user_object->profile->tagline) ? $user_object->profile->tagline : '';
                     $json[$key]['_gender'] = !empty($user_object->profile->gender) ? $user_object->profile->gender : '';
-                    $json[$key]['_is_verified'] = $user['user_verified'] == 1 ? 'yes' : 'no';
+                    $json[$key]['_is_verified'] = $user['user_verified'] == 1 ? 'si' : 'no';
                     $json[$key]['_english_level'] = $user_object->profile->english_level;
                     $json[$key]['_profile_blocked'] = $user_object->profile->profile_blocked;
                     $json[$key]['_profile_searchable'] = $user_object->profile->profile_searchable;
@@ -308,7 +308,7 @@ class RestAPIController extends Controller
                             $freelancer_reviewes[$reviews_key]['project_title'] = !empty($job->title) ? $job->title : '';
                             $freelancer_reviewes[$reviews_key]['post_date'] = Carbon::parse($job->created_at)->format('M Y');
                             $freelancer_reviewes[$reviews_key]['employer_image'] = !empty(Helper::getProfileImage($review->user_id)) ? asset(Helper::getProfileImage($review->user_id)) : '';
-                            $freelancer_reviewes[$reviews_key]['_is_verified'] = $verified_user == 1 ? 'yes' : 'no';
+                            $freelancer_reviewes[$reviews_key]['_is_verified'] = $verified_user == 1 ? 'si' : 'no';
                             $freelancer_reviewes[$reviews_key]['employer_name'] = Helper::getUserName($review->user_id);
                             $freelancer_reviewes[$reviews_key]['level_title'] = !empty($job->project_level) ?  Helper::getProjectLevel($job->project_level) : '';
                             $freelancer_reviewes[$reviews_key]['project_location'] = $job->location->title;
@@ -351,7 +351,7 @@ class RestAPIController extends Controller
             $json['profile']['pmeta']['banner_img'] = url(Helper::getProfileBanner(auth()->user()->id));
             $json['profile']['pmeta']['_tag_line'] = auth()->user()->profile->tagline;
             $json['profile']['pmeta']['_gender'] = auth()->user()->profile->gender;
-            $json['profile']['pmeta']['_is_verified'] = auth()->user()->user_verified == 1 ? 'yes' : 'no';
+            $json['profile']['pmeta']['_is_verified'] = auth()->user()->user_verified == 1 ? 'si' : 'no';
             $json['profile']['pmeta']['full_name'] = Helper::getUserName(auth()->user()->id);
             $json['profile']['umeta']['profile_id'] = auth()->user()->profile->id;
             $json['profile']['umeta']['id'] = auth()->user()->id;
@@ -719,7 +719,7 @@ class RestAPIController extends Controller
             foreach ($users as $key => $user) {
                 $saved_employers = !empty($login_user->profile->saved_employers) ?
                     unserialize($login_user->profile->saved_employers) : array();
-                $json[$key]['favorit'] = in_array($user['id'], $saved_employers) ? 'yes' : '';
+                $json[$key]['favorit'] = in_array($user['id'], $saved_employers) ? 'si' : '';
                 $json[$key]['name'] = Helper::getUserName($user['id']);
                 $json[$key]['user_id'] = !empty("" . $user['id'] . "") ? "" . $user['id'] . "" : '';
                 $user_object = User::find($user['id']);
@@ -737,7 +737,7 @@ class RestAPIController extends Controller
                 $json[$key]['_tag_line'] = !empty($user_object->profile->tagline) ? $user_object->profile->tagline : '';
                 $json[$key]['_following_employers'] = array();
                 $json[$key]['_saved_projects'] = !empty($user_object->profile->saved_jobs) ? $user_object->profile->saved_jobs : '';
-                $json[$key]['_is_verified'] = $user['user_verified'] == 1 ? 'yes' : 'no';
+                $json[$key]['_is_verified'] = $user['user_verified'] == 1 ? 'si' : 'no';
                 $freelancer_awards  = array();
                 if (!empty($awards)) {
                     foreach ($awards as $award_key => $award) {
@@ -888,13 +888,13 @@ class RestAPIController extends Controller
                 foreach ($jobs as $key => $job) {
                     $saved_jobs = !empty($user->profile->saved_jobs) ?
                         unserialize($user->profile->saved_jobs) : array();
-                    $json[$key]['favorit'] = in_array($job->id, $saved_jobs) ? 'yes' : '';
+                    $json[$key]['favorit'] = in_array($job->id, $saved_jobs) ? 'si' : '';
                     $json[$key]['job_id'] = !empty($job->id) ? $job->id : '';
                     $json[$key]['status'] = !empty($job->status) ? $job->status : '';
                     $json[$key]['link'] = url('job/' . $job->slug);
                     $json[$key]['amount'] = $symbol . '&nbsp;' . $job->price;
                     $user_object = User::find($job->user_id);
-                    $json[$key]['_is_verified'] = !empty($user_obj->id) && $user_obj->user_verified === 1  ? "yes" : "no";
+                    $json[$key]['_is_verified'] = !empty($user_obj->id) && $user_obj->user_verified === 1  ? "si" : "no";
                     $json[$key]['featured_url'] = !empty($job->is_featured) && $job->is_featured === 'true' ? "" . url('images/featured.png') . "" : '';
                     $json[$key]['featured_color'] = !empty($job->is_featured) && $job->is_featured === 'true' ? "#f1c40f" : '';
                     $json[$key]['location']['_country'] = !empty($job->location->title) ? $job->location->title : '';
@@ -1240,7 +1240,7 @@ class RestAPIController extends Controller
                             $email_params['report_by_link'] = url('profile-project/' . $user->slug);
                             $email_params['reported_by'] = Helper::getUserName($user->id);
                             $email_params['message'] = $request['description'];
-                            Mail::to(config('mail.username'))
+                            Mail::to(config('mail.from.address'))
                                 ->send(
                                     new AdminEmailMailable(
                                         'admin_email_report_project',
@@ -1735,7 +1735,7 @@ class RestAPIController extends Controller
                         $email_params['name'] = Helper::getUserName($current_user);
                         $email_params['link'] = url('profile-project/' . $user->slug);
                         $admin_mail = User::role('admin')->select('email')->pluck('email')->first();
-                        Mail::to(config('mail.username'))
+                        Mail::to(config('mail.from.address'))
                             ->send(
                                 new AdminEmailMailable(
                                     'admin_email_new_job_posted',
@@ -2180,7 +2180,7 @@ class RestAPIController extends Controller
                         $email_params['name'] = Helper::getUserName($current_user);
                         $email_params['link'] = url('profile-professional/' . $user->slug);
                         $template_data = Helper::getAdminServicePostedEmailContent();
-                        Mail::to(config('mail.username'))
+                        Mail::to(config('mail.from.address'))
                             ->send(
                                 new AdminEmailMailable(
                                     'admin_email_new_service_posted',
@@ -2221,7 +2221,7 @@ class RestAPIController extends Controller
                     $email_params['name'] = Helper::getUserName($current_user);
                     $email_params['link'] = url('profile-professional/' . $user->slug);
                     $template_data = Helper::getAdminServicePostedEmailContent();
-                    Mail::to(config('mail.username'))
+                    Mail::to(config('mail.from.address'))
                         ->send(
                             new AdminEmailMailable(
                                 'admin_email_new_service_posted',

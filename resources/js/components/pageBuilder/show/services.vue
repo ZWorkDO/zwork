@@ -19,6 +19,11 @@
                                     <a :href="baseUrl+'/profile-professional/'+service_item.seller[0].slug" v-if="service_item.seller[0].slug"><img :src="attachment" alt="img description" class="item"></a>
                                 </figure>
                             </div>
+                            <div :class="'wt-freelancers'" v-else>
+                                <figure class="item">
+                                    <a :href="baseUrl+'/profile-professional/'+service_item.seller[0].slug" v-if="service_item.seller[0].slug"><img :src="baseUrl+'/images/banner-default-profesional-350x172.jpg'" alt="img description" class="item"></a>
+                                </figure>
+                            </div>
                             <span class="wt-featuredtagvtwo" v-if="service_item.is_featured = 'true'">{{ trans('lang.featured') }}</span>
                             <div class="wt-freelancers-details">
                                 <figure class="wt-freelancers-img" v-if="service_item.seller_count > 0">

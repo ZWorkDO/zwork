@@ -49,10 +49,10 @@ class EmailTemplateSeeder extends Seeder
                 [
                     'admin_email' => null,
                     'email_type_id' => '3',
-                    'title' => 'Lost Password',
-                    'subject' => 'Forgot Password',
-                    'content' => '<p>Hi <strong>%name%!</strong> <strong>Lost Password reset</strong></p>
-                    <p>Someone requested to reset the password of following account:<br /> <strong>Email Address:</strong> %account_email%<br /> If this was a mistake, just ignore this email and nothing will happen.<br /> To reset your password, click reset link below:<br /> <a href="%link%"><strong>Reset</strong></a></p>
+                    'title' => 'Contraseña olvidades',
+                    'subject' => 'Se te olvidó tu contraseña',
+                    'content' => '<p>Hola <strong>%name%!</strong> <strong>Restablecimiento de contraseña perdida</strong></p>
+                    <p>Alguien solicitó restablecer la contraseña de la siguiente cuenta:<br /> <strong>Dirección de correo electrónico:</strong> %account_email%<br /> Si esto fue un error, simplemente ignore este correo electrónico y no sucederá nada.<br /> Para restablecer su contraseña, haga clic en el enlace de restablecimiento a continuación:<br /> <a href="%link%"><strong>Restaurar</strong></a></p>
                     <p>%signature%</p>',
                     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                     'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -353,9 +353,9 @@ class EmailTemplateSeeder extends Seeder
                 [
                     'admin_email' => null,
                     'email_type_id' => '26',
-                    'title' => 'Password Reset',
-                    'subject' => 'Password Reset',
-                    'content' => '<p>Hello <strong>%name%</strong>,</p>
+                    'title' => 'Restableser contraseña',
+                    'subject' => 'Restableser contraseña',
+                    'content' => '<p>Hola <strong>%name%</strong>,</p>
                     <p>You password has been reset successfully.</p>
                     <p>You can login to your account with new credentials</p>
                     <p><strong>Email: </strong>%email%</p>

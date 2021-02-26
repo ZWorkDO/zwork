@@ -852,3 +852,17 @@
 	.wt-companysinfo .wt-postarticlemeta li + li{padding-top:5px;margin-top: 5px; border-top: 1px solid #adadad; }
 }
 @media (max-width:360px){.wt-userprofile figure{width: auto;}}
+
+/*princing page reponsive*/
+
+@media screen and (min-width: 600px) {
+	.col-pr {
+	  width: 50%;
+	}
+  }
+  
+  @media screen and (min-width: 1000px) {
+	  .col-pr {
+		width: 25%;
+	  }
+	}

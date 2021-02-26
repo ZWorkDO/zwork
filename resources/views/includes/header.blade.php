@@ -127,7 +127,7 @@
             </header>
         @else
             <header id="wt-header" class="wt-header wt-haslayout {{$inner_header}}">
-                <div class="wt-navigationarea">
+                <div class="wt-navigationarea" >
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -248,7 +248,7 @@
         @endif
     @else
         <header id="wt-header" class="wt-header wt-haslayout {{$inner_header}}">
-            <div class="wt-navigationarea">
+            <div class="wt-navigationarea" >
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

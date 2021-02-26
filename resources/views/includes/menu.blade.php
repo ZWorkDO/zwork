@@ -49,13 +49,13 @@
                     </a>
                 </li>
             @endif
-            <!-- @if ($type =='services' || $type == 'both')
+            @if ($type =='services' || $type == 'both')
                 <li>
                     <a href="{{url('search-results?type=service')}}">
                         {{{ trans('lang.browse_services') }}}
                     </a>
                 </li>
-            @endif -->
+            @endif
             <li>
                 <a href="{{url('articles')}}">
                     {{{ trans('lang.articles') }}}

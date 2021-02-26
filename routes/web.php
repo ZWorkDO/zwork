@@ -63,6 +63,7 @@ Route::get('profile-project/{slug}', 'PublicController@showUserProfileProject')-
 Route::get('categories', 'CategoryController@categoriesList')->name('categoriesList');
 Route::get('page/{slug}', 'PageController@show')->name('showPage');
 Route::post('store/project-offer', 'UserController@storeProjectOffers');
+Route::post('invoice/ask-invoice', 'UserController@askForInvoice');
 if (Helper::getAccessType() == 'both' || Helper::getAccessType() == 'jobs') {
     Route::get('jobs', 'JobController@listjobs')->name('jobs');
     Route::get('job/{slug}', 'JobController@show')->name('jobDetail');

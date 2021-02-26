@@ -173,7 +173,7 @@ class FreelancerController extends Controller
                     'contact_name',
                     'position',
                     'camara_id',
-                    'nr',
+                    'nr'
                 )
               );
         } else {
@@ -192,7 +192,7 @@ class FreelancerController extends Controller
                   'contact_name',
                   'position',
                   'camara_id',
-                  'nr',
+                  'nr'
               )
             );
         }
@@ -225,7 +225,7 @@ class FreelancerController extends Controller
                     'address_line2',
                     'city',
                     'state',
-                    'country',
+                    'country'
                 )
               );
         } else {
@@ -238,7 +238,7 @@ class FreelancerController extends Controller
                     'address_line2',
                     'city',
                     'state',
-                    'country',
+                    'country'
               )
             );
         }
@@ -344,7 +344,7 @@ class FreelancerController extends Controller
       if (Auth::user()) {
           Auth::user()->switchToRole("employer");    
 
-          return Redirect::to('employer/welcome');
+          return Redirect::back();
       }
     }
 

@@ -16,14 +16,14 @@
             <div class="wt-sliderbox__form">
                 <div class="form-group">
                     <tinymce-editor 
-                        v-model="content.description"                        
-                        :init="initObj"
-                        toolbar="comment">
+                        v-model="content.description"                         
+                        :init="{
+                          plugins: 'paste link code advlist autolink lists link image charmap print', relative_urls: false, convert_urls: false, file_picker_types: 'image', toolbar1: 'undo redo code | bold italic underline strikethrough | fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | image', menubar:false, statusbar: false,paste_data_images: true, images_upload_handler: upload_handler,extended_valid_elements:'span[style],i[class]'}">
                     </tinymce-editor>
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </template>
 <script>
 import Editor from '@tinymce/tinymce-vue'
@@ -32,20 +32,7 @@ export default {
     props:['parent_index', 'element_id', 'content_section'],
     data() {
         return {
-            content:{},
-            initObj:{
-                toolbar1: 'comment',
-                setup: function (editor){
-                    editor.addButton('comment',{
-                        text: 'Comentario',
-                        tooltip:"comment",
-                        icon: true,
-                        onclick: function (){
-                            editor.insertContent('<div class="wt-commentcomilla1">&ldquo;</div><h3 class="wt-commenth3"><strong>Eficientizamos el teletrabajo, utilizando tecnología de la información con procesos optimizados y resultados medibles, creando oportunidades que transforman ideas en realidad.</strong></h3><div class="wt-commentcomilla2">&rdquo;</div><br><h3 class="wt-commetzwork"><em>El Equipo Z|</em></h3>')
-                        }
-                    })
-                }
-            }
+            content:{}
         }
     },
     components: {
@@ -60,10 +47,9 @@ export default {
             }
             return -1
         },
-        upload_handler: function (blobInfo, success, failure) {
+         upload_handler: function (blobInfo, success, failure) {
           let data = new FormData();
           let filename = blobInfo.filename();
-
           if( typeof(blobInfo.blob().name) !== undefined )
               filename = blobInfo.blob().name;
           

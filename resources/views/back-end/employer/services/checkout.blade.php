@@ -74,17 +74,17 @@
                                         @if ($gatway == "paypal")
                                             <a href="{{{url('paypal/ec-checkout')}}}">
                                                 <i class="fa fa-paypal"></i>
-                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} {{ trans('lang.pay_gateway') }}</span>
+                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} </span>
                                             </a>
                                         @elseif ($gatway == "stripe")
                                             <a href="javascrip:void(0);" v-on:click.prevent="getStriprForm">
                                                 <i class="fab fa-stripe-s"></i>
-                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} {{ trans('lang.pay_gateway') }}</span>
+                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} </span>
                                             </a>
                                         @elseif ($gatway == "cybsrc")
                                             <a href="javascrip:void(0);" v-on:click.prevent="getCybSrcForm">
                                                 <i class="fas fa-credit-card"></i>
-                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} {{ trans('lang.pay_gateway') }}</span>
+                                                <span><em>{{ trans('lang.pay_amount_via') }}</em> {{ Helper::getPaymentMethodList($gatway)['title']}} </span>
                                             </a>
                                         @endif
                                     </li>
@@ -139,55 +139,6 @@
                                 </div>
                                 <div class="form-group wt-btnarea">
                                     <input type="submit" name="button" class="wt-btn" value="Pay {{ !empty($symbol['symbol']) ? $symbol['symbol'] : '$' }}{{$service->price}}">
-                                </div>
-                            </fieldset>
-                        </form>
-                    </b-modal>
-                </div>
-                <div class="d-block text-center">
-                    <b-modal ref="cybSrcModalRef" hide-footer title="Credit Card (CyberSource)" class="la-pay-stripe" :no-close-on-backdrop="true">
-                        <form  class="wt-formtheme wt-form-paycard" method="POST" @submit="submitCybSrcFrom" id="cybsrc-payment-form" role="form" action="https://testsecureacceptance.cybersource.com/silent/pay">
-                            {{ csrf_field() }}
-                            <fieldset class="reference_fields">
-                                @foreach ($payment_info['reference_fields'] as $name => $value)
-                                    <input type="hidden" id="{{ $name }}" name="{{ $name }}"  value="{{ $value }}" >
-                                @endforeach
-                            </fieldset>
-                            <fieldset>
-                                @foreach ($payment_info as $name => $value)
-                                    @if($name != 'reference_fields') 
-                                    <input type="hidden" id="{{ $name }}" name="{{ $name }}"  value="{{ $value }}" >
-                                    @endif
-                                @endforeach   
-                            </fieldset>         
-                            <fieldset>                                               
-                                <div class="form-group wt-inputwithicon">
-                                    <label>{{ trans('lang.card_no') }}</label>
-                                    <img src="{{asset('images/pay-icon.png')}}">
-                                    <input id="card_number" type="text" class="form-control" v-cardformat:formatCardNumber name="card_number" value="{{ old('card_number') }}" autofocus  >
-                                    <input type="hidden" id="card_type" name="card_type"  v-bind:value="card_type" >
-                                </div>                           
-                            </fieldset>
-                            <fieldset class="validatable_fields">
-                                <div class="form-group" >
-                                    <label>{{ trans('lang.expiry_month') }}</label>
-                                    <input id="ccExpiryMonth" name="ccExpiryMonth" type="number" class="form-control" v-bind:class="{ 'is-invalid': cybsrc_form.is_cc_expiry_month_error }" name="ccExpiryMonth" v-model="cybsrc_form.cc_expire_month" min="1" max="12" autofocus>
-                                    <span class="help-block" v-if="cybsrc_form.is_cc_expiry_month_error">
-                                        <strong v-cloak>@{{cybsrc_form.cc_expiry_month_error}}</strong>
-                                    </span>
-                                </div>
-                                <div class="form-group" >
-                                    <label>{{ trans('lang.expiry_year') }}</label>
-                                    <input id="ccExpiryYear" name="ccExpiryYear" type="text" class="form-control" v-bind:class="{ 'is-invalid': cybsrc_form.is_cc_expiry_year_error }"  name="ccExpiryYear" v-model="cybsrc_form.cc_expire_year" autofocus>
-                                    <span class="help-block" v-if="cybsrc_form.is_cc_expiry_year_error">
-                                        <strong v-cloak>@{{cybsrc_form.cc_expiry_year_error}}</strong>
-                                    </span>
-                                </div>
-                                <input type="hidden" id="card_expiry_date" name="card_expiry_date"  v-bind:value="card_expire_date" >
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-group wt-btnarea">
-                                    <input type="submit" name="button" class="wt-btn" value="Pay {{ !empty($symbol['symbol']) ? $symbol['symbol'] : '$' }}{{$package->cost}}">
                                 </div>
                             </fieldset>
                         </form>

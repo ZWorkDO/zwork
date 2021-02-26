@@ -247,7 +247,7 @@ class ServiceController extends Controller
                         $email_params['name'] = Helper::getUserName(Auth::user()->id);
                         $email_params['link'] = url('profile-professional/' . $user->slug);
                         $template_data = Helper::getAdminServicePostedEmailContent();
-                        Mail::to(config('mail.username'))
+                        Mail::to(config('mail.from.address'))
                             ->send(
                                 new AdminEmailMailable(
                                     'admin_email_new_service_posted',
@@ -288,7 +288,7 @@ class ServiceController extends Controller
                     $email_params['name'] = Helper::getUserName(Auth::user()->id);
                     $email_params['link'] = url('profile-professional/' . $user->slug);
                     $template_data = Helper::getAdminServicePostedEmailContent();
-                    Mail::to(config('mail.username'))
+                    Mail::to(config('mail.from.address'))
                         ->send(
                             new AdminEmailMailable(
                                 'admin_email_new_service_posted',
@@ -661,7 +661,10 @@ class ServiceController extends Controller
                 $product_info["project_type"] = "service";
                 $product_info["service_seller"] = $freelancer->id;
                 $product_info["cost"] = $service->price;
-                $payment_info = CyberSourceHelper::buildRequestParams($product_info);  
+
+                
+                $payment_info["reference_fields"] = $product_info;
+                //$payment_info = CyberSourceHelper::buildRequestParams($product_info);  
 
                 if (file_exists(resource_path('views/extend/back-end/employer/services/checkout.blade.php'))) {
                     return view(

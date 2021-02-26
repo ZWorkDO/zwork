@@ -34,7 +34,8 @@ import vue2Dropzone from 'vue2-dropzone'
 import cropperOpts from './CropperOptions';
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 export default {
-    props: ['id', 'aspect_ratio','img_ref', 'url', 'name', 'max_images', 'hidden_name', 'hidden_id', 'dynamicHidden'],    
+    // props: ['id', 'aspect_ratio','img_ref', 'url', 'name', 'max_images', 'hidden_name', 'hidden_id', 'dynamicHidden'],    
+    props: ['id', 'img_ref', 'url', 'name', 'max_images', 'hidden_name', 'hidden_id', 'dynamicHidden'],    
     components: {
         vueDropzone: vue2Dropzone
     },
@@ -60,7 +61,7 @@ export default {
                 headers: {
                     'x-csrf-token': document.querySelectorAll('meta[name=csrf-token]')[0].getAttributeNode('content').value,
                 },
-                transformFile: cropperOpts.transformer,
+                // transformFile: cropperOpts.transformer,
                 init: function() {
                     var myDropzone = this;
                     // this.on("addedfile", function(file) { 

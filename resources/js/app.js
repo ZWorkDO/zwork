@@ -24,7 +24,8 @@ import Verte from 'verte';
 import 'verte/dist/verte.css';
 import { Collapse } from 'ant-design-vue';
 import VueCardFormat from 'vue-credit-card-validation';
-import './mixins/helper.js'
+import './mixins/helper.js';
+
 
 Vue.prototype.trans = (key) => {
     return _.get(window.trans, key, key);
@@ -39,6 +40,9 @@ Vue.filter('two_digits', function (value) {
 
 let $_boostrapModal = jQuery.fn['modal'];
 let $_boostrapCarousel =  jQuery.fn['carousel'];
+
+/* On Scroll Header */
+
 
 Event.$on('description-component-render', (data) => {
     let infoModalCarousels = data.el.querySelectorAll(".info-modal-carousel");
@@ -956,7 +960,7 @@ if (document.getElementById("skill-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1041,7 +1045,7 @@ if (document.getElementById("dpt-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1194,7 +1198,7 @@ if (document.getElementById("pages-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1266,7 +1270,7 @@ if (document.getElementById("reviews")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1338,7 +1342,7 @@ if (document.getElementById("delivery-time")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1410,7 +1414,7 @@ if (document.getElementById("response-time")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1495,7 +1499,7 @@ if (document.getElementById("cat-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1592,7 +1596,7 @@ if (document.getElementById("badge-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1663,7 +1667,7 @@ if (document.getElementById("lang-list")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -1742,7 +1746,7 @@ if (document.getElementById("location")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -2917,7 +2921,7 @@ if (document.getElementById("settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -2939,7 +2943,7 @@ if (document.getElementById("settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -2963,7 +2967,7 @@ if (document.getElementById("settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -2994,7 +2998,7 @@ if (document.getElementById("settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -3024,7 +3028,7 @@ if (document.getElementById("settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -3302,7 +3306,7 @@ if (document.getElementById("profile_settings")) {
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -3345,7 +3349,7 @@ if (document.getElementById("profile_settings")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -3827,7 +3831,7 @@ if (document.getElementById("jobs")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -4019,7 +4023,7 @@ if (document.getElementById("jobs")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -4282,51 +4286,51 @@ if (document.getElementById("packages")) {
                         console.log(error);
                     });
             },
-            submitCybSrcFrom: function (e) {
-                let cybsrc_payment = document.getElementById('cybsrc-payment-form');
-                let fields =  $('#cybsrc-payment-form .reference_fields, #cybsrc-payment-form .validatable_fields');
-                let data = fields.serializeArray().reduce((acc, {name, value}) => ({...acc, [name]: value}),{});
-                var self = this;
+            // submitCybSrcFrom: function (e) {
+            //     let cybsrc_payment = document.getElementById('cybsrc-payment-form');
+            //     let fields =  $('#cybsrc-payment-form .reference_fields, #cybsrc-payment-form .validatable_fields');
+            //     let data = fields.serializeArray().reduce((acc, {name, value}) => ({...acc, [name]: value}),{});
+            //     var self = this;
             
-                self.cybsrc_form.cc_expiry_month_error = '';
-                self.cybsrc_form.is_cc_expiry_month_error = false;
-                self.cybsrc_form.cc_expiry_year_error = '';
-                self.cybsrc_form.is_cc_expiry_year_error = false;
+            //     self.cybsrc_form.cc_expiry_month_error = '';
+            //     self.cybsrc_form.is_cc_expiry_month_error = false;
+            //     self.cybsrc_form.cc_expiry_year_error = '';
+            //     self.cybsrc_form.is_cc_expiry_year_error = false;
 
-                if(!self.validate) {
-                    this.loading = true;
-                    e.preventDefault();
+            //     if(!self.validate) {
+            //         this.loading = true;
+            //         e.preventDefault();
                     
-                    axios.post(APP_URL + '/pre-pay/cybsrc', data)
-                    .then(function (response) {
-                        console.log(response.data);
-                        if (response.data.type == 'success') {
-                            self.loading = false;
-                            self.validate = true;
-                            let cc_input = $('#cybsrc-payment-form [data-card-brand]');
-                            cc_input.val(cc_input.val().replace(/ /g,''));
-                            cybsrc_payment.submit();
-                        } else if (response.data.type == 'error') {
-                            self.loading = false;
-                            self.validate = false;
-                            self.errors = response.data.message;
-                        }
-                    })
-                    .catch(function (error) {
-                        self.loading = false;
-                        self.validate = false;
+            //         axios.post(APP_URL + '/pre-pay/cybsrc', data)
+            //         .then(function (response) {
+            //             console.log(response.data);
+            //             if (response.data.type == 'success') {
+            //                 self.loading = false;
+            //                 self.validate = true;
+            //                 let cc_input = $('#cybsrc-payment-form [data-card-brand]');
+            //                 cc_input.val(cc_input.val().replace(/ /g,''));
+            //                 cybsrc_payment.submit();
+            //             } else if (response.data.type == 'error') {
+            //                 self.loading = false;
+            //                 self.validate = false;
+            //                 self.errors = response.data.message;
+            //             }
+            //         })
+            //         .catch(function (error) {
+            //             self.loading = false;
+            //             self.validate = false;
                     
-                        if (error.response.data.errors.ccExpiryMonth) {
-                            self.cybsrc_form.cc_expiry_month_error = error.response.data.errors.ccExpiryMonth[0];
-                            self.cybsrc_form.is_cc_expiry_month_error = true;
-                        }
-                        if (error.response.data.errors.ccExpiryYear) {
-                            self.cybsrc_form.cc_expiry_year_error = error.response.data.errors.ccExpiryYear[0];
-                            self.cybsrc_form.is_cc_expiry_year_error = true;
-                        }                        
-                    });
-                }           
-            },
+            //             if (error.response.data.errors.ccExpiryMonth) {
+            //                 self.cybsrc_form.cc_expiry_month_error = error.response.data.errors.ccExpiryMonth[0];
+            //                 self.cybsrc_form.is_cc_expiry_month_error = true;
+            //             }
+            //             if (error.response.data.errors.ccExpiryYear) {
+            //                 self.cybsrc_form.cc_expiry_year_error = error.response.data.errors.ccExpiryYear[0];
+            //                 self.cybsrc_form.is_cc_expiry_year_error = true;
+            //             }                        
+            //         });
+            //     }           
+            // },
         }
     });
 }
@@ -4383,6 +4387,58 @@ if (document.getElementById("invoice_list")) {
                     self.loading = false;
                 });
             },
+            askForInvoice: function (payer_name, created_at,transaction_id,item_name,item_qty,item_price,sales_tax,price,invoice_id,payer_email) {
+                this.loading = true;
+                var self = this;
+                console.log('INVOICE payer');
+                console.log(payer_name);
+
+    
+
+                let form_data = new FormData();
+                form_data.append('payer_name', payer_name);
+                form_data.append('created_at', created_at);
+                form_data.append('transaction_id', transaction_id);
+                form_data.append('item_name', item_name);
+                form_data.append('item_qty', item_qty);
+                form_data.append('item_price', item_price);
+                form_data.append('sales_tax', sales_tax);
+                form_data.append('price', price);
+                form_data.append('invoice_id', invoice_id);
+                form_data.append('payer_email', payer_email);
+          
+                axios.post(APP_URL + '/invoice/ask-invoice', form_data)
+                    .then(function (response) {
+                        if (response) {
+                            self.loading = false;
+                            console.log('CORREO ENVIADO');
+                            console.log(response);
+                            self.showMessage(response.data.message);
+                        } 
+                    })
+                    .catch(function (error) {
+                        self.loading = false;
+                        onsole.log('ERROR');
+                        console.log(response);
+                       
+                    });
+             },
+             printPDF: async function (payer_name, created_at,transaction_id,item_name,item_qty,item_price,sales_tax,price,invoice_id,payer_email) {
+                var doc = new jsPDF();
+                let totalDollars = parseFloat(item_price);
+                let totalPesos = totalDollars * 58.5;
+                let itbis18Percent = totalPesos * 18 / 100;
+                let totalPlusItbs = totalPesos + itbis18Percent;
+
+                let html = "<!DOCTYPE html><html><head><meta charset='utf-8'></head><style type='text/css'>td,th {padding-bottom: 14pt;}#content1 {width: 100%;display:flex;flex-direction: row-reverse;justify-content: space-between;margin-bottom: 20px;}#socialContainer{width: 55ch;height: 5ch;background-color: #1EC8EF;align-self: center;border-radius: 5mm;padding: 5mm;display: flex;flex-direction: row;align-items: center;}#rowContent {display: flex;flex-direction:row;justify-content:space-between;}#columnInfo {display: flex;flex-direction: column;}#columnLeftInfo {display: flex;flex-direction:column;padding-right: 15rem;}.IconStyle {margin: 0 5px;width: 50px;height: 50px;}</style><body><div id='content1'><div id='socialContainer' style='color: white; font-size:x-large'><ul><i style='font-size: 50px;' class='fab fa-facebook'></i></ul><ul><i style='font-size: 50px;' class='fab fa-instagram-square'></i></ul><ul><i style='font-size: 50px;' class='fab fa-invision'></i></ul><div style='margin-left: 30mm;'>@zwork.do | zwork.do</div></div><div style='margin-left: 15px;'><img src='"+APP_URL+"/images/logozwork.png' width='100'style='margin-top: 23px;' /></div></div><div id='rowContent'><div id='columnInfo'><div>ZAPATA AQUINO & ASOCIADOS, S.R.L</div><div>RNC.: 1-31-90639-7</div><div>Fecha: "+created_at+"</div></div><div id='columnInfo'><div style='color: #0AA0E5; font-size: xx-large; font-weight: bold;'>FACTURA DE CRÉDITO FISCAL</div><div>NCF: B0100000001</div><div>Vencimiento de Secuencia: "+new Date(new Date().getFullYear(), 11, 31)+"</div></div></div><hr style='display: block; height: 1px;width: 100px;border: 0; border-top: 5px solid #C2DC5B;margin: 2em 0; padding: 0;'><div id='rowContent'><div id='columnInfo'><div>RNC: RNC usuario contratante</div><div>Cliente: "+payer_name+"</div><div>Departamento:</div><div>Contacto:</div><div>Teléfono:</div><div>Correo: "+payer_email+"</div><div>Dirección:</div></div><div id='columnLeftInfo'><div>Asunto: "+item_name+"</div><div>Profesional: Nombre de Profesiona</div><div>Descripción: Período de Entrega</div><div>ID de Transacción: "+transaction_id+"</div><div>Factura No.: "+invoice_id+"</div></div></div><div style='font-family:Verlag-Light; margin-top: 20px;'><table style='width: 100%;  border:1px solid lightgrey;border-collapse: collapse;'><tr style='border: 1px solid  lightgrey; background-color: #1EC8EF;'><td style='border: 1px solid  lightgrey;'><b style='color: white; font-size:large;'>Descripción</b></td><td style='border: 1px solid  lightgrey; text-align: center;'><b style='color: white; font-size:large;'>Cantidad</b></td><td style='border: 1px solid  lightgrey; text-align: center;'><b style='color: white; font-size:large;'>Tarifa</b></td><td style='border: 1px solid  lightgrey; text-align: center;'><b style='color: white; font-size:large;'>Precio</b></td></tr><tr style='border: 1px solid  lightgrey;'><td style='border: 1px solid  lightgrey;'><b style='color: black;'>"+item_name+"</b></td><td style='border: 1px solid  lightgrey;'><b>"+item_qty+"</b></td><td style='border: 1px solid  lightgrey;'><b></b></td><td style='border: 1px solid  lightgrey;'><b>$"+item_price+"</b></td></tr><tr style='border: 1px solid  lightgrey;'><td style='border: 1px solid  lightgrey;'><b></b></td><td style='border: 1px solid  lightgrey;'><b></b></td><td style='border: 1px solid  lightgrey;'><b>SubTotal USD</b></td><td style='border: 1px solid  lightgrey;'><b>$"+totalDollars+"</b></td></tr><tr style='border: 1px solid  lightgrey;'><td style='border: 1px solid  lightgrey; text-align: end;'><b style='color: black;'> Taza de Cambio:</b></td><td style='border: 1px solid  lightgrey;'><b>58.5</b></td><td style='border: 1px solid  lightgrey;'><b>SubTotal DOP</b></td><td style='border: 1px solid  lightgrey;'><b>$"+totalPesos+"</b></td></tr><tr style='border: 1px solid  lightgrey;'><td style='border: 1px solid  lightgrey;'><b style='color: black;'></b></td><td style='border: 1px solid  lightgrey;'><b></b></td><td style='border: 1px solid  lightgrey;'><b>ITIBIS 18%</b></td><td style='border: 1px solid  lightgrey;'><b>$"+itbis18Percent+"</b></td></tr><tr style='border: 1px solid  lightgrey;'><td style='border: 1px solid  lightgrey;'><b style='color: black;'></b></td><td style='border: 1px solid  lightgrey;'><b></b></td><td style='border: 1px solid  lightgrey; background-color: #B2D330;'><b>TOTAL DOP: </b></td><td style='border: 1px solid  lightgrey; background-color: #B2D330;'><b>$"+totalPlusItbs+"</b></td></tr></table></div><div style='width: 40rem; margin-top: 4rem;'>Los pagos pueden ser realizados mediante tarjeta de crédito, Paypal, o transferencia. Para pagos mediante transferencia en pesos dominicanos, favor transferir a la Cuenta No. 818341273 del Banco Popular Dominicano, a favor de ZAPATA AQUINO & ASOCIADOS, S.R.L.</div><div style='margin-top: 7rem; display: flex; flex-direction: row;'><div style='display: flex; flex-direction: row;'><i style='color: #1EC8EF;' class='fas fa-envelope'></i>info@zwork.do |</div><br><div style='display: flex; flex-direction: row;'><i  style='color: #1EC8EF;'class='fas fa-phone'></i>809.412.8899 | </div><div style='display: flex; flex-direction: row;'><i style='color: #1EC8EF;' class='fab fa-whatsapp'></i>+.829.743.5377 </div></div><div style='margin-top: 1rem; display: flex; flex-direction: row; margin-left: 30px;'><div style='display: flex; flex-direction: row; width: 14rem;'><i style='color: #1EC8EF;'class='fas fa-map-marker-alt'></i>C/Máximo Aviles Blonda #12, Ensanche Julieta Morales IM Plaza, Local 2B|</div><br><div style='display: flex; flex-direction: row;'><i style='color: #1EC8EF;' class='fas fa-globe'></i>www.zwork.do</div></div></body></html>";
+               
+                await doc.fromHTML(html, 0, 0, {
+                    'width': 100
+                    },
+                    function(bla){doc.save('Factura-'+invoice_id+'.pdf');},
+                    0);
+
+             },
             print: function () {
                 const cssText = `
                 .wt-transactionhold{
@@ -5020,7 +5076,7 @@ if (document.getElementById("services")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -5248,7 +5304,7 @@ if (document.getElementById("article-cat")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -5327,7 +5383,7 @@ if (document.getElementById("articles")) {
                     customContainerClass: 'hire_popup',
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Yes",
+                    confirmButtonText: "si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
