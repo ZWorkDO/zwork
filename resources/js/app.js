@@ -41,6 +41,9 @@ Vue.filter('two_digits', function (value) {
 let $_boostrapModal = jQuery.fn['modal'];
 let $_boostrapCarousel =  jQuery.fn['carousel'];
 
+/* On Scroll Header */
+
+
 Event.$on('description-component-render', (data) => {
     let infoModalCarousels = data.el.querySelectorAll(".info-modal-carousel");
     Array.prototype.forEach.call(infoModalCarousels, (el, index) => {

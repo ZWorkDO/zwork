@@ -154,7 +154,7 @@ class EmailHelper extends Model
         ?>
         <div style="width: 100%; float: left; padding: 15px 0 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;">
             <div style="float: left; border-radius: 5px; overflow: hidden; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;">
-                <img style="display: block;" src="<?php echo Self::getSiteLogo(); ?>" alt="<?php echo Self::getSiteTitle(); ?>">
+                <img style="display: block; width:100px; height:100px; " src="<?php echo Self::getSiteLogo(); ?>" alt="<?php echo Self::getSiteTitle(); ?>">
             </div>
             <div style="overflow: hidden; padding: 0 0 0 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;">
                 <p style="margin: 0 0 7px; font-size: 14px; line-height: 14px; color: #919191; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;">Saludos</p>

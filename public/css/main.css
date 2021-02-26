@@ -1678,9 +1678,10 @@ li.wt-rss a {
 }
 
 .wt-header {
+    position: fixed;
     padding: 0;
     z-index: 10;
-    position: relative;
+    background-color:white;
 }
 
 .wt-nav {
@@ -13457,7 +13458,7 @@ a:focus {
 .col-pr {
     box-sizing: border-box;
     float: left;
-    width: 25%;
+    width: 100%;
     padding: 10px;
     font-family: "Nunito", sans-serif;
 }
@@ -13484,7 +13485,12 @@ a:focus {
     list-style:none;
     border: hidden;
     margin-left: 30px;
+    color:#636c77;
   }
+
+.icon.check{
+    color:#000;
+}
 
 .pr-tittle{
   font-weight: bold; 
@@ -13554,11 +13560,17 @@ a:focus {
   
 }
 
-@media only screen and (max-width: 600px) {
+@media screen and (min-width: 600px) {
   .col-pr {
-    width: 100%;
+    width: 50%;
   }
 }
+
+@media screen and (min-width: 1000px) {
+    .col-pr {
+      width: 25%;
+    }
+  }
 
 .li-index{
 	padding: 0;
@@ -13573,3 +13585,4 @@ a:focus {
 	color:#0f0f0f;
 	text-decoration: none;
 }
+
