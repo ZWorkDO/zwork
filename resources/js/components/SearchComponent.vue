@@ -1,5 +1,5 @@
 <template>
-    <form class="wt-formtheme wt-formbanner wt-formbannertwo" id="main-search-form" v-if="this.widget_type == 'home'">
+    <form class="wt-formtheme wt-formbanner wt-formbannertwo" v-on:submit.prevent id="main-search-form" v-if="this.widget_type == 'home'">
         <fieldset>
             <div class="wt-dropdown"  @click="toggleDropdown">
                 <span> <em class="selected-search-type">{{selected_type}} </em><i class="lnr lnr-chevron-down"></i></span>
@@ -183,7 +183,7 @@
                     }
                     jQuery('.search-field').parents('.form-group').find('span.no-record-span').css("display", "none");
                     jQuery('.wt-related-result').remove();
-                    var html = '<a href="'+this.url+'?s='+keyword+'&type='+type+'" class="wt-related-result"><span v-if="related_results">show all result related to'+' <em>'+ keyword+'</em></span></a>';
+                    var html = '<a href="'+this.url+'?s='+keyword+'&type='+type+'" class="wt-related-result"><span v-if="related_results">Mostrar todos los resultados relacionados con'+' <em>'+ keyword+'</em></span></a>';
                     jQuery(".list-group").append(html);
                     this.related_results = true;
                     this.is_show = false;
