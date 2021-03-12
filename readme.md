@@ -6,6 +6,7 @@ Z | Work is a digital platform with unlimited access to specialized professional
 
 ## How to deploy config locally
 
+
 GNU/LINUX
 
 `$ git clone https://github.com/ZWorkDO/zwork.git`
