@@ -39,7 +39,7 @@
 	.wt-openmenu .wt-usersidebar .wt-companysinfo .wt-title{margin-bottom:15px; }
 	.wt-navdashboard-footer{display: none;}
 	.wt-openmenu .wt-navdashboard-footer{display: block;}
-	.wt-userlistingvtwo .wt-userlistingcontent .wt-rightarea{width: 100%;}
+	/* .wt-userlistingvtwo .wt-userlistingcontent .wt-rightarea{width: 100%;} */
 	.wt-canceljobholder .wt-userlistinghold .wt-rightarea .wt-btnarea{padding: 0 0 30px;}
 	.wt-jobdetailscontent .wt-userlistinghold .wt-rightarea{width: auto;}
 	.wt-jobdetailscontent .wt-userlistingvtwo .wt-contenthead{max-width: 380px;}
