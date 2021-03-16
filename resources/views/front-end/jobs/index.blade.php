@@ -80,9 +80,9 @@
                         
                         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-8 float-left">
                             <div class="wt-userlistingholder wt-haslayout">
-                                @if (!empty($keyword))
+                                @if (!empty($jobs) )
                                     <div class="wt-userlistingtitle">
-                                        <span>{{ trans('lang.01') }} {{$jobs->count()}} of {{$Jobs_total_records}} results for <em>"{{{$keyword}}}"</em></span>
+                                        <span>{{$jobs->count(Carbon\Carbon::now()->lessThan($job->expiry_date))}} de {{$Jobs_total_records}} resultados for <em>"{{{$keyword}}}"</em></span>
                                     </div>
                                 @endif
                                 @if (!empty($jobs) && $jobs->count() > 0)
