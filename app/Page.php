@@ -63,15 +63,15 @@ class Page extends Model
     public function setSlugAttribute($value)
     {
         $temp = str_slug($value, '-');
-        if (!Page::all()->where('slug', $temp)->isEmpty()) {
-            $i = 1;
-            $new_slug = $temp . '-' . $i;
-            while (!Page::all()->where('slug', $new_slug)->isEmpty()) {
-                $i++;
-                $new_slug = $temp . '-' . $i;
-            }
-            $temp = $new_slug;
-        }
+        // if (!Page::all()->where('slug', $temp)->isEmpty()) {
+        //     $i = 1;
+        //     $new_slug = $temp . '-' . $i;
+        //     while (!Page::all()->where('slug', $new_slug)->isEmpty()) {
+        //         $i++;
+        //         $new_slug = $temp . '-' . $i;
+        //     }
+        //     $temp = $new_slug;
+        // }
         $this->attributes['slug'] = $temp;
     }
 
@@ -100,7 +100,7 @@ class Page extends Model
             $count = 0;
             $old_path = Helper::PublicPath() . '/uploads/pages/temp';
             $this->title = filter_var($request->title, FILTER_SANITIZE_STRING);
-            $this->slug = filter_var($request->title, FILTER_SANITIZE_STRING);
+            $this->slug = filter_var($request->url, FILTER_SANITIZE_STRING);
             $this->body = !empty($request->body) ? $request->body : 'null';
             if ($request->parent_id) {
                 $this->relation_type = 1;

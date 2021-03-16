@@ -410,6 +410,7 @@ export default {
     this.getPageData();
     this.getPageOption();
     this.form.title = this.pageData.title;
+    this.form.slug = this.pageData.slug;
     this.form.seo_desc = this.seo_desc
     if (this.selected_parent) {
       this.form.parent_id = this.selected_parent
