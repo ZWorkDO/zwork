@@ -79,7 +79,7 @@
                             <div class="wt-userlistingholder wt-userlisting wt-haslayout">
                                 <div class="wt-userlistingtitle">
                                     @if (!empty($users))
-                                        <span>{{$users->count()}} de {{\App\User::role('freelancer')->count()}} resultado @if (!empty($keyword)) for <em>"{{{$keyword}}}"</em> @endif</span>
+                                        <span>{{$users->count()}} de {{\App\User::role('freelancer')->count()}} resultados @if (!empty($keyword)) for <em>"{{{$keyword}}}"</em> @endif</span>
                                     @endif
                                 </div>
                                 @if (!empty($users))
