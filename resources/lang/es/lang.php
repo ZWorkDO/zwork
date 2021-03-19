@@ -851,7 +851,7 @@ return [
     'is_typing' => 'El usuario está escribiendo',
     'no_msg' => 'Sin mensaje',
     'msg' => 'Mensaje',
-    'attachment' => 'Adjunto archivo',
+    'attachment' => 'Archivo Adjunto',
     'add_your_edu' => 'Añade tu educación',
     'add_edu' => '+ Añadir educación',
     'start_date' => 'Fecha de inicio',

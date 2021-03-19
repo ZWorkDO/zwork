@@ -10,7 +10,7 @@
         <h3>
           <span>{{ trans('lang.date') }}</span>
           <span>{{ trans('lang.msg') }}</span>
-          <span>{{ trans('lang.attachment') }}</span>
+          <span></span>
         </h3>
       </li>
       <span v-for="(message, index) in messages" :key="index">
