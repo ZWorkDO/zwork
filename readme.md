@@ -6,9 +6,10 @@ Z | Work is a digital platform with unlimited access to specialized professional
 
 ## How to deploy config locally
 
+
 GNU/LINUX
 
-`$ git clone https://github.com/foster-tech/zwork.git`
+`$ git clone https://github.com/ZWorkDO/zwork.git`
 
 `$ cp .env_local .env`
 
@@ -22,7 +23,7 @@ GNU/LINUX
 
 WINDOWS
 
-`> git clone https://github.com/foster-tech/zwork.git`
+`> git clone https://github.com/ZWorkDO/zwork.git`
 
 `> copy .env_local .env`
 

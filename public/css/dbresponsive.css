@@ -39,7 +39,7 @@
 	.wt-openmenu .wt-usersidebar .wt-companysinfo .wt-title{margin-bottom:15px; }
 	.wt-navdashboard-footer{display: none;}
 	.wt-openmenu .wt-navdashboard-footer{display: block;}
-	.wt-userlistingvtwo .wt-userlistingcontent .wt-rightarea{width: 100%;}
+	/* .wt-userlistingvtwo .wt-userlistingcontent .wt-rightarea{width: 100%;} */
 	.wt-canceljobholder .wt-userlistinghold .wt-rightarea .wt-btnarea{padding: 0 0 30px;}
 	.wt-jobdetailscontent .wt-userlistinghold .wt-rightarea{width: auto;}
 	.wt-jobdetailscontent .wt-userlistingvtwo .wt-contenthead{max-width: 380px;}
@@ -52,9 +52,9 @@
 }
 @media (max-width:1600px){ 
 	.wt-jobdetailscontent .wt-userlistinghold .wt-rightarea{
-		width: 100%;
-		float: left;
-		margin-top: 0;
+		/* width: 100%; */
+		float: right;
+		/* margin-top: 0; */
 	}
 	.wt-wrapper .wt-sidebarwrapper{padding-top:152px; }
 	.wt-btnmenutoggle{top: 170px;}
@@ -64,11 +64,11 @@
 	.wt-btnmenutoggle {top: 140px;}
 }
 @media (max-width:1440px){
-	.wt-rcvproposalholder .wt-proposalitem .wt-rightarea{
+	/* .wt-rcvproposalholder .wt-proposalitem .wt-rightarea{
 		width: 100%;
 		margin: 20px 0 -25px;
 		border-top: 1px solid #ddd;
-	}
+	} */
 	.la-ps-freelancer .wt-userform .wt-skills.la-skills-holder > div:nth-child(2) .wt-skillsform fieldset .form-group{padding-right:5px; }
 	.la-ps-freelancer .wt-userform .wt-skills.la-skills-holder > div:nth-child(2) .wt-skillsform .wt-btnarea.form-group{position: static;padding: 5px;}
 }

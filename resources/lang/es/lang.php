@@ -462,6 +462,7 @@ return [
     'title' => 'Título',
     'subject' => 'Tema',
     'role' => 'Papel',
+    'process_cmplted_success' => 'Completado',
     'description' => 'Descripción',
     'content' => 'Contenido',
     'seo_meta_desc' => 'Añadir SEO Descripción Meta (Opcional)',
