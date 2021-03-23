@@ -362,6 +362,7 @@ Route::group(
         Route::post('freelancer/store-personal-info', 'FreelancerController@storePersonalInfo');
         Route::post('freelancer/store-billing-address', 'FreelancerController@storeBillingAddress');
         Route::get('freelancer/get-freelancer-skills', 'FreelancerController@getFreelancerSkills');
+        Route::get('freelancer/get-freelancer-categoties', 'FreelancerController@getFreelancerCategories');
         Route::get('freelancer/get-freelancer-experiences', 'FreelancerController@getFreelancerExperiences');
         Route::get('freelancer/get-freelancer-projects', 'FreelancerController@getFreelancerProjects');
         Route::get('freelancer/get-freelancer-educations', 'FreelancerController@getFreelancerEducations');

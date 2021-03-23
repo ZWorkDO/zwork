@@ -414,6 +414,7 @@ return [
     'files_not_found' => 'Archivos no encontrados',
     'file_attached' => 'Archivo adjunto',
     'my_skills' => 'Mis habilidades',
+    'my_category' => 'Mis Categorias',
     'company_details' => 'Detalles de la compañía',
     'employer_detail' => 'Detalles del empleador',
     'admin_detail' => 'Detalles del administrador',
@@ -1020,6 +1021,8 @@ return [
     'ph_award_title' => 'Título',
     'ph_award_date' => 'Fecha',
     'ph_rate_skills' => 'Califica tu habilidad (0% a 100%)',
+    'ph_category' => 'Categoria',
+    
     'ph_search_templates' => 'Buscar plantillas de correo electrónico',
     'ph_select_gender' => 'Seleccione género',
     'ph_first_name' => 'Nombres',

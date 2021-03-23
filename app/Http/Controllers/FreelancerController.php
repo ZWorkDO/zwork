@@ -91,6 +91,7 @@ class FreelancerController extends Controller
         $package_options = Package::select('options')->where('role_id', $role_id)->first();
         $options = !empty($package_options) ? unserialize($package_options['options']) : array();
         $videos = !empty($profile->videos) ? Helper::getUnserializeData($profile->videos) : '';
+        //die($skills);
         if (file_exists(resource_path('views/extend/back-end/freelancer/profile-settings/personal-detail/index.blade.php'))) {
             return view(
                 'extend.back-end.freelancer.profile-settings.personal-detail.index',
@@ -488,6 +489,31 @@ class FreelancerController extends Controller
             if (!empty($skills)) {
                 $json['type'] = 'success';
                 $json['freelancer_skills'] = $skills;
+                return $json;
+            } else {
+                $json['type'] = 'error';
+                return $json;
+            }
+        } else {
+            $json['type'] = 'error';
+            return $json;
+        }
+    }
+
+       /**
+     * Get freelancer categoties.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getFreelancerCategories()
+    {
+        $json = array();
+        if (Auth::user()) {
+            $categories = User::find(Auth::user()->id)->categories()
+                ->get()->toArray();
+            if (!empty($categories)) {
+                $json['type'] = 'success';
+                $json['freelancer_categories'] = $categories;
                 return $json;
             } else {
                 $json['type'] = 'error';
