@@ -1,51 +1,48 @@
 <template>
     <div>
-        <div class="wt-formtheme wt-skillsform">
+        <div class="wt-formtheme wt-categoryform wt-skillsform">
             <transition name="fade">
                 <div v-if="isShow" class="sj-jump-messeges">{{ trans('lang.no_record') }}</div>
             </transition>
             <fieldset>
-                <div class="form-group">
-                    <div class="form-group-holder">
+                <div >
+                  
                         <span class="wt-select">
-                            <select id="freelancer_skill">
-                                <option v-for="(stored_skill, index) in stored_skills" :key="index" :value="stored_skill.id">{{stored_skill.title}}</option>
+                            <select id="freelancer_category">
+                                <option v-for="(stored_category, index) in stored_categories" :key="index" :value="stored_category.id">{{stored_category.title}}</option>
                             </select>
                         </span>
-                        <input type="number" class="form-control" :placeholder="ph_category" id="selected_rating_value">
-                    </div>
+                 
                 </div>
                 <div class="form-group wt-btnarea">
-                    <a href="javascript:void(0);" class="wt-btn" @click="addSkill">{{trans('lang.add_skills')}}</a>
+                    <a href="javascript:void(0);" class="wt-btn-cat wt-btn" @click="addCategory">{{trans('lang.add_categories')}}</a>
                 </div>
             </fieldset>
         </div>
-        <div class="wt-myskills">
-            <ul id="skill_list" class="sortable list">
-                <li v-for="(freelancer_category, index) in freelancer_categories" :key="index" v-if="freelancer_categories" class="skill-element" :ref="'skill-'+index">
+        <div class="wt-mycategories wt-myskills">
+            <ul id="category_list skill_list" class="sortable list">
+                <li v-for="(freelancer_category, index) in freelancer_categories" :key="index" v-if="freelancer_categories" class="skill-element" :ref="'category-'+index">
                     <div class="wt-dragdroptool">
                         <a href="javascript:void(0)" class="lnr lnr-menu"></a>
                     </div>
-                    <span class="skill-dynamic-html">
+                    <span class="category-dynamic-html skill-dynamic-html">
                         {{freelancer_category.title}}</span>
-                    <span class="skill-dynamic-field sss">
+                    <span class="category-dynamic-field skill-dynamic-field sss">
                         <input type="hidden" v-bind:name="'skills['+index+'][id]'" :value="freelancer_category.id">
                     </span>
                     <div class="wt-rightarea">
                         <a href="javascript:void(0);" class="wt-deleteinfo delete-skill" @click="removeStoredSkill(index)"><i class="lnr lnr-trash"></i></a>
                     </div>
                 </li>
-                <li v-for="(skill, index) in skills" :key="index+skill.count">
+                <li v-for="(category, index) in categories" :key="index+category.count">
                     <div class="wt-dragdroptool">
                         <a href="javascript:void(0)" class="lnr lnr-menu"></a>
                     </div>
-                    <span class="skill-dynamic-html">{{skill.title}} (<em class="skill-val">{{skill.rating}}</em>%)</span>
-                    <span class="skill-dynamic-field">
-                        <input type="hidden" v-bind:name="'skills['+[skill.count]+'][id]'" :value="skill.id">
-                        <input type="text" v-bind:name="'skills['+[skill.count]+'][rating]'" :value="skill.rating">
+                    <span class="category-dynamic-html skill-dynamic-html">{{category.title}} </span>
+                    <span class="category-dynamic-field skill-dynamic-field">
+                        <input type="hidden" v-bind:name="'categories['+[category.count]+'][id]'" :value="category.id">
                     </span>
                     <div class="wt-rightarea">
-                        <a href="javascript:void(0);" class="wt-addinfo"><i class="lnr lnr-pencil"></i></a>
                         <a href="javascript:void(0);" class="wt-deleteinfo" @click="removeSkill(index)"><i class="lnr lnr-trash"></i></a>
                     </div>
                 </li>
@@ -70,9 +67,12 @@
             return {
                 isShow: false,
                 stored_skills:[],
+                stored_categories:[],
                 selected_skill: '',
                 selected_rating:'',
                 selected_skill_text:'',
+                selected_category_text:'',
+                selected_category:'',
                 edit_class: false,
                 edit_skill: '',
                 skill: {
@@ -81,7 +81,13 @@
                     title:'',
                     count: 0
                 },
+                category: {
+                    id: '',
+                    title:'',
+                    count: 0
+                },
                 skills: [],
+                categories: [],
                 freelancer_skills: [],
                 freelancer_categories: [],
                 counts:0,
@@ -111,6 +117,15 @@
                     self.freelancer_skills = response.data.freelancer_skills;
                 });
             },
+             getAllCategories(){
+                let self = this;
+                axios.get(APP_URL + '/get-freelancer-all-categories')
+                .then(function (response) {
+                      console.log('ALL-CATEGORIES');
+                    console.log(response);
+                    self.stored_categories = response.data.categories;
+                });
+            },
              getUserCategories(){
                 let self = this;
                 axios.get(APP_URL + '/freelancer/get-freelancer-categoties')
@@ -122,23 +137,21 @@
  
                 });
             },
-            addSkill: function () {
-                var skillsSelect = document.getElementById("freelancer_skill");
-                var ratingSelect = document.getElementById("selected_rating_value");
-                if (skillsSelect.value === "" || ratingSelect.value === "") {
+            addCategory: function () {
+                var categoriesSelect = document.getElementById("freelancer_category");
+                if (categoriesSelect.value === "") {
                     this.showError('empty field not allow');
                 } else {
-                    var skill_list_count = jQuery('.wt-btn').parents('.wt-skillsform').next('.wt-myskills').find('ul#skill_list li').length;
-                    skill_list_count = skill_list_count - 1;
-                    this.skill.count = skill_list_count;
+                    var category_list_count = jQuery('.wt-btn-cat').parents('.wt-categoryform').next('.wt-mycategories').find('ul#category_list li').length;
+                    category_list_count = category_list_count - 1;
+                    this.category.count = category_list_count;
                     
-                    if(skillsSelect.options[skillsSelect.selectedIndex]) {
-                        this.selected_skill_text = skillsSelect.options[skillsSelect.selectedIndex].text;
-                        this.selected_skill = document.getElementById("freelancer_skill").value;
-                        this.selected_rating = document.getElementById("selected_rating_value").value;
-                        this.skills.push(Vue.util.extend({}, this.skill, this.skill.count++, this.skill.title = this.selected_skill_text, this.skill.id = this.selected_skill, this.skill.rating = this.selected_rating ))
-                        skillsSelect.remove(skillsSelect.selectedIndex);
-                        document.getElementById("selected_rating_value").value = '';
+                    if(categoriesSelect.options[categoriesSelect.selectedIndex]) {
+                        this.selected_category_text = categoriesSelect.options[categoriesSelect.selectedIndex].text;
+                        this.selected_category = document.getElementById("freelancer_category").value;
+
+                        this.categories.push(Vue.util.extend({}, this.category, this.category.count++, this.category.title = this.selected_category_text, this.category.id = this.selected_category ))
+                        categoriesSelect.remove(categoriesSelect.selectedIndex);
                     } else {
                         this.isShow = true;
                         var self = this;
@@ -207,24 +220,25 @@
             }
         },
         mounted: function () {
-            jQuery(document).on('click', '.wt-addinfo', function (e) {
+            jQuery(document).on('click', '.wt-addinfo-cat', function (e) {
                 e.preventDefault();
                 var _this = jQuery(this);
-                _this.addClass('wt-skillsactive');
-                _this.parents('li').addClass('wt-skillsaddinfo');
+                _this.addClass('wt-categoriesactive');
+                _this.parents('li').addClass('wt-categoriessaddinfo');
             });
-            jQuery(document).on('click', '.wt-skillsactive', function (e) {
+            jQuery(document).on('click', '.wt-categoriesactive', function (e) {
                 e.preventDefault();
                 var _this = jQuery(this);
-                _this.removeClass('wt-skillsactive');
-                _this.parents('li').removeClass('wt-skillsaddinfo');
-                var edit_skill_value = _this.parents('li').find('.skill-dynamic-field input:text').val();
-                _this.parents('li').find('.skill-dynamic-html em').html(edit_skill_value);
+                _this.removeClass('wt-categoriesactive');
+                _this.parents('li').removeClass('wt-categoriessaddinfo');
+                var edit_skill_value = _this.parents('li').find('.category-dynamic-field input:text').val();
+                _this.parents('li').find('.category-dynamic-html em').html(edit_skill_value);
             });
         },
         created: function() {
             this.getSkills();
             this.getUserSkills();
+            this.getAllCategories();
             this.getUserCategories();
         } 
     }

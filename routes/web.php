@@ -351,6 +351,7 @@ Route::group(
     ['middleware' => ['role:freelancer','verified']],
     function () {
         Route::get('/get-freelancer-skills', 'SkillController@getFreelancerSkills');
+        Route::get('/get-freelancer-all-categories', 'CategoryController@getAllCategories');
         Route::get('/get-skills', 'SkillController@getSkills');
         Route::get('freelancer/dispute/{slug}', 'UserController@raiseDispute');
         Route::post('freelancer/store-dispute', 'UserController@storeDispute');

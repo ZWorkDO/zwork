@@ -206,6 +206,7 @@ return [
     'completed_services' => 'Servicios completados',
     'job_deleted'=> 'Proyecto eliminado exitosamente',
     'add_skills' => 'Agregar habilidades',
+    'add_categories' => 'Agregar categorias',
     'choose_theme' => 'Elige tu tema',
     'default_theme' => 'Tema predeterminado',
     'blue_theme' => 'Tema azul',
