@@ -94,7 +94,7 @@
 														</div>
 														@if ($order->invoice->transection_doc)
 															<div class="wt-payment-attachment">
-																<a href="javascript:void(0);"  v-on:click.prevent="downloadAttachment('users', '{{Helper::getUnserializeData($order->invoice->transection_doc)[0]}}', '{{$order->user_id}}')" >{{ trans('lang.attachment') }}</a>
+																<a href="javascript:void(0);"  v-on:click.prevent="downloadAttachment('users', '{{Helper::getUnserializeData($order->invoice->transection_doc)[0]}}', '{{$order->user_id}}')" >{{ trans('lang.download') }}</a>
 															</div>
 														@endif
 													</span>
