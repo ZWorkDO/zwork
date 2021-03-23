@@ -176,7 +176,7 @@
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
             </div>
         </div>
-        <b-modal ref="myModalRef-{{ $accepted_proposal->id }}" hide-footer title="Cover Letter" v-cloak>
+        <b-modal ref="myModalRef-{{ $accepted_proposal->id }}" hide-footer title="'{{ trans('lang.cover_letter') }}'" v-cloak>
             <div class="d-block text-center">
                 {{{$accepted_proposal->content}}}
             </div>

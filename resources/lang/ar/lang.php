@@ -495,6 +495,7 @@ return [
     'select_freelancer_level' => 'حدد المستوى المستقل',
     'select_english_level' => 'حدد مستوى اللغة الإنجليزية',
     'project_cost' => 'تكلفة المشروع',
+    'hired_by' => 'تم توضيفه عن طريق',
     'offered_by' => 'مقدم بواسطة',
     'job_cats' => 'فئات الوظائف',
     'service_cats' => 'فئات الخدمة',

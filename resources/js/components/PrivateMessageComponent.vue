@@ -25,7 +25,7 @@
           <div class="wt-rightarea wt-msgbtns">
             <a href="javascript:void(0);" class="wt-btn wt-msgbtn">
               <i class="lnr lnr-chevron-up"></i>
-              {{ trans('lang.msg') }}
+              {{ trans('lang.see_msg') }}
             </a>
             <a
               :href="attahcments_url+message.id"
