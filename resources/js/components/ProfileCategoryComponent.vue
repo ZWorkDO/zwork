@@ -93,17 +93,13 @@
                 let self = this;
                 axios.get(APP_URL + '/get-freelancer-all-categories')
                 .then(function (response) {
-                      console.log('ALL-CATEGORIES');
-                    console.log(response);
                     self.stored_categories = response.data.categories;
                 });
             },
              getUserCategories(){
                 let self = this;
                 axios.get(APP_URL + '/freelancer/get-freelancer-categoties')
-                .then(function (response) {
-                    console.log('FREELANCER-CATEGORIES');
-                    console.log(response);
+                .then(function (response) {      
                     self.freelancer_categories = response.data.freelancer_categories;
                     
  
