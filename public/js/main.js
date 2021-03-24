@@ -275,4 +275,8 @@ jQuery(document).on('ready', function() {
 		jQuery('.wt-myskills > ul > li').on('click', function() {
 			jQuery(this).addClass('wt-skillsaddinfo').siblings().removeClass('wt-skillsaddinfo');
 		});
+		jQuery('.wt-addinfo').addClass('wt-categoriessaddinfo');
+		jQuery('.wt-mycategories > ul > li').on('click', function() {
+			jQuery(this).addClass('wt-categoriessaddinfo').siblings().removeClass('wt-categoriessaddinfo');
+		});
 });

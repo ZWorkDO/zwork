@@ -69,7 +69,7 @@
                                             @include('back-end.freelancer.profile-settings.personal-detail.skill')   
                                         @endif 
                                     </div>
-                                    <div class="wt-skills la-skills-holder wt-tabsinfo">
+                                    <div class="wt-categories la-categories-holder wt-tabsinfo">
                                         @if (file_exists(resource_path('views/extend/back-end/freelancer/profile-settings/personal-detail/category.blade.php'))) 
                                             @include('extend.back-end.freelancer.profile-settings.personal-detail.category')   
                                         @else 

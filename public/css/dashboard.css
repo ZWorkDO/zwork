@@ -858,8 +858,18 @@ body{background: #f7f7f7;}
 	margin: 0;
 	padding-right:170px;
 }
+.wt-categoryform fieldset .form-group{
+	margin: 0;
+	padding-right:170px;
+}
 .wt-skillsform fieldset .form-group .wt-select,
+.wt-categoryform fieldset .form-group .wt-select,
 .wt-skillsform fieldset .form-group .form-control{
+	border: 0;
+	width: 50%;
+	border-radius: 0;
+}
+.wt-categoryform fieldset .form-group .form-control{
 	border: 0;
 	width: 50%;
 	border-radius: 0;
@@ -869,7 +879,16 @@ body{background: #f7f7f7;}
 	border-radius: 0;
 	border-right: 1px solid #ddd;
 }
+.wt-categoryform fieldset .form-group .wt-select select{
+	border: 0;
+	border-radius: 0;
+	border-right: 1px solid #ddd;
+}
 .wt-skillsform .form-group-holder{
+	border-radius: 4px;
+	border: 1px solid #ddd;
+}
+.wt-categoryform .form-group-holder{
 	border-radius: 4px;
 	border: 1px solid #ddd;
 }
@@ -880,13 +899,31 @@ body{background: #f7f7f7;}
 	width: auto;
 	position: absolute;
 }
+.wt-categoryform fieldset .form-group.wt-btnarea{
+	right: 0;
+	top: 1px;
+	padding: 0;
+	width: auto;
+	position: absolute;
+}
 .wt-skillsform fieldset .form-group.wt-btnarea .wt-btn{padding: 0 44px;}
+.wt-categoryform fieldset .form-group.wt-btnarea .wt-btn{padding: 0 44px;}
 .wt-myskills{
 	float: left;
 	width: 100%;
 	margin-top:20px;
 }
+.wt-mycategories{
+	float: left;
+	width: 100%;
+	margin-top:20px;
+}
 .wt-myskills ul{
+	float: left;
+	width: 100%;
+	list-style:none;
+}
+.wt-mycategories ul{
 	float: left;
 	width: 100%;
 	list-style:none;
@@ -900,8 +937,24 @@ body{background: #f7f7f7;}
 	list-style-type:none;
 	border: 1px solid #f2f2f2;
 }
+.wt-mycategories li{
+	float: left;
+	width: 100%;
+	padding: 10px 30px;
+	background: #fcfcfc;
+	line-height: inherit;
+	list-style-type:none;
+	border: 1px solid #f2f2f2;
+}
 .wt-myskills li + li{border-top:0;}
+.wt-mycategories li + li{border-top:0;}
 .wt-myskills li > span{
+	font-size: 14px;
+	line-height: 30px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.wt-mycategories li > span{
 	font-size: 14px;
 	line-height: 30px;
 	display: inline-block;
@@ -917,11 +970,24 @@ body{background: #f7f7f7;}
 	border-radius: 4px;
 	text-align: center;
 }
+.wt-mycategories li .wt-rightarea a{
+	width: 30px;
+	float: left;
+	color: #fff;
+	height: 30px;
+	font-size: 14px;
+	line-height: 30px;
+	border-radius: 4px;
+	text-align: center;
+}
 .wt-myskills li .wt-rightarea a + a{margin-left:10px; }
+.wt-mycategories li .wt-rightarea a + a{margin-left:10px; }
 .wt-addinfo{background: #3fabf3;}
 .wt-deleteinfo{background: #ff6b57;}
 .wt-myskills li .wt-rightarea a:hover,
+.wt-mycategories li .wt-rightarea a:hover,
 .wt-myskills li .wt-rightarea a:focus{color: #fff;}
+.wt-mycategories li .wt-rightarea a:focus{color: #fff;}
 .wt-dragdroptool{
 	float: left;
 	width: auto;
@@ -940,12 +1006,23 @@ body{background: #f7f7f7;}
 	border-top:1px solid ;
 	border-color: #ddd;
 }
+.wt-mycategories li.wt-skillsaddinfo{
+	background: #fff;
+	border-top:1px solid ;
+	border-color: #ddd;
+}
 .wt-myskills li.wt-skillsaddinfo .wt-dragdroptool{display: none;}
+.wt-mycategories li.wt-skillsaddinfo .wt-dragdroptool{display: none;}
 .wt-myskills li.wt-skillsaddinfo .wt-rightarea a i{font-family: 'FontAwesome';}
+.wt-mycategories li.wt-skillsaddinfo .wt-rightarea a i{font-family: 'FontAwesome';}
 .wt-myskills li.wt-skillsaddinfo .wt-rightarea a.wt-addinfo{background: #b1d131}
+.wt-mycategories li.wt-skillsaddinfo .wt-rightarea a.wt-addinfo{background: #b1d131}
 .wt-myskills li.wt-skillsaddinfo .wt-rightarea a.wt-deleteinfo{background: #ddd;}
+.wt-mycategories li.wt-skillsaddinfo .wt-rightarea a.wt-deleteinfo{background: #ddd;}
 .wt-myskills li.wt-skillsaddinfo .wt-rightarea a.wt-addinfo :before{content: "\f00c";}
+.wt-mycategories li.wt-skillsaddinfo .wt-rightarea a.wt-addinfo :before{content: "\f00c";}
 .wt-myskills li.wt-skillsaddinfo .wt-rightarea a.wt-deleteinfo :before{content: "\f00d";}
+.wt-mycategories li.wt-skillsaddinfo .wt-rightarea a.wt-deleteinfo :before{content: "\f00d";}
 .wt-experienceaccordion{
 	float: left;
 	width: 100%;
@@ -1012,13 +1089,30 @@ body{background: #f7f7f7;}
 	font-style: normal;
 	line-height: inherit;
 }
+.wt-mycategories li > span em{
+	font-style: normal;
+	line-height: inherit;
+}
 .wt-myskills li .skill-dynamic-field,
+.wt-mycategories li .category-dynamic-field,
 .wt-myskills li.wt-skillsaddinfo .skill-dynamic-html{display: none;}
+.wt-mycategories li.wt-skillsaddinfo .category-dynamic-html{display: none;}
 .wt-myskills li.wt-skillsaddinfo .skill-dynamic-field{
 	width: 80%;
 	display: inline-block;
 }
+.wt-mycategories li.wt-skillsaddinfo .category-dynamic-field{
+	width: 80%;
+	display: inline-block;
+}
 .skill-dynamic-field input{
+	border: 0;
+	padding: 0;
+	width: 100%;
+	height: 30px;
+	background: transparent;
+}
+.category-dynamic-field input{
 	border: 0;
 	padding: 0;
 	width: 100%;
@@ -3416,6 +3510,10 @@ input[type=submit],
 	float: left;
 	width: 100%;
 }
+.wt-categories{
+	float: left;
+	width: 100%;
+}
 .wt-location .wt-settingscontent .wt-formtheme{padding: 0;}
 .wt-location .wt-settingscontent .wt-formtheme .form-group{margin: 0;}
 .wt-userform .wt-location + .wt-location .wt-settingscontent .wt-userform .form-group .chosen-container{z-index: 1;}
@@ -3428,20 +3526,37 @@ input[type=submit],
 	border: 0;
 	border-radius: 0;
 }
+.wt-jobskills-holder .wt-categoryform{padding: 0 20px;}
+.wt-jobskills-holder .wt-categoryform fieldset .form-group-holder{
+	border: 0;
+	border-radius: 0;
+}
 .wt-jobskills-holder .wt-skillsform fieldset .form-group .wt-select{width: 100%;}
 .wt-jobskills-holder .wt-skillsform fieldset .form-group .wt-select select{
 	width: 100%;
 	border-radius: 4px;
 	border: 1px solid #ddd;
 }
+.wt-jobskills-holder .wt-categoryform fieldset .form-group .wt-select{width: 100%;}
+.wt-jobskills-holder .wt-categoryform fieldset .form-group .wt-select select{
+	width: 100%;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+}
 .wt-skillsform fieldset .form-group.wt-btnarea{top: 0;}
+.wt-categoryform fieldset .form-group.wt-btnarea{top: 0;}
 .wt-joblocation .wt-userform{padding: 0 20px;}
 .wt-joblocation .wt-userform fieldset{overflow: visible;}
 .wt-jobskills-holder .wt-myskills{
  	margin: 0;
  	padding: 0 20px;
  }
+ .wt-jobskills-holder .wt-mycategories{
+	margin: 0;
+	padding: 0 20px;
+}
 .wt-jobskills-holder .wt-myskills li:first-child{margin-top: 20px;}
+.wt-jobskills-holder .wt-mycategories li:first-child{margin-top: 20px;}
 .wt-userform{
 	float: left;
 	width: 100%;
@@ -3658,8 +3773,13 @@ input[type=submit],
 }
 .la-skills-holder .wt-skillsform fieldset .form-group .form-control,
 .la-skills-holder .wt-skillsform fieldset .form-group .wt-select select{height: 48px;}
+.la-categories-holder .wt-categoryform fieldset .form-group .form-control,
+.la-categories-holder .wt-categoryform fieldset .form-group .wt-select select{height: 48px;}
 .la-skills-holder input[type=number]::-webkit-inner-spin-button,
 .la-skills-holder input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none;}
+.la-categories-holder input[type=number]::-webkit-inner-spin-button,
+.la-categories-holder input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none;}
+
 .wt-navdashboard-footer .version-area{
 	color: #00cc67;
 	line-height: 20px;
@@ -3884,6 +4004,10 @@ body.rtl .la-footer-setting .wt-skillsform fieldset .form-group{
 	right: auto;
 	left: 0;
 }
+body.rtl .la-footer-setting .wt-categoryform fieldset .form-group{
+	right: auto;
+	left: 0;
+}
 body.rtl .wt-navdashboard ul li a i,
 body.rtl .wt-navdashboard ul li a span,
 body.rtl .wt-navdashboard,
@@ -3897,6 +4021,8 @@ body.rtl .wt-accountinfo li,
 body.rtl .chosen-container-multi .chosen-choices li,
 body.rtl .wt-skillsform fieldset .form-group .wt-select,
 body.rtl .wt-skillsform fieldset .form-group .form-control,
+body.rtl .wt-categoryform fieldset .form-group .wt-select,
+body.rtl .wt-categoryform fieldset .form-group .form-control,
 body.rtl .wt-designimg,
 body.rtl .la-settingsradio .wt-description,
 body.rtl .wt-settingscontent .wt-radioboxholder,
@@ -3907,6 +4033,7 @@ body.rtl .wt-historycolhead h3 span,
 body.rtl .wt-historycontent .wt-userform,
 body.rtl .wt-userform .form-group,
 body.rtl .wt-myskills li .wt-rightarea a,
+body.rtl .wt-mycategories li .wt-rightarea a,
 body.rtl .wt-dragdroptool,
 body.rtl .wt-accordioninnertitle .wt-rightarea a,
 body.rtl .wt-projecttitle,
@@ -3948,6 +4075,7 @@ body.rtl .wt-historycolhead h3,
 body.rtl .wt-historycontent .wt-userform fieldset .form-group.wt-btnarea,
 body.rtl .la-dbproposal .lara-attachment-files .wt-attachfile li,
 body.rtl .wt-myskills li,
+body.rtl .wt-mycategories li,
 body.rtl .wt-settingscontent .wt-description p,
 body.rtl .wt-rcvproposalholder .wt-userlistinghold .wt-title
 {text-align: right;}
@@ -4046,7 +4174,17 @@ body.rtl .la-footer-setting .wt-skillsform fieldset .wrap-social-icons > .form-g
 	padding-right:0;
 	padding-left:60px;
 }
+body.rtl .la-footer-setting .wt-categoryform fieldset .wrap-social-icons > .form-group{
+	padding-right:0;
+	padding-left:60px;
+}
 body.rtl .la-footer-setting .wt-skillsform fieldset .form-group .wt-select select{
+	border-right: 0;
+	padding-left: 30px;
+	padding-right: 20px;
+	border-left: 1px solid #ddd;
+}
+body.rtl .la-footer-setting .wt-categoryform fieldset .form-group .wt-select select{
 	border-right: 0;
 	padding-left: 30px;
 	padding-right: 20px;
@@ -4083,7 +4221,15 @@ body.rtl .wt-skillsform fieldset .form-group .wt-select select{
 	border-right: 0;
 	border-left: 1px solid #ddd;
 }
+body.rtl .wt-categoryform fieldset .form-group .wt-select select{
+	border-right: 0;
+	border-left: 1px solid #ddd;
+}
 body.rtl .la-ps-freelancer .wt-userform .wt-skills > div:nth-child(2) .wt-skillsform fieldset .form-group{
+	padding-right:5px;
+	padding-left:175px;
+}
+body.rtl .la-ps-freelancer .wt-userform .wt-categories > div:nth-child(2) .wt-categoryform fieldset .form-group{
 	padding-right:5px;
 	padding-left:175px;
 }
@@ -4092,7 +4238,13 @@ body.rtl .la-ps-freelancer .wt-userform .wt-skills > div:nth-child(2) .wt-skills
 	right: auto;
 	padding: 0;
 }
+body.rtl .la-ps-freelancer .wt-userform .wt-categories > div:nth-child(2) .wt-categoryform .wt-btnarea.form-group{
+	left: 5px;
+	right: auto;
+	padding: 0;
+}
 body.rtl .wt-myskills li .wt-rightarea a + a{margin: 0 10px 0 0;}
+body.rtl .wt-mycategories li .wt-rightarea a + a{margin: 0 10px 0 0;}
 body.rtl .wt-dragdroptool a{margin: 0 0 0 10px;}
 body.rtl .wt-accordioninnertitle .wt-rightarea a + a{
 	margin-left:0;
@@ -4130,13 +4282,23 @@ body.rtl .la-jobedit .wt-skillsform fieldset .form-group{
 	padding-right: 0;
 	padding-left: 170px;
 }
+body.rtl .la-jobedit .wt-categoryform fieldset .form-group{
+	padding-right: 0;
+	padding-left: 170px;
+}
 body.rtl .la-jobedit .wt-skillsform fieldset .form-group.wt-btnarea{
+	left: 0;
+	padding: 0;
+	right: auto;
+}
+body.rtl .la-jobedit .wt-categoryform fieldset .form-group.wt-btnarea{
 	left: 0;
 	padding: 0;
 	right: auto;
 }
 body.rtl .lara-attachment-files .wt-attachfile{text-align: right;}
 body.rtl .la-jobedit .wt-skillsform fieldset .form-group .wt-select select{border: 0;}
+body.rtl .la-jobedit .wt-categoryform fieldset .form-group .wt-select select{border: 0;}
 body.rtl .wt-btnmenutoggle:before{
 	left: auto;
 	right: 10px;
@@ -4204,6 +4366,9 @@ body.rtl .wt-uploadrating .modal-body{text-align: right;}
 @media (max-width: 1440px){
 	body.rtl .la-ps-freelancer .wt-userform .wt-skills > div:nth-child(2) .wt-skillsform fieldset .form-group{padding-left:5px; }
 }
+@media (max-width: 1440px){
+	body.rtl .la-ps-freelancer .wt-userform .wt-categories > div:nth-child(2) .wt-categoryform fieldset .form-group{padding-left:5px; }
+}
 @media (max-width: 1400px){body.rtl .wt-dashboardsave .wt-proposalsr .wt-proposalsrcontent figure{
 		margin-left: 0;
 		padding-left: 0;
@@ -4234,7 +4399,9 @@ body.rtl .wt-uploadrating .modal-body{text-align: right;}
 }
 @media (max-width: 640px){
 	body.rtl .wt-skillsform fieldset .form-group .wt-select select{border-left: 0;}
+	body.rtl .wt-categoryform fieldset .form-group .wt-select select{border-left: 0;}
 	body.rtl .la-footer-setting .wt-skillsform fieldset .form-group .wt-select select{border-left: 0;}
+	body.rtl .la-footer-setting .wt-categoryform fieldset .form-group .wt-select select{border-left: 0;}
 	body.rtl .la-switch-option .switch-button-control .switch-button-label,
 	body.rtl .la-switch-option .switch-button-control .switch-button{float: right;}
 }
@@ -4261,6 +4428,9 @@ body.rtl .wt-uploadrating .modal-body{text-align: right;}
 	border-radius: 4px 0 0 4px;
 }
 .wt-videos-holder .wt-skillsform fieldset .form-group .wt-select, .wt-videos-holder .wt-skillsform fieldset .form-group .form-control {
+    width: 100%;
+}
+.wt-videos-holder .wt-categoryform fieldset .form-group .wt-select, .wt-videos-holder .wt-categoryform fieldset .form-group .form-control {
     width: 100%;
 }
 .la-job-details-form fieldset{overflow: visible;}

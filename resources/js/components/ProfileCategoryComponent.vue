@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="wt-formtheme wt-categoryform wt-skillsform">
+        <div class="wt-formtheme wt-categoryform">
             <transition name="fade">
                 <div v-if="isShow" class="sj-jump-messeges">{{ trans('lang.no_record') }}</div>
             </transition>
@@ -19,27 +19,27 @@
                 </div>
             </fieldset>
         </div>
-        <div class="wt-mycategories wt-myskills">
-            <ul id="category_list skill_list" class="sortable list">
-                <li v-for="(freelancer_category, index) in freelancer_categories" :key="index" v-if="freelancer_categories" class="skill-element" :ref="'category-'+index">
+        <div class="wt-mycategories">
+            <ul id="category_list" class="sortable list">
+                <li v-for="(freelancer_category, index) in freelancer_categories" :key="index" v-if="freelancer_categories" class="category-element" :ref="'category-'+index">
                     <div class="wt-dragdroptool">
                         <a href="javascript:void(0)" class="lnr lnr-menu"></a>
                     </div>
-                    <span class="category-dynamic-html skill-dynamic-html">
+                    <span class="category-dynamic-html">
                         {{freelancer_category.title}}</span>
-                    <span class="category-dynamic-field skill-dynamic-field sss">
-                        <input type="hidden" v-bind:name="'skills['+index+'][id]'" :value="freelancer_category.id">
+                    <span class="category-dynamic-field sss">
+                        <input type="hidden" v-bind:name="'categories['+index+'][id]'" :value="freelancer_category.id">
                     </span>
                     <div class="wt-rightarea">
-                        <a href="javascript:void(0);" class="wt-deleteinfo delete-skill" @click="removeStoredCategory(index)"><i class="lnr lnr-trash"></i></a>
+                        <a href="javascript:void(0);" class="wt-deleteinfo delete-category" @click="removeStoredCategory(index)"><i class="lnr lnr-trash"></i></a>
                     </div>
                 </li>
                 <li v-for="(category, index) in categories" :key="index+category.count">
                     <div class="wt-dragdroptool">
                         <a href="javascript:void(0)" class="lnr lnr-menu"></a>
                     </div>
-                    <span class="category-dynamic-html skill-dynamic-html">{{category.title}} </span>
-                    <span class="category-dynamic-field skill-dynamic-field">
+                    <span class="category-dynamic-html">{{category.title}} </span>
+                    <span class="category-dynamic-field">
                         <input type="hidden" v-bind:name="'categories['+[category.count]+'][id]'" :value="category.id">
                     </span>
                     <div class="wt-rightarea">
@@ -66,29 +66,15 @@
         data(){
             return {
                 isShow: false,
-                stored_skills:[],
                 stored_categories:[],
-                selected_skill: '',
-                selected_rating:'',
-                selected_skill_text:'',
                 selected_category_text:'',
                 selected_category:'',
-                edit_class: false,
-                edit_skill: '',
-                skill: {
-                    id: '',
-                    rating: '',
-                    title:'',
-                    count: 0
-                },
                 category: {
                     id: '',
                     title:'',
                     count: 0
                 },
-                skills: [],
                 categories: [],
-                freelancer_skills: [],
                 freelancer_categories: [],
                 counts:0,
                 notificationSystem: {
@@ -102,20 +88,6 @@
         methods: {
             showError(error){
                 return this.$toast.error(' ', error, this.notificationSystem.error);
-            },
-            getSkills(){
-                let self = this;
-                axios.get(APP_URL + '/get-freelancer-skills')
-                .then(function (response) {
-                    self.stored_skills = response.data.skills;
-                });
-            },
-            getUserSkills(){
-                let self = this;
-                axios.get(APP_URL + '/freelancer/get-freelancer-skills')
-                .then(function (response) {
-                    self.freelancer_skills = response.data.freelancer_skills;
-                });
             },
              getAllCategories(){
                 let self = this;
@@ -167,7 +139,7 @@
                 this.$swal({
                     title: "Eliminar Categoría",
                     text: "Estás seguro?",
-                    type: "Advertencia",
+                    type: "error",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
                     confirmButtonText: "Si",
@@ -193,7 +165,7 @@
                 this.$swal({
                     title: "Eliminar Categoría",
                     text: "Estás seguro?",
-                    type: "Advertencia",
+                    type: "error",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
                     confirmButtonText: "Si",
@@ -215,62 +187,7 @@
                     }
                   })
             },
-            removeSkill: function (index) {
-                var self = this;
-                this.$swal({
-                    title: "Delete Skill",
-                    text: "Are you Sure?",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn-danger",
-                    confirmButtonText: "si",
-                    cancelButtonText: "No",
-                    closeOnConfirm: true,
-                    closeOnCancel: true,
-                    showLoaderOnConfirm: true
-                  }).then((result) => {
-                    var self = this;
-                    if(result.value) {
-                        let option = self.skills[index];
-                        var select = document.getElementById("freelancer_skill");
-                        select.options[select.options.length] = new Option(option.title, option.id, false, false);
-                        self.skills.splice(index, 1);
-                        self.$swal('Deleted', 'Skill Deleted', 'success')
-                    } else {
-                        this.$swal.close()
-                    }
-                  })
-            },
-            removeStoredSkill: function (index) {
-                var self = this;
-                this.$swal({
-                    title: "Delete Skill",
-                    text: "Are you Sure?",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn-danger",
-                    confirmButtonText: "si",
-                    cancelButtonText: "No",
-                    closeOnConfirm: true,
-                    closeOnCancel: true,
-                    showLoaderOnConfirm: true
-                  }).then((result) => {
-                    var self = this;
-                    if(result.value) {
-                        let option = self.freelancer_skills[index];
-                        //console.log(option);
-                        var select = document.getElementById("freelancer_skill");
-                        select.options[select.options.length] = new Option(option.title, option.id, false, false);
-                        self.freelancer_skills.splice(index, 1);
-                        self.$swal('Deleted', 'Skill Deleted', 'success')
-                    } else {
-                        this.$swal.close()
-                    }
-                  })
-            },
-            editInput: function (index) {
-                this.edit_class = true;
-            }
+           
         },
         mounted: function () {
             jQuery(document).on('click', '.wt-addinfo-cat', function (e) {
@@ -284,13 +201,9 @@
                 var _this = jQuery(this);
                 _this.removeClass('wt-categoriesactive');
                 _this.parents('li').removeClass('wt-categoriessaddinfo');
-                var edit_skill_value = _this.parents('li').find('.category-dynamic-field input:text').val();
-                _this.parents('li').find('.category-dynamic-html em').html(edit_skill_value);
             });
         },
         created: function() {
-            this.getSkills();
-            this.getUserSkills();
             this.getAllCategories();
             this.getUserCategories();
         } 

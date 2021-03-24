@@ -144,7 +144,7 @@
                 this.$swal({
                     title: "Eliminar Habilidad",
                     text: "Estás seguro?",
-                    type: "Advertencia",
+                    type: "error",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
                     confirmButtonText: "Si",
@@ -170,7 +170,7 @@
                 this.$swal({
                     title: "Eliminar Habilidad",
                     text: "Estás seguro?",
-                    type: "Advertencia",
+                    type: "error",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
                     confirmButtonText: "Si",
