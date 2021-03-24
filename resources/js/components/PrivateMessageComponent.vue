@@ -10,7 +10,7 @@
         <h3>
           <span>{{ trans('lang.date') }}</span>
           <span>{{ trans('lang.msg') }}</span>
-          <span>{{ trans('lang.attachment') }}</span>
+          <span></span>
         </h3>
       </li>
       <span v-for="(message, index) in messages" :key="index">
@@ -25,7 +25,7 @@
           <div class="wt-rightarea wt-msgbtns">
             <a href="javascript:void(0);" class="wt-btn wt-msgbtn">
               <i class="lnr lnr-chevron-up"></i>
-              {{ trans('lang.msg') }}
+              {{ trans('lang.see_msg') }}
             </a>
             <a
               :href="attahcments_url+message.id"

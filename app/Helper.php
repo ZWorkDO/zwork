@@ -1897,7 +1897,7 @@ class Helper extends Model
                 'numeric_code'  => 214,
                 'code'          => 'USD',
                 'name'          => 'United States dollar',
-                'symbol'        => '$',
+                'symbol'        => 'US$',
                 'fraction_name' => 'Cent[D]',
                 'decimals'      => 2
             ),
