@@ -31,7 +31,7 @@
                         <input type="hidden" v-bind:name="'skills['+index+'][id]'" :value="freelancer_category.id">
                     </span>
                     <div class="wt-rightarea">
-                        <a href="javascript:void(0);" class="wt-deleteinfo delete-skill" @click="removeStoredSkill(index)"><i class="lnr lnr-trash"></i></a>
+                        <a href="javascript:void(0);" class="wt-deleteinfo delete-skill" @click="removeStoredCategory(index)"><i class="lnr lnr-trash"></i></a>
                     </div>
                 </li>
                 <li v-for="(category, index) in categories" :key="index+category.count">
@@ -43,7 +43,7 @@
                         <input type="hidden" v-bind:name="'categories['+[category.count]+'][id]'" :value="category.id">
                     </span>
                     <div class="wt-rightarea">
-                        <a href="javascript:void(0);" class="wt-deleteinfo" @click="removeSkill(index)"><i class="lnr lnr-trash"></i></a>
+                        <a href="javascript:void(0);" class="wt-deleteinfo" @click="removeCategory(index)"><i class="lnr lnr-trash"></i></a>
                     </div>
                 </li>
             </ul>
@@ -161,6 +161,59 @@
                         
                     }
                 }
+            },
+            removeCategory: function (index) {
+                var self = this;
+                this.$swal({
+                    title: "Eliminar Categoría",
+                    text: "Estás seguro?",
+                    type: "Advertencia",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Si",
+                    cancelButtonText: "No",
+                    closeOnConfirm: true,
+                    closeOnCancel: true,
+                    showLoaderOnConfirm: true
+                  }).then((result) => {
+                    var self = this;
+                    if(result.value) {
+                        let option = self.categories[index];
+                        var select = document.getElementById("freelancer_category");
+                        select.options[select.options.length] = new Option(option.title, option.id, false, false);
+                        self.categories.splice(index, 1);
+                        self.$swal('Eliminado', 'Categoría Eliminada', 'success')
+                    } else {
+                        this.$swal.close()
+                    }
+                  })
+            },
+            removeStoredCategory: function (index) {
+                var self = this;
+                this.$swal({
+                    title: "Eliminar Categoría",
+                    text: "Estás seguro?",
+                    type: "Advertencia",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Si",
+                    cancelButtonText: "No",
+                    closeOnConfirm: true,
+                    closeOnCancel: true,
+                    showLoaderOnConfirm: true
+                  }).then((result) => {
+                    var self = this;
+                    if(result.value) {
+                        let option = self.freelancer_categories[index];
+                        //console.log(option);
+                        var select = document.getElementById("freelancer_category");
+                        select.options[select.options.length] = new Option(option.title, option.id, false, false);
+                        self.freelancer_categories.splice(index, 1);
+                        self.$swal('Eliminado', 'Categoría Eliminada', 'success')
+                    } else {
+                        this.$swal.close()
+                    }
+                  })
             },
             removeSkill: function (index) {
                 var self = this;

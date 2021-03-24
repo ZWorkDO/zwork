@@ -142,12 +142,12 @@
             removeSkill: function (index) {
                 var self = this;
                 this.$swal({
-                    title: "Delete Skill",
-                    text: "Are you Sure?",
-                    type: "warning",
+                    title: "Eliminar Habilidad",
+                    text: "Estás seguro?",
+                    type: "Advertencia",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "si",
+                    confirmButtonText: "Si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -159,7 +159,7 @@
                         var select = document.getElementById("freelancer_skill");
                         select.options[select.options.length] = new Option(option.title, option.id, false, false);
                         self.skills.splice(index, 1);
-                        self.$swal('Deleted', 'Skill Deleted', 'success')
+                        self.$swal('Eliminado', 'Habilidad Eliminada', 'success')
                     } else {
                         this.$swal.close()
                     }
@@ -168,12 +168,12 @@
             removeStoredSkill: function (index) {
                 var self = this;
                 this.$swal({
-                    title: "Delete Skill",
-                    text: "Are you Sure?",
-                    type: "warning",
+                    title: "Eliminar Habilidad",
+                    text: "Estás seguro?",
+                    type: "Advertencia",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "si",
+                    confirmButtonText: "Si",
                     cancelButtonText: "No",
                     closeOnConfirm: true,
                     closeOnCancel: true,
@@ -186,7 +186,7 @@
                         var select = document.getElementById("freelancer_skill");
                         select.options[select.options.length] = new Option(option.title, option.id, false, false);
                         self.freelancer_skills.splice(index, 1);
-                        self.$swal('Deleted', 'Skill Deleted', 'success')
+                        self.$swal('Eliminado', 'Habilidad Eliminada', 'success')
                     } else {
                         this.$swal.close()
                     }
