@@ -162,6 +162,17 @@ class Profile extends Model
             }
         }
 
+        $user->categories()->detach();
+        if ($request['categories']) {
+            $categories = $request['categories'];
+            $user->categories()->detach();
+            if (!empty($categories)) {
+                foreach ($categories as $category) {
+                    $user->categories()->attach($category['id']);
+                }
+            }
+        }
+
         $user_profile = $this::select('id')->where('user_id', $user_id)
             ->get()->first();
         if (!empty($user_profile->id)) {

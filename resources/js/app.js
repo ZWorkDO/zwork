@@ -132,6 +132,7 @@ Vue.component('upload-image', require('./components/UploadImageComponent.vue').d
 Vue.component('flash_messages', require('./components/FlashMessages.vue').default);
 Vue.component('switch_button', require('./components/SwitchButton.vue').default);
 Vue.component('user_skills', require('./components/ProfileSkillComponent.vue').default);
+Vue.component('user_categories', require('./components/ProfileCategoryComponent.vue').default);
 Vue.component('freelancer_experience', require('./components/ProfileExperienceComponent.vue').default);
 Vue.component('freelancer_education', require('./components/ProfileEducationComponent.vue').default);
 Vue.component('freelancer_project', require('./components/ProfileProjectComponent.vue').default);
@@ -1923,9 +1924,12 @@ if (document.getElementById("user_profile")) {
             submitFreelancerProfile: function () {
                 var self = this;
                 var profile_data = document.getElementById('freelancer_profile');
+         
                 let form_data = new FormData(profile_data);
+      
                 axios.post(APP_URL + '/freelancer/store-profile-settings', form_data)
                     .then(function (response) {
+               
                         if (response.data.type == 'success') {
                             self.showInfo(Vue.prototype.trans('lang.saving_profile'));
                         } else if (response.data.type == 'error') {

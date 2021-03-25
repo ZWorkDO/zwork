@@ -283,4 +283,25 @@ class CategoryController extends Controller
             return $json;
         }
     }
+
+      /**
+     * get Categories
+     *
+     * @param mixed $request request attributes
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAllCategories()
+    {
+        $json = array();
+        $categories =  $this->category::select('title', 'id')->get()->toArray();
+        if (!empty($categories)) {
+            $json['type'] = 'success';
+            $json['categories'] = $categories;
+            return $json;
+        } else {
+            $json['type'] = 'error';
+            return $json;
+        }
+    }
 }
