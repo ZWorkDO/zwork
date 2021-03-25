@@ -87,9 +87,9 @@
 		width: 100%;
 	}
 }
-@media (max-width:1366px){
+/* @media (max-width:1366px){
 	.la-manage-jobs-holder .wt-userlistingvtwo .wt-userlistingcontent .wt-rightarea{width: 100%;}
-}
+} */
 @media (max-width:1360px){
 	.wt-msgbtns{
 		width: 100%;
@@ -191,6 +191,7 @@
 		-webkit-flex-direction: column;
 		-ms-flex-direction: column;
 		flex-direction: column;
+		width: 100%;
 	}
 	.la-category-box{margin: 0 0 30px;}
 	.la-addpackages > div > div:first-child{margin: 0 0 30px;}
@@ -252,6 +253,11 @@
 		float: left;
 	}
 	.wt-likedfreelancers .wt-userlistinghold .wt-userlistingimg{margin: 0 0 20px;}
+
+	.wt-userlistinghold .wt-userlistingcontent .wt-rightarea{
+		width: 100%;
+	}
+
 	.wt-hiredfreelancer .wt-titlewithsearch .wt-formsearch{
 		margin: 0;
 		width: 100%;

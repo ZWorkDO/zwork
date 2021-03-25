@@ -75,16 +75,20 @@ class Review extends Model
         $freelancer_total_rating =  Self::select('avg_rating')
             ->where('receiver_id', $request['receiver_id'])->sum('avg_rating');
         $freelancer_rating = $freelancer_total_rating / Self::where('receiver_id', $request['receiver_id'])->count();
-        if (!empty($freelancer_rating)) {
-            $rating = array();
-            $freelancer_profile = Profile::find($request['receiver_id']);
-            $rating = unserialize($freelancer_profile->rating);
-            $rating = !empty($rating) && is_array($rating) ? $rating : array();
-            $rating[] = round($freelancer_rating);
-            $rating = array_unique($rating);
-            $freelancer_profile->ratings = serialize($rating);
-            $freelancer_profile->save();   
-        }
+        //Remove because error: Trying to get property 'ratings' of non-object
+        // if (!empty($freelancer_rating)) {
+        //     $rating = array();
+        //     $freelancer_profile = Profile::find($request['receiver_id']);
+        //     // if (!empty($freelancer_profile->ratings)){
+        //     // } else {
+        //     //     $rating = array();
+        //     // }
+        //     $rating = unserialize($freelancer_profile->ratings);
+        //     $rating[] = round($freelancer_rating);
+        //     $rating = array_unique($rating);
+        //     $freelancer_profile->ratings = serialize($rating);
+        //     $freelancer_profile->save();   
+        // }
         if ($project_type == 'service') {
             DB::table('service_user')
                 ->where('id', $request['job_id'])
