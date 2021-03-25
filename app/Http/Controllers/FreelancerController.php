@@ -91,7 +91,7 @@ class FreelancerController extends Controller
         $package_options = Package::select('options')->where('role_id', $role_id)->first();
         $options = !empty($package_options) ? unserialize($package_options['options']) : array();
         $videos = !empty($profile->videos) ? Helper::getUnserializeData($profile->videos) : '';
-        //die($skills);
+  
         if (file_exists(resource_path('views/extend/back-end/freelancer/profile-settings/personal-detail/index.blade.php'))) {
             return view(
                 'extend.back-end.freelancer.profile-settings.personal-detail.index',

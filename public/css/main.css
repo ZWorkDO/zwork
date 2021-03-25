@@ -9237,6 +9237,14 @@ select.is-invalid {
     border-right: 0;
 }
 
+.la-jobedit .wt-categoryform .form-group-holder .wt-select {
+    width: 100%;
+}
+
+.la-jobedit .wt-categoryform fieldset .form-group .wt-select select {
+    border-right: 0;
+}
+
 .la-jobedit .la-jobedit-content {
     padding: 0 20px;
 }
@@ -10810,6 +10818,11 @@ body.lang-fr .la-ps-freelancer .wt-userform .wt-categories>div:nth-child(2) .wt-
 
 body.lang-fr .wt-skillsform fieldset .form-group.wt-btnarea .wt-btn,
 body.lang-pt .wt-skillsform fieldset .form-group.wt-btnarea .wt-btn {
+    padding: 0 20px;
+}
+
+body.lang-fr .wt-categoryform fieldset .form-group.wt-btnarea .wt-btn,
+body.lang-pt .wt-categoryform fieldset .form-group.wt-btnarea .wt-btn {
     padding: 0 20px;
 }
 
