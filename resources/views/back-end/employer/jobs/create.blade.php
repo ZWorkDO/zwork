@@ -30,33 +30,37 @@
                                 </div>
                                 <div class="wt-formtheme wt-userform wt-userformvtwo la-job-details-form">
                                     <fieldset>
-                                        <div class="form-group">
+                                        <div class="form-group required">
                                             <input type="text" name="title" class="form-control" placeholder="{{ trans('lang.job_title') }}" v-model="title">
                                         </div>
-                                        <div class="form-group form-group-half wt-formwithlabel">
+                                        <div class="form-group form-group-half wt-formwithlabel required">
                                             <span class="wt-select">
                                                 {!! Form::select('project_levels', $project_levels, null, array('class' => '', 'placeholder' => trans('lang.select_project_level'), 'v-model'=>'project_level')) !!}
                                             </span>
                                         </div>
-                                        <div class="form-group form-group-half wt-formwithlabel">
+                                        <div class="form-group form-group-half wt-formwithlabel required">
                                             <span class="wt-select">
                                                 {!! Form::select('job_duration', $job_duration, null, array('class' => '', 'placeholder' => trans('lang.select_job_duration'), 'v-model'=>'job_duration')) !!}
                                             </span>
                                         </div>
-                                        <div class="form-group form-group-half wt-formwithlabel">
+                                        <div class="form-group form-group-half wt-formwithlabel required">
                                             <span class="wt-select">
                                                 {!! Form::select('freelancer_type', $freelancer_level, null, array('placeholder' => trans('lang.select_freelancer_level'), 'class' => '', 'v-model'=>'freelancer_level')) !!}
                                             </span>
                                         </div>
-                                        <div class="form-group form-group-half wt-formwithlabel">
+                                        <div class="form-group form-group-half wt-formwithlabel required">
                                             <span class="wt-select">
                                                 {!! Form::select('english_level', $english_levels, null, array('class' => '', 'placeholder' => trans('lang.select_english_level'), 'v-model'=>'english_level')) !!}
                                             </span>
                                         </div>
-                                        <div class="form-group form-group-half wt-formwithlabel job-cost-input">
-                                            {!! Form::number('project_cost', null, array('class' => '', 'placeholder' => trans('lang.project_cost'))) !!}
+                                        <!--TODO PENDING TO CHANGE THE MINIMUM COST, WHEN ALEXANDRA DECIDES THE FINAL-->
+                                        <div class="form-group form-group-half wt-formwithlabel job-cost-input required">
+                                            {!! Form::number('project_cost', null, array('class' => '', 'min' => 10, 'placeholder' => trans('lang.project_cost'))) !!}
                                         </div>
-                                        <job-expiry :ph_expiry_date="'{{trans('lang.project_expiry')}}'"></job-expiry>
+                                        <div class="required">
+                                            <job-expiry :ph_expiry_date="'{{trans('lang.project_expiry')}}'"></job-expiry>
+                                        </div>
+                                        
                                     </fieldset>
                                 </div>
                             </div>

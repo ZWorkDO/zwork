@@ -13695,3 +13695,8 @@ a:focus {
 	text-decoration: none;
 }
 
+.required:after {
+    content:" *";
+	color: red;
+
+}

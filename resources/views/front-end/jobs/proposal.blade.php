@@ -107,7 +107,7 @@
                             </div>
                             {!! Form::open(['url' => url('proposal/submit-proposal'), 'class' =>'wt-haslayout', 'id' => 'send-propsal',  '@submit.prevent'=>'submitJobProposal('.$job->id.', '.Auth::user()->id.')']) !!}
                                 <div class="wt-proposalamount accordion">
-                                    <div class="form-group">
+                                    <div class="form-group required">
                                         <span>( <i>{{ !empty($symbol) ? $symbol['symbol'] : '$' }}</i> )</span>
                                         {!! Form::input('number', 'amount', null, ['class' => 'form-control', 'min' => 1, 'placeholder' => trans('lang.ph_proposal_amount'), 'v-model'=>'proposal.amount', 'v-on:keyup' => "calculate_amount('$commision')" ])!!}
                                         <a href="javascript:void(0);" class="collapsed" id="headingOne" data-toggle="collapse"
@@ -135,12 +135,12 @@
                                 </div>
                                 <div class="wt-formtheme wt-formproposal">
                                     <fieldset>
-                                        <div class="form-group">
+                                        <div class="form-group required">
                                             <span class="wt-select">
                                                 {!! Form::select('completion_time', $job_completion_time, e($job_completion_time['weekly']), array('v-model'=>'proposal.completion_time', 'placeholder' => trans('lang.ph_job_completion_time') )) !!}
                                             </span>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group required">
                                             {!! Form::textarea('description', null, ['class' => 'form-control', 'id' => '', 'placeholder' =>  trans('lang.ph_cover_letter') , 'v-model'=>'proposal.description']) !!}
                                         </div>
                                     </fieldset>
