@@ -50,7 +50,7 @@
                                                 </span>
                                             </div>
                                             <div class="form-group form-group-half wt-formwithlabel job-cost-input required">
-                                                {!! Form::text('project_cost', $job->price, array('class' => 'form-control', 'min' => 10, 'placeholder' => trans('lang.project_cost'))) !!}
+                                                {!! Form::text('project_cost', $job->price, array('class' => 'form-control', 'placeholder' => trans('lang.project_cost'))) !!}
                                             </div>
                                             <div class="required">
                                                 <job-expiry :db_expiry_date="'{{$job->expiry_date}}'" :ph_expiry_date="'{{trans('lang.project_expiry')}}'"></job-expiry>

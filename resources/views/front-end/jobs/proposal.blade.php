@@ -109,7 +109,7 @@
                                 <div class="wt-proposalamount accordion">
                                     <div class="form-group required">
                                         <span>( <i>{{ !empty($symbol) ? $symbol['symbol'] : '$' }}</i> )</span>
-                                        {!! Form::input('number', 'amount', null, ['class' => 'form-control', 'min' => 1, 'placeholder' => trans('lang.ph_proposal_amount'), 'v-model'=>'proposal.amount', 'v-on:keyup' => "calculate_amount('$commision')" ])!!}
+                                        {!! Form::input('number', 'amount', null, ['class' => 'form-control', 'placeholder' => trans('lang.ph_proposal_amount'), 'v-model'=>'proposal.amount', 'v-on:keyup' => "calculate_amount('$commision')" ])!!}
                                         <a href="javascript:void(0);" class="collapsed" id="headingOne" data-toggle="collapse"
                                             data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             <i class="lnr lnr-chevron-up"></i>

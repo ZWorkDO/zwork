@@ -53,9 +53,9 @@
                                                 {!! Form::select('english_level', $english_levels, null, array('class' => '', 'placeholder' => trans('lang.select_english_level'), 'v-model'=>'english_level')) !!}
                                             </span>
                                         </div>
-                                        <!--TODO PENDING TO CHANGE THE MINIMUM COST, WHEN ALEXANDRA DECIDES THE FINAL-->
+
                                         <div class="form-group form-group-half wt-formwithlabel job-cost-input required">
-                                            {!! Form::number('project_cost', null, array('class' => '', 'min' => 10, 'placeholder' => trans('lang.project_cost'))) !!}
+                                            {!! Form::number('project_cost', null, array('class' => '', 'placeholder' => trans('lang.project_cost'))) !!}
                                         </div>
                                         <div class="required">
                                             <job-expiry :ph_expiry_date="'{{trans('lang.project_expiry')}}'"></job-expiry>

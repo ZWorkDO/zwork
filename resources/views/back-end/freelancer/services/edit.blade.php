@@ -30,7 +30,7 @@
                                             </span>
                                         </div>
                                         <div class="form-group form-group-half wt-formwithlabel job-cost-input required">
-                                            {!! Form::number('service_price', e($service->price), array('class' => '', 'min' => 10,'placeholder' => trans('lang.service_price'))) !!}
+                                            {!! Form::number('service_price', e($service->price), array('class' => '', 'placeholder' => trans('lang.service_price'))) !!}
                                         </div>
                                     </fieldset>
                                 </div>

@@ -1168,7 +1168,7 @@ return [
     'draft' => 'Draft',
     'status_update' => 'Status Updated',
     'service_delete' => 'Service Deleted',
-    'service_updating' => 'Service Updating',
+    'service_updating' => 'Actualizando Servicio',
     'service_update_success' => 'Service Update Successfully',
     'views' => 'Views',
     'in_queue' => 'in Queue',
