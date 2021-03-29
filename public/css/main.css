@@ -2055,7 +2055,7 @@ body.wt-login .wt-loginarea {
 }
 
 body.wt-login .wt-userlogedin {
-    display: block;
+    display: flex;
 }
 
 .wt-userlogedin .wt-userimg {
@@ -12530,6 +12530,10 @@ body.lang-ja .wt-loginfooterinfo a+a:before {
     margin: 0 auto;
     left: auto;
     width: 100%;
+}
+
+#wt-categoriesslider .owl-stage-outer {
+    margin: 0 53px;
 }
 
 .wt-slidericons {

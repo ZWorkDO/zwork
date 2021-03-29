@@ -164,7 +164,7 @@
                         </div>
                         <div class="wt-projecthistory">
                             <div class="wt-tabscontenttitle">
-                                <h2>{{ trans('lang.project_history') }}</h2>
+                                <h2>{{ trans('lang.project_msgs') }}</h2>
                             </div>
                             <div class="wt-historycontent la-jobdetails-holder">
                                 <private-message :placeholder="'{{ trans('lang.ph_job_dtl') }}'" :upload_tmp_url="'{{url('proposal/upload-temp-image')}}'" :id="'{{$accepted_proposal->id}}'" :recipent_id="'{{$accepted_proposal->freelancer_id}}'"></private-message>

@@ -1466,7 +1466,7 @@ table.wt-tablecategories tbody tr td figure img{
     background: #fffdf3;
 }
 .wt-dashboardsavetag{border-top:40px solid  #ff6b57;}
-.wt-saveitem-breadcrumb{line-height: 15px;}
+.wt-saveitem-breadcrumb{line-height: 22px;}
 .wt-saveitem-breadcrumb li + li{border-left: 1px solid var(--color-1);}
 .wt-saveitem-breadcrumb li span, .wt-saveitem-breadcrumb li a{color: #323232;}
 .wt-dashboradsaveitem{
@@ -1948,7 +1948,15 @@ table.wt-tablecategories tbody tr td figure img{
 	width: 100%;
 	padding: 0 20px;
 }
-.wt-userlistingvtwo .wt-contenthead{max-width: 470px;}
+/* .wt-userlistingvtwo .wt-contenthead{max-width: 470px;} RFK*/
+.wt-userlistingvtwo .wt-contenthead{max-width: 240px;}
+
+.manage-proposals .wt-userlistingvtwo .wt-contenthead {
+    max-width: 500px;
+}
+
+
+
 .wt-userlistingvtwo .wt-userlistingcontent .wt-btnarea .wt-btn{
 	float: left;
 	padding: 0 20px;
@@ -2544,15 +2552,29 @@ li.collapsed .wt-msgbtns .wt-msgbtn i.lnr-chevron-up:before{content: "\e874";}
 }
 .wt-rcvproposalholder .wt-userlistinghold .wt-userlistingcontent
 .wt-rightarea .wt-hireduserstatus{min-width: 130px}
+
+.wt-label {
+    padding: 4px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    color: #b1d131;
+}
+
+a.wt-btn.wt-msgbtn {
+    float: inherit;
+}
+
 .wt-proposalitem{background-color: #fafafa;}
 .wt-proposalitem .wt-btnarea {
     width: auto;
     float: left;
-    padding: 37px 0;
+	padding: 37px 0;
+	display: grid;
 }
 .wt-proposalitem .wt-btnarea .wt-btn {
-    padding: 0 26px;
-    line-height: 36px;
+    padding: 10px 26px;
+    line-height: 16px;
 }
 .wt-proposalitem .wt-rightarea{margin: -25px 0;}
 .wt-proposalitem .wt-rightarea .wt-hireduserstatus {
@@ -2585,7 +2607,10 @@ li.collapsed .wt-msgbtns .wt-msgbtn i.lnr-chevron-up:before{content: "\e874";}
 }
 .wt-proposaldetails .wt-contenthead .wt-title a{margin:0 0 2px;}
 .wt-rcvproposalholder .wt-verticalscrollbar{height: 550px;}
-.wt-rcvproposalholder .wt-userlistinghold .wt-proposaldetails{padding: 9px 0;}
+.wt-rcvproposalholder .wt-userlistinghold .wt-proposaldetails{
+	padding: 9px 0;    
+	width: 115px;
+}
 .wt-rcvproposalholder .wt-verticalscrollbar .mCustomScrollBox .mCSB_scrollTools{width: 0;}
 .wt-rcvproposalholder .wt-userlistinghold:hover{
 	box-shadow:none;

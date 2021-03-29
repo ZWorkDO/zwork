@@ -136,7 +136,7 @@
                                             </div>
                                             <div class="wt-rightarea">
                                                 <div class="wt-btnarea">
-                                                    <a href="javascript:void(0);" class="wt-btn" style="pointer-events:none;">{{ trans('lang.hired') }}</a>
+                                                    <a href="javascript:void(0);" class="wt-label" style="pointer-events:none;">{{ trans('lang.hired') }}</a>
                                                     <a href="{{{ url('proposal/'.$job->slug.'/'.$job->status) }}}"  class="wt-btn">{{ trans('lang.view_detail') }}</a>
                                                 </div>
                                                 <div class="wt-hireduserstatus">

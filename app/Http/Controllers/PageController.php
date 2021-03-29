@@ -281,7 +281,7 @@ class PageController extends Controller
                 $page_data = $selected_page->toArray();
                 $page['id'] = $page_data['id'];
                 $page['title'] = $page_data['title'];
-                $page['slug'] = $page_data['slug'];
+                $page['slug'] = !empty($page_data['slug']) ? $page_data['slug'] : str_slug($page_data['title'], '-');
                 $page['section_list'] = Helper::getUnserializeData($page_data['sections']);
                 $parent_selected_id = '';
                 $parent_page = DB::table('pages')->select('id', 'title')->where('id', '!=', $id)->where('relation_type', '=', 0)->get()->toArray();
