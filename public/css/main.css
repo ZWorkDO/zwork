@@ -4715,6 +4715,10 @@ body.wt-login .wt-userlogedin {
     float: left;
 }
 
+#wt-categoriesslider.owl-carousel .owl-dot, #wt-categoriesslider.owl-carousel .owl-nav .owl-next, #wt-categoriesslider.owl-carousel .owl-nav .owl-prev {
+    position: absolute;
+}
+
 .wt-categoryslidercontent {
     float: left;
     width: 100%;
