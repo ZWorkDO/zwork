@@ -328,11 +328,13 @@ class JobController extends Controller
                     return $json;
                 }
             }
-            if ($posted_jobs >= intval($option['jobs'])) {
-                $json['type'] = 'error';
-                $json['message'] = trans('lang.sorry_cannot_submit') .' '. $option['jobs'] .' ' . trans('lang.jobs_acc_to_pkg');
-                return $json;
-            } else {
+            //ATTENTION: Does not have jobs in Employer package
+            // if ($posted_jobs >= intval($option['jobs'])) {
+            //     $json['type'] = 'error';
+            //     $json['message'] = trans('lang.sorry_cannot_submit') .' '. $option['jobs'] .' ' . trans('lang.jobs_acc_to_pkg');
+            //     return $json;
+            // } 
+            else {
                 $job_post = $this->job->storeJobs($request);
                 if ($job_post = 'success') {
                     $json['type'] = 'success';

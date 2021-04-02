@@ -80,11 +80,11 @@
                         
                         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-8 float-left">
                             <div class="wt-userlistingholder wt-haslayout">
-                                @if (!empty($jobs) )
-                                    <div class="wt-userlistingtitle">
-                                        <span>{{$jobs->count(Carbon\Carbon::now()->lessThan($job->expiry_date))}} de {{$Jobs_total_records}} resultados for <em>"{{{$keyword}}}"</em></span>
-                                    </div>
-                                @endif
+                                <div class="wt-userlistingtitle">
+                                    @if (!empty($jobs))
+                                        <span>{{$jobs->count()}} de {{$Jobs_total_records}} resultado @if (!empty($keyword)) for <em>"{{{$keyword}}}"</em> @endif</span>
+                                    @endif
+                                </div>    
                                 @if (!empty($jobs) && $jobs->count() > 0)
                                     @foreach ($jobs as $job)
                                         @if (\Schema::hasColumn('jobs', 'expiry_date') && !empty($job->expiry_date))
@@ -209,7 +209,7 @@
                                         @include('errors.no-record')
                                     @endif
                                 @endif
-                            </div>
+                            <!-- </div> -->
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,7 @@
 								<thead>
 									<tr>
 										<th>{{ trans('lang.service_title') }}</th>
-										<th>{{ trans('lang.offered_by') }}</th>
+										<th>{{ trans('lang.hired_by') }}</th>
 										<th>{{ trans('lang.action') }}</th>
 									</tr>
 								</thead>

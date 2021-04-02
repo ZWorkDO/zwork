@@ -50,7 +50,24 @@ class AdminEmailMailable extends Mailable
     {
         $from_email = EmailHelper::getEmailFrom();
         $from_email_id = EmailHelper::getEmailID();
+        $subject = '';
+
+        if ($this->type == 'admin_email_ask_invoice') {
+            $subject = 'Solicitud de Factura Zwork';
+            $email_message = $this->prepareAdminAskForInvoice($this->email_params);
+
+            $message = $this->from($from_email, $from_email_id)
+            ->subject($subject)->view('emails.index')
+            ->with(
+                [
+                    'html' => $email_message,
+                ]
+            );
+         return $message;
+        }
+
         $subject = !empty($this->template->subject) ? $this->template->subject : '';
+
         if ($this->type == 'admin_email_registration') {
             $email_message = $this->prepareAdminEmailRegisteredUser($this->email_params);
         } elseif ($this->type == 'admin_email_delete_account') {
@@ -574,6 +591,25 @@ class AdminEmailMailable extends Mailable
         $body = "";
         $body .= EmailHelper::getEmailHeader();
         $body .= $app_content;
+        $body .= EmailHelper::getEmailFooter();
+        return $body;
+    }
+
+     /**
+     * Email contact us
+     *
+     * @param array $email_params Email Parameters
+     *
+     * @access public
+     *
+     * @return string
+     */
+    public function prepareAdminAskForInvoice($email_params)
+    {
+        extract($email_params);
+        $body = "";
+        $body .= EmailHelper::getEmailHeader();
+        $body .= $message;
         $body .= EmailHelper::getEmailFooter();
         return $body;
     }

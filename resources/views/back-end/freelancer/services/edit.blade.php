@@ -21,15 +21,15 @@
                                 </div>
                                 <div class="wt-formtheme wt-userform wt-userformvtwo">
                                     <fieldset>
-                                        <div class="form-group">
+                                        <div class="form-group required">
                                             {!! Form::text('title', e($service->title), array('class' => 'form-control', 'placeholder' => trans('lang.service_title'))) !!}
                                         </div>
-                                        <div class="form-group form-group-half wt-formwithlabel">
+                                        <div class="form-group form-group-half wt-formwithlabel required">
                                             <span class="wt-select">
                                                 {!! Form::select('delivery_time', $delivery_time, e($service->delivery_time_id), array('class' => '', 'placeholder' => trans('lang.select_delivery_time'))) !!}
                                             </span>
                                         </div>
-                                        <div class="form-group form-group-half wt-formwithlabel job-cost-input">
+                                        <div class="form-group form-group-half wt-formwithlabel job-cost-input required">
                                             {!! Form::number('service_price', e($service->price), array('class' => '', 'placeholder' => trans('lang.service_price'))) !!}
                                         </div>
                                     </fieldset>
@@ -52,7 +52,7 @@
                                     <h2>{{ trans('lang.service_response_time') }}</h2>
                                 </div>
                                 <div class="wt-divtheme wt-userform wt-userformvtwo">
-                                    <div class="form-group">
+                                    <div class="form-group required">
                                         <span class="wt-select">
                                             {!! Form::select('response_time', $response_time, e($service->response_time_id), array('class' => '', 'placeholder' => trans('lang.select_response_time'))) !!}
                                         </span>
@@ -76,7 +76,7 @@
                                     <h2>{{ trans('lang.english_level') }}</h2>
                                 </div>
                                 <div class="wt-divtheme wt-userform wt-userformvtwo">
-                                    <div class="form-group">
+                                    <div class="form-group required">
                                         <span class="wt-select">
                                             {!! Form::select('english_level', $english_levels, e($service->english_level), array('class' => '', 'placeholder' => trans('lang.select_english_level'))) !!}
                                         </span>
@@ -87,7 +87,7 @@
                                 <div class="wt-tabscontenttitle">
                                     <h2>{{ trans('lang.service_desc') }}</h2>
                                 </div>
-                                <div class="wt-formtheme wt-userform wt-userformvtwo">
+                                <div class="wt-formtheme wt-userform wt-userformvtwo required">
                                     {!! Form::textarea('description', e($service->description), ['class' => 'wt-tinymceeditor', 'id' => 'wt-tinymceeditor', 'placeholder' => trans('lang.service_desc_note')]) !!}
                                 </div>
                             </div>

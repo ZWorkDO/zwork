@@ -132,6 +132,7 @@ Vue.component('upload-image', require('./components/UploadImageComponent.vue').d
 Vue.component('flash_messages', require('./components/FlashMessages.vue').default);
 Vue.component('switch_button', require('./components/SwitchButton.vue').default);
 Vue.component('user_skills', require('./components/ProfileSkillComponent.vue').default);
+Vue.component('user_categories', require('./components/ProfileCategoryComponent.vue').default);
 Vue.component('freelancer_experience', require('./components/ProfileExperienceComponent.vue').default);
 Vue.component('freelancer_education', require('./components/ProfileEducationComponent.vue').default);
 Vue.component('freelancer_project', require('./components/ProfileProjectComponent.vue').default);
@@ -1923,9 +1924,12 @@ if (document.getElementById("user_profile")) {
             submitFreelancerProfile: function () {
                 var self = this;
                 var profile_data = document.getElementById('freelancer_profile');
+         
                 let form_data = new FormData(profile_data);
+      
                 axios.post(APP_URL + '/freelancer/store-profile-settings', form_data)
                     .then(function (response) {
+               
                         if (response.data.type == 'success') {
                             self.showInfo(Vue.prototype.trans('lang.saving_profile'));
                         } else if (response.data.type == 'error') {
@@ -3486,9 +3490,18 @@ if (document.getElementById("post_job")) {
                 return this.$toast.error(' ', error, this.notificationSystem.options.error);
             },
             submitJob: function () {
+                var self = this;
                 this.loading = true;
                 let register_Form = document.getElementById('post_job_form');
                 let form_data = new FormData(register_Form);
+               
+                let project_cost = form_data.get('project_cost'); 
+    
+                if((!project_cost) || (project_cost && project_cost < 10)){
+                    self.loading = false;
+                    self.showError('El costo del proyecto debe ser mayor o igual a 10');
+                    return;
+                }
                 var description_1 = tinyMCE.get('wt-tinymceeditor-1').getContent();
                 var description_2 = tinyMCE.get('wt-tinymceeditor-2').getContent();
                 var description_3 = tinyMCE.get('wt-tinymceeditor-3').getContent();
@@ -3502,7 +3515,7 @@ if (document.getElementById("post_job")) {
                     "<b>"+ Vue.prototype.trans('lang.job_dtl_5') + "</b><br>" + description_5;
 
                 form_data.append('description', description);
-                var self = this;
+               
                 axios.post(APP_URL + '/job/post-job', form_data)
                     .then(function (response) {
                         if (response.data.type == 'success') {
@@ -3551,13 +3564,22 @@ if (document.getElementById("post_job")) {
                     });
             },
             updateJob: function (id) {
+                var self = this;
                 this.loading = true;
                 let register_Form = document.getElementById('job_edit_form');
                 let form_data = new FormData(register_Form);
+                let project_cost = form_data.get('project_cost'); 
+    
+                if((!project_cost) || (project_cost && project_cost < 10)){
+                    self.loading = false;
+                    self.showError('El costo del proyecto debe ser mayor o igual a 10');
+                    return;
+                }
+
                 var description = tinyMCE.get('wt-tinymceeditor').getContent();
                 form_data.append('description', description);
                 form_data.append('id', id);
-                var self = this;
+            
                 axios.post(APP_URL + '/job/update-job', form_data)
                     .then(function (response) {
                         self.loading = false;
@@ -3768,13 +3790,23 @@ if (document.getElementById("jobs")) {
                 this.proposal.total = this.proposal.amount - this.proposal.deduction;
             },
             submitJobProposal: function (id, user_id) {
+                var self = this;
                 this.loading = true;
                 this.custom_error = false;
                 let propsal_form = document.getElementById('send-propsal');
                 let form_data = new FormData(propsal_form);
+
+                let amount = form_data.get('amount'); 
+    
+                if((!amount) || (amount && amount < 1)){
+                    self.loading = false;
+                    self.showError('El monto de la propuesta debe ser mayor o igual a 1');
+                    return;
+                }
+
                 form_data.append('id', id);
                 form_data.append('user_id', user_id);
-                var self = this;
+               
                 axios.post(APP_URL + '/proposal/submit-proposal', form_data)
                     .then(function (response) {
                         if (response.data.type == 'success') {
@@ -4847,12 +4879,24 @@ if (document.getElementById("services")) {
                 return this.$toast.error(' ', error, this.notificationSystem.options.error);
             },
             submitService: function () {
+                var self = this;
                 this.loading = true;
                 let Form = document.getElementById('post_service_form');
                 let form_data = new FormData(Form);
+
+                let service_price = form_data.get('service_price'); 
+    
+                if((!service_price) || (service_price && service_price < 10)){
+                    self.loading = false;
+                    self.showError('El precio del servicio debe ser mayor o igual a 10');
+                    return;
+                }
+
+
+
                 var description = tinyMCE.get('wt-tinymceeditor').getContent();
                 form_data.append('description', description);
-                var self = this;
+              
                 axios.post(APP_URL + '/services/post-service', form_data)
                     .then(function (response) {
                         if (response.data.type == 'success') {
@@ -4944,13 +4988,23 @@ if (document.getElementById("services")) {
                 }
             },
             updateService: function (id) {
+                var self = this;
                 this.loading = true;
                 let register_Form = document.getElementById('update_service_form');
                 let form_data = new FormData(register_Form);
+
+                let service_price = form_data.get('service_price'); 
+    
+                if((!service_price) || (service_price && service_price < 10)){
+                    self.loading = false;
+                    self.showError('El precio del servicio debe ser mayor o igual a 10');
+                    return;
+                }
+
                 var description = tinyMCE.get('wt-tinymceeditor').getContent();
                 form_data.append('description', description);
                 form_data.append('id', id);
-                var self = this;
+            
                 axios.post(APP_URL + '/service/update-service', form_data)
                     .then(function (response) {
                         self.loading = false;

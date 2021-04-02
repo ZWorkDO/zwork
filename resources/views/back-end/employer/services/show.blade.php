@@ -138,7 +138,7 @@
                             @endif
                             <div class="wt-projecthistory">
                                 <div class="wt-tabscontenttitle">
-                                    <h2>{{ trans('lang.project_history') }}</h2>
+                                    <h2>{{ trans('lang.project_msgs') }}</h2>
                                 </div>
                                 <div class="wt-historycontent la-jobdetails-holder">
                                     <private-message :placeholder="'{{ trans('lang.ph_job_dtl') }}'" :upload_tmp_url="'{{url('service/upload-temp-message_attachments')}}'" :id="'{{$pivot_id}}'" :recipent_id="'{{$freelancer->id}}'" :project_type="'service'"></private-message>

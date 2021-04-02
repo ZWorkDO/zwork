@@ -15,6 +15,7 @@
             <fieldset>
               <div class="form-group la-section-title">
                 <input type="text" placeholder="Title" v-model="form.title" name="title" class="form-control" />
+                <input type="text" placeholder="Slug" v-model="form.slug" name="slug" class="form-control" />
               </div>
               <div class="form-group la-section-title" v-if="form.body && form.body !='null'">
                 <tinymce-editor 
@@ -338,6 +339,7 @@ export default {
       form: {
         sections: [],
         title: "",
+        slug: "",
         body:'',
         meta: {
           freelancers: [],
@@ -408,6 +410,7 @@ export default {
     this.getPageData();
     this.getPageOption();
     this.form.title = this.pageData.title;
+    this.form.slug = this.pageData.slug;
     this.form.seo_desc = this.seo_desc
     if (this.selected_parent) {
       this.form.parent_id = this.selected_parent

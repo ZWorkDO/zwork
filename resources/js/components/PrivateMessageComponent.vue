@@ -10,7 +10,7 @@
         <h3>
           <span>{{ trans('lang.date') }}</span>
           <span>{{ trans('lang.msg') }}</span>
-          <span>{{ trans('lang.attachment') }}</span>
+          <span></span>
         </h3>
       </li>
       <span v-for="(message, index) in messages" :key="index">
@@ -23,10 +23,6 @@
             <span>{{message.excerpt}}</span>
           </div>
           <div class="wt-rightarea wt-msgbtns">
-            <a href="javascript:void(0);" class="wt-btn wt-msgbtn">
-              <i class="lnr lnr-chevron-up"></i>
-              {{ trans('lang.msg') }}
-            </a>
             <a
               :href="attahcments_url+message.id"
               class="wt-btn wt-attachmentbtn"
@@ -34,6 +30,10 @@
             >
               <i class="lnr lnr-download"></i>
               {{ trans('lang.attachment') }}
+            </a>
+            <a href="javascript:void(0);" class="wt-btn wt-msgbtn">
+              <i class="lnr lnr-chevron-up"></i>
+              {{ trans('lang.see_msg') }}
             </a>
           </div>
         </li>
@@ -119,7 +119,7 @@ export default {
 
       let register_Form = document.getElementById("send_message_form");
       let form_data = new FormData(register_Form);
-      var description = tinyMCE.get("wt-tinymceeditor").getContent();
+      var description = tinyMCE.get("wt-tinymceeditor").getContent({ format: "text" });
       form_data.append("description", description);
       form_data.append("project_type", type);
       this.isShow = true;

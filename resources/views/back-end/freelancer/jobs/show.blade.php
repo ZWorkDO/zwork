@@ -79,7 +79,7 @@
                         </div>
                         <div class="wt-projecthistory">
                             <div class="wt-tabscontenttitle">
-                                <h2>{{ trans('lang.project_history') }}</h2>
+                                <h2>{{ trans('lang.project_msgs') }}</h2>
                             </div>
                             <div class="wt-historycontent">
                                 <private-message :ph_job_dtl="'{{ trans('lang.ph_job_dtl') }}'" :upload_tmp_url="'{{url('proposal/upload-temp-image')}}'" :id="'{{$proposal->id}}'" :recipent_id="'{{$job->user_id}}'"></private-message>

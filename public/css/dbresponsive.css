@@ -39,7 +39,7 @@
 	.wt-openmenu .wt-usersidebar .wt-companysinfo .wt-title{margin-bottom:15px; }
 	.wt-navdashboard-footer{display: none;}
 	.wt-openmenu .wt-navdashboard-footer{display: block;}
-	.wt-userlistingvtwo .wt-userlistingcontent .wt-rightarea{width: 100%;}
+	/* .wt-userlistingvtwo .wt-userlistingcontent .wt-rightarea{width: 100%;} */
 	.wt-canceljobholder .wt-userlistinghold .wt-rightarea .wt-btnarea{padding: 0 0 30px;}
 	.wt-jobdetailscontent .wt-userlistinghold .wt-rightarea{width: auto;}
 	.wt-jobdetailscontent .wt-userlistingvtwo .wt-contenthead{max-width: 380px;}
@@ -52,9 +52,9 @@
 }
 @media (max-width:1600px){ 
 	.wt-jobdetailscontent .wt-userlistinghold .wt-rightarea{
-		width: 100%;
-		float: left;
-		margin-top: 0;
+		/* width: 100%; */
+		float: right;
+		/* margin-top: 0; */
 	}
 	.wt-wrapper .wt-sidebarwrapper{padding-top:152px; }
 	.wt-btnmenutoggle{top: 170px;}
@@ -64,13 +64,15 @@
 	.wt-btnmenutoggle {top: 140px;}
 }
 @media (max-width:1440px){
-	.wt-rcvproposalholder .wt-proposalitem .wt-rightarea{
+	/* .wt-rcvproposalholder .wt-proposalitem .wt-rightarea{
 		width: 100%;
 		margin: 20px 0 -25px;
 		border-top: 1px solid #ddd;
-	}
+	} */
 	.la-ps-freelancer .wt-userform .wt-skills.la-skills-holder > div:nth-child(2) .wt-skillsform fieldset .form-group{padding-right:5px; }
 	.la-ps-freelancer .wt-userform .wt-skills.la-skills-holder > div:nth-child(2) .wt-skillsform .wt-btnarea.form-group{position: static;padding: 5px;}
+	.la-ps-freelancer .wt-userform .wt-categories.la-categories-holder > div:nth-child(2) .wt-categoryform fieldset .form-group{padding-right:5px; }
+	.la-ps-freelancer .wt-userform .wt-categories.la-categories-holder > div:nth-child(2) .wt-categoryform .wt-btnarea.form-group{position: static;padding: 5px;}
 }
 @media (max-width:1400px){
 	table.wt-tablecategories tbody tr td{padding: 10px;}
@@ -87,9 +89,9 @@
 		width: 100%;
 	}
 }
-@media (max-width:1366px){
+/* @media (max-width:1366px){
 	.la-manage-jobs-holder .wt-userlistingvtwo .wt-userlistingcontent .wt-rightarea{width: 100%;}
-}
+} */
 @media (max-width:1360px){
 	.wt-msgbtns{
 		width: 100%;
@@ -191,6 +193,7 @@
 		-webkit-flex-direction: column;
 		-ms-flex-direction: column;
 		flex-direction: column;
+		width: 100%;
 	}
 	.la-category-box{margin: 0 0 30px;}
 	.la-addpackages > div > div:first-child{margin: 0 0 30px;}
@@ -239,6 +242,7 @@
 	.wt-wrapper .wt-main{padding:20px 15px; }
 	.wt-insightsitemholder .col-12:nth-child(n+2) .wt-insightsitem{margin-top:30px; }
 	.wt-myskills li{padding: 10px 20px;}
+	.wt-mycategories li{padding: 10px 20px;}
 	.wt-userformvtwo{padding: 0;}
 	.tab-savecontent .wt-userlistinghold,
 	.tab-savecontent .wt-yourdetails,
@@ -252,6 +256,11 @@
 		float: left;
 	}
 	.wt-likedfreelancers .wt-userlistinghold .wt-userlistingimg{margin: 0 0 20px;}
+
+	.wt-userlistinghold .wt-userlistingcontent .wt-rightarea{
+		width: 100%;
+	}
+
 	.wt-hiredfreelancer .wt-titlewithsearch .wt-formsearch{
 		margin: 0;
 		width: 100%;
@@ -286,6 +295,11 @@
 	}
 	.wt-skillsform fieldset .form-group{padding: 0;}
 	.wt-skillsform fieldset .form-group.wt-btnarea{
+		margin-top:10px; 
+		position: static;
+	}
+	.wt-categoryform fieldset .form-group{padding: 0;}
+	.wt-categoryform fieldset .form-group.wt-btnarea{
 		margin-top:10px; 
 		position: static;
 	}
@@ -413,7 +427,14 @@
 		border-right: 0;
 		border-bottom: 1px solid #ddd;
 	}
+	.wt-categoryform fieldset .form-group .wt-select,
+	.wt-categoryform fieldset .form-group .form-control{width: 100%;}
+	.wt-categoryform fieldset .form-group .wt-select select{
+		border-right: 0;
+		border-bottom: 1px solid #ddd;
+	}
 	.la-footer-setting .wt-skillsform fieldset .form-group .wt-select{width: 100%;}
+	.la-footer-setting .wt-categoryform fieldset .form-group .wt-select{width: 100%;}
 	.la-footer-setting .search-content .form-group .form-control:first-child{
 		border: 0;
 		border-bottom: 1px solid #ddd;
@@ -422,11 +443,20 @@
 		width: 30px;
 		line-height: 32px;
 	}
+	.la-footer-setting .wt-categoryform fieldset .form-group .wt-rightarea .wt-addinfobtn{
+		width: 30px;
+		line-height: 32px;
+	}
 	.la-footer-setting .wt-skillsform fieldset .form-group .wt-rightarea{
 		top: 50%;
 		margin: -16px 0 0;
 	}
+	.la-footer-setting .wt-categoryform fieldset .form-group .wt-rightarea{
+		top: 50%;
+		margin: -16px 0 0;
+	}
 	.la-footer-setting .wt-skillsform fieldset .form-group{padding-right:50px; }
+	.la-footer-setting .wt-categoryform fieldset .form-group{padding-right:50px; }
 	.wt-ad-pages .list-group{padding: 30px 15px !important;}
 }
 @media (max-width:568px){
@@ -474,6 +504,11 @@
 		max-width: none;
 	}
 	.wt-myskills li .wt-rightarea{
+		clear: both;
+		float: left;
+		margin-top:10px; 
+	}
+	.wt-mycategories li .wt-rightarea{
 		clear: both;
 		float: left;
 		margin-top:10px; 

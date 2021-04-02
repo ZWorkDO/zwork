@@ -488,6 +488,7 @@ return [
     'select_freelancer_level' => 'فرییلانسر سطح منتخب کریں',
     'select_english_level' => 'انگریزی کی سطح منتخب کریں',
     'project_cost' => 'پراجیکٹ کی لاگت',
+    'hired_by' => 'کی طرف سے کی خدمات حاصل کی',
     'offered_by' => 'کی طرف سے پیشکش',
     'job_cats' => 'ملازمت زمرہ جات',
     'service_cats' => 'سروس زمرہ جات',

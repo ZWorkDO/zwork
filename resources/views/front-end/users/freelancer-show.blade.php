@@ -454,7 +454,7 @@
                 </div>
             </div>
         </div>
-		<b-modal ref="myModalRef" hide-footer title="Project Status">
+		<b-modal ref="myModalRef" hide-footer title="{{{ trans('lang.status') }}}">
             <div class="d-block text-center">
                 {!! Form::open(['url' => '', 'class' =>'wt-formtheme wt-userform', 'id' =>'send-offer-form', '@submit.prevent'=>'submitProjectOffer("'.$profile->user_id.'")'])!!}
                     <div class="wt-projectdropdown-hold">

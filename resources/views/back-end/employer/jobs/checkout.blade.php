@@ -55,7 +55,7 @@
                                     <td>{{{ $freelancer_name }}}</td>
                                 </tr>
                                 <tr>
-                                    <td>{{ trans('lang.total') }}</td>
+                                    <td>{{ trans('lang.total_pay') }}</td>
                                     <td>{{ !empty($symbol['symbol']) ? $symbol['symbol'] : '$' }}{{{$proposal->amount}}}</td>
                                 </tr>
                             </tbody>

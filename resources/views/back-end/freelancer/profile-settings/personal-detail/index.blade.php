@@ -69,6 +69,13 @@
                                             @include('back-end.freelancer.profile-settings.personal-detail.skill')   
                                         @endif 
                                     </div>
+                                    <div class="wt-categories la-categories-holder wt-tabsinfo">
+                                        @if (file_exists(resource_path('views/extend/back-end/freelancer/profile-settings/personal-detail/category.blade.php'))) 
+                                            @include('extend.back-end.freelancer.profile-settings.personal-detail.category')   
+                                        @else 
+                                            @include('back-end.freelancer.profile-settings.personal-detail.category')   
+                                        @endif 
+                                    </div>
                                     <div class="wt-videos-holder wt-tabsinfo la-footer-setting">
                                         @if (file_exists(resource_path('views/extend/back-end/freelancer/profile-settings/personal-detail/videos.blade.php'))) 
                                             @include('extend.back-end.freelancer.profile-settings.personal-detail.videos')   
