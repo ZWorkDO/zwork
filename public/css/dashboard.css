@@ -4984,3 +4984,9 @@ body.rtl .wt-uploadrating .modal-body{text-align: right;}
 .wt-none {
 	display: none;
 }
+
+.required:after {
+    content:" *";
+	color: red;
+
+}

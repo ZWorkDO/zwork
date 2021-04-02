@@ -6,7 +6,7 @@
                     <div class="wt-description" v-if="freelancer.description" v-html="freelancer.description"></div>
                 </div>
             </div>
-            <div class="wt-topfreelancers">
+            <!-- <div class="wt-topfreelancers">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 float-left" v-for="(freelancer, index) in topFreelancers" :key="index">
                     <div class="wt-freelanceritems">
                         <div class="wt-userlistinghold wt-featured">
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         
     </section>
