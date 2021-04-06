@@ -5,7 +5,7 @@
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
 @endpush
 @section('title'){{ $service->title }} @stop
-@section('description', "$service->description")
+@section('description'){{ strip_tags($service->description) }} @stop
 @section('content')
     @php $breadcrumbs = Breadcrumbs::generate('serviceDetail', $service->slug); @endphp
     <div class="wt-haslayout wt-innerbannerholder">

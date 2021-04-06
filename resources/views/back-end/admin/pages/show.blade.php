@@ -5,7 +5,7 @@
     <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet">
 @endpush
 @section('title'){{ $page->title }} @stop
-@section('description', "$meta_desc")
+@section('description'){{ strip_tags($meta_desc) }} @stop
 @section('content')
     @php $breadcrumbs = Breadcrumbs::generate('showPage',$page, $slug); @endphp
     <div class="wt-haslayout wt-innerbannerholder">
