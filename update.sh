@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
 
-if [[ "$1" == "update_beta" ]]; then    # used only on server
+if [[ "$1" == "update_qa" ]]; then    # used only on server
 
-    cd /jet/www/default/beta/
-    git reset
-    git checkout .
-    sudo git pull --ff-only origin develop
-#    cp -R * ../default/beta/
-#    echo "Nao implementado"
+    cd html
+    git pull origin master
+    echo "Pull completed in QA (From branch master)"
+    echo "Running npm run prod"
+    npm run prod
 
 elif [[ "$1" == "update_prod" ]]; then    # used only on server
 
     cd html
     git pull origin prod
-    echo "Pull completed"
+    echo "Pull completed in Production (From branch prod)"
     echo "Running npm run prod"
     npm run prod
     # cp public/index_prod.php public/index.php
@@ -24,10 +23,10 @@ elif [[ "$1" == "update_prod" ]]; then    # used only on server
 
 
 else
-    if [[ "$1" == "beta" ]]; then
+    if [[ "$1" == "qa" ]]; then
 
-        git push origin develop
-        ssh $2@35.247.250.238 "source /jet/www/default/beta/update.sh update_beta"
+        git push origin master
+        ssh root@165.22.237.190 "source html/update.sh update_qa"
 
     elif [[ "$1" == "prod" ]]; then
 
