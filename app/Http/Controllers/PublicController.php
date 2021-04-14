@@ -293,7 +293,7 @@ class PublicController extends Controller
                             $email_params['name'] = Helper::getUserName($id);
                             $email_params['email'] = $email;
                             $email_params['link'] = url('profile-project/' . $user->slug);
-                            Mail::to($email)
+                            Mail::to(config('mail.from.address'))
                                 ->send(
                                     new AdminEmailMailable(
                                         'admin_email_registration',
