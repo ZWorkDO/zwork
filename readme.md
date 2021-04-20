@@ -67,3 +67,23 @@ The following are the commands to execute the program using Linux Mint:
     ```bash
     sudo php artisan serve 
     ```
+
+**Restart the NGINX sevice**:
+
+1. Reload NGINX:
+
+    ```bash
+    sudo /etc/init.d/nginx reload
+    ```
+
+2. Restart NGINX (Force Reload):
+
+    ```bash
+    sudo /etc/init.d/nginx restart
+    ```
+
+Clearing the Laravel's configuration cache
+
+```bash
+php artisan config:clear
+```

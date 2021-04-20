@@ -61,7 +61,7 @@ export default {
                 headers: {
                     'x-csrf-token': document.querySelectorAll('meta[name=csrf-token]')[0].getAttributeNode('content').value,
                 },
-                // transformFile: cropperOpts.transformer,
+                transformFile: cropperOpts.transformer,
                 init: function() {
                     var myDropzone = this;
                     // this.on("addedfile", function(file) { 

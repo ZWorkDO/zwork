@@ -21,7 +21,7 @@
        </ul>
        <div class="wt-ratingcontent">
           <p><em>*</em> {{ trans('lang.service_note') }}</p>
-          <a href="javascript:;" class="wt-btn" v-on:click.prevent="hireFreelancer('{{{$service->id}}}', '{{{trans('lang.hire_service_title')}}}', '{{{trans('lang.hire_service_text')}}}', '{{$mode}}')">{{ trans('lang.buy_now') }} </a>
+          <a href="javascript:;" class="wt-btn" v-on:click.prevent="checkEmployer('{{{$role}}}','{{{$service->id}}}', '{{{trans('lang.hire_service_title')}}}', '{{{trans('lang.switch_employer_text')}}}', '{{$mode}}')">{{ trans('lang.buy_now') }} </a>
        </div>
     </div>
  </div>

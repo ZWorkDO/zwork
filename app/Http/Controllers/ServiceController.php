@@ -336,6 +336,7 @@ class ServiceController extends Controller
             } else {
                 $rating = 0;
             }
+            $role = Auth::user()->getRoleNames()->first();
 
             $total_orders = Helper::getServiceCount($service->id, 'hired');
             $attachments = !empty($seller) ? Helper::getUnserializeData($service->attachments) : '';
@@ -373,7 +374,8 @@ class ServiceController extends Controller
                             'attachments',
                             'save_services',
                             'show_breadcrumbs',
-                            'mode'
+                            'mode',
+                            'role'
                         )
                     );
                 } else {
@@ -392,7 +394,8 @@ class ServiceController extends Controller
                             'attachments',
                             'save_services',
                             'show_breadcrumbs',
-                            'mode'
+                            'mode',
+                            'role'
                         )
                     );
                 }

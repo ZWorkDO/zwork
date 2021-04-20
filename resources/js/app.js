@@ -5122,38 +5122,78 @@ if (document.getElementById("services")) {
                         console.log(error);
                     });
             },
-            hireFreelancer: function (id, title, text, mode) {
-                this.$swal({
-                    title: title,
-                    text: text,
-                    type: "warning",
-                    customContainerClass: 'hire_popup',
-                    showCancelButton: true,
-                    confirmButtonClass: "btn-danger",
-                    confirmButtonText: "si",
-                    cancelButtonText: "No",
-                    closeOnConfirm: true,
-                    closeOnCancel: true,
-                    showLoaderOnConfirm: false
-                }).then((result) => {
-                    if (result.value) {
-                        if (mode == 'false') {
-                            axios.post(APP_URL + '/user/generate-order/bacs/'+id+'/service')
-                            .then(function (response) {
-                                if (response.data.type == 'success') {
-                                    window.location.replace(APP_URL+'/user/order/bacs/'+response.data.service_order+'/'+response.data.order_id+'/project/service');
-                                } 
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            });
+            checkEmployer: function (role, id, title, text, mode) {
+                
+                
+                if (role == 'employer') {
+                    // axios.post(APP_URL + '/user/generate-order/bacs/'+id+'/service')
+                    // .then(function (response) {
+                    //     if (response.data.type == 'success') {
+                    //         window.location.replace(APP_URL+'/user/order/bacs/'+response.data.service_order+'/'+response.data.order_id+'/project/service');
+                    //     } 
+                    // })
+                    // .catch(function (error) {
+                    //     console.log(error);
+                    // });
+                    this.hireFreelancer(id, title, text, mode);
+                } else {
+                    //If click in YES change user profile to Employer(Project)
+                    this.$swal({
+                        title: title,
+                        text: text,
+                        type: "warning",
+                        customContainerClass: 'hire_popup',
+                        showCancelButton: true,
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Si",
+                        cancelButtonText: "No",
+                        closeOnConfirm: true,
+                        closeOnCancel: true,
+                        showLoaderOnConfirm: false
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.replace(APP_URL + '/freelancer/switch-to-employer');
+                            //window.location.replace(APP_URL + '/service/payment-process/' + id);
                         } else {
-                            window.location.replace(APP_URL + '/service/payment-process/' + id);
+                            this.$swal.close()
                         }
-                    } else {
-                        this.$swal.close()
-                    }
-                })
+                    })
+                }
+              
+            },
+            hireFreelancer: function (id, title, text, mode) {
+                window.location.replace(APP_URL + '/service/payment-process/' + id);
+                // this.$swal({
+                //     title: title,
+                //     text: text,
+                //     type: "warning",
+                //     customContainerClass: 'hire_popup',
+                //     showCancelButton: true,
+                //     confirmButtonClass: "btn-danger",
+                //     confirmButtonText: "Si",
+                //     cancelButtonText: "No",
+                //     closeOnConfirm: true,
+                //     closeOnCancel: true,
+                //     showLoaderOnConfirm: false
+                // }).then((result) => {
+                //     if (result.value) {
+                //         if (mode == 'false') {
+                //             axios.post(APP_URL + '/user/generate-order/bacs/'+id+'/service')
+                //             .then(function (response) {
+                //                 if (response.data.type == 'success') {
+                //                     window.location.replace(APP_URL+'/user/order/bacs/'+response.data.service_order+'/'+response.data.order_id+'/project/service');
+                //                 } 
+                //             })
+                //             .catch(function (error) {
+                //                 console.log(error);
+                //             });
+                //         } else {
+                //             window.location.replace(APP_URL + '/service/payment-process/' + id);
+                //         }
+                //     } else {
+                //         this.$swal.close()
+                //     }
+                // })
             },
             serviceStatus: function (id, pivot_id, employer_id, cancel_text, confirm_button, validation_error, popup_title) {
                 var job_status = document.getElementById("employer_service_status");
