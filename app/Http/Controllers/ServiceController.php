@@ -336,7 +336,7 @@ class ServiceController extends Controller
             } else {
                 $rating = 0;
             }
-            $role = Auth::user()->getRoleNames()->first();
+            $role = Auth::user() ? Auth::user()->getRoleNames()->first() : '';
 
             $total_orders = Helper::getServiceCount($service->id, 'hired');
             $attachments = !empty($seller) ? Helper::getUnserializeData($service->attachments) : '';

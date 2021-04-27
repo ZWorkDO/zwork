@@ -510,7 +510,8 @@ class JobController extends Controller
             $project_type  = Helper::getProjectTypeList($job->project_type);
             $breadcrumbs_settings = SiteManagement::getMetaValue('show_breadcrumb');
             $show_breadcrumbs = !empty($breadcrumbs_settings) ? $breadcrumbs_settings : 'true';
-            $role = Auth::user()->getRoleNames()->first();
+            $role = Auth::user() ? Auth::user()->getRoleNames()->first() : '';
+
             if (file_exists(resource_path('views/extend/front-end/jobs/show.blade.php'))) {
                 return view(
                     'extend.front-end.jobs.show',
