@@ -11568,6 +11568,7 @@ body.lang-ja .wt-loginfooterinfo a+a:before {
     float: left;
     width: 100%;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .wt-freelancers-info>a {
@@ -11589,6 +11590,7 @@ body.lang-ja .wt-loginfooterinfo a+a:before {
     position: relative;
     background: #323232;
     border-radius: 4px 4px 0 0;
+    height: 220px;
 }
 
 .wt-freelancers img {
@@ -11856,6 +11858,7 @@ body.lang-ja .wt-loginfooterinfo a+a:before {
 
 .la-service-info .wt-freelancers-details {
     padding: 20px;
+    padding-top: 40px;
 }
 
 .la-service-info .wt-featuredtagvtwo+div {
