@@ -3894,7 +3894,7 @@ if (document.getElementById("jobs")) {
                 if (role == 'freelancer') {
                     // window.location.replace(APP_URL + url);
                     window.location.replace(url);
-                } else {
+                } else if (role == 'employer') {
                     //If click in YES change user profile to Frelancer (Profesional)
                     this.$swal({
                         title: title,
@@ -3916,6 +3916,9 @@ if (document.getElementById("jobs")) {
                             this.$swal.close()
                         }
                     })
+                } else if (role == ''){
+                    //Display login if not logged
+                    jQuery('.wt-loginarea .wt-loginformhold').slideToggle();
                 }
               
             },
@@ -5158,7 +5161,7 @@ if (document.getElementById("services")) {
                 
                 if (role == 'employer') {
                     this.hireFreelancer(id, title, text, mode);
-                } else {
+                } else if (role == 'freelancer'){
                     //If click in YES change user profile to Employer(Project)
                     this.$swal({
                         title: title,
@@ -5180,6 +5183,9 @@ if (document.getElementById("services")) {
                             this.$swal.close()
                         }
                     })
+                } else if (role == ''){
+                    //Display login if not logged
+                    jQuery('.wt-loginarea .wt-loginformhold').slideToggle();
                 }
               
             },
