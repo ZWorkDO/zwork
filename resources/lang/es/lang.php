@@ -1293,6 +1293,8 @@ return [
     'refund_now' => 'Reembolso ahora',
     'select_delivery_time' => 'Tiempo de entrega',
     'service_price' => 'Precio del Servicio',
+    'send_proposal_title' => 'Enviar Propuesta',
+    'switch_freelancer_text' => 'Para enviar propuesta tienes que cambiar a perfil de Profesional ¿Deseas hacerlo ahora?',
     'hire_service_title' => 'Contratar un Servicio',
     'hire_service_text' => '¿Estás seguro que deseas contratar este servicio?',
     'switch_employer_text' => 'Para contratar un servício tienes que cambiar a perfil de Proyectos ¿Deseas hacerlo ahora?',

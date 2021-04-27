@@ -3888,6 +3888,37 @@ if (document.getElementById("jobs")) {
                     }
                 })
             },
+            checkFreelancer: function (role, url, title, text) {
+                
+                
+                if (role == 'freelancer') {
+                    // window.location.replace(APP_URL + url);
+                    window.location.replace(url);
+                } else {
+                    //If click in YES change user profile to Frelancer (Profesional)
+                    this.$swal({
+                        title: title,
+                        text: text,
+                        type: "warning",
+                        customContainerClass: 'hire_popup',
+                        showCancelButton: true,
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Si",
+                        cancelButtonText: "No",
+                        closeOnConfirm: true,
+                        closeOnCancel: true,
+                        showLoaderOnConfirm: false
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.replace(APP_URL + '/employer/switch-to-freelancer');
+                            //window.location.replace(APP_URL + '/service/payment-process/' + id);
+                        } else {
+                            this.$swal.close()
+                        }
+                    })
+                }
+              
+            },
             showCoverLetter: function (id) {
                 var modal_ref = 'myModalRef-' + id;
                 this.$refs[modal_ref].show();
@@ -5126,15 +5157,6 @@ if (document.getElementById("services")) {
                 
                 
                 if (role == 'employer') {
-                    // axios.post(APP_URL + '/user/generate-order/bacs/'+id+'/service')
-                    // .then(function (response) {
-                    //     if (response.data.type == 'success') {
-                    //         window.location.replace(APP_URL+'/user/order/bacs/'+response.data.service_order+'/'+response.data.order_id+'/project/service');
-                    //     } 
-                    // })
-                    // .catch(function (error) {
-                    //     console.log(error);
-                    // });
                     this.hireFreelancer(id, title, text, mode);
                 } else {
                     //If click in YES change user profile to Employer(Project)
