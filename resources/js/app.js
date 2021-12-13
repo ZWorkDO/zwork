@@ -628,8 +628,8 @@ if (document.getElementById("registration")) {
             checkStep1: function (e) {
                 this.form_step1.first_name_error = '';
                 this.form_step1.is_first_name_error = false;
-                this.form_step1.last_name_error = '';
-                this.form_step1.is_last_name_error = false;
+                // this.form_step1.last_name_error = '';
+                // this.form_step1.is_last_name_error = false;
                 this.form_step1.email_error = '';
                 this.form_step1.is_email_error = false;
                 this.form_step1.password_error = '';
@@ -732,59 +732,59 @@ if (document.getElementById("registration")) {
                     self.submitProfile();
                   })
                   .catch(function (error) {
-                    if (error.response.data.errors.termsconditions) {
-                      self.form_step3.termsconditions_error = error.response.data.errors.termsconditions[0];
-                      self.form_step3.is_termsconditions_error = true;
-                    }
-                    if (error.response.data.errors.nationality) {
-                      self.form_step3.nationality_error = error.response.data.errors.nationality[0];
-                      self.form_step3.is_nationality_error = true;
-                    }
-                    if (error.response.data.errors.birthdate) {
-                      self.form_step3.birthdate_error = error.response.data.errors.birthdate[0];
-                      self.form_step3.is_birthdate_error = true;
-                    }                    
-                    if (error.response.data.errors.id_type) {
-                      self.form_step3.id_types_error = error.response.data.errors.id_type[0];
-                      self.form_step3.is_id_types_error = true;
-                    }
-                    if (error.response.data.errors.id_number) {
-                      self.form_step3.id_number_error = error.response.data.errors.id_number[0];
-                      self.form_step3.is_id_number_error = true;
-                    }
-                    if (error.response.data.errors.profession_id) {
-                      self.form_step3.professions_error = error.response.data.errors.profession_id[0];
-                      self.form_step3.is_professions_error = true;
-                    }
-                    if (error.response.data.errors.grade_id) {
-                      self.form_step3.grades_error = error.response.data.errors.grade_id[0];
-                      self.form_step3.is_grades_error = true;
-                    }
+                    // if (error.response.data.errors.termsconditions) {
+                    //   self.form_step3.termsconditions_error = error.response.data.errors.termsconditions[0];
+                    //   self.form_step3.is_termsconditions_error = true;
+                    // }
+                    // if (error.response.data.errors.nationality) {
+                    //   self.form_step3.nationality_error = error.response.data.errors.nationality[0];
+                    //   self.form_step3.is_nationality_error = true;
+                    // }
+                    // if (error.response.data.errors.birthdate) {
+                    //   self.form_step3.birthdate_error = error.response.data.errors.birthdate[0];
+                    //   self.form_step3.is_birthdate_error = true;
+                    // }                    
+                    // if (error.response.data.errors.id_type) {
+                    //   self.form_step3.id_types_error = error.response.data.errors.id_type[0];
+                    //   self.form_step3.is_id_types_error = true;
+                    // }
+                    // if (error.response.data.errors.id_number) {
+                    //   self.form_step3.id_number_error = error.response.data.errors.id_number[0];
+                    //   self.form_step3.is_id_number_error = true;
+                    // }
+                    // if (error.response.data.errors.profession_id) {
+                    //   self.form_step3.professions_error = error.response.data.errors.profession_id[0];
+                    //   self.form_step3.is_professions_error = true;
+                    // }
+                    // if (error.response.data.errors.grade_id) {
+                    //   self.form_step3.grades_error = error.response.data.errors.grade_id[0];
+                    //   self.form_step3.is_grades_error = true;
+                    // }
 
-                    if (error.response.data.errors.company_name) {
-                      self.form_step3.company_name_error = error.response.data.errors.company_name[0];
-                      self.form_step3.is_company_name_error = true;
-                    }
-                    if (error.response.data.errors.rnc) {
-                      self.form_step3.rnc_error = error.response.data.errors.rnc[0];
-                      self.form_step3.is_rnc_error = true;
-                    }
-                    if (error.response.data.errors.contact_name) {
-                        self.form_step3.contact_name_error = error.response.data.errors.contact_name[0];
-                        self.form_step3.is_contact_name_error = true;
-                    }
-                    if (error.response.data.errors.position) {
-                        self.form_step3.position_error = error.response.data.errors.position[0];
-                        self.form_step3.is_position_error = true;
-                    }
-                    if (error.response.data.errors.camara_id) {
-                      self.form_step3.camaras_error = error.response.data.errors.camara_id[0];
-                      self.form_step3.is_camaras_error = true;
-                    }
-                    if (error.response.data.errors.nr) {
-                        self.form_step3.nr_error = error.response.data.errors.nr[0];
-                        self.form_step3.is_nr_error = true;
-                    }
+                    // if (error.response.data.errors.company_name) {
+                    //   self.form_step3.company_name_error = error.response.data.errors.company_name[0];
+                    //   self.form_step3.is_company_name_error = true;
+                    // }
+                    // if (error.response.data.errors.rnc) {
+                    //   self.form_step3.rnc_error = error.response.data.errors.rnc[0];
+                    //   self.form_step3.is_rnc_error = true;
+                    // }
+                    // if (error.response.data.errors.contact_name) {
+                    //     self.form_step3.contact_name_error = error.response.data.errors.contact_name[0];
+                    //     self.form_step3.is_contact_name_error = true;
+                    // }
+                    // if (error.response.data.errors.position) {
+                    //     self.form_step3.position_error = error.response.data.errors.position[0];
+                    //     self.form_step3.is_position_error = true;
+                    // }
+                    // if (error.response.data.errors.camara_id) {
+                    //   self.form_step3.camaras_error = error.response.data.errors.camara_id[0];
+                    //   self.form_step3.is_camaras_error = true;
+                    // }
+                    // if (error.response.data.errors.nr) {
+                    //     self.form_step3.nr_error = error.response.data.errors.nr[0];
+                    //     self.form_step3.is_nr_error = true;
+                    // }
                     if (error.response.data.errors.termsconditions) {
                       self.form_step3.termsconditions_error = error.response.data.errors.termsconditions[0];
                       self.form_step3.is_termsconditions_error = true;
