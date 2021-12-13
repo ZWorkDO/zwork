@@ -558,8 +558,8 @@ if (document.getElementById("registration")) {
               is_categories_error: false,
             },   
             form_step3: {
-              nationality_error: '',              
-              is_nationality_error: false,
+            //   nationality_error: '',              
+            //   is_nationality_error: false,
               birthdate_error: '',
               is_birthdate_error: false,
               id_types_error: '',
