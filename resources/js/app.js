@@ -628,8 +628,8 @@ if (document.getElementById("registration")) {
             checkStep1: function (e) {
                 this.form_step1.first_name_error = '';
                 this.form_step1.is_first_name_error = false;
-                // this.form_step1.last_name_error = '';
-                // this.form_step1.is_last_name_error = false;
+                this.form_step1.last_name_error = '';
+                this.form_step1.is_last_name_error = false;
                 this.form_step1.email_error = '';
                 this.form_step1.is_email_error = false;
                 this.form_step1.password_error = '';
@@ -700,31 +700,31 @@ if (document.getElementById("registration")) {
               let form_data = new FormData(register_Form);
 
               this.form_step3.termsconditions_error = '';
-              this.form_step3.nationality_error = '';
-              this.form_step3.birthdate_error = '';
-              this.form_step3.id_types_error = '';
-              this.form_step3.id_number_error = '';
-              this.form_step3.professions_error = '';
-              this.form_step3.grades_error = '';
-              this.form_step3.company_name_error = '';
-              this.form_step3.rnc_error = '';
-              this.form_step3.contact_name_error = '';
-              this.form_step3.position_error = '';
-              this.form_step3.camaras_error = '';
-              this.form_step3.nr_error = '';
+            //   this.form_step3.nationality_error = '';
+            //   this.form_step3.birthdate_error = '';
+            //   this.form_step3.id_types_error = '';
+            //   this.form_step3.id_number_error = '';
+            //   this.form_step3.professions_error = '';
+            //   this.form_step3.grades_error = '';
+            //   this.form_step3.company_name_error = '';
+            //   this.form_step3.rnc_error = '';
+            //   this.form_step3.contact_name_error = '';
+            //   this.form_step3.position_error = '';
+            //   this.form_step3.camaras_error = '';
+            //   this.form_step3.nr_error = '';
               this.form_step3.is_termsconditions_error = false;
-              this.form_step3.is_nationality_error = false;
-              this.form_step3.is_birthdate_error = false;
-              this.form_step3.is_id_types_error = false;
-              this.form_step3.is_id_number_error = false;
-              this.form_step3.is_professions_error = false;
-              this.form_step3.is_grades_error = false;
-              this.form_step3.is_company_name_error = false;
-              this.form_step3.is_rnc_error = false;
-              this.form_step3.is_contact_name_error = false;
-              this.form_step3.is_position_error = false;
-              this.form_step3.is_camaras_error = false;
-              this.form_step3.is_nr_error = false;
+            //   this.form_step3.is_nationality_error = false;
+            //   this.form_step3.is_birthdate_error = false;
+            //   this.form_step3.is_id_types_error = false;
+            //   this.form_step3.is_id_number_error = false;
+            //   this.form_step3.is_professions_error = false;
+            //   this.form_step3.is_grades_error = false;
+            //   this.form_step3.is_company_name_error = false;
+            //   this.form_step3.is_rnc_error = false;
+            //   this.form_step3.is_contact_name_error = false;
+            //   this.form_step3.is_position_error = false;
+            //   this.form_step3.is_camaras_error = false;
+            //   this.form_step3.is_nr_error = false;
               
               var self = this;
               axios.post(APP_URL + '/register/form-step3-custom-errors', form_data).
@@ -788,7 +788,7 @@ if (document.getElementById("registration")) {
                     if (error.response.data.errors.termsconditions) {
                       self.form_step3.termsconditions_error = error.response.data.errors.termsconditions[0];
                       self.form_step3.is_termsconditions_error = true;
-                  }
+                    }
                   });
             },
             submitProfile: function () {
