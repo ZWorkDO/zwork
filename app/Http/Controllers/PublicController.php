@@ -172,23 +172,23 @@ class PublicController extends Controller
     {      
 
         $validate = [];
-        if ($request["person_type"] == 1) {
-          $validate["nationality"] = 'required';
-          $validate["birthdate"] = 'required';
-          $validate["id_type"] = 'required';
-          $validate["id_number"] = 'required';
-          $validate["profession_id"] = 'required';
-          $validate["grade_id"] = 'required';
-        }
+        // if ($request["person_type"] == 1) {
+        //   $validate["nationality"] = 'required';
+        //   $validate["birthdate"] = 'required';
+        //   $validate["id_type"] = 'required';
+        //   $validate["id_number"] = 'required';
+        //   $validate["profession_id"] = 'required';
+        //   $validate["grade_id"] = 'required';
+        // }
 
-        if ($request["person_type"] == 2) {
-          $validate["company_name"] = 'required';
-          $validate["rnc"] = 'required';
-          $validate["contact_name"] = 'required';
-          $validate["position"] = 'required';
-          $validate["camara_id"] = 'required';
-          $validate["nr"] = 'required';
-        } 
+        // if ($request["person_type"] == 2) {
+        //   $validate["company_name"] = 'required';
+        //   $validate["rnc"] = 'required';
+        //   $validate["contact_name"] = 'required';
+        //   $validate["position"] = 'required';
+        //   $validate["camara_id"] = 'required';
+        //   $validate["nr"] = 'required';
+        // } 
         
         $validate["termsconditions"] = 'required';
         
